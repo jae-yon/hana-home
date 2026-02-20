@@ -1,17 +1,16 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 
-import { Presence } from "@chakra-ui/react";
+import { Presence } from '@chakra-ui/react';
 
-interface SlideFadeProps {
-  children: React.ReactNode;
+interface ImpactorProps {
+  once?: boolean; // 애니메이션 효과를 계속 유지할지 여부
   delay?: number;
+  children: React.ReactNode;
   direction?: 'left' | 'right' | 'top' | 'bottom';
-  /** true면 뷰포트에 한 번만 들어와도 이후 계속 표시(스크롤 시 사라지지 않음) */
-  once?: boolean;
 }
 
-export default function SlideFade(props: SlideFadeProps) {
+export default function Impactor(props: ImpactorProps) {
   const ref = useRef(null);
   const isView = useInView(ref, { once: props.once ?? false });
 
