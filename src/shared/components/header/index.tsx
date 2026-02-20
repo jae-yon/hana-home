@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Box } from '@chakra-ui/react';
 
-import { useResponsive } from '@/hooks/useResponsive';
+import { useResponsive } from '@/shared/hooks/useResponsive';
 import logo from '@/assets/vite.svg';
 import HeaderDesktop from './HeaderDesktop';
 import HeaderMobile from './HeaderMobile';
@@ -23,50 +23,43 @@ const headerMenu = [
     name: '사업소개',
     path: '/business',
     childMenu: [
-      { name: '사업 개요', path: '/business/introduction' },
-      { name: '주요 사업', path: '/business/areas' },
-      { name: '파트너십', path: '/business/partnership' },
+      { name: '사업개요', path: '/business/introduction' },
+      { name: '가정용태양광', path: '/business/home-solar' },
+      { name: '자가용PPA', path: '/business/ppa' },
+      { name: '발전사업RPS', path: '/business/rps' },
+      { name: '주차장태양광', path: '/business/parking-solar' },
+      { name: '전기공사업', path: '/business/electrical-work' },
+      { name: 'RE100', path: '/business/re100' },
+      { name: '리파워링', path: '/business/refurbishment' },
+      { name: '예상 수익계산기', path: '/business/profit-calculator' },
     ],
   },
   {
     name: '사업실적',
     path: '/performance',
     childMenu: [
-      { name: '실적 현황', path: '/performance/introduction' },
-      { name: '주요 프로젝트', path: '/performance/projects' },
-      { name: '수상 내역', path: '/performance/awards' },
-      { name: '인증 및 특허', path: '/performance/certifications' },
-    ],
-  },
-  {
-    name: '기술과 서비스',
-    path: '/technology',
-    childMenu: [
-      { name: '기술 경쟁력', path: '/technology/introduction' },
-      { name: '연구소 소개', path: '/technology/lab' },
-      { name: '핵심 솔루션', path: '/technology/solutions' },
-      { name: '플랫폼 서비스', path: '/technology/platform' },
-      { name: '기술 지원 안내', path: '/technology/support' },
+      { name: '자가소비', path: '/performance/self-consumption' },
+      { name: '발전사업', path: '/performance/power-generation' },
+      { name: '전기공사업', path: '/performance/electrical-work' },
     ],
   },
   {
     name: '홍보센터',
-    path: '/pr',
+    path: '/promotion',
     childMenu: [
-      { name: '보도자료', path: '/pr/news' },
-      { name: '언론보도', path: '/pr/press' },
-      { name: '홍보 영상', path: '/pr/video' },
-      { name: '사회공헌', path: '/pr/csr' },
+      { name: '사회공헌', path: '/promotion/social-contribution' },
+      { name: '유튜브', path: '/promotion/youtube' },
+      { name: '틱톡', path: '/promotion/tiktok' },
+      { name: '블로그', path: '/promotion/blog' },
     ],
   },
   {
     name: '고객센터',
-    path: '/contact',
+    path: '/support',
     childMenu: [
-      { name: '공지사항', path: '/contact/notice' },
-      { name: 'F.A.Q', path: '/contact/faq' },
-      { name: '1:1 문의', path: '/contact/inquiry' },
-      { name: '자료실', path: '/contact/download' },
+      { name: '자주묻는질문', path: '/support/faq' },
+      { name: '공지사항', path: '/support/notice' },
+      { name: '견적문의', path: '/support/inquiry' },
     ],
   },
 ]
