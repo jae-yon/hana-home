@@ -7,6 +7,16 @@ interface UseCountUpProps {
   decimals?: number;
 }
 
+/**
+ * 숫자를 카운트 업하는 훅
+ * @param props 
+ * @returns {number} 카운트 업된 숫자
+ * @description 숫자를 카운트 업하는 훅
+ * @example
+ * const value = useCountUp({ target: 100, duration: 1000 });
+ * console.log(value); // 100
+ */
+
 export const useCountUp = (props: UseCountUpProps) => {
   const { target, duration, enabled = true, decimals = 2 } = props;
 
