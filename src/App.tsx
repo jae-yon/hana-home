@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import AppRoutes from '@/routes';
 
-import Loading from '@/components/common/Loading';
+import Loader from '@/shared/components/common/Loader';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <Loading />;
+    return <Loader />;
   }
 
   return (
