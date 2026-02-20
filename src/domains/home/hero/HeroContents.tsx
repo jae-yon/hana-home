@@ -1,6 +1,6 @@
 import { Button, Container, Heading, Stack, Text } from '@chakra-ui/react';
 
-import SlideFade from '@/components/common/SlideFade';
+import Impactor from '@/shared/components/common/Impactor';
 
 export default function HeroContents() {
   return (
@@ -13,7 +13,7 @@ export default function HeroContents() {
         alignItems='center'
         justifyContent='center'
       >
-        <SlideFade>
+        <Impactor direction='top'>
           <Stack
             gap={6}
             maxW='600px'
@@ -38,7 +38,7 @@ export default function HeroContents() {
               fontWeight="medium"
               lineHeight="1.7"
               textAlign="center"
-              color="whiteAlpha.900"
+              color="white"
             >
               누구나 쉽고 안전하게
               태양광 에너지에 투자 할 수 있도록
@@ -49,9 +49,11 @@ export default function HeroContents() {
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4} align='center' justify='center'>
               <Button
                 size='xl'
-                colorScheme='blue'
+                variant='solid'
+                color='white'
+                bg='orange.600'
                 borderRadius='xl'
-                px={12}
+                px={10}
                 py={6}
                 fontSize='lg'
                 fontWeight='medium'
@@ -81,7 +83,7 @@ export default function HeroContents() {
               </Button>
             </Stack>
           </Stack>
-        </SlideFade>
+        </Impactor>
       </Container>
   );
 }
