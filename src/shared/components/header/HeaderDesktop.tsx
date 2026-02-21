@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Box, Collapsible, Link, Text } from '@chakra-ui/react';
 
+import { COMPANY_NAME } from '@/shared/config/constants';
+
 interface headerLayoutProps {
   logo: string;
   isScrolled: boolean;
@@ -13,10 +15,10 @@ export default function HeaderDesktop(props: headerLayoutProps) {
 
   return (
     <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-      {/* logo */}
       <Box display='flex' alignItems='center' justifyContent='center' marginTop={4} paddingTop={4}>
+        {/* logo */}
         {/* <Image src={props.logo} alt='logo' width={16} objectFit='cover' padding={4} /> */}
-        <Text fontSize='lg' fontWeight='medium' color='white' letterSpacing='0.1em'>㈜하나솔루션</Text>
+        <Text fontSize='lg' fontWeight='semibold' color={props.isScrolled ? 'gray.800' : 'white'}>{COMPANY_NAME}</Text>
       </Box>
       <Box
         display='flex'
@@ -29,7 +31,7 @@ export default function HeaderDesktop(props: headerLayoutProps) {
         backgroundColor={!props.isScrolled ? '' : 'transparent'}
         padding={4}
         margin={4}
-        _hover={!props.isScrolled ? { backgroundColor: 'blackAlpha.300', borderRadius: 'xl', backdropFilter: 'blur(5px)', transition: 'all 0.5s ease-in-out' } : {}}
+        _hover={!props.isScrolled ? { backgroundColor: 'blackAlpha.300', borderRadius: 'xl', backdropFilter: 'blur(5px)', transition: 'all 0.3s ease' } : {}}
       >
         {/* menu */}
         <Box display='flex' alignItems='start' justifyContent='center' gap={8} paddingX={4} >
@@ -38,15 +40,14 @@ export default function HeaderDesktop(props: headerLayoutProps) {
             <Box key={menu.name} display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
               <Link href={menu.path}>
                 <Text
-                  paddingX={8}
+                  paddingX={10}
                   paddingY={2}
                   fontSize='lg'
                   color={props.isScrolled ? 'gray.700' : 'white'}
                   fontWeight='medium'
-                  letterSpacing='0.1em'
-                  transition='all 0.5s ease'
-                  borderBottom='3px solid transparent'
-                  _hover={{ borderBottomColor: 'red.400', color: 'red.border', fontWeight: 'bold' }}
+                  transition='all 0.3s ease'
+                  borderBottom='2px solid transparent'
+                  _hover={{ borderBottomColor: 'orange.border', color: 'orange.border' }}
                 >
                   {menu.name}
                 </Text>
@@ -69,11 +70,13 @@ export default function HeaderDesktop(props: headerLayoutProps) {
                         paddingX={4}
                         paddingY={2}
                         fontSize='sm'
+                        borderRadius='md'
+                        bg='transparent'
                         color={props.isScrolled ? 'gray.700' : 'white'}
                         fontWeight='medium'
-                        transition='all 0.5s ease'
+                        transition='all 0.3s ease'
                         letterSpacing='0.1em'
-                        _hover={{ color: 'red.solid', fontWeight: 'bold' }}
+                        _hover={{ color: 'orange.border', backgroundColor: 'orange.100/50' }}
                       >
                         {child.name}
                       </Link>

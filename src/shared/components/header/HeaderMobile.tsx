@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Box, Collapsible, Image, Link, Text } from '@chakra-ui/react';
 
+import { COMPANY_NAME } from '@/shared/config/constants';
+
 interface headerLayoutProps {
   logo: string;
   isScrolled: boolean;
@@ -25,9 +27,9 @@ export default function HeaderMobile(props: headerLayoutProps) {
         bg={isOpen || props.isScrolled ? 'white' : 'transparent'}
       >
         <Link href='/' display='flex' alignItems='center' gap={2} _hover={{ textDecoration: 'none' }}>
-          <Image src={props.logo} alt='logo' width={8} height={8} objectFit='contain' />
-          <Text fontSize='md' fontWeight='semibold' color={props.isScrolled ? 'gray.800' : 'white'}>
-            (주)태양광에너지
+          {/* <Image src={props.logo} alt='logo' width={8} height={8} objectFit='contain' /> */}
+          <Text fontSize='md' fontWeight='semibold' color={props.isScrolled || isOpen ? 'gray.800' : 'white'}>
+            {COMPANY_NAME}
           </Text>
         </Link>
 
@@ -36,13 +38,12 @@ export default function HeaderMobile(props: headerLayoutProps) {
           as='button'
           onClick={() => setIsOpen((v) => !v)}
           aria-label={isOpen ? '메뉴 닫기' : '메뉴 열기'}
-          width='44px'
-          height='44px'
+          width='28px'
+          height='28px'
           display='flex'
           alignItems='center'
           justifyContent='center'
           borderRadius='lg'
-          border='1px solid'
           borderColor={isOpen || props.isScrolled ? 'blackAlpha.200' : 'transparent'}
           bg={isOpen || props.isScrolled ? 'white' : 'transparent'}
           cursor='pointer'
@@ -63,9 +64,10 @@ export default function HeaderMobile(props: headerLayoutProps) {
             borderBottom='1px solid'
             borderColor='blackAlpha.100'
             boxShadow='0 10px 25px rgba(0,0,0,0.06)'
-            padding={3}
+            paddingX={3}
+            paddingBottom={3}
           >
-            <Box display='flex' flexDirection='column' gap={2} alignItems='center' justifyContent='center'>
+            <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
               {props.headerMenu.map((menu) => (
                 <Link
                   key={menu.name}
@@ -79,8 +81,7 @@ export default function HeaderMobile(props: headerLayoutProps) {
                   fontSize='md'
                   transition='all 0.3s ease'
                   justifyContent='center'
-                  _hover={{ textDecoration: 'none', bg: 'blackAlpha.100' }}
-                  _active={{ bg: 'blackAlpha.200' }}
+                  _hover={{ textDecoration: 'none', bg: 'orange.500', color: 'white' }}
                 >
                   {menu.name}
                 </Link>
