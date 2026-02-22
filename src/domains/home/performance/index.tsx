@@ -8,7 +8,6 @@ import { PerformanceContents } from './components/PerformanceContents';
 import performanceImage01 from '@/assets/images/performance/performance_image_01.jpg';
 import performanceImage02 from '@/assets/images/performance/performance_image_02.jpg';
 import performanceImage03 from '@/assets/images/performance/performance_image_03.jpg';
-import performanceImage04 from '@/assets/images/performance/performance_image_04.jpg';
 import performanceImage05 from '@/assets/images/performance/performance_image_05.jpg';
 import performanceImage06 from '@/assets/images/performance/performance_image_06.jpg';
 import performanceImage07 from '@/assets/images/performance/performance_image_07.jpg';
@@ -37,27 +36,20 @@ const performanceItems = [
   },
   {
     id: 4,
-    image: performanceImage04,
-    title: "태양광 발전소",
-    subtitle: "태양광 발전소",
-    href: "#performance",
-  },
-  {
-    id: 5,
     image: performanceImage05,
     title: "태양광 발전소",
     subtitle: "태양광 발전소",
     href: "#performance",
   },
   {
-    id: 6,
+    id: 5,
     image: performanceImage06,
     title: "태양광 발전소",
     subtitle: "태양광 발전소",
     href: "#performance",
   },
   {
-    id: 7,
+    id: 6,
     image: performanceImage07,
     title: "태양광 발전소",
     subtitle: "태양광 발전소",
