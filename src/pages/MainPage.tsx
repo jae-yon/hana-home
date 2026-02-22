@@ -1,22 +1,19 @@
-import Hero from '@/components/home/hero';
-import Case from '@/components/home/case';
-import Ticker from '@/components/home/ticker';
-import Header from '@/components/common/header';
-import Footer from '@/components/common/footer';
-import Insight from '@/components/home/insight';
-import Business from '@/components/home/business';
-import ScrollTopAnchor from '@/components/common/ScrollTopAnchor';
+import Header from '@/shared/components/header';
+import Footer from '@/shared/components/footer';
+
+import Hero from '@/domains/home/hero';
+import Insight from '@/domains/home/insight';
 
 export default function MainPage() {
   return (
     <>
       <Header />
+      {/* hero section */}
       <Hero />
-      <Ticker />
+      {/* insight section */}
       <Insight />
-      <Business />
-      <Case />
-      <ScrollTopAnchor />
+
+      {/* footer section */}
       <Footer />
     </>
   );
