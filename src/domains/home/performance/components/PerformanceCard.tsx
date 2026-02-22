@@ -1,34 +1,31 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
-export interface CaseCardItem {
+interface PerformanceCardProps {
+  href: string;
+  image: string;
   title: string;
-  desc: string;
-  img: string;
+  subtitle: string;
 }
 
-interface CaseCardProps {
-  item: CaseCardItem;
-}
-
-export default function CaseCard(props: CaseCardProps) {
+export function PerformanceCard(props: PerformanceCardProps) {
+  const { href, image, title, subtitle } = props;
   return (
     <Box
       position="relative"
       overflow="hidden"
       w="100%"
       h={{ base: "260px", sm: "280px", md: "360px" }}
-      borderRadius={{ base: "lg", md: "xl" }}
-      role="group"
+      borderRadius="2xl"
+      my={2}
+      shadow="md"
     >
       {/* Background Image */}
       <Box
         position="absolute"
         inset="0"
-        bgImage={`url(${props.item.img})`}
+        bgImage={`url(${image})`}
         bgSize="cover"
         bgPos="center"
-        transition="transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)"
-        _groupHover={{ transform: 'scale(1.04)' }}
       />
 
       {/* Dark overlay gradient */}
@@ -55,7 +52,7 @@ export default function CaseCard(props: CaseCardProps) {
           mb={{ base: '6px', md: '10px' }}
           letterSpacing="-0.01em"
         >
-          {props.item.title}
+          {title}
         </Text>
 
         <Text
@@ -63,7 +60,7 @@ export default function CaseCard(props: CaseCardProps) {
           color="rgba(255,255,255,0.85)"
           lineHeight="1.6"
         >
-          {props.item.desc}
+          {subtitle}
         </Text>
       </Flex>
     </Box>

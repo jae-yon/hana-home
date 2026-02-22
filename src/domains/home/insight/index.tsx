@@ -27,9 +27,6 @@ export default function Insight() {
   const { data: yesterdaySmpData } = useYesterdaySmp() as { data: Smp[] };
   const { data: recData } = useLatestRec() as { data: Rec[] };
 
-  console.log(currentSmpData);
-  console.log(yesterdaySmpData);
-
   const { data: weeklySmpData } = useWeeklySmp() as { data: Smp[] };
   const { data: monthlyRecData } = useMonthlyRec() as { data: Rec[] };
   return (

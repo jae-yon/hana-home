@@ -4,6 +4,7 @@ import Footer from '@/shared/components/footer';
 import Hero from '@/domains/home/hero';
 import Insight from '@/domains/home/insight';
 import Business from '@/domains/home/business';
+import Performance from '@/domains/home/performance';
 
 export default function MainPage() {
   return (
@@ -15,6 +16,8 @@ export default function MainPage() {
       <Insight />
       {/* business section */}
       <Business />
+      {/* performance section */}
+      <Performance />
       {/* footer section */}
       <Footer />
     </>
