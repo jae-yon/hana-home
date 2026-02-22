@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Box, Collapsible, Image, Link, Text } from '@chakra-ui/react';
+import { Box, Collapsible, Link, Text } from '@chakra-ui/react';
 
 import { COMPANY_NAME } from '@/shared/config/constants';
 

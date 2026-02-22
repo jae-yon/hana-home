@@ -1,14 +1,14 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 interface PerformanceCardProps {
-  href: string;
+  href?: string;
   image: string;
   title: string;
   subtitle: string;
 }
 
 export function PerformanceCard(props: PerformanceCardProps) {
-  const { href, image, title, subtitle } = props;
+  const { image, title, subtitle } = props;
   return (
     <Box
       position="relative"
