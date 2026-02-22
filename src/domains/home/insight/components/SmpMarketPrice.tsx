@@ -5,12 +5,14 @@ import { LucideTrendingDown, LucideTrendingUp } from 'lucide-react';
 import { Badge, Card, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
 import { Region } from '@/types/common';
+import { Smp } from '@/types/smp';
 
 import { formatCountUpPrice, useCountUp } from '@/shared/hooks/useCountUp';
-import { useLatestSmp, useYesterdaySmp } from '@/shared/hooks/useSmp';
 
 interface SmpMarketPriceProps {
   region: Region;
+  currentSmpData: Smp[];
+  yesterdaySmpData: Smp[];
 }
 
 // 데이터에서 지역에 맞는 가격을 반환
@@ -49,10 +51,7 @@ function formatDate(date: Date): string {
 }
 
 export function SmpMarketPrice(props: SmpMarketPriceProps) {
-  const { region } = props;
-
-  const { data: currentSmpData } = useLatestSmp();
-  const { data: yesterdaySmpData } = useYesterdaySmp();
+  const { region, currentSmpData, yesterdaySmpData } = props;
 
   // 날짜, 가격, 전일 대비 차이 계산
   const { formattedDate, formattedPrice, priceDiff } = useMemo(() => {
@@ -116,7 +115,7 @@ export function SmpMarketPrice(props: SmpMarketPriceProps) {
         <Card.Header pb={2}>
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
-              <Heading fontSize='2xl' fontWeight='medium' letterSpacing='-0.05em' color='gray.900'>
+              <Heading fontSize='2xl' fontWeight='medium' color='gray.900'>
                 SMP
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
@@ -140,7 +139,7 @@ export function SmpMarketPrice(props: SmpMarketPriceProps) {
               >
                 {price}
               </Text>
-              <Text fontSize='sm' fontWeight='medium' color='gray.500' fontFamily='Pretendard'>
+              <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
                 원/kWh
               </Text>
             </Flex>

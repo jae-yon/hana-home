@@ -4,13 +4,14 @@ import { LucideTrendingDown, LucideTrendingUp } from 'lucide-react';
 
 import { Badge, Card, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
+import { Rec } from '@/types/rec';
 import { Region } from '@/types/common';
 
 import { formatCountUpPrice, useCountUp } from '@/shared/hooks/useCountUp';
-import { useLatestRec } from '@/shared/hooks/useRec';
 
 interface RecMarketPriceProps {
   region: Region;
+  recData: Rec[];
 }
 
 // "YYYY-MM-DD" 문자열을 타임존 안전하게 파싱
@@ -29,9 +30,7 @@ function formatDate(date: Date): string {
 }
 
 export function RecMarketPrice(props: RecMarketPriceProps) {
-  const { region } = props;
-
-  const { data: recData } = useLatestRec();
+  const { region, recData } = props;
 
   const currentRecData = recData?.[0];
   const yesterdayRecData = recData?.[1];
@@ -120,7 +119,7 @@ export function RecMarketPrice(props: RecMarketPriceProps) {
         <Card.Header pb={2}>
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
-              <Heading fontSize='2xl' fontWeight='medium' letterSpacing='-0.05em' color='gray.900'>
+              <Heading fontSize='2xl' fontWeight='medium' color='gray.900'>
                 REC 현물
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
@@ -144,8 +143,8 @@ export function RecMarketPrice(props: RecMarketPriceProps) {
               >
                 {formatCountUpPrice(price)}
               </Text>
-              <Text fontSize='sm' fontWeight='medium' color='gray.500' fontFamily='Pretendard'>
-                원/kWh
+              <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
+                원/Rec
               </Text>
             </Flex>
 
