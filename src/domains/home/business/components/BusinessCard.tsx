@@ -34,6 +34,7 @@ export default function BusinessCard(props: BusinessCardProps) {
       outline="none"
       _focus={{ outline: "none" }}
       borderRadius="xl"
+      fontFamily='NanumSquareNeo'
     >
         {/* Background Image */}
         <Box
@@ -72,15 +73,25 @@ export default function BusinessCard(props: BusinessCardProps) {
         >
           {/* Title */}
           <Text
-            fontSize={{ base: "28px", md: "36px" }}
-            fontFamily="'Cormorant Garamond', Georgia, serif"
-            fontWeight="600"
+            fontSize={{ base: "36px", md: "48px" }}
+            fontFamily='A2z'
+            fontWeight="semibold"
             color="white"
-            lineHeight="1.1"
-            mb="16px"
-            letterSpacing="-0.01em"
+            lineHeight="1.2"
+            mb="24px"
           >
             {props.item.title}
+          </Text>
+
+          {/* Subtitle */}
+          <Text
+            fontSize={{ base: "14px", md: "18px" }}
+            fontWeight="semibold"
+            color="white"
+            lineHeight="1.2"
+            mb="24px"
+          >
+            {props.item.subtitle}
           </Text>
 
           {/* Divider */}
@@ -88,7 +99,7 @@ export default function BusinessCard(props: BusinessCardProps) {
 
           {/* Description */}
           <Text
-            fontSize={{ base: "13px", md: "14px" }}
+            fontSize={{ base: "14px", md: "18px" }}
             color="rgba(255,255,255,0.82)"
             lineHeight="1.75"
             mb="28px"
@@ -156,13 +167,13 @@ export default function BusinessCard(props: BusinessCardProps) {
             textTransform="uppercase"
             color={props.item.accent}
             mb="6px"
-            fontFamily="'DM Sans', sans-serif"
+            fontFamily='NanumSquareNeo'
           >
             {props.item.subtitle}
           </Text>
           <Text
             fontSize="22px"
-            fontFamily="'Cormorant Garamond', Georgia, serif"
+            fontFamily='NanumSquareNeo'
             fontWeight="600"
             color="white"
           >

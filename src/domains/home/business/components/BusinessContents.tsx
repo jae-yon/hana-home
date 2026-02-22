@@ -20,6 +20,7 @@ interface BusinessContentsProps {
 export default function BusinessContents(props: BusinessContentsProps) {
   return (
     <Flex
+      justify="center"
       direction={{ base: "column", md: "row" }}
       gap={{ base: "16px", md: "32px" }}
       mb={{ base: "16px", md: "32px" }}
