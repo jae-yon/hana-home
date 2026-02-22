@@ -1,6 +1,6 @@
 import { Button, Container, Heading, Stack, Text } from '@chakra-ui/react';
 
-import Impactor from '@/shared/components/common/Impactor';
+import { Impactor } from '@/shared/components/common/Impactor';
 
 export default function HeroContents() {
   return (
