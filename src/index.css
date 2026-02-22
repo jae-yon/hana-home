@@ -314,3 +314,10 @@
 a {
   text-decoration: none;
 }
+
+/* disable focus ouline on recharts */
+.recharts-wrapper:focus,
+.recharts-wrapper svg:focus,
+.recharts-surface:focus {
+  outline: none;
+}
