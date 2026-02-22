@@ -1,23 +1,37 @@
 import { useQuery } from '@tanstack/react-query';
+import supabase from '@/shared/config/supabase';
 
-import { fetchByRange } from '@/shared/api/fetchMarketPrice';
-
-// 월간 REC 현물 시세 조회 훅 (하루 마다 재조회)
-export const useMonthlyRec = () => {
-  // KST 기준 날짜
-  const today = new Date().toLocaleDateString('sv-SE');
-
+// 최근 REC 현물 시세 조회 훅 (하루 마다 재조회)
+export const useLatestRec = () => {
   return useQuery({
-    queryKey: ['rec', today],
-    queryFn: async () => await fetchByRange('rec_spot_daily', 30, 30),
+    queryKey: ['rec', 'latest'],
+    queryFn: async () => {
+      const now = new Date();
+      const tradeDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 
-    // 하루 동안 절대 stale 안 됨
-    staleTime: Infinity,
+      // 오늘자 기준 가장 최근 2개의 데이터 조회
+      const { data, error } = await supabase
+        .from('rec_spot_daily')
+        .select('*')
+        .lte('trade_date', tradeDate)
+        .order('trade_date', { ascending: false })
+        .limit(2);
 
-    // 메모리 정리 (적당히 1시간)
-    gcTime: 1000 * 60 * 60,
+      if (error) throw error;
+
+      return data;
+    },
+    // 24시간 1분 동안 fresh
+    staleTime: 1000 * 60 * 60 * 24 + 1000 * 60,
+
+    // 24시간 1분 동안 유지
+    gcTime: 1000 * 60 * 60 * 24 + 1000 * 60,
 
     retry: 1,
-    refetchOnWindowFocus: false,
+
+    // stale 상태일 때 포커스하면 재조회
+    refetchOnWindowFocus: true,
+
+    refetchInterval: false,
   });
-};
+}
