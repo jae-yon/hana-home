@@ -1,4 +1,5 @@
 import { ResponsiveContainer } from 'recharts';
+
 import CustomLineChart from './CustomLineChart';
 
 interface ChartProps {
@@ -23,7 +24,7 @@ export default function Chart(props: ChartProps) {
   }
 
   return (
-    <ResponsiveContainer width="100%" height={height}>
+    <ResponsiveContainer width="100%" height={height} style={{ outline: 'none' }}>
       {renderChart(chartStyle)}
     </ResponsiveContainer>
   );

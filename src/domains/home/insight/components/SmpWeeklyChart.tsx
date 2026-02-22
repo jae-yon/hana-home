@@ -56,7 +56,6 @@ export function SmpWeeklyChart(props: SmpWeeklyChartProps) {
   const { region, data } = props;
   
   const parsedData = useMemo(() => parseSmpData(region, data), [region, data]);
-  console.log(parsedData);
 
   return (
     <Stack>
@@ -81,7 +80,11 @@ export function SmpWeeklyChart(props: SmpWeeklyChartProps) {
           </Stack>
         </Card.Header>
         <Card.Body>
-          <Chart data={parsedData} color="orange" chartStyle="line" />
+          <Chart 
+            color="orange"
+            data={parsedData}
+            chartStyle="line"
+          />
         </Card.Body>
       </Card.Root>
     </Stack>

@@ -1,6 +1,7 @@
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
-import CustomAxisTick from './CustomAxisTick';
 import { formatCountUpPrice } from '@/shared/hooks/useCountUp';
+
+import CustomAxisTick from './CustomAxisTick';
 
 interface CustomLineChartProps {
   data: any[];
@@ -10,12 +11,11 @@ interface CustomLineChartProps {
 export default function CustomLineChart(props: CustomLineChartProps) {
   const { data, color } = props;
 
-  console.log(data);
-
   return (
     <LineChart
       data={data}
       margin={{ right: 50 }}
+      style={{ outline: 'none' }}
     >
       {/* 격자 선 */}
       <CartesianGrid 

@@ -163,33 +163,32 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
               <Menu.Root
                 open={menuOpen}
                 onOpenChange={(e) => setMenuOpen(e.open)}
-                positioning={{ placement: 'bottom' }}
+                positioning={{ placement: "bottom" }}
               >
                 <Menu.Trigger asChild>
                   <Button 
                     size='xs' 
-                    gap={1.5}
+                    gap={2}
                     display='flex'
-                    variant='subtle' 
-                    border='1px solid'
-                    borderColor='blue.200'
+                    variant='solid' 
+                    px={4}
                     borderRadius='md'
-                    backgroundColor='blue.50'
-                    color='blue.500'
+                    backgroundColor='orange.500'
+                    color='white'
                     _hover={{
-                      backgroundColor: 'blue.100',
-                      color: 'blue.600',
+                      backgroundColor: 'orange.600',
+                      color: 'white',
                     }}
+                    letterSpacing='0.05em'
                   >
-                    {weight.toFixed(1)} 
+                    <Text>가중치 {weight.toFixed(1)}</Text>
                     {menuOpen ? <LucideChevronUp size={14} /> : <LucideChevronDown size={14} />}
                   </Button>
                 </Menu.Trigger>
                 <Menu.Positioner>
                   <Menu.Content
-                    gap={1}
-                    padding={2}
-                    minWidth='120px'
+                    paddingX={2}
+                    minWidth='110px'
                     alignItems='center'
                     borderRadius='md'
                     border='1px solid'
@@ -199,16 +198,20 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
                     {WEIGHT_OPTIONS.map((w) => (
                       <Menu.Item
                         key={w}
+                        my={2}
+                        fontSize='xs'
                         value={String(w)}
                         textAlign='center'
                         justifyContent='center'
                         onClick={() => setWeight(w)}
-                        bg={weight === w ? 'blue.50' : undefined}
-                        color={weight === w ? 'blue.500' : 'gray.500'}
+                        bg={weight === w ? 'orange.500' : undefined}
+                        color={weight === w ? 'white' : 'black'}
                         _hover={{
-                          backgroundColor: 'blue.50',
-                          color: 'blue.600',
+                          backgroundColor: 'orange.500',
+                          color: 'white',
                         }}
+                        letterSpacing='0.05em'
+                        borderRadius='md'
                       >
                         <Menu.ItemText letterSpacing='0.05em'>가중치 {w.toFixed(1)}</Menu.ItemText>
                       </Menu.Item>

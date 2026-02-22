@@ -79,7 +79,7 @@ export function RecMonthlyChart(props: RecMonthlyChartProps) {
         </Card.Header>
         <Card.Body>
           <Chart 
-            color="blue"
+            color="teal"
             data={parsedData}
             chartStyle="line"
           />

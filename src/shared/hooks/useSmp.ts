@@ -8,7 +8,7 @@ export const useLatestSmp = () => {
     queryFn: async () => {
       const now = new Date();
       const tradeDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-      const tradeHour = now.getHours();
+      const tradeHour = now.getHours() + 1;
 
       // 오늘자 기준 가장 최근 2개의 데이터 조회
       const { data, error } = await supabase

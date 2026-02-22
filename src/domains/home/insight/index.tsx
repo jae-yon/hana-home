@@ -27,6 +27,9 @@ export default function Insight() {
   const { data: yesterdaySmpData } = useYesterdaySmp() as { data: Smp[] };
   const { data: recData } = useLatestRec() as { data: Rec[] };
 
+  console.log(currentSmpData);
+  console.log(yesterdaySmpData);
+
   const { data: weeklySmpData } = useWeeklySmp() as { data: Smp[] };
   const { data: monthlyRecData } = useMonthlyRec() as { data: Rec[] };
   return (
@@ -103,7 +106,7 @@ export default function Insight() {
 
             {/* REC 현물 월간 추이 차트 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom">
+              <Impactor direction="bottom" delay={1}>
                 <RecMonthlyChart region={region} data={monthlyRecData} />
               </Impactor>
             </Box>
