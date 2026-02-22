@@ -75,7 +75,7 @@ export function SmpWeeklyChart(props: SmpWeeklyChartProps) {
               color="gray.800"
               letterSpacing="-0.05em"
             >
-              SMP 주간 추이
+              SMP 주간 차트
             </Heading>
           </Stack>
         </Card.Header>

@@ -3,6 +3,7 @@ import Footer from '@/shared/components/footer';
 
 import Hero from '@/domains/home/hero';
 import Insight from '@/domains/home/insight';
+import Business from '@/domains/home/business';
 
 export default function MainPage() {
   return (
@@ -12,7 +13,8 @@ export default function MainPage() {
       <Hero />
       {/* insight section */}
       <Insight />
-
+      {/* business section */}
+      <Business />
       {/* footer section */}
       <Footer />
     </>

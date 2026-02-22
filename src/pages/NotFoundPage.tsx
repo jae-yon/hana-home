@@ -21,7 +21,7 @@ export default function NotFoundPage() {
 
         <Box display='flex' alignItems='center' justifyContent='center' marginTop={4} gap={2}>
           <Link onClick={handleHomeClick}>
-            <Button size='lg' fontWeight='medium' bg='blue.solid' borderRadius='xl' shadow='xl' fontSize='lg' paddingX={8} paddingY={6}>홈으로</Button>
+            <Button size='lg' fontWeight='medium' bg='orange.solid' borderRadius='xl' shadow='xl' fontSize='lg' paddingX={8} paddingY={6}>홈으로</Button>
           </Link>
           <Link onClick={handlePreviousClick}>
             <Button size='lg' fontWeight='medium' bg='gray.solid' borderRadius='xl' shadow='xl' fontSize='lg' paddingX={8} paddingY={6}>이전 페이지</Button>

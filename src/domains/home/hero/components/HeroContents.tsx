@@ -43,7 +43,7 @@ export default function HeroContents() {
               누구나 쉽고 안전하게
               태양광 에너지에 투자 할 수 있도록
               태양광 에너지 산업을 선도하는 하나솔루션이
-              더 나은 미래를 제시합니다
+              더 나은 미래를 제시합니다.
             </Text>
             
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4} align='center' justify='center'>

@@ -73,7 +73,7 @@ export function RecMonthlyChart(props: RecMonthlyChartProps) {
               color="gray.800"
               letterSpacing="-0.05em"
             >
-              REC 현물 월간 추이
+              REC 현물 월간 차트
             </Heading>
           </Stack>
         </Card.Header>

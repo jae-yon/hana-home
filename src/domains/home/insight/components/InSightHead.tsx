@@ -20,7 +20,7 @@ export function InSightHeadDesktop(props: InSightHeadProps) {
       </Box>
 
       <Box display='flex' alignItems='center' justifyContent='space-between' px={1} gap={4}>
-        <Text fontSize='xl' fontWeight='medium' textAlign='start' color='gray.500'>최신 가격 동향을 알아보고 시장 상황을 파악해 보세요</Text>
+        <Text fontSize='xl' fontWeight='medium' textAlign='start' color='gray.500'>최신 가격 동향을 알아보고 시장 상황을 파악해 보세요.</Text>
         <Stack>
           <Group
             fontFamily='NanumSquareNeo'
@@ -104,7 +104,7 @@ export function InSightHeadMobile(props: InSightHeadProps) {
       >
         실시간 가격 동향
       </Heading>
-      <Text fontSize='lg' fontWeight='medium' textAlign='center' color='gray.500' ms={1}>최신 가격 동향을 알아보고 시장 상황을 파악해 보세요</Text>
+      <Text fontSize='lg' fontWeight='medium' textAlign='center' color='gray.500' ms={1}>최신 가격 동향을 알아보고 시장 상황을 파악해 보세요.</Text>
       <Stack display='flex' alignItems='center' justifyContent='center'>
         <Group
           marginTop={4}
