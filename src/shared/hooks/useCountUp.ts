@@ -5,6 +5,8 @@ interface UseCountUpProps {
   duration: number;
   enabled?: boolean;
   decimals?: number;
+  /** 이 값이 바뀌면 애니메이션을 처음부터 다시 실행합니다 (예: region) */
+  resetKey?: unknown;
 }
 
 /**
@@ -18,7 +20,7 @@ interface UseCountUpProps {
  */
 
 export const useCountUp = (props: UseCountUpProps) => {
-  const { target, duration, enabled = true, decimals = 2 } = props;
+  const { target, duration, enabled = true, decimals = 2, resetKey } = props;
 
   const [value, setValue] = useState(0);
 
@@ -51,7 +53,17 @@ export const useCountUp = (props: UseCountUpProps) => {
     rafId = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(rafId);
-  }, [enabled, target, duration, decimals]);
+  }, [enabled, target, duration, decimals, resetKey]);
 
   return value;
 };
+
+/**
+ * 카운트업 숫자를 천 단위 구분자 포맷으로 변환
+ */
+export function formatCountUpPrice(value: number, decimals = 0): string {
+  return value.toLocaleString('en-US', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+}

@@ -10,7 +10,7 @@ interface ImpactorProps {
   direction?: 'left' | 'right' | 'top' | 'bottom';
 }
 
-export default function Impactor(props: ImpactorProps) {
+export function Impactor(props: ImpactorProps) {
   const ref = useRef(null);
   const isView = useInView(ref, { once: props.once ?? false });
 
