@@ -3,6 +3,7 @@ import { Box, Flex, Stack } from '@chakra-ui/react';
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import { PerformanceHead } from './components/PerformanceHead';
+import { PerformanceContents } from './components/PerformanceContents';
 
 import performanceImage01 from '@/assets/images/performance/performance_image_01.jpg';
 import performanceImage02 from '@/assets/images/performance/performance_image_02.jpg';
@@ -11,7 +12,6 @@ import performanceImage04 from '@/assets/images/performance/performance_image_04
 import performanceImage05 from '@/assets/images/performance/performance_image_05.jpg';
 import performanceImage06 from '@/assets/images/performance/performance_image_06.jpg';
 import performanceImage07 from '@/assets/images/performance/performance_image_07.jpg';
-import { PerformanceContents } from './components/PerformanceContents';
 
 const performanceItems = [
   {
