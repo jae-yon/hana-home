@@ -65,7 +65,7 @@ export function PerformanceHead(props: PerformanceHeadProps) {
           }}
           transition="all 0.3s ease-in-out"
         >
-          <Text as="span">자세히 보기</Text>
+          <Text as="span">시공사례 더보기</Text>
           <LucideArrowRight size={16} />
         </Button>
       </Impactor>

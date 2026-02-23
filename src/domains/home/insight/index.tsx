@@ -21,7 +21,7 @@ import { InSightHeadDesktop, InSightHeadMobile } from './components/InSightHead'
 export default function Insight() {
   const { isDesktop } = useResponsive();
 
-  const [region, setRegion] = useState<Region>('ALL');
+  const [region, setRegion] = useState<Region>('LAND');
 
   const { data: currentSmpData } = useLatestSmp() as { data: Smp[] };
   const { data: yesterdaySmpData } = useYesterdaySmp() as { data: Smp[] };

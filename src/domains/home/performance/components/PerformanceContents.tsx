@@ -19,7 +19,7 @@ export function PerformanceContents(props: PerformanceContentsProps) {
     arrows: false,
     infinite: true,      
     centerMode: false,
-    speed: 500,         
+    speed: 5000,         
     slidesToShow: 3,     
     slidesToScroll: 1,   
     autoplaySpeed: 3000, 
