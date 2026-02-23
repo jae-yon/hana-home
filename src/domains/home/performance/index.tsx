@@ -56,7 +56,6 @@ export default function Performance() {
     <Box 
       width="100%"
       backgroundColor="gray.100"
-      paddingY={8}
     >
       <Stack
         maxW="1280px"

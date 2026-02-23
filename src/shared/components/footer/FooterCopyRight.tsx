@@ -1,7 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
-import { COMPANY_NAME } from '@/shared/config/constants';
-
 export default function FooterCopyRight() {
   return (
     <Box
@@ -11,14 +9,16 @@ export default function FooterCopyRight() {
       py='20px'
     >
       <Flex
-        direction={{ base: 'column', sm: 'row' }}
-        justify={{ base: 'center', sm: 'space-between' }}
-        align={{ base: 'center', sm: 'center' }}
         gap='12px'
+        fontWeight='medium'
+        fontFamily='Pretendard'
+        align={{ base: 'center', sm: 'center' }}
+        direction={{ base: 'column', sm: 'row' }}
         textAlign={{ base: 'center', sm: 'left' }}
+        justify={{ base: 'center', sm: 'space-between' }}
       >
         <Text fontSize='xs' color='gray.400'>
-          © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
+          © {new Date().getFullYear()} HanaSolution. All rights reserved.
         </Text>
 
         <Text fontSize='xs' color='gray.400'>

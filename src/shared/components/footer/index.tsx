@@ -1,7 +1,10 @@
 import { Box, Grid, GridItem, Separator } from '@chakra-ui/react';
 
+import FooterAbout from './FooterAbout';
+import FooterSocial from './FooterSocial';
+import FooterSupport from './FooterSupport';
+import FooterCompany from './FooterCompany';
 import FooterCopyRight from './FooterCopyRight';
-import FooterInformation from './FooterInformation';
 
 export default function Footer() {
   return (
@@ -19,12 +22,24 @@ export default function Footer() {
         pb={{ base: '40px', md: '56px' }}
       >
         <Grid
-          templateColumns={{ base: '1fr', md: '1.8fr repeat(3, 1fr)' }}
+          templateColumns={{ base: '1fr', md: '1.2fr repeat(3, 1fr)' }}
           gap={{ base: '40px', lg: '48px' }}
           textAlign={{ base: 'center', md: 'left' }}
         >
           <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
-            <FooterInformation />
+            <FooterCompany />
+          </GridItem>
+
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+            <FooterAbout />
+          </GridItem>
+
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+            <FooterSocial />
+          </GridItem>
+
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+            <FooterSupport />
           </GridItem>
         </Grid>
       </Box>
