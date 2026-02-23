@@ -6,9 +6,9 @@ import { IconButton, Flex, Image, Collapsible, Link } from '@chakra-ui/react';
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import tiktok from '@/assets/images/social/tiktok.png';
-import blog from '@/assets/images/social/naver.png';
+import blog from '@/assets/images/social/blog2.png';
 import youtube from '@/assets/images/social/youtube.png';
-import kakao from '@/assets/images/social/kakao.png';
+import kakao from '@/assets/images/social/kakao2.png';
 
 const NAV_LINKS = [
   { name: '유튜브', image: youtube, url: '/#' },
@@ -30,7 +30,7 @@ export function PromotionNav() {
 
   return (
     <Collapsible.Root>
-      <Collapsible.Content overflow={isFolded ? "hidden" : "visible"}>
+      <Collapsible.Content overflow="visible">
         <Flex
           mb={2}
           gap={2}
@@ -42,6 +42,7 @@ export function PromotionNav() {
             <Link
               key={link.name}
               href={link.url}
+              outline="none"
               borderRadius="full"
               backgroundColor="transparent"
               transition="all 0.3s ease"
@@ -61,7 +62,7 @@ export function PromotionNav() {
           backgroundColor="orange.600"
           transition="all 0.3s ease"
           boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
-          transform={!isFolded ? "rotate(0deg)" : "rotate(45deg)"}
+          transform={isFolded ? "rotate(45deg)" : "rotate(90deg)"}
         >
           <XIcon width={20} height={20} strokeWidth={2.5} />
         </IconButton>

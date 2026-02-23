@@ -13,7 +13,7 @@ export function ScrollTopNav() {
       color="white"
       borderRadius="full"
       onClick={handleClick}
-      backgroundColor="gray.600"
+      backgroundColor="blue.700"
       boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
       _hover={{ transform: "scale(1.05)" }}
     >
