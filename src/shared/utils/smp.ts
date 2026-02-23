@@ -1,0 +1,73 @@
+import type { Smp, SmpGroupedByDate, SmpDailyWeightedSummary } from '@/types/smp';
+
+/**
+ * SMP 배열을 trade_date 기준으로 그룹합니다.
+ * @param list - 그룹할 SMP 배열 (쿼리 결과 등)
+ * @returns trade_date를 키로 하는 그룹 객체 (데이터 등장 순서 유지)
+ */
+export function groupSmpByTradeDate(list: Smp[]): SmpGroupedByDate {
+  const grouped: SmpGroupedByDate = {};
+
+  for (const item of list) {
+    const key = item.trade_date;
+    if (!grouped[key]) {
+      grouped[key] = [];
+    }
+    grouped[key].push(item);
+  }
+
+  return grouped;
+}
+
+/**
+ * YYYY-MM-DD → YYYY년 MM월 DD일 포맷
+ */
+export function formatSmpDateToKorean(dateStr: string): string {
+  const [y, m, d] = dateStr.split('-');
+  return `${y}년 ${m}월 ${d}일`;
+}
+
+/**
+ * 가중평균 계산 헬퍼 함수
+ */
+function calcWeightedAvg(items: Smp[], weightKey: keyof Smp): number {
+  let weightedSum = 0;
+  let weightSum = 0;
+
+  for (const item of items) {
+    const weight = item[weightKey] as number;
+    weightedSum += item.smp * weight;
+    weightSum += weight;
+  }
+
+  return weightSum > 0 ? Math.round((weightedSum / weightSum) * 100) / 100 : 0;
+}
+
+/**
+ * 그룹된 SMP에서 날짜별 가중평균·포맷 날짜를 도출합니다.
+ * - 육지 SMP 가중평균: land_load 가중치 사용
+ * - 제주 SMP 가중평균: jeju_load 가중치 사용
+ * - 통합 SMP 가중평균: total_load 가중치 사용
+ *
+ * @param grouped - trade_date로 그룹된 SMP (groupSmpByTradeDate 결과)
+ * @returns 날짜순 정렬된 요약 배열
+ */
+export function getSmpDailyWeightedSummaries(
+  grouped: SmpGroupedByDate
+): SmpDailyWeightedSummary[] {
+  return Object.keys(grouped)
+    .sort()
+    .map((date) => {
+      const items = grouped[date];
+      const landItems = items.filter((d) => d.area_code === "LAND");
+      const jejuItems = items.filter((d) => d.area_code === "JEJU");
+
+      return {
+        date,
+        dateFormatted: formatSmpDateToKorean(date),
+        landWeightedAvg: calcWeightedAvg(landItems, "land_load"),
+        jejuWeightedAvg: calcWeightedAvg(jejuItems, "jeju_load"),
+        totalWeightedAvg: calcWeightedAvg(landItems, "total_load"),
+      };
+    });
+}

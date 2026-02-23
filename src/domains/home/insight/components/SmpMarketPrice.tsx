@@ -5,87 +5,56 @@ import { LucideTrendingDown, LucideTrendingUp } from 'lucide-react';
 import { Badge, Card, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
 import { Region } from '@/types/common';
-import { Smp } from '@/types/smp';
+import { SmpDailyWeightedSummary } from '@/types/smp';
 
 import { formatCountUpPrice, useCountUp } from '@/shared/hooks/useCountUp';
 
 interface SmpMarketPriceProps {
   region: Region;
-  currentSmpData: Smp[];
-  yesterdaySmpData: Smp[];
-}
-
-// 데이터에서 지역에 맞는 가격을 반환
-function getSmpByRegion(
-  data: { area_code: string; smp: number }[],
-  region: Region
-): number | null {
-  const landItem = data.find((s) => s.area_code === 'LAND');
-  const jejuItem = data.find((s) => s.area_code === 'JEJU');
-
-  if (!landItem || !jejuItem) return null;
-
-  switch (region) {
-    case 'LAND':
-      return landItem.smp;
-    case 'JEJU':
-      return jejuItem.smp;
-    default:
-      return (landItem.smp + jejuItem.smp) / 2;
-  }
-}
-
-// "YYYY-MM-DD" 문자열을 타임존 안전하게 파싱
-function parseDateSafe(dateStr: string): Date {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  return new Date(year, month - 1, day);
-}
-
-// 날짜를 "YYYY.MM.DD (요일)" 형식으로 포맷팅
-function formatDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const weekday = date.toLocaleDateString('ko-KR', { weekday: 'short' });
-  return `${year}.${month}.${day} (${weekday})`;
+  latestSmpData: SmpDailyWeightedSummary;
+  previousSmpData: SmpDailyWeightedSummary;
 }
 
 export function SmpMarketPrice(props: SmpMarketPriceProps) {
-  const { region, currentSmpData, yesterdaySmpData } = props;
+  const { region, latestSmpData, previousSmpData } = props;
 
-  // 날짜, 가격, 전일 대비 차이 계산
   const { formattedDate, formattedPrice, priceDiff } = useMemo(() => {
-    // 날짜 포맷팅
-    let formattedDate: string;
-    if (!currentSmpData?.length) {
-      formattedDate = formatDate(new Date());
-    } else {
-      const date = parseDateSafe(currentSmpData[0].trade_date);
-      formattedDate = formatDate(date);
+    const prev = previousSmpData;
+    const latest = latestSmpData;
+
+    switch (region) {
+      case 'LAND':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.landWeightedAvg ?? 0,
+          priceDiff: (latest?.landWeightedAvg ?? 0) - (prev?.landWeightedAvg ?? 0),
+        };
+      case 'JEJU':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.jejuWeightedAvg ?? 0,
+          priceDiff: (latest?.jejuWeightedAvg ?? 0) - (prev?.jejuWeightedAvg ?? 0),
+        };
+      case 'ALL':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.totalWeightedAvg ?? 0,
+          priceDiff: (latest?.totalWeightedAvg ?? 0) - (prev?.totalWeightedAvg ?? 0),
+        };
+      default:
+        return {
+          formattedDate: '',
+          formattedPrice: 0,
+          priceDiff: 0,
+        };
     }
-
-    // 지역에 맞는 오늘 가격
-    const currentPrice = currentSmpData?.length ? getSmpByRegion(currentSmpData, region) : null;
-    const formattedPrice = currentPrice !== null ? currentPrice.toString() : '0';
-
-    // 전일 대비 차이 (원/kWh)
-    let priceDiff = 0;
-    if (currentSmpData?.length && yesterdaySmpData?.length) {
-      const currentVal = getSmpByRegion(currentSmpData, region);
-      const yesterdayVal = getSmpByRegion(yesterdaySmpData, region);
-      if (currentVal !== null && yesterdayVal !== null) {
-        priceDiff = currentVal - yesterdayVal;
-      }
-    }
-
-    return { formattedDate, formattedPrice, priceDiff };
-  }, [currentSmpData, yesterdaySmpData, region]);
+  }, [region, latestSmpData, previousSmpData]);
 
   const ref = useRef(null);
   const isView = useInView(ref);
 
   const price = useCountUp({
-    target: parseFloat(formattedPrice),
+    target: formattedPrice,
     duration: 1000,
     enabled: isView,
     resetKey: region,

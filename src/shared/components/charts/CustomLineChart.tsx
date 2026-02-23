@@ -67,7 +67,7 @@ export default function CustomLineChart(props: CustomLineChartProps) {
           textAlign: 'center',
           color: `var(--chakra-colors-${color}-500)`,
         }}
-        formatter={(value) => [formatCountUpPrice(Number(value), 0) + '원']}
+        formatter={(value) => [formatCountUpPrice(Number(value), 2) + '원']}
       />
 
       {/* 라인 */}
