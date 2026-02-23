@@ -4,6 +4,7 @@ import Footer from '@/shared/components/footer';
 import Hero from '@/domains/home/hero';
 import Insight from '@/domains/home/insight';
 import Business from '@/domains/home/business';
+import Navbar from '@/shared/components/navbar';
 import Performance from '@/domains/home/performance';
 
 export default function MainPage() {
@@ -20,6 +21,8 @@ export default function MainPage() {
       <Performance />
       {/* footer section */}
       <Footer />
+      {/* navbar anchor */}
+      <Navbar />
     </>
   );
 }

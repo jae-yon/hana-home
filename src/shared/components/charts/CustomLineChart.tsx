@@ -21,7 +21,7 @@ export default function CustomLineChart(props: CustomLineChartProps) {
       <CartesianGrid 
         stroke="var(--chakra-colors-gray-300)" 
         strokeWidth={1} 
-        strokeDasharray="3 3" 
+        strokeDasharray="4 4" 
       />
 
       {/* X축 */}

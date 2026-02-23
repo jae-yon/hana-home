@@ -15,21 +15,6 @@ interface RecMarketPriceProps {
   previousRecData: RecMonthlyItem;
 }
 
-// "YYYY-MM-DD" 문자열을 타임존 안전하게 파싱
-function parseDateSafe(dateStr: string): Date {
-  const [year, month, day] = dateStr.split('-').map(Number);
-  return new Date(year, month - 1, day);
-}
-
-// 날짜를 "YYYY.MM.DD (요일)" 형식으로 포맷팅
-function formatDate(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  const weekday = date.toLocaleDateString('ko-KR', { weekday: 'short' });
-  return `${year}.${month}.${day} (${weekday})`;
-}
-
 export function RecMarketPrice(props: RecMarketPriceProps) {
   const { region, latestRecData, previousRecData } = props;
 
