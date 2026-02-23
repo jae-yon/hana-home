@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { XIcon } from 'lucide-react';
 
 import { IconButton, Flex, Image, Collapsible, Link } from '@chakra-ui/react';
-
-import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import tiktok from '@/assets/images/social/tiktok.png';
 import blog from '@/assets/images/social/blog2.png';
@@ -18,15 +16,9 @@ const NAV_LINKS = [
 ];
 
 export function PromotionButton() {
-  const { isDesktop } = useResponsive();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const [isFolded, setIsFolded] = useState(isDesktop);
-
-  useEffect(() => {
-    setIsFolded(isDesktop);
-  }, [isDesktop]);
-
-  const toggle = () => setIsFolded((prev) => !prev);
+  const toggle = () => setIsOpen((prev) => !prev);
 
   return (
     <Collapsible.Root>
@@ -62,7 +54,8 @@ export function PromotionButton() {
           backgroundColor="orange.600"
           transition="all 0.3s ease"
           boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
-          transform={isFolded ? "rotate(45deg)" : "rotate(90deg)"}
+          transform={isOpen ? "rotate(0deg)" : "rotate(45deg)"}
+          _hover={{ transform: "scale(1.05)" }}
         >
           <XIcon width={20} height={20} strokeWidth={2.5} />
         </IconButton>
