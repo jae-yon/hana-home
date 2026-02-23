@@ -17,7 +17,7 @@ const NAV_LINKS = [
   { name: '카카오톡', image: kakao, url: '/#' },
 ];
 
-export function PromotionNav() {
+export function PromotionButton() {
   const { isDesktop } = useResponsive();
 
   const [isFolded, setIsFolded] = useState(isDesktop);

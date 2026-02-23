@@ -26,15 +26,21 @@ export default function HeaderDesktop(props: headerLayoutProps) {
         alignItems='center'
         justifyContent='center'
         position='relative'
-        onMouseEnter={() => setTimeout(() => setIsOpen(true), 100)}
-        onMouseLeave={() => setTimeout(() => setIsOpen(false), 100)}
         backgroundColor={!props.isScrolled ? '' : 'transparent'}
         padding={4}
         margin={4}
-        _hover={!props.isScrolled ? { backgroundColor: 'blackAlpha.300', borderRadius: 'xl', backdropFilter: 'blur(5px)', transition: 'all 0.3s ease' } : {}}
+        _hover={!props.isScrolled ? { backgroundColor: 'blackAlpha.300', borderRadius: 'xl', backdropFilter: 'blur(5px)', transition: 'all 1s ease-in-out' } : {}}
       >
         {/* menu */}
-        <Box display='flex' alignItems='start' justifyContent='center' gap={8} paddingX={4} >
+        <Box 
+          display='flex' 
+          alignItems='start' 
+          justifyContent='center' 
+          gap={8} 
+          paddingX={4} 
+          onMouseEnter={() => setTimeout(() => setIsOpen(true))}
+          onMouseLeave={() => setTimeout(() => setIsOpen(false))}
+        >
           {/* default menu */}
           {props.headerMenu.map((menu) => (
             <Box key={menu.name} display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
@@ -45,7 +51,7 @@ export default function HeaderDesktop(props: headerLayoutProps) {
                   fontSize='lg'
                   color={props.isScrolled ? 'gray.700' : 'white'}
                   fontWeight='medium'
-                  transition='all 0.3s ease'
+                  transition='all 0.3s ease-in-out'
                   borderBottom='2px solid transparent'
                   _hover={{ borderBottomColor: 'orange.border', color: 'orange.border' }}
                 >
@@ -74,7 +80,7 @@ export default function HeaderDesktop(props: headerLayoutProps) {
                         bg='transparent'
                         color={props.isScrolled ? 'gray.700' : 'white'}
                         fontWeight='medium'
-                        transition='all 0.3s ease'
+                        transition='all 0.3s ease-in-out'
                         letterSpacing='0.1em'
                         _hover={{ color: 'orange.border', backgroundColor: 'orange.100/50' }}
                       >

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { ChevronUpIcon } from 'lucide-react';
 import { IconButton } from '@chakra-ui/react';
 
-export function ScrollTopNav() {
+export function ScrollTopButton() {
   const handleClick = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);

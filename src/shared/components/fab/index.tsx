@@ -1,9 +1,9 @@
 import { Stack } from '@chakra-ui/react'
 ;
-import { PromotionNav } from './PromotionNav';
-import { ScrollTopNav } from './ScrollTopNav';
+import { PromotionButton } from './PromotionButton';
+import { ScrollTopButton } from './ScrollTopButton';
 
-export default function Navbar() {
+export default function FloatingActionButton() {
   return (
     <Stack
       padding={2}
@@ -15,8 +15,8 @@ export default function Navbar() {
       backgroundColor="whiteAlpha.700"
       boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
     >
-      <PromotionNav />
-      <ScrollTopNav />
+      <PromotionButton />
+      <ScrollTopButton />
     </Stack>
   );
 }
