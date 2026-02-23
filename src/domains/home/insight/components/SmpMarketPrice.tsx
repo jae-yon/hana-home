@@ -84,7 +84,7 @@ export function SmpMarketPrice(props: SmpMarketPriceProps) {
         <Card.Header pb={2}>
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
-              <Heading fontSize='2xl' fontWeight='medium' color='gray.900'>
+              <Heading fontSize='2xl' fontWeight='medium' color='gray.800' fontFamily='Pretendard'>
                 SMP
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>

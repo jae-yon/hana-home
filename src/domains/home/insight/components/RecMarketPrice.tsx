@@ -4,14 +4,15 @@ import { LucideTrendingDown, LucideTrendingUp } from 'lucide-react';
 
 import { Badge, Card, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 
-import { Rec } from '@/types/rec';
 import { Region } from '@/types/common';
+import { RecMonthlyItem } from '@/types/rec';
 
 import { formatCountUpPrice, useCountUp } from '@/shared/hooks/useCountUp';
 
 interface RecMarketPriceProps {
   region: Region;
-  recData: Rec[];
+  latestRecData: RecMonthlyItem;
+  previousRecData: RecMonthlyItem;
 }
 
 // "YYYY-MM-DD" 문자열을 타임존 안전하게 파싱
@@ -30,66 +31,47 @@ function formatDate(date: Date): string {
 }
 
 export function RecMarketPrice(props: RecMarketPriceProps) {
-  const { region, recData } = props;
+  const { region, latestRecData, previousRecData } = props;
 
-  const currentRecData = recData?.[0];
-  const yesterdayRecData = recData?.[1];
-  
   // 날짜, 가격, 전일 대비 차이 계산
   const { formattedDate, formattedPrice, priceDiff } = useMemo(() => {
-    // 날짜 포맷팅
-    let formattedDate: string;
-    if (!recData?.length || !currentRecData) {
-      formattedDate = formatDate(new Date());
-    } else {
-      const date = parseDateSafe(currentRecData.trade_date);
-      formattedDate = formatDate(date);
+    const prev = previousRecData;
+    const latest = latestRecData;
+
+    switch (region) {
+      case 'LAND':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.landAvgPrice ?? 0,
+          priceDiff: (latest?.landAvgPrice ?? 0) - (prev?.landAvgPrice ?? 0),
+        };
+      case 'JEJU':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.jejuAvgPrice ?? 0,
+          priceDiff: (latest?.jejuAvgPrice ?? 0) - (prev?.jejuAvgPrice ?? 0),
+        };
+      case 'ALL':
+        return {
+          formattedDate: latest?.dateFormatted ?? '',
+          formattedPrice: latest?.unifiedAvgPrice ?? 0,
+          priceDiff: (latest?.unifiedAvgPrice ?? 0) - (prev?.unifiedAvgPrice ?? 0),
+        };
+      default:
+        return {
+          formattedDate: '',
+          formattedPrice: 0,
+          priceDiff: 0,
+        };
     }
-
-    let currentPrice = 0;
-    if (currentRecData) {
-      switch (region) {
-        case 'ALL':
-          currentPrice = (currentRecData.land_avg_price + currentRecData.jeju_avg_price) / 2;
-          break;
-        case 'LAND':
-          currentPrice = currentRecData.land_avg_price;
-          break;
-        case 'JEJU':
-          currentPrice = currentRecData.jeju_avg_price;
-          break;
-      }
-    }
-
-    let yesterdayPrice = 0;
-    if (yesterdayRecData) {
-      switch (region) {
-        case 'ALL':
-          yesterdayPrice = (yesterdayRecData.land_avg_price + yesterdayRecData.jeju_avg_price) / 2;
-          break;
-        case 'LAND':
-          yesterdayPrice = yesterdayRecData.land_avg_price;
-          break;
-        case 'JEJU':
-          yesterdayPrice = yesterdayRecData.jeju_avg_price;
-          break;
-      }
-    }
-
-    const formattedPrice = currentPrice !== 0 ? currentPrice.toString() : '0';
-
-    // 전일 대비 차이 (원/kWh) — 전일 데이터가 있을 때만 계산
-    const priceDiff =
-      currentRecData && yesterdayRecData ? currentPrice - yesterdayPrice : 0;
-
-    return { formattedDate, formattedPrice, priceDiff };
-  }, [recData, region]);
+    
+  }, [region, latestRecData, previousRecData]);
 
   const ref = useRef(null);
   const isView = useInView(ref);
 
   const price = useCountUp({
-    target: parseFloat(formattedPrice),
+    target: formattedPrice,
     duration: 1000,
     enabled: isView,
     resetKey: region,
@@ -119,7 +101,7 @@ export function RecMarketPrice(props: RecMarketPriceProps) {
         <Card.Header pb={2}>
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
-              <Heading fontSize='2xl' fontWeight='medium' color='gray.900'>
+              <Heading fontSize='2xl' fontWeight='medium' color='gray.800' fontFamily='Pretendard'>
                 REC 현물
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>

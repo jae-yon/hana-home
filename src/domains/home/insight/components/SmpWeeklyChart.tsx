@@ -7,6 +7,11 @@ import Chart from '@/shared/components/charts';
 import { SmpDailyWeightedSummary } from '@/types/smp';
 import { Region } from '@/types/common';
 
+interface SmpWeeklyChartProps {
+  region: Region;
+  data: SmpDailyWeightedSummary[];
+}
+
 /** dateFormatted(YYYY년 MM월 DD일)에서 'MM월 DD일'만 추출 */
 function formatLabel(dateFormatted: string): string {
   return dateFormatted.replace(/^\d{4}년\s*/, '').trim();
@@ -43,11 +48,6 @@ function parseSmpData(
     }));
 }
 
-interface SmpWeeklyChartProps {
-  region: Region;
-  data: SmpDailyWeightedSummary[];
-}
-
 export function SmpWeeklyChart(props: SmpWeeklyChartProps) {
   const { region, data } = props;
   
@@ -70,6 +70,7 @@ export function SmpWeeklyChart(props: SmpWeeklyChartProps) {
               fontWeight="medium"
               color="gray.800"
               letterSpacing="-0.05em"
+              fontFamily="Pretendard"
             >
               SMP 주간 차트
             </Heading>

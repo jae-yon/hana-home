@@ -12,16 +12,16 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { Rec } from '@/types/rec';
-import { Smp } from '@/types/smp';
 import { Region, Weight } from '@/types/common';
+import { RecMonthlyItem } from '@/types/rec';
+import { SmpDailyWeightedSummary } from '@/types/smp';
 
 import { useCountUp } from '@/shared/hooks/useCountUp';
 
 interface SmpRecSumPriceProps {
   region: Region;
-  smpData?: Smp[];
-  recData?: Rec;
+  recData?: RecMonthlyItem;
+  smpData?: SmpDailyWeightedSummary;
 }
 
 // "YYYY-MM-DD" 문자열을 타임존 안전하게 파싱
@@ -39,47 +39,45 @@ function formatDate(date: Date): string {
   return `${year}.${month}.${day} (${weekday})`;
 }
 
-// 지역별 SMP 단가 반환
-function getSmpPriceByRegion(smp: Smp[], region: Region): number {
-  const landItem = smp.find((s) => s.area_code === 'LAND');
-  const jejuItem = smp.find((s) => s.area_code === 'JEJU');
-  if (!landItem || !jejuItem) return 0;
-  
+// 지역별 SMP 단가 반환 (SmpDailyWeightedSummary 사용)
+function getSmpPriceBySummary(smp: SmpDailyWeightedSummary | undefined, region: Region): number {
+  if (!smp) return 0;
   switch (region) {
     case 'LAND':
-      return landItem.smp;
-      case 'JEJU':
-        return jejuItem.smp;
-        default:
-          return (landItem.smp + jejuItem.smp) / 2;
-        }
-      }
-      
-      // 지역별 REC 단가 반환
-      function getRecPriceByRegion(rec: Rec, region: Region): number {
-        switch (region) {
-          case 'ALL':
-      return (rec.land_avg_price + rec.jeju_avg_price) / 2;
-      case 'LAND':
-        return rec.land_avg_price;
-        case 'JEJU':
-      return rec.jeju_avg_price;
-    }
+      return smp.landWeightedAvg;
+    case 'JEJU':
+      return smp.jejuWeightedAvg;
+    default:
+      return smp.totalWeightedAvg;
   }
-  
+}
+
+// 지역별 REC 단가 반환 (RecMonthlyItem: 육지/제주/통합평균가 사용)
+function getRecPriceByRegion(rec: RecMonthlyItem | undefined, region: Region): number {
+  if (!rec) return 0;
+  switch (region) {
+    case 'ALL':
+      return rec.unifiedAvgPrice;
+    case 'LAND':
+      return rec.landAvgPrice;
+    case 'JEJU':
+      return rec.jejuAvgPrice;
+    default:
+      return rec.unifiedAvgPrice;
+  }
+}
+
 // 지역에 맞는 합산 가격: SMP + (REC/1000 × 가중치)
 function getCalculatedPriceByRegion(
   region: Region,
-  smp: Smp[] | undefined,
-  rec: Rec | undefined,
+  smp: SmpDailyWeightedSummary | undefined,
+  rec: RecMonthlyItem | undefined,
   weight: Weight
 ): number {
-  if (!smp?.length || !rec) return 0;
-  
-  const smpPrice = getSmpPriceByRegion(smp, region);
+  if (!smp || !rec) return 0;
+  const smpPrice = getSmpPriceBySummary(smp, region);
   const recPrice = getRecPriceByRegion(rec, region);
-  
-  return smpPrice + ((recPrice / 1000) * weight);
+  return smpPrice + (recPrice / 1000) * weight;
 }
 
 const WEIGHT_OPTIONS: Weight[] = [0.5, 1.0, 1.2, 1.5];
@@ -91,25 +89,21 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   
   const { formattedDate, formattedPrice } = useMemo(() => {
-    let formattedDate: string;
-    if (!smpData?.length) {
-      formattedDate = formatDate(new Date());
-    } else {
-      const date = parseDateSafe(smpData[0].trade_date);
-      formattedDate = formatDate(date);
-    }
+    // 날짜: REC 기준 포맷(YYYY년 MM월 DD일) 우선, 없으면 SMP 또는 오늘
+    const formattedDate = recData?.dateFormatted
+      ?? (smpData?.date ? formatDate(parseDateSafe(smpData.date)) : formatDate(new Date()));
 
     const calculatedPrice = getCalculatedPriceByRegion(region, smpData, recData, weight);
-    const formattedPrice = calculatedPrice !== 0 ? calculatedPrice.toString() : '0';
+    const formattedPrice = calculatedPrice !== 0 ? calculatedPrice : 0;
 
     return { formattedDate, formattedPrice };
-  }, [smpData , recData, weight, region]);
+  }, [smpData, recData, weight, region]);
 
   const ref = useRef(null);
   const isView = useInView(ref);
 
   const price = useCountUp({
-    target: parseFloat(formattedPrice),
+    target: formattedPrice,
     duration: 1000,
     enabled: isView,
     resetKey: `${region}-${weight}`,
@@ -130,8 +124,8 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
         <Card.Header pb={2}>
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
-              <Heading fontSize='2xl' fontWeight='medium' color='gray.900'>
-                SMP + (REC x {weight.toFixed(1)})
+              <Heading fontSize='2xl' fontWeight='medium' color='gray.800' fontFamily='Pretendard'>
+                SMP + (REC x <Text as='span' color='orange.600'>{weight.toFixed(1)}</Text>)
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
                 {formattedDate}
@@ -176,7 +170,7 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
                     backgroundColor='orange.500'
                     color='white'
                     _hover={{
-                      backgroundColor: 'orange.600',
+                      backgroundColor: 'orange.500',
                       color: 'white',
                     }}
                     letterSpacing='0.05em'

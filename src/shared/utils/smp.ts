@@ -69,5 +69,6 @@ export function getSmpDailyWeightedSummaries(
         jejuWeightedAvg: calcWeightedAvg(jejuItems, "jeju_load"),
         totalWeightedAvg: calcWeightedAvg(landItems, "total_load"),
       };
-    });
+    }
+  );
 }
