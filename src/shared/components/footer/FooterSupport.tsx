@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Stack, Text } from '@chakra-ui/react';
 
-import { COMPANY_KAKAO_URL, COMPANY_PHONE_NUMBER } from '@/shared/config/constants';
+import { COMPANY_KAKAO_CHAT_URL, COMPANY_PHONE_NUMBER } from '@/shared/config/constants';
 import { LucideMessageCircle } from 'lucide-react';
 
 export default function FooterSupport() {
@@ -38,7 +38,7 @@ export default function FooterSupport() {
             borderColor: 'gray.200',
           }}
           transition='all 0.3s ease-in-out'
-          onClick={() => window.open(COMPANY_KAKAO_URL, '_blank', 'noopener,noreferrer')}
+          onClick={() => window.open(COMPANY_KAKAO_CHAT_URL, '_blank', 'noopener,noreferrer')}
         >
           <LucideMessageCircle size={10} />
           <Text fontSize='xs' fontWeight='medium' letterSpacing='0.1em'>채널톡</Text>

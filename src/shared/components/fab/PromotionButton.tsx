@@ -1,15 +1,10 @@
-import { useState } from 'react';
-import { XIcon } from 'lucide-react';
+import { LucidePlus } from 'lucide-react';
 
-import { IconButton, Flex, Image, Collapsible, Link } from '@chakra-ui/react';
+import { Flex, Image, Collapsible, Link } from '@chakra-ui/react';
 
 import { PROMOTION_NAV_LINKS } from '@/shared/config/constants';
 
 export function PromotionButton() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen((prev) => !prev);
-
   return (
     <Collapsible.Root>
       <Collapsible.Content overflow="visible">
@@ -36,19 +31,24 @@ export function PromotionButton() {
         </Flex>
       </Collapsible.Content>
       {/* Collapse Trigger */}
-      <Collapsible.Trigger onClick={toggle}>
-        <IconButton
-          size="xl"
+      <Collapsible.Trigger 
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Collapsible.Indicator
+          p={4}
           color="white"
+          cursor="pointer"
           borderRadius="full"
-          backgroundColor="orange.600"
           transition="all 0.3s ease"
+          backgroundColor="orange.600"
           boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
-          transform={isOpen ? "rotate(0deg)" : "rotate(45deg)"}
           _hover={{ transform: "scale(1.05)" }}
+          _open={{ transform: "rotate(45deg)" }}
         >
-          <XIcon width={20} height={20} strokeWidth={2.5} />
-        </IconButton>
+          <LucidePlus width={20} height={20} strokeWidth={2.5} />
+        </Collapsible.Indicator>
       </Collapsible.Trigger>
     </Collapsible.Root>
   );
