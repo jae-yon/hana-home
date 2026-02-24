@@ -1,13 +1,13 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 
-interface PerformanceCardProps {
+interface PortfolioCardProps {
   href?: string;
   image: string;
   title: string;
   subtitle: string;
 }
 
-export function PerformanceCard(props: PerformanceCardProps) {
+export function PortfolioCard(props: PortfolioCardProps) {
   const { image, title, subtitle } = props;
   return (
     <Box

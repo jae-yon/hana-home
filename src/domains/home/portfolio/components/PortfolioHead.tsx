@@ -3,11 +3,11 @@ import { LucideArrowRight } from 'lucide-react';
 import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import { Impactor } from '@/shared/components/common/Impactor';
 
-interface PerformanceHeadProps {
+interface PortfolioHeadProps {
   isDesktop: boolean;
 }
 
-export function PerformanceHead(props: PerformanceHeadProps) {
+export function PortfolioHead(props: PortfolioHeadProps) {
   return (
     <Flex
       flexDirection="column"

@@ -5,14 +5,14 @@ import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { PerformanceCard } from './PerformanceCard';
+import { PortfolioCard } from './PortfolioCard';
 import { Impactor } from '@/shared/components/common/Impactor';
 
-interface PerformanceContentsProps {
+interface PortfolioContentsProps {
   items: any[];
 }
 
-export function PerformanceContents(props: PerformanceContentsProps) {
+export function PortfolioContents(props: PortfolioContentsProps) {
   const { items } = props;
   const settings: Settings = {
     dots: false,
@@ -32,7 +32,7 @@ export function PerformanceContents(props: PerformanceContentsProps) {
       <Box w="100%" h="100%">
         <Slider {...settings}>
           {items.map((item) => (
-            <PerformanceCard key={item.id} {...item} />
+            <PortfolioCard key={item.id} {...item} />
           ))}
         </Slider>
       </Box>

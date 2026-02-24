@@ -2,8 +2,8 @@ import { Box, Flex, Stack } from '@chakra-ui/react';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
-import { PerformanceHead } from './components/PerformanceHead';
-import { PerformanceContents } from './components/PerformanceContents';
+import { PortfolioHead } from './components/PortfolioHead';
+import { PortfolioContents } from './components/PortfolioContents';
 
 import performanceImage01 from '@/assets/images/performance/performance_image_01.jpg';
 import performanceImage02 from '@/assets/images/performance/performance_image_02.jpg';
@@ -49,7 +49,7 @@ const performanceItems = [
   },
 ]
 
-export default function Performance() {
+export default function Portfolio() {
   const { isDesktop } = useResponsive();
 
   return (
@@ -80,19 +80,19 @@ export default function Performance() {
           {!isDesktop ? (
             <>
               <Box width="100%">
-                <PerformanceHead isDesktop={isDesktop} />
+                <PortfolioHead isDesktop={isDesktop} />
               </Box>
               <Box width="100%" flex={1}>
-                <PerformanceContents items={performanceItems} />
+                <PortfolioContents items={performanceItems} />
               </Box>
             </>
           ) : (
             <>
               <Box flex={1} minW={0} maxW="50%" px={{ md: 4 }}>
-                <PerformanceContents items={performanceItems} />
+                <PortfolioContents items={performanceItems} />
               </Box>
               <Box flexShrink={0} width={{ md: '50%' }} maxW="50%" px={{ md: 4 }}>
-                <PerformanceHead isDesktop={isDesktop} />
+                <PortfolioHead isDesktop={isDesktop} />
               </Box>
             </>
           )}
