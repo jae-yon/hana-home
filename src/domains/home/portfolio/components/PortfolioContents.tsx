@@ -5,11 +5,13 @@ import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { PortfolioCard } from './PortfolioCard';
+import { Portfolio } from '@/types/common';
 import { Impactor } from '@/shared/components/common/Impactor';
 
+import { PortfolioCard } from './PortfolioCard';
+
 interface PortfolioContentsProps {
-  items: any[];
+  items: Portfolio[];
 }
 
 export function PortfolioContents(props: PortfolioContentsProps) {
@@ -22,7 +24,7 @@ export function PortfolioContents(props: PortfolioContentsProps) {
     speed: 5000,         
     slidesToShow: 3,     
     slidesToScroll: 1,   
-    autoplaySpeed: 3000, 
+    autoplaySpeed: 1000, 
     autoplay: true,      
     vertical: true,
   };
@@ -32,7 +34,7 @@ export function PortfolioContents(props: PortfolioContentsProps) {
       <Box w="100%" h="100%">
         <Slider {...settings}>
           {items.map((item) => (
-            <PortfolioCard key={item.id} {...item} />
+            <PortfolioCard key={item.id} item={item} />
           ))}
         </Slider>
       </Box>

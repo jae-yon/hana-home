@@ -1,14 +1,12 @@
+import { Portfolio } from '@/types/common';
 import { Box, Flex, Text } from '@chakra-ui/react';
 
 interface PortfolioCardProps {
-  href?: string;
-  image: string;
-  title: string;
-  subtitle: string;
+  item: Portfolio
 }
 
 export function PortfolioCard(props: PortfolioCardProps) {
-  const { image, title, subtitle } = props;
+  const { item } = props;
   return (
     <Box
       position="relative"
@@ -23,7 +21,7 @@ export function PortfolioCard(props: PortfolioCardProps) {
       <Box
         position="absolute"
         inset="0"
-        bgImage={`url(${image})`}
+        bgImage={`url(${item.image})`}
         bgSize="cover"
         bgPos="center"
       />
@@ -52,7 +50,7 @@ export function PortfolioCard(props: PortfolioCardProps) {
           mb={{ base: '6px', md: '10px' }}
           letterSpacing="-0.01em"
         >
-          {title}
+          {item.title}
         </Text>
 
         <Text
@@ -60,7 +58,7 @@ export function PortfolioCard(props: PortfolioCardProps) {
           color="rgba(255,255,255,0.85)"
           lineHeight="1.6"
         >
-          {subtitle}
+          {item.module}
         </Text>
       </Flex>
     </Box>

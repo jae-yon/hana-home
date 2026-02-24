@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { LucideArrowRight } from 'lucide-react';
 
 import { Button, Flex, Heading, Text } from '@chakra-ui/react';
@@ -8,6 +9,13 @@ interface PortfolioHeadProps {
 }
 
 export function PortfolioHead(props: PortfolioHeadProps) {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/portfolio');
+  };
+
   return (
     <Flex
       flexDirection="column"
@@ -64,6 +72,7 @@ export function PortfolioHead(props: PortfolioHeadProps) {
             backgroundColor: "red.500",
           }}
           transition="all 0.3s ease-in-out"
+          onClick={handleClick}
         >
           <Text as="span">시공사례 더보기</Text>
           <LucideArrowRight size={16} />
