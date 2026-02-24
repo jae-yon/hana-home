@@ -73,7 +73,7 @@ export default function Insight() {
     >
       <Flex width="100%" maxW="1280px" flexDirection="column" gap={8}>
         {/* 헤더 영역 */}
-        <Impactor direction="bottom">
+        <Impactor direction="bottom" once>
           <Box px={8}>
             {isDesktop ? <InSightHeadDesktop region={region} setRegion={setRegion} /> : <InSightHeadMobile region={region} setRegion={setRegion} />}
           </Box>
@@ -93,21 +93,21 @@ export default function Insight() {
           >
             {/* SMP 시세 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom">
+              <Impactor direction="bottom" once>
                 <SmpMarketPrice region={region} latestSmpData={latestSmpData!} previousSmpData={previousSmpData!} />
               </Impactor>
             </Box>
 
             {/* REC 현물 시세 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom" delay={1}>
+              <Impactor direction="bottom" once delay={1}>
                 <RecMarketPrice region={region} latestRecData={latestRecData!} previousRecData={previousRecData!} />
               </Impactor>
             </Box>
 
             {/* SMP + (REC/1000 x 가중치) 수익 합계 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom" delay={1.3}>
+              <Impactor direction="bottom" once delay={1.3}>
                 <SmpRecSumPrice region={region} smpData={latestSmpData!} recData={latestRecData!} />
               </Impactor>
             </Box>
@@ -124,14 +124,14 @@ export default function Insight() {
           >
             {/* SMP 주간 추이 차트 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom">
+              <Impactor direction="bottom" once>
                 <SmpWeeklyChart region={region} data={weeklySmpData!} />
               </Impactor>
             </Box>
 
             {/* REC 현물 월간 추이 차트 */}
             <Box flex={isDesktop ? 1 : undefined} minWidth={0} width={isDesktop ? undefined : '100%'}>
-              <Impactor direction="bottom" delay={1}>
+              <Impactor direction="bottom" once delay={1}>
                 <RecMonthlyChart region={region} data={monthlyRecData!} />
               </Impactor>
             </Box>

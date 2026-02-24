@@ -28,7 +28,7 @@ export function PerformanceContents(props: PerformanceContentsProps) {
   };
 
   return (
-    <Impactor direction="left">
+    <Impactor direction="left" once>
       <Box w="100%" h="100%">
         <Slider {...settings}>
           {items.map((item) => (

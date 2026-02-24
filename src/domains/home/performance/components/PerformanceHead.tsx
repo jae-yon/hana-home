@@ -16,7 +16,7 @@ export function PerformanceHead(props: PerformanceHeadProps) {
       alignItems={props.isDesktop ? "stretch" : "center"}
       width="100%"
     >
-      <Impactor direction="right">
+      <Impactor direction="right" once>
         <Heading
           fontSize={{ base: "36px", md: "48px", lg: "52px" }}
           fontWeight="600"
@@ -32,7 +32,7 @@ export function PerformanceHead(props: PerformanceHeadProps) {
           현장을 먼저 이해하고 <br />그 위에 기술을 더합니다.
         </Heading>
       </Impactor>
-      <Impactor direction="right" delay={1}>
+      <Impactor direction="right" once delay={1}>
         <Text
           fontSize={{ base: "14px", md: "18px" }}
           fontWeight="medium"
@@ -47,7 +47,7 @@ export function PerformanceHead(props: PerformanceHeadProps) {
         </Text>
       </Impactor>
 
-      <Impactor direction="right" delay={1.3}>
+      <Impactor direction="right" once delay={1.3}>
         <Button
           size="lg"
           display="flex"
