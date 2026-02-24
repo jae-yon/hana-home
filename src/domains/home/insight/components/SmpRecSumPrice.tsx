@@ -85,7 +85,7 @@ const WEIGHT_OPTIONS: Weight[] = [0.5, 1.0, 1.2, 1.5];
 export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
   const { region, smpData, recData } = props;
   
-  const [weight, setWeight] = useState<Weight>(1.0);
+  const [weight, setWeight] = useState<Weight>(1.5);
   const [menuOpen, setMenuOpen] = useState(false);
   
   const { formattedDate, formattedPrice } = useMemo(() => {
