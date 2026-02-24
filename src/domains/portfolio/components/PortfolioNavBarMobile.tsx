@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ChevronRight, LucideArrowRight, Menu, X } from 'lucide-react';
+import { ChevronRight, LucideArrowRight } from 'lucide-react';
 
 import { Flex, Button, Text, IconButton, Drawer } from '@chakra-ui/react';
 

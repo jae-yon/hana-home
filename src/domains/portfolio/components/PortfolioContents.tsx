@@ -37,7 +37,9 @@ export default function PortfolioContents(props: PortfolioContensProps) {
             w={{ base: '100%', md: '100%', lg: '50%', xl: '40%' }}
             h={{ base: '250px', sm: '300px', md: '400px' }}
             borderRadius="lg"
-            boxShadow="xl"
+            style={{
+              boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.3)',
+            }}
           >
             <Box
               inset="0"

@@ -23,12 +23,12 @@ export default function PortfolioNavBarDesktop(props: PortfolioNavBarDesktopProp
   return (
     <Flex
       gap={0}
+      shadow="sm"
       width="100%"
       flexDirection="row"
       alignItems="center"
       justify="flex-start"
-      backgroundColor="transparent"
-      shadow="sm"
+      backgroundColor="gray.800"
     >
       {items.map((item) => (
         <Button
@@ -39,7 +39,7 @@ export default function PortfolioNavBarDesktop(props: PortfolioNavBarDesktopProp
           minW="auto"
           border="none"
           fontSize="lg"
-          color={type === item.path.split('/')[2] ? 'white' : 'gray.700'}
+          color={type === item.path.split('/')[2] ? 'white' : 'white'}
           bg={type === item.path.split('/')[2] ? 'orange.500' : 'transparent'}
           borderRadius={0}
           overflow="hidden"
