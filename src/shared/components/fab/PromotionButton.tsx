@@ -3,19 +3,7 @@ import { XIcon } from 'lucide-react';
 
 import { IconButton, Flex, Image, Collapsible, Link } from '@chakra-ui/react';
 
-import tiktok from '@/assets/images/social/tiktok.png';
-import blog from '@/assets/images/social/blog2.png';
-import youtube from '@/assets/images/social/youtube.png';
-import kakao from '@/assets/images/social/kakao2.png';
-
-import { COMPANY_KAKAO_URL } from '@/shared/config/constants';
-
-const NAV_LINKS = [
-  { name: '유튜브', image: youtube, url: '/#' },
-  { name: '블로그', image: blog, url: '/#' },
-  { name: '틱톡', image: tiktok, url: '/#' },
-  { name: '카카오톡', image: kakao, url: COMPANY_KAKAO_URL },
-];
+import { PROMOTION_NAV_LINKS } from '@/shared/config/constants';
 
 export function PromotionButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +20,7 @@ export function PromotionButton() {
           flexDirection="column"
           justifyContent="center"
         >
-          {NAV_LINKS.map((link) => (
+          {PROMOTION_NAV_LINKS.map((link) => (
             <Link
               key={link.name}
               outline="none"

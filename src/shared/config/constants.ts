@@ -22,8 +22,24 @@ export const COMPANY_FAX_NUMBER = import.meta.env.VITE_COMPANY_FAX_NUMBER as str
 // 이메일
 export const COMPANY_EMAIL = import.meta.env.VITE_COMPANY_EMAIL as string || "hnsolution1116@naver.com";
 
-// 카카오톡 URL
-export const COMPANY_KAKAO_URL = import.meta.env.VITE_COMPANY_KAKAO_URL as string || "https://pf.kakao.com/_KvpIX/chat";
+// 카카오톡 채널 URL
+export const COMPANY_KAKAO_CHANNEL_URL = import.meta.env.VITE_COMPANY_KAKAO_CHANNEL_URL as string || "https://pf.kakao.com/_KvpIX";
+
+// 카카오톡 채널톡 URL
+export const COMPANY_KAKAO_CHAT_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAT_URL as string || "https://pf.kakao.com/_KvpIX/chat";
+
+import blog from '@/assets/images/social/blog.png';
+import kakao from '@/assets/images/social/kakao.png';
+import tiktok from '@/assets/images/social/tiktok.png';
+import youtube from '@/assets/images/social/youtube.png';
+
+// Floating Action Button
+export const PROMOTION_NAV_LINKS = [
+  { name: '유튜브', image: youtube, url: '/#' },
+  { name: '틱톡', image: tiktok, url: '/#' },
+  { name: '블로그', image: blog, url: '/#' },
+  { name: '카카오톡', image: kakao, url: COMPANY_KAKAO_CHAT_URL },
+];
 
 // Supabase
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
