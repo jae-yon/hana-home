@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/',
     element: <MainPage />,
-  },
+  }, 
 ]
 
 export default function AppRoutes() {

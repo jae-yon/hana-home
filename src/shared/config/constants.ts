@@ -22,6 +22,9 @@ export const COMPANY_FAX_NUMBER = import.meta.env.VITE_COMPANY_FAX_NUMBER as str
 // 이메일
 export const COMPANY_EMAIL = import.meta.env.VITE_COMPANY_EMAIL as string || "hnsolution1116@naver.com";
 
+// 카카오톡 URL
+export const COMPANY_KAKAO_URL = import.meta.env.VITE_COMPANY_KAKAO_URL as string || "https://pf.kakao.com/_KvpIX/chat";
+
 // Supabase
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 export const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;

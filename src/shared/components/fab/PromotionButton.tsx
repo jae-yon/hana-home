@@ -8,11 +8,13 @@ import blog from '@/assets/images/social/blog2.png';
 import youtube from '@/assets/images/social/youtube.png';
 import kakao from '@/assets/images/social/kakao2.png';
 
+import { COMPANY_KAKAO_URL } from '@/shared/config/constants';
+
 const NAV_LINKS = [
   { name: '유튜브', image: youtube, url: '/#' },
   { name: '블로그', image: blog, url: '/#' },
   { name: '틱톡', image: tiktok, url: '/#' },
-  { name: '카카오톡', image: kakao, url: '/#' },
+  { name: '카카오톡', image: kakao, url: COMPANY_KAKAO_URL },
 ];
 
 export function PromotionButton() {
@@ -33,12 +35,12 @@ export function PromotionButton() {
           {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
-              href={link.url}
               outline="none"
               borderRadius="full"
               backgroundColor="transparent"
               transition="all 0.3s ease"
               _hover={{ transform: "scale(1.2)" }}
+              onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
             >
               <Image src={link.image} alt={link.name} width={12} height={12} objectFit="contain" />
             </Link>
