@@ -70,19 +70,23 @@ export const SUB_HERO_INFO = [
 
 import { Portfolio } from '@/types/common';
 
-import performanceImage01 from '@/assets/images/performance/performance_image_01.jpg';
-import performanceImage02 from '@/assets/images/performance/performance_image_02.jpg';
-import performanceImage03 from '@/assets/images/performance/performance_image_03.jpg';
-import performanceImage04 from '@/assets/images/performance/performance_image_04.jpg';
-import performanceImage05 from '@/assets/images/performance/performance_image_05.jpg';
-import performanceImage06 from '@/assets/images/performance/performance_image_06.jpg';
-import performanceImage07 from '@/assets/images/performance/performance_image_07.jpg';
+import portfolioImage01 from '@/assets/images/portfolio/portfolio_image_01.png';
+import portfolioImage02 from '@/assets/images/portfolio/portfolio_image_02.png';
+import portfolioImage03 from '@/assets/images/portfolio/portfolio_image_03.png';
+import portfolioImage04 from '@/assets/images/portfolio/portfolio_image_04.png';
+import portfolioImage05 from '@/assets/images/portfolio/portfolio_image_05.png';
+import portfolioImage06 from '@/assets/images/portfolio/portfolio_image_06.png';
+import portfolioImage07 from '@/assets/images/portfolio/portfolio_image_07.png';
+import portfolioImage08 from '@/assets/images/portfolio/portfolio_image_08.png';
+import portfolioImage09 from '@/assets/images/portfolio/portfolio_image_09.png';
+import portfolioImage10 from '@/assets/images/portfolio/portfolio_image_10.png';
+import portfolioImage11 from '@/assets/images/portfolio/portfolio_image_11.png';
 
 // 사업 실적 아이템 리스트
 export const PORTFOLIO_ITEMS: Portfolio[] = [
   {
     id: 1,
-    image: performanceImage01,
+    image: portfolioImage01,
     title: '서산시 500키로 발전소',
     type: 'PPA',
     module: 'S440ZI, S475ZJ',
@@ -93,18 +97,18 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
   },
   {
     id: 2,
-    image: performanceImage02,
+    image: portfolioImage02,
     title: '태안군 해상 태양광 단지',
     type: 'RPS',
     module: 'S450KG, S480KH',
     inverter: '전류형 인버터',
     capacity: '120MW',
     isVisible: true,
-    isMainVisible: true,
+    isMainVisible: false,
   },
   {
     id: 3,
-    image: performanceImage03,
+    image: portfolioImage03,
     title: '제주도 한림읍 육상 발전소',
     type: 'Residential',
     module: 'S460BI, S490BJ',
@@ -115,7 +119,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
   },
   {
     id: 4,
-    image: performanceImage04,
+    image: portfolioImage04,
     title: '전남 신안군 수상 태양광',
     type: 'PPA',
     module: 'S435ZI, S465ZJ',
@@ -126,18 +130,18 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
   },
   {
     id: 5,
-    image: performanceImage05,
+    image: portfolioImage05,
     title: '경북 포항시 산업단지 발전소',
     type: 'RPS',
     module: 'S470MG, S500MH',
     inverter: '전류형 인버터',
     capacity: '63MW',
-    isVisible: false,
+    isVisible: true,
     isMainVisible: false,
   },
   {
     id: 6,
-    image: performanceImage06,
+    image: portfolioImage06,
     title: '충남 보령시 해안 태양광',
     type: 'RPS',
     module: 'S455BI, S485BJ',
@@ -148,12 +152,56 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
   },
   {
     id: 7,
-    image: performanceImage07,
+    image: portfolioImage07,
     title: '경남 고성군 육상 태양광 발전소',
     type: 'Residential',
     module: 'S465KG, S495KH',
     inverter: '전압형 인버터',
     capacity: '75MW',
+    isVisible: true,
+    isMainVisible: true,
+  },
+  {
+    id: 8,
+    image: portfolioImage08,
+    title: '전북 익산시 육상 태양광 발전소',
+    type: 'RPS',
+    module: 'S480KG, S510KH',
+    inverter: '전류형 인버터',
+    capacity: '50MW',
+    isVisible: true,
+    isMainVisible: false,
+  },
+  {
+    id: 9,
+    image: portfolioImage09,
+    title: '충남 당진시 해상 태양광 발전소',
+    type: 'PPA',
+    module: 'S450KG, S485KH',
+    inverter: '전압형 인버터',
+    capacity: '120MW',
+    isVisible: true,
+    isMainVisible: true,
+  },
+  {
+    id: 10,
+    image: portfolioImage10,
+    title: '경북 포항시 육상 태양광 발전소',
+    type: 'Residential',
+    module: 'S470KG, S500KH',
+    inverter: '하이브리드 인버터',
+    capacity: '35MW',
+    isVisible: true,
+    isMainVisible: false,
+  },
+  {
+    id: 11,
+    image: portfolioImage11,
+    title: '전남 해남군 수상 태양광 발전소',
+    type: 'RPS',
+    module: 'S460KG, S490KH',
+    inverter: '전류형 인버터',
+    capacity: '90MW',
     isVisible: true,
     isMainVisible: true,
   },

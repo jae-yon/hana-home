@@ -10,6 +10,8 @@ import { PortfolioContents } from './components/PortfolioContents';
 export default function Portfolio() {
   const { isDesktop } = useResponsive();
 
+  const mainItems = PORTFOLIO_ITEMS.filter((item) => item.isMainVisible);
+
   return (
     <Box 
       width="100%"
@@ -41,13 +43,13 @@ export default function Portfolio() {
                 <PortfolioHead isDesktop={isDesktop} />
               </Box>
               <Box width="100%" flex={1}>
-                <PortfolioContents items={PORTFOLIO_ITEMS} />
+                <PortfolioContents items={mainItems} />
               </Box>
             </>
           ) : (
             <>
               <Box flex={1} minW={0} maxW="50%" px={{ md: 4 }}>
-                <PortfolioContents items={PORTFOLIO_ITEMS} />
+                <PortfolioContents items={mainItems} />
               </Box>
               <Box flexShrink={0} width={{ md: '50%' }} maxW="50%" px={{ md: 4 }}>
                 <PortfolioHead isDesktop={isDesktop} />
