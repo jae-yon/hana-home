@@ -2,15 +2,7 @@ import { Box, Image } from '@chakra-ui/react';
 
 import { useEffect, useState } from 'react';
 
-const HERO_BACKGROUND_IMAGES = [
-  { image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=80" },
-  { image: "https://images.unsplash.com/photo-1668097613572-40b7c11c8727?auto=format&fit=crop&w=1920&q=80" },
-  { image: "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?auto=format&fit=crop&w=1920&q=80" },
-  { image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" },
-];
-
-const FADE_DURATION_MS = 2000;
-const SLIDE_INTERVAL_MS = 5000;
+import { HERO_BACKGROUND_IMAGES, FADE_DURATION_MS, SLIDE_INTERVAL_MS } from '@/shared/config/constants';
 
 export default function HeroBackgroundImages() {
   // 현재 배경 이미지 인덱스

@@ -4,7 +4,7 @@ import Footer from '@/shared/components/footer';
 import Hero from '@/domains/home/hero';
 import Insight from '@/domains/home/insight';
 import Business from '@/domains/home/business';
-import Performance from '@/domains/home/performance';
+import Portfolio from '@/domains/home/portfolio';
 import FloatingActionButton from '@/shared/components/fab';
 
 export default function MainPage() {
@@ -17,8 +17,8 @@ export default function MainPage() {
       <Insight />
       {/* business section */}
       <Business />
-      {/* performance section */}
-      <Performance />
+      {/* portfolio section */}
+      <Portfolio />
       {/* footer section */}
       <Footer />
       {/* navbar anchor */}
