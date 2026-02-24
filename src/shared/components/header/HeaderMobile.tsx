@@ -26,7 +26,7 @@ export default function HeaderMobile(props: headerLayoutProps) {
         minHeight='56px'
         bg={isOpen || props.isScrolled ? 'white' : 'transparent'}
       >
-        <Link href='/' display='flex' alignItems='center' gap={2} _hover={{ textDecoration: 'none' }}>
+        <Link href='/' display='flex' alignItems='center' gap={2} _hover={{ textDecoration: 'none' }} outline="none">
           {/* <Image src={props.logo} alt='logo' width={8} height={8} objectFit='contain' /> */}
           <Text fontSize='md' fontWeight='semibold' color={props.isScrolled || isOpen ? 'gray.800' : 'white'}>
             {COMPANY_NAME}

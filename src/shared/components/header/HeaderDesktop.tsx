@@ -18,7 +18,9 @@ export default function HeaderDesktop(props: headerLayoutProps) {
       <Box display='flex' alignItems='center' justifyContent='center' marginTop={4} paddingTop={4}>
         {/* logo */}
         {/* <Image src={props.logo} alt='logo' width={16} objectFit='cover' padding={4} /> */}
-        <Text fontSize='lg' fontWeight='semibold' color={props.isScrolled ? 'gray.800' : 'white'}>{COMPANY_NAME}</Text>
+        <Link href='/' outline="none">
+          <Text fontSize='lg' fontWeight='semibold' color={props.isScrolled ? 'gray.800' : 'white'}>{COMPANY_NAME}</Text>
+        </Link>
       </Box>
       <Box
         display='flex'
