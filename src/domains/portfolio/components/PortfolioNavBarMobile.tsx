@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ChevronRight, LucideArrowRight } from 'lucide-react';
+import { ArrowLeft, ChevronLeft } from 'lucide-react';
 
 import { Flex, Button, Text, IconButton, Drawer } from '@chakra-ui/react';
 
@@ -23,12 +23,12 @@ export default function PortfolioNavBarMobile(props: PortfolioNavBarMobileProps)
     <Flex
       width="100%"
       alignItems="center"
-      justifyContent="flex-start"
-      backgroundColor="transparent"
+      justifyContent="flex-end"
+      backgroundColor="gray.800"
       shadow="sm"
     >
       <Drawer.Root
-        placement="start"
+        placement="end"
         open={open}
         onOpenChange={(e) => setOpen(e.open)}
         size="xs"
@@ -47,7 +47,7 @@ export default function PortfolioNavBarMobile(props: PortfolioNavBarMobileProps)
             borderRadius="none"
             aria-label="메뉴 열기"
           >
-            <ChevronRight size={32} strokeWidth={2} />
+            <ChevronLeft size={32} strokeWidth={2} />
           </IconButton>
         </Drawer.Trigger>
         
@@ -109,8 +109,8 @@ export default function PortfolioNavBarMobile(props: PortfolioNavBarMobileProps)
                         alignItems="center"
                         gap={2}
                       >
+                        <ArrowLeft size={16} strokeWidth={2} />
                         {item.name}
-                        <LucideArrowRight size={16} strokeWidth={2} />
                       </Text>
                     </Button>
                   );
