@@ -285,6 +285,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
   },
 ]
 
+// 자주묻는질문 아이템 리스트
 export const FAQ_ITEMS: FAQ[] = [
   {
     id: 1,

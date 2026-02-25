@@ -1,7 +1,9 @@
-import MainPage from '@/pages/MainPage';
-import SupportPage from '@/pages/SupportPage';
-import NotFoundPage from '@/pages/NotFoundPage';
-import PortfolioPage from '@/pages/PortfolioPage';
+import { lazy } from 'react';
+
+const MainPage = lazy(() => import('@/pages/MainPage'));
+const SupportPage = lazy(() => import('@/pages/SupportPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
 
 export const ROUTES = [
   {
