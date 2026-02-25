@@ -1,99 +1,200 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { LucideMenu, LucideX } from "lucide-react";
 
-import { Box } from '@chakra-ui/react';
+import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link } from "@chakra-ui/react";
 
-import { useResponsive } from '@/shared/hooks/useResponsive';
-import logo from '@/assets/vite.svg';
-import HeaderDesktop from './HeaderDesktop';
-import HeaderMobile from './HeaderMobile';
+import { useResponsive } from "@/shared/hooks/useResponsive";
 
-const headerMenu = [
-  {
-    name: '회사소개',
-    path: '/about',
-    childMenu: [
-      { name: '인사말', path: '/about/introduction' },
-      { name: '연혁', path: '/about/history' },
-      { name: '비전 및 가치', path: '/about/vision' },
-      { name: '조직도', path: '/about/organization' },
-      { name: '오시는 길', path: '/about/location' },
-    ],
-  },
-  {
-    name: '사업소개',
-    path: '/business',
-    childMenu: [
-      { name: '사업개요', path: '/business/introduction' },
-      { name: '가정용태양광', path: '/business/home-solar' },
-      { name: '자가용PPA', path: '/business/ppa' },
-      { name: '발전사업RPS', path: '/business/rps' },
-      { name: '주차장태양광', path: '/business/parking-solar' },
-      { name: '전기공사업', path: '/business/electrical-work' },
-      { name: 'RE100', path: '/business/re100' },
-      { name: '리파워링', path: '/business/refurbishment' },
-      { name: '예상 수익계산기', path: '/business/profit-calculator' },
-    ],
-  },
-  {
-    name: '사업실적',
-    path: '/performance',
-    childMenu: [
-      { name: '자가소비', path: '/performance/self-consumption' },
-      { name: '발전사업', path: '/performance/power-generation' },
-      { name: '전기공사업', path: '/performance/electrical-work' },
-    ],
-  },
-  {
-    name: '홍보센터',
-    path: '/promotion',
-    childMenu: [
-      { name: '사회공헌', path: '/promotion/social-contribution' },
-      { name: '유튜브', path: '/promotion/youtube' },
-      { name: '틱톡', path: '/promotion/tiktok' },
-      { name: '블로그', path: '/promotion/blog' },
-    ],
-  },
-  {
-    name: '고객센터',
-    path: '/support',
-    childMenu: [
-      { name: '자주묻는질문', path: '/support/faq' },
-      { name: '공지사항', path: '/support/notice' },
-      { name: '견적문의', path: '/support/inquiry' },
-    ],
-  },
-]
+import { HEADER_MENU } from "@/shared/config/constants";
+
+import HeaderDesktop from "./HeaderDesktop";
+import HeaderMobile from "./HeaderMobile";
 
 export default function Header() {
   const { isDesktop } = useResponsive();
-  
-  const [isScrolled, setIsScrolled] = useState(false);
+  // 스크롤 상태
+  const [scrolled, setScrolled] = useState(false);
+  // 모바일 메뉴 상태
+  const [mobileOpen, setMobileOpen] = useState(false);
+  // 활성 메뉴 상태
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  // 타이머 참조
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // 스크롤 감지
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    });
+    const handler = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // 데스크톱 뷰포트로 전환 시 모바일 메뉴 닫기 (스타일이 아닌 상태로 제어)
+  useEffect(() => {
+    // const mql = window.matchMedia("(min-width: 62em)"); // Chakra lg
+    const handler = () => {
+      if (isDesktop) setMobileOpen(false);
+    };
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [isDesktop]);
+
+  // GNB hover 핸들러 (150ms 딜레이로 메뉴 ↔ Mega Menu 이동 시 자연스럽게 유지)
+  const handleEnter = (name: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setActiveMenu(name);
+  };
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setActiveMenu(null), 150);
+  };
+  const handleMegaEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  const currentMenu = HEADER_MENU.find((m) => m.name === activeMenu);
+  const megaOpen = !!activeMenu;
+
   return (
-    <Box 
-      width='100%' 
-      position='fixed' 
-      top={0} 
-      left={0} 
-      right={0} 
-      zIndex={1000}
-      transition='all 0.3s ease'
-      boxShadow={isScrolled ? '0 0 10px 0 rgba(0, 0, 0, 0.1)' : 'none'}
-      borderBottom={isScrolled ? '1px solid #e0e0e0' : 'none'}
-      backgroundColor={isScrolled ? 'white' : 'transparent'} 
-    >
-      {isDesktop && <HeaderDesktop logo={logo} isScrolled={isScrolled} headerMenu={headerMenu} />}
-      {!isDesktop && <HeaderMobile logo={logo} isScrolled={isScrolled} headerMenu={headerMenu} />}
-    </Box>
+    <>
+      <Box
+        as="header"
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        zIndex={1000}
+        bg={scrolled ? "white" : activeMenu || mobileOpen ? "gray.50" : "transparent"}
+        transition="background-color 0.35s ease, box-shadow 0.35s ease"
+        boxShadow={scrolled ? "0 2px 20px rgba(0,51,102,0.10)" : "none"}
+        onMouseLeave={handleLeave}
+      >
+        <Container maxW="container.xl" h="full">
+          <Flex
+            align="center"
+            justify="space-between"
+            h={scrolled ? "80px" : "100px"}
+            transition="height 0.35s ease"
+          >
+            {/* 로고 */}
+            <Link href="/" _hover={{ textDecoration: "none" }}>
+              <HStack>
+                <Flex>
+                  {/* <Image src={logo} alt="logo" width={8} height={8} objectFit="contain" /> */}
+                </Flex>
+                <VStack
+                  align="flex-start"
+                >
+                  <Text
+                    fontSize="9px"
+                    fontWeight="600"
+                    color={scrolled ? "gray.700" : activeMenu || mobileOpen ? "gray.700" : "white"}
+                    letterSpacing="0.15em"
+                    textTransform="uppercase"
+                    lineHeight={1}
+                  >
+                    HanaSolution
+                  </Text>
+                  <Text
+                    fontSize="18px"
+                    fontWeight="700"
+                    color={scrolled ? "gray.700" : activeMenu || mobileOpen ? "gray.700" : "white"}
+                    letterSpacing="0.1em"
+                    lineHeight={1.3}
+                  >
+                    하나솔루션
+                  </Text>
+                </VStack>
+              </HStack>
+            </Link>
+
+            <HStack
+              as="nav"
+              h="full"
+              display={isDesktop ? "flex" : "none"}
+            >
+              {HEADER_MENU.map((menu) => (
+                <Box
+                  key={menu.name}
+                  position="relative"
+                  h="full"
+                  display="flex"
+                  alignItems="center"
+                  px={8}
+                  cursor="pointer"
+                  fontSize="16px"
+                  fontWeight="800"
+                  color={
+                    scrolled ? "gray.700" : activeMenu ? "gray.700" : activeMenu === menu.name ? "orange.600" : "white"
+                  }
+                  transition="color 0.2s"
+                  _hover={{ color: "orange.600" }}
+                  onMouseEnter={() => handleEnter(menu.name)}
+                  whiteSpace="nowrap"
+                  letterSpacing="0.05em"
+                  fontFamily="NanumSquareNeo"
+                >
+                  {menu.name}
+                  {/* 하단 active 인디케이터 */}
+                  <Box
+                    position="absolute"
+                    bottom={0}
+                    left={5}
+                    right={5}
+                    h="3px"
+                    bg={"orange.500"}
+                    transform={
+                      activeMenu === menu.name ? "scaleX(1)" : "scaleX(0)"
+                    }
+                    transformOrigin="left"
+                    transition="transform 0.3s cubic-bezier(0.4,0,0.2,1)"
+                  />
+                </Box>
+              ))}
+            </HStack>
+
+            <HStack>
+              <IconButton
+                variant="plain"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                display={isDesktop ? "none" : "flex"}
+                color={scrolled ? "gray.700" : activeMenu || mobileOpen ? "gray.700" : "white"}
+              >
+                {mobileOpen ? <LucideX /> : <LucideMenu />}
+              </IconButton>
+            </HStack>
+          </Flex>
+        </Container>
+
+        {/* 메가 메뉴 */}
+        <HeaderDesktop
+          megaOpen={megaOpen}
+          currentMenu={currentMenu ?? null}
+          onMegaEnter={handleMegaEnter}
+          onMegaLeave={handleLeave}
+        />
+      </Box>
+
+      {/* 모바일 메뉴 */}
+      <HeaderMobile
+        open={mobileOpen}
+        scrolled={scrolled}
+        activeMenu={activeMenu}
+        headerMenu={HEADER_MENU}
+      />
+
+      {/* backdrop */}
+      <Box
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        bg="blackAlpha.400"
+        zIndex={999}
+        opacity={megaOpen ? 1 : 0}
+        pointerEvents={megaOpen ? "auto" : "none"}
+        transition="opacity 0.3s"
+        onClick={() => setActiveMenu(null)}
+      />
+    </>
   );
 }

@@ -28,6 +28,64 @@ export const COMPANY_KAKAO_CHANNEL_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAN
 // 카카오톡 채널톡 URL
 export const COMPANY_KAKAO_CHAT_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAT_URL as string || "https://pf.kakao.com/_KvpIX/chat";
 
+// 헤더 메뉴 데이터
+export const HEADER_MENU = [
+  {
+    name: "회사소개",
+    path: "/about",
+    childMenu: [
+      { name: "인사말", path: "/about/introduction" },
+      { name: "연혁", path: "/about/history" },
+      { name: "비전 및 가치", path: "/about/vision" },
+      { name: "조직도", path: "/about/organization" },
+      { name: "오시는 길", path: "/about/location" },
+    ],
+  },
+  {
+    name: "사업소개",
+    path: "/business",
+    childMenu: [
+      { name: "사업개요", path: "/business/introduction" },
+      { name: "가정용태양광", path: "/business/home-solar" },
+      { name: "자가용PPA", path: "/business/ppa" },
+      { name: "발전사업RPS", path: "/business/rps" },
+      { name: "주차장태양광", path: "/business/parking-solar" },
+      { name: "전기공사업", path: "/business/electrical-work" },
+      { name: "RE100", path: "/business/re100" },
+      { name: "리파워링", path: "/business/refurbishment" },
+      { name: "예상 수익계산기", path: "/business/profit-calculator" },
+    ],
+  },
+  {
+    name: "사업실적",
+    path: "/performance",
+    childMenu: [
+      { name: "자가소비", path: "/performance/self-consumption" },
+      { name: "발전사업", path: "/performance/power-generation" },
+      { name: "전기공사업", path: "/performance/electrical-work" },
+    ],
+  },
+  {
+    name: "홍보센터",
+    path: "/promotion",
+    childMenu: [
+      { name: "사회공헌", path: "/promotion/social-contribution" },
+      { name: "유튜브", path: "/promotion/youtube" },
+      { name: "틱톡", path: "/promotion/tiktok" },
+      { name: "블로그", path: "/promotion/blog" },
+    ],
+  },
+  {
+    name: "고객센터",
+    path: "/support",
+    childMenu: [
+      { name: "자주묻는질문", path: "/support/faq" },
+      { name: "공지사항", path: "/support/notice" },
+      { name: "견적문의", path: "/support/inquiry" },
+    ],
+  },
+];
+
 // 메인 페이지 배경 이미지
 export const HERO_BACKGROUND_IMAGES = [
   { image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=90" },
@@ -55,6 +113,18 @@ export const SUB_HERO_INFO = [
     title: "", 
     subtitle: "", 
     image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=80" 
+  },
+  { 
+    pathname: "/performance", 
+    title: "", 
+    subtitle: "", 
+    image: "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?auto=format&fit=crop&w=1920&q=80" 
+  },
+  { 
+    pathname: "/promotion", 
+    title: "", 
+    subtitle: "", 
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" 
   },
   { pathname: "/support", 
     title: "", 

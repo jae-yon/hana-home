@@ -1,101 +1,99 @@
-import { useState } from 'react';
+import { Box, Container, Flex, Link, Text } from "@chakra-ui/react";
 
-import { Box, Collapsible, Link, Text } from '@chakra-ui/react';
+export type HeaderMenu = {
+  name: string;
+  path: string;
+  childMenu: { name: string; path: string }[];
+};
 
-import { COMPANY_NAME } from '@/shared/config/constants';
-
-interface headerLayoutProps {
-  logo: string;
-  isScrolled: boolean;
-  headerMenu: { name: string, path: string, childMenu: { name: string, path: string }[] }[];
+interface HeaderDesktopProps {
+  megaOpen: boolean;
+  currentMenu: HeaderMenu | null;
+  onMegaEnter: () => void;
+  onMegaLeave: () => void;
 }
 
-export default function HeaderDesktop(props: headerLayoutProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function HeaderDesktop({
+  megaOpen,
+  currentMenu,
+  onMegaEnter,
+  onMegaLeave,
+}: HeaderDesktopProps) {
   return (
-    <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-      <Box display='flex' alignItems='center' justifyContent='center' marginTop={4} paddingTop={4}>
-        {/* logo */}
-        {/* <Image src={props.logo} alt='logo' width={16} objectFit='cover' padding={4} /> */}
-        <Link href='/' outline="none">
-          <Text fontSize='lg' fontWeight='semibold' color={props.isScrolled ? 'gray.800' : 'white'}>{COMPANY_NAME}</Text>
-        </Link>
-      </Box>
-      <Box
-        display='flex'
-        flexDirection='column'
-        alignItems='center'
-        justifyContent='center'
-        position='relative'
-        backgroundColor={!props.isScrolled ? '' : 'transparent'}
-        padding={4}
-        margin={4}
-        _hover={!props.isScrolled ? { backgroundColor: 'blackAlpha.300', borderRadius: 'xl', backdropFilter: 'blur(5px)', transition: 'all 1s ease-in-out' } : {}}
-      >
-        {/* menu */}
-        <Box 
-          display='flex' 
-          alignItems='start' 
-          justifyContent='center' 
-          gap={8} 
-          paddingX={4} 
-          onMouseEnter={() => setTimeout(() => setIsOpen(true))}
-          onMouseLeave={() => setTimeout(() => setIsOpen(false))}
-        >
-          {/* default menu */}
-          {props.headerMenu.map((menu) => (
-            <Box key={menu.name} display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-              <Link href={menu.path}>
-                <Text
-                  paddingX={10}
-                  paddingY={2}
-                  fontSize='lg'
-                  color={props.isScrolled ? 'gray.700' : 'white'}
-                  fontWeight='medium'
-                  transition='all 0.3s ease-in-out'
-                  borderBottom='2px solid transparent'
-                  _hover={{ borderBottomColor: 'orange.border', color: 'orange.border' }}
-                >
-                  {menu.name}
-                </Text>
-              </Link>
-              {/* sub menu */}
-              <Collapsible.Root open={isOpen}>
-                <Collapsible.Content>
-                  <Box
-                    display='flex'
-                    alignItems='center'
-                    flexDirection='column'
-                    justifyContent='center'
-                    gap={2}
-                    paddingY={2}
-                  >
-                    {menu.childMenu.map((child) => (
-                      <Link
-                        key={child.name}
-                        href={child.path}
-                        paddingX={4}
-                        paddingY={2}
-                        fontSize='sm'
-                        borderRadius='md'
-                        bg='transparent'
-                        color={props.isScrolled ? 'gray.700' : 'white'}
-                        fontWeight='medium'
-                        transition='all 0.3s ease-in-out'
-                        letterSpacing='0.1em'
-                        _hover={{ color: 'orange.border', backgroundColor: 'orange.100/50' }}
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
-                  </Box>
-                </Collapsible.Content>
-              </Collapsible.Root>
+    <Box
+      position="absolute"
+      top="100%"
+      left={0}
+      right={0}
+      bg="white"
+      boxShadow="0 8px 40px rgba(0,51,102,0.13)"
+      overflow="hidden"
+      maxH={megaOpen ? "360px" : "0px"}
+      opacity={megaOpen ? 1 : 0}
+      transition="max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease"
+      onMouseEnter={onMegaEnter}
+      onMouseLeave={onMegaLeave}
+      zIndex={1001}
+    >
+      {megaOpen && currentMenu && (
+        <Container maxW="container.xl" fontFamily="NanumSquareNeo">
+          <Flex py={10} gap={10} align="flex-start">
+            {/* 왼쪽: 메뉴 타이틀 */}
+            <Box
+              minW="180px"
+              pr={8}
+              borderRight="1px solid"
+              borderColor="gray.200"
+              flexShrink={0}
+            >
+              <Text
+                fontSize="12px"
+                fontWeight="900"
+                color="orange.600"
+                letterSpacing="0.12em"
+                textTransform="uppercase"
+                mb={2}
+              >
+                Menu
+              </Text>
+              <Text
+                fontSize="24px"
+                fontWeight="800"
+                color="blue.800"
+                lineHeight={1.2}
+              >
+                {currentMenu.name}
+              </Text>
             </Box>
-          ))}
-        </Box>
-      </Box>
+
+            {/* 오른쪽: 서브메뉴 링크 */}
+            <Flex flex={1} wrap="wrap" gap={0}>
+              {currentMenu.childMenu.map((child) => (
+                <Link
+                  key={child.path}
+                  href={child.path}
+                  display="flex"
+                  alignItems="center"
+                  w={{ base: "50%", md: "33%", lg: "20%" }}
+                  py={2}
+                  pr={4}
+                  fontSize="14px"
+                  fontWeight="600"
+                  color="gray.600"
+                  transition="color 0.2s, padding-left 0.2s"
+                  _hover={{
+                    color: "orange.600",
+                    paddingLeft: "6px",
+                    textDecoration: "none",
+                  }}
+                >
+                  {child.name}
+                </Link>
+              ))}
+            </Flex>
+          </Flex>
+        </Container>
+      )}
     </Box>
   );
 }
