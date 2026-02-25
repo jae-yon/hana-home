@@ -5,25 +5,20 @@ import Footer from '@/shared/components/footer';
 import SubHero from '@/shared/components/sub/SubHero';
 import FloatingActionButton from '@/shared/components/fab';
 
-import Portfolio from '@/domains/portfolio';
-
-import { PORTFOLIO_ITEMS } from '@/shared/config/constants';
+import Support from '@/domains/support';
 
 export default function PortfolioPage() {
   const { type } = useParams();
-  
-  if (!type) {
-    const defaultType = PORTFOLIO_ITEMS[0]?.type.toLowerCase() ?? 'ppa';
-    return <Navigate to={`/portfolio/${defaultType}`} replace />;
-  }
 
-  const items = PORTFOLIO_ITEMS.filter((item) => item.type.toLowerCase() === type.toLowerCase());
-  
+  if (!type || !['faq', 'notice'].includes(type)) {
+    return <Navigate to={`/support/faq`} replace />;
+  }
+    
   return (
     <>
       <Header />
       <SubHero />
-      <Portfolio type={type as 'ppa' | 'rps' | 'residential'} items={items} />
+      <Support type={type as 'faq' | 'notice'} />
       <Footer />
       <FloatingActionButton />
     </>

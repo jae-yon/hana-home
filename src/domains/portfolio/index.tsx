@@ -4,10 +4,10 @@ import { Flex } from '@chakra-ui/react';
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import PortfolioContents from './components/PortfolioContents';
-import PortfolioNavBarMobile from './components/PortfolioNavBarMobile';
-import PortfolioNavBarDesktop from './components/PortfolioNavBarDesktop';
 
 import { Portfolio as PortfolioType } from '@/types/common';
+
+import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
 const navItems: { name: string, path: string }[] = [
   { name: 'PPA', path: '/portfolio/ppa' },
@@ -16,11 +16,12 @@ const navItems: { name: string, path: string }[] = [
 ];
 
 interface PortfolioProps {
+  type: 'ppa' | 'rps' | 'residential';
   items: PortfolioType[];
 }
 
 export default function Portfolio(props: PortfolioProps) {
-  const { items } = props;
+  const { type, items } = props;
   const { isDesktop } = useResponsive();
   return (
     <Flex 
@@ -30,7 +31,7 @@ export default function Portfolio(props: PortfolioProps) {
       alignItems="center"
       justifyContent="center"
     >
-      {isDesktop ? <PortfolioNavBarDesktop items={navItems} /> : <PortfolioNavBarMobile items={navItems} />}
+      {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       <PortfolioContents isDesktop={isDesktop} items={items} />
     </Flex> 
   )

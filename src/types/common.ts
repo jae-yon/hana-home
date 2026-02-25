@@ -11,10 +11,19 @@ export interface Portfolio {
   id: number;
   image: string;
   title: string;
+  href?: string;
   module: string;
   inverter: string;
   capacity: string;
   isVisible: boolean;
   type: PortfolioType;
   isMainVisible: boolean;
+}
+
+// 자주묻는질문
+export interface FAQ {
+  id: number;
+  answer: string;
+  question: string;
+  isVisible: boolean;
 }

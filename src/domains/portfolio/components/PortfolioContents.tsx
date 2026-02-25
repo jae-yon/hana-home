@@ -1,6 +1,7 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
 
 import { Portfolio } from '@/types/common';
+import { Link, LucideExternalLink } from 'lucide-react';
 
 interface PortfolioContensProps {
   isDesktop: boolean;
@@ -70,17 +71,35 @@ export default function PortfolioContents(props: PortfolioContensProps) {
               borderRightColor="transparent"
               borderBottomColor="gray.200"
             >
-              <Heading
-                ml={1}
-                mb={4}
-                w="100%"
-                fontSize="lg"
-                color="gray.800"
-                textAlign="start"
-                fontWeight="medium"
-              >
-                {item.title}
-              </Heading>
+              <Box display="flex" flexDirection="row" justifyContent="space-between">
+                <Heading
+                  ml={1}
+                  mb={4}
+                  w="100%"
+                  fontSize="lg"
+                  color="gray.800"
+                  textAlign="start"
+                  fontWeight="medium"
+                >
+                  {item.title}
+                </Heading>
+                {item.href && (
+                    <IconButton
+                      size="sm"
+                      color="gray.800"
+                      bg="transparent"
+                      border="none"
+                      borderRadius="full"
+                      _hover={{
+                        bg: "gray.100",
+                      }}
+                      onClick={() => window.open(item.href, '_blank')}
+                    >
+                      <LucideExternalLink size={16} strokeWidth={2} />
+                    </IconButton>
+                  )
+                }
+              </Box>
               <Box display="flex" flexDirection="row" gap={4}>
                 <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">타입</Text>
                 <Text py={4} fontSize="sm" color="gray.700">{item.type === 'Residential' ? '가정용' : item.type === 'PPA' ? 'PPA' : 'RPS'}</Text>
