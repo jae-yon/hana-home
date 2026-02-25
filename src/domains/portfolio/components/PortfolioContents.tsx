@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
 
 import { Portfolio } from '@/types/common';
-import { Link, LucideExternalLink } from 'lucide-react';
+import { LucideExternalLink } from 'lucide-react';
 
 interface PortfolioContensProps {
   isDesktop: boolean;

@@ -42,11 +42,12 @@ export default function HeaderDesktop({
           <Flex py={10} gap={10} align="flex-start">
             {/* 왼쪽: 메뉴 타이틀 */}
             <Box
-              minW="180px"
               pr={8}
+              minW="180px"
+              flexShrink={0}
+              cursor="default"
               borderRight="1px solid"
               borderColor="gray.200"
-              flexShrink={0}
             >
               <Text
                 fontSize="12px"

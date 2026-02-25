@@ -1,5 +1,7 @@
 import { Box, Link, Stack, Text, Heading } from '@chakra-ui/react';
 
+import { COMPANY_NAVER_BLOG_URL, COMPANY_TIKTOK_URL, COMPANY_YOUTUBE_URL } from '@/shared/config/constants';
+
 export default function FooterSocial() {
   return (
     <Stack gap='20px' align={{ base: 'center', md: 'stretch' }} mx='auto'>
@@ -14,7 +16,7 @@ export default function FooterSocial() {
       >
         <Heading fontSize='lg' fontWeight='medium' color='gray.300'>홍보센터</Heading>
 
-        <Link href='#' target='_blank'>
+        <Link href={COMPANY_NAVER_BLOG_URL} target='_blank' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'
@@ -28,7 +30,7 @@ export default function FooterSocial() {
           </Text>
         </Link>
 
-        <Link href='#' target='_blank'>
+        <Link href={COMPANY_TIKTOK_URL} target='_blank' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'
@@ -42,7 +44,7 @@ export default function FooterSocial() {
           </Text>
         </Link>
         
-        <Link href='#' target='_blank'>
+        <Link href={COMPANY_YOUTUBE_URL} target='_blank' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'

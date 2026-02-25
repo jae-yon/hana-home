@@ -52,7 +52,7 @@ export default function HeroContents() {
                 variant='solid'
                 color='white'
                 bg='orange.600'
-                borderRadius='xl'
+                borderRadius='lg'
                 px={10}
                 py={6}
                 fontSize='lg'
@@ -68,7 +68,7 @@ export default function HeroContents() {
                 variant='outline'
                 color='whiteAlpha.900'
                 borderColor='white'
-                borderRadius='xl'
+                borderRadius='lg'
                 px={6}
                 py={6}
                 fontSize='lg'

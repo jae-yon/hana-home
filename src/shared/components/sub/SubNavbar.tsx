@@ -30,21 +30,21 @@ export function SubNavbarDesktop(props: SubNavbarProps) {
     >
       {items.map((item) => (
         <Button
-          key={item.path}
-          py={10}
           px={10}
+          py={10}
           h="auto"
           minW="auto"
           border="none"
           fontSize="lg"
-          color={type === item.path.split('/')[2] ? 'white' : 'white'}
-          bg={type === item.path.split('/')[2] ? 'orange.500' : 'transparent'}
+          key={item.path}
           borderRadius={0}
           overflow="hidden"
           position="relative"
           fontWeight="semibold"
           letterSpacing="0.2em"
           fontFamily="NanumSquareNeo"
+          color={type === item.path.split('/')[2] ? 'white' : 'white'}
+          bg={type === item.path.split('/')[2] ? 'orange.500' : 'transparent'}
           _before={{
             content: '""',
             position: 'absolute',

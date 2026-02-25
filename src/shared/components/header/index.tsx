@@ -131,24 +131,26 @@ export default function Header() {
             >
               {HEADER_MENU.map((menu) => (
                 <Box
-                  key={menu.name}
-                  position="relative"
-                  h="full"
-                  display="flex"
-                  alignItems="center"
                   px={8}
-                  cursor="pointer"
+                  h="full"
+                  as={Link}
+                  display="flex"
                   fontSize="16px"
+                  key={menu.name}
                   fontWeight="800"
-                  color={
-                    scrolled ? "gray.700" : activeMenu ? "gray.700" : activeMenu === menu.name ? "orange.600" : "white"
-                  }
-                  transition="color 0.2s"
-                  _hover={{ color: "orange.600" }}
-                  onMouseEnter={() => handleEnter(menu.name)}
+                  cursor="pointer"
+                  alignItems="center"
+                  position="relative"
                   whiteSpace="nowrap"
                   letterSpacing="0.05em"
                   fontFamily="NanumSquareNeo"
+                  _hover={{ color: "orange.600" }}
+                  transition="color 0.3s ease-in-out"
+                  onMouseEnter={() => handleEnter(menu.name)}
+                  onClick={() => handleExternalLink(menu.path)}
+                  color={
+                    scrolled ? "gray.700" : activeMenu ? "gray.700" : activeMenu === menu.name ? "orange.600" : "white"
+                  }
                 >
                   {menu.name}
                   {/* 하단 active 인디케이터 */}
