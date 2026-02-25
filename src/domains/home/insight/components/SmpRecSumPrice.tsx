@@ -125,7 +125,7 @@ export function SmpRecSumPrice(props: SmpRecSumPriceProps) {
           <Flex justify='center' align='center'>
             <Stack textAlign='center' gap={1}>
               <Heading fontSize='2xl' fontWeight='medium' color='gray.800' fontFamily='Pretendard'>
-                SMP + (REC x <Text as='span' color='orange.600'>{weight.toFixed(1)}</Text>)
+                SMP＋(REC × <Text as='span' color='orange.600'>{weight.toFixed(1)}</Text>)
               </Heading>
               <Text fontSize='sm' fontWeight='bold' letterSpacing='-0.05em' color='gray.500' fontFamily='NanumSquareNeo'>
                 {formattedDate}
