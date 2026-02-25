@@ -11,6 +11,7 @@ interface HeaderDesktopProps {
   currentMenu: HeaderMenu | null;
   onMegaEnter: () => void;
   onMegaLeave: () => void;
+  handleExternalLink: (path: string) => void;
 }
 
 export default function HeaderDesktop({
@@ -18,6 +19,7 @@ export default function HeaderDesktop({
   currentMenu,
   onMegaEnter,
   onMegaLeave,
+  handleExternalLink,
 }: HeaderDesktopProps) {
   return (
     <Box
@@ -71,7 +73,7 @@ export default function HeaderDesktop({
               {currentMenu.childMenu.map((child) => (
                 <Link
                   key={child.path}
-                  href={child.path}
+                  onClick={() => handleExternalLink(child.path)}
                   display="flex"
                   alignItems="center"
                   w={{ base: "50%", md: "33%", lg: "20%" }}
@@ -86,6 +88,7 @@ export default function HeaderDesktop({
                     paddingLeft: "6px",
                     textDecoration: "none",
                   }}
+                  outline="none"
                 >
                   {child.name}
                 </Link>

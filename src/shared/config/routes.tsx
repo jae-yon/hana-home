@@ -3,19 +3,20 @@ import NotFoundPage from '@/pages/NotFoundPage';
 import PortfolioPage from '@/pages/PortfolioPage';
 
 export const ROUTES = [
-  { path: '*', 
-    element: <NotFoundPage /> 
-  },
-  { 
-    path: '/', 
-    element: <MainPage /> 
+  {
+    path: '/',
+    element: <MainPage />,
   },
   {
     path: '/portfolio',
-    element: <PortfolioPage />
+    element: <PortfolioPage />,
   },
-  { 
-    path: '/portfolio/:type', 
-    element: <PortfolioPage /> 
+  {
+    path: '/portfolio/:type',
+    element: <PortfolioPage />,
   },
-]
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+];

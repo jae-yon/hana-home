@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { LucideMenu, LucideX } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link } from "@chakra-ui/react";
 
@@ -11,6 +12,8 @@ import HeaderDesktop from "./HeaderDesktop";
 import HeaderMobile from "./HeaderMobile";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   const { isDesktop } = useResponsive();
   // 스크롤 상태
   const [scrolled, setScrolled] = useState(false);
@@ -43,11 +46,26 @@ export default function Header() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveMenu(name);
   };
+
   const handleLeave = () => {
     closeTimer.current = setTimeout(() => setActiveMenu(null), 150);
   };
+
   const handleMegaEnter = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  const handleExternalLink = (path: string) => {
+    const isExternal =
+      path.startsWith("www.") ||
+      path.startsWith("http://") ||
+      path.startsWith("https://");
+    if (isExternal) {
+      const url = path.startsWith("http") ? path : `https://${path}`;
+      window.open(url, "_blank");
+    } else {
+      navigate(path);
+    }
   };
 
   const currentMenu = HEADER_MENU.find((m) => m.name === activeMenu);
@@ -75,7 +93,7 @@ export default function Header() {
             transition="height 0.35s ease"
           >
             {/* 로고 */}
-            <Link href="/" _hover={{ textDecoration: "none" }}>
+            <Link onClick={() => handleExternalLink('/')} _hover={{ textDecoration: "none" }} outline="none">
               <HStack>
                 <Flex>
                   {/* <Image src={logo} alt="logo" width={8} height={8} objectFit="contain" /> */}
@@ -170,6 +188,7 @@ export default function Header() {
           currentMenu={currentMenu ?? null}
           onMegaEnter={handleMegaEnter}
           onMegaLeave={handleLeave}
+          handleExternalLink={handleExternalLink}
         />
       </Box>
 
@@ -179,6 +198,7 @@ export default function Header() {
         scrolled={scrolled}
         activeMenu={activeMenu}
         headerMenu={HEADER_MENU}
+        handleExternalLink={handleExternalLink}
       />
 
       {/* backdrop */}

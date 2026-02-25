@@ -28,6 +28,15 @@ export const COMPANY_KAKAO_CHANNEL_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAN
 // 카카오톡 채널톡 URL
 export const COMPANY_KAKAO_CHAT_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAT_URL as string || "https://pf.kakao.com/_KvpIX/chat";
 
+// 네이버 블로그 URL
+export const COMPANY_NAVER_BLOG_URL = import.meta.env.VITE_COMPANY_NAVER_BLOG_URL as string || "https://blog.naver.com/hanasolution__";
+
+// 틱톡 URL
+export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as string || "https://www.instagram.com/climbing_sj";
+
+// 유튜브 URL
+export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "https://www.youtube.com/@DingoMusic";
+
 // 헤더 메뉴 데이터
 export const HEADER_MENU = [
   {
@@ -57,12 +66,12 @@ export const HEADER_MENU = [
     ],
   },
   {
-    name: "사업실적",
-    path: "/performance",
+    name: "시공사례",
+    path: "/portfolio",
     childMenu: [
-      { name: "자가소비", path: "/performance/self-consumption" },
-      { name: "발전사업", path: "/performance/power-generation" },
-      { name: "전기공사업", path: "/performance/electrical-work" },
+      { name: "PPA", path: "/portfolio/ppa" },
+      { name: "RPS", path: "/portfolio/rps" },
+      { name: "가정용태양광", path: "/portfolio/residential" },
     ],
   },
   {
@@ -70,9 +79,9 @@ export const HEADER_MENU = [
     path: "/promotion",
     childMenu: [
       { name: "사회공헌", path: "/promotion/social-contribution" },
-      { name: "유튜브", path: "/promotion/youtube" },
-      { name: "틱톡", path: "/promotion/tiktok" },
-      { name: "블로그", path: "/promotion/blog" },
+      { name: "유튜브", path: COMPANY_YOUTUBE_URL },
+      { name: "틱톡", path: COMPANY_TIKTOK_URL },
+      { name: "블로그", path: COMPANY_NAVER_BLOG_URL },
     ],
   },
   {
@@ -284,9 +293,9 @@ import youtube from '@/assets/images/social/youtube.png';
 
 // Floating Action Button
 export const PROMOTION_NAV_LINKS = [
-  { name: '유튜브', image: youtube, url: '/#' },
-  { name: '틱톡', image: tiktok, url: '/#' },
-  { name: '블로그', image: blog, url: '/#' },
+  { name: '유튜브', image: youtube, url: COMPANY_YOUTUBE_URL },
+  { name: '틱톡', image: tiktok, url: COMPANY_TIKTOK_URL },
+  { name: '블로그', image: blog, url: COMPANY_NAVER_BLOG_URL },
   { name: '카카오톡', image: kakao, url: COMPANY_KAKAO_CHAT_URL },
 ];
 

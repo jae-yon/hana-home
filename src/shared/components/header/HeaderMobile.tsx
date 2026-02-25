@@ -11,6 +11,7 @@ interface HeaderMobileProps {
   scrolled: boolean;
   activeMenu: string | null;
   headerMenu: HeaderMenu[];
+  handleExternalLink: (path: string) => void;
 }
 
 export default function HeaderMobile({
@@ -18,6 +19,7 @@ export default function HeaderMobile({
   scrolled,
   activeMenu,
   headerMenu,
+  handleExternalLink,
 }: HeaderMobileProps) {
   return (
     <Collapsible.Root open={open}>
@@ -44,7 +46,7 @@ export default function HeaderMobile({
               {headerMenu.map((menu) => (
                 <Box key={menu.name}>
                   <Link
-                    href={menu.path}
+                    onClick={() => handleExternalLink(menu.path)}
                     display="block"
                     py={3}
                     px={2}
@@ -61,7 +63,7 @@ export default function HeaderMobile({
                     {menu.childMenu.map((child) => (
                       <Link
                         key={child.path}
-                        href={child.path}
+                        onClick={() => handleExternalLink(child.path)}
                         display="block"
                         py={2}
                         fontSize="14px"
@@ -72,6 +74,7 @@ export default function HeaderMobile({
                           textDecoration: "none",
                         }}
                         transition="all 0.3s ease-in-out"
+                        outline="none"
                       >
                         {child.name}
                       </Link>
