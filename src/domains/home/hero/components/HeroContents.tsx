@@ -13,65 +13,75 @@ export default function HeroContents() {
         alignItems='center'
         justifyContent='center'
       >
-        <Impactor direction='top'>
-          <Stack
-            gap={9}
-            maxW='600px'
-            align='center'
-            textAlign='center'
-          >
+        <Stack
+          maxW='600px'
+          align='center'
+          cursor='default'
+          textAlign='center'
+        >
+          <Impactor direction='top' delay={1}>
             <Heading
-              fontSize={{ base: "36px", md: "48px" }}
+              mb={8}
+              color="white"
               fontWeight="700"
               lineHeight="1.35"
-              letterSpacing="-0.02em"
+              textAlign="center"
               wordBreak="keep-all"
+              fontFamily="Pretendard"
+              letterSpacing="0.025em"
               overflowWrap="break-word"
-              textAlign="center"
-              color="white"
-              fontFamily='Pretendard'
+              textShadow="2px 2px 4px rgba(0,0,0,0.3)"
+              fontSize={{ base: "28px", sm: "32px", md: "48px", lg: "56px" }}
             >
-              {/* 안정적인 발전 <br />확실한 수익 구조 */}
-              {/* 안정적인 에너지<br />전략적인 선택 */}
-              {/* 에너지 투자의 수익을 설계합니다 */}
-              {/* 재생에너지 전환 선택이 아닌 경쟁력입니다 */}
-              <Text as='span' color="#66CC55">지속가능한</Text> <Text as='span' color="#66CC55">에너지</Text> 선택이 아닌<br /> <Text as='span' color="white" fontWeight="790">경쟁력</Text>입니다
+              <Text as='span' color="#66CC55">지속가능한</Text>&nbsp;
+              <Text as='span' color="#66CC55">에너지</Text>&nbsp;선택이 아닌&nbsp;
+              <Text as='span' color="white">경쟁력</Text>입니다.
             </Heading>
-            
+          </Impactor>
+          
+          <Impactor direction='top' delay={1.2}>
             <Text
-              fontSize={{ base: "16px", md: "18px" }}
-              fontWeight="700"
-              lineHeight="1.7"
-              textAlign="center"
+              mb={8}
               color="white"
-              fontFamily=''
-              letterSpacing='0.05em'
+              fontWeight="700"
+              lineHeight="1.35"
+              textAlign="center"
+              wordBreak="keep-all"
+              letterSpacing="0.05em"
+              fontFamily="Pretendard"
+              overflowWrap="break-word"
+              textShadow="2px 2px 4px rgba(0,0,0,0.3)"
+              fontSize={{ base: "16px", sm: "18px", md: "20px", lg: "24px" }}
             >
-              <Text as='span' color="#F97316">㈜</Text><Text as='span' color="#FF7A00">하나솔루션</Text>은 기술과 신뢰를 기반으로<br />
-              지속 가능한 전력 가치를 함께 설계합니다.
+              <Text as='span' color="#F97316">㈜</Text><Text as='span' color="#FF7A00">하나솔루션</Text>은 기술과 신뢰를 기반으로 
+              <br />지속 가능한 전력 가치를 함께 설계합니다.
             </Text>
-            
+          </Impactor>
+          
+          <Impactor direction='top' delay={1.4}>
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4} align='center' justify='center'>
               <Button
-                size='2xl'
-                variant='solid'
-                color='white'
-                bg='#F97316'
-                borderRadius='lg'
-                px={16}
+                px={12}
                 py={6}
+                size='xl'
+                shadow='xl'
+                bg='#F97316'
+                color='white'
                 fontSize='xl'
-                fontWeight='medium'
-                letterSpacing='0.05em'
-                _hover={{ transform: 'translateY(-2px)', shadow: 'lg' }}
-                transition='all 0.2s'
-                shadow='lg'
+                variant='solid'
+                borderRadius='lg'
+                fontWeight='700'
+                letterSpacing='0.15em'
+                fontFamily='NanumSquareNeo'
+                transition='all 0.3s ease-in-out'
+                boxShadow="2px 2px 4px rgba(0,0,0,0.3)"
+                _hover={{ transform: 'translateY(-3px)', bg: 'orange.600' }}
               >
                 견적문의
               </Button>
             </Stack>
-          </Stack>
-        </Impactor>
+          </Impactor>
+        </Stack>
       </Container>
   );
 }

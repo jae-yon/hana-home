@@ -1,6 +1,6 @@
-import { Box, Image } from '@chakra-ui/react';
-
 import { useEffect, useState } from 'react';
+
+import { Box, Image } from '@chakra-ui/react';
 
 import { HERO_BACKGROUND_IMAGES, FADE_DURATION_MS, SLIDE_INTERVAL_MS } from '@/shared/config/constants';
 
