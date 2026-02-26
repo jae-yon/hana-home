@@ -26,7 +26,7 @@ export default function FooterCompany() {
         textAlign={{ base: 'center', md: 'left' }}
         alignItems={{ base: 'center', md: 'flex-start' }}
       >
-        <Text as='span' color='gray.400' fontSize='sm'>대표: {COMPANY_REPRESENTATIVE}</Text>
+        <Text as='span' color='gray.400' fontSize='sm'>대표이사: {COMPANY_REPRESENTATIVE}</Text>
         <Text as='span' color='gray.400' fontSize='sm'>사업자등록번호: {COMPANY_BUSINESS_NUMBER}</Text> 
         <Text as='span' color='gray.400' fontSize='sm'>전기공사업번호: {COMPANY_ELECTRIC_BUSINESS_NUMBER}</Text> 
         <Text as='span' color='gray.400' fontSize='sm'>주소: {COMPANY_ADDRESS}</Text>

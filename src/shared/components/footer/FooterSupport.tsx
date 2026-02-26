@@ -22,7 +22,7 @@ export default function FooterSupport() {
 
         <Text fontSize='3xl' textAlign='center' fontWeight='semibold' color='gray.400'>{COMPANY_PHONE_NUMBER}</Text>
 
-        <Text fontSize='xs' textAlign='center' fontWeight='medium' color='gray.400'>평일 09:00 - 18:00 <br />(공휴일, 주말 제외)</Text>
+        <Text fontSize='xs' textAlign='center' fontWeight='medium' color='gray.400'>평일 10:00 - 17:00 <br />(공휴일, 주말 제외)</Text>
 
         <Button
           size='xs'

@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Link, Text } from '@chakra-ui/react';
 import { LucideArrowRight } from 'lucide-react';
 
-const FOLDED_W = { base: "100%", md: "120px" };
-const EXPANDED_W = { base: "100%", md: "calc(100% - 2 * 120px)" };
+const FOLDED_W = { base: "100%", md: "240px" };
+const EXPANDED_W = { base: "100%", md: "calc(100% - 2 * 240px)" };
 
 interface BusinessCardProps {
   item: {

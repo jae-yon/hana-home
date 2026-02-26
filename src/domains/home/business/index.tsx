@@ -13,7 +13,7 @@ const businessItems = [
     title: "태양광 PPA",
     subtitle: "Power Purchase Agreement",
     description:
-      "설비 투자 없이 태양광을 설치하고 장기 계약으로 전기를 구매하여, 재생에너지 사용을 공식적으로 인정받을 수 있습니다.",
+      "태양광 설비를 통해 생산된 전기를 건물에서 우선 사용하고, 남는 전력은 판매하여 추가 수익을 창출하는 전력 활용 방식입니다.",
     image: "https://images.unsplash.com/photo-1552197892-f2ad2f75e7c8?auto=format&fit=crop&w=1920&q=90",
     accent: "#2980B9",
     href: "#research",
@@ -82,9 +82,9 @@ export default function Business() {
       minH="100vh"
       bg="#0c0e14"
       py={{ base: "48px", md: "80px" }}
-      px={{ base: "20px", md: "60px", lg: "80px" }}
+      px={{ base: "20px"}}
     >
-      <Box mb={{ base: "40px", md: "64px" }} maxW="650px">
+      <Box mb={{ base: "40px", md: "64px" }} lg={{ px: "72px" }} maxW="640px">
         <Impactor direction="bottom" once delay={1}>
           <BusinessHead />
         </Impactor>

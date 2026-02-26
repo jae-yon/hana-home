@@ -15,13 +15,13 @@ export default function HeroContents() {
       >
         <Impactor direction='top'>
           <Stack
-            gap={6}
+            gap={9}
             maxW='600px'
             align='center'
             textAlign='center'
           >
             <Heading
-              fontSize={{ base: "36px", md: "52px" }}
+              fontSize={{ base: "36px", md: "48px" }}
               fontWeight="700"
               lineHeight="1.35"
               letterSpacing="-0.02em"
@@ -29,57 +29,45 @@ export default function HeroContents() {
               overflowWrap="break-word"
               textAlign="center"
               color="white"
+              fontFamily='Pretendard'
             >
-              전기 요금 고민을 줄이는<br /> 현명한 선택
+              {/* 안정적인 발전 <br />확실한 수익 구조 */}
+              {/* 안정적인 에너지<br />전략적인 선택 */}
+              {/* 에너지 투자의 수익을 설계합니다 */}
+              {/* 재생에너지 전환 선택이 아닌 경쟁력입니다 */}
+              <Text as='span' color="#66CC55">지속가능한</Text> <Text as='span' color="#66CC55">에너지</Text> 선택이 아닌<br /> <Text as='span' color="white" fontWeight="790">경쟁력</Text>입니다
             </Heading>
             
             <Text
               fontSize={{ base: "16px", md: "18px" }}
-              fontWeight="medium"
+              fontWeight="700"
               lineHeight="1.7"
               textAlign="center"
               color="white"
+              fontFamily=''
+              letterSpacing='0.05em'
             >
-              누구나 쉽고 안전하게
-              태양광 에너지에 투자 할 수 있도록
-              태양광 에너지 산업을 선도하는 하나솔루션이
-              더 나은 미래를 제시합니다.
+              <Text as='span' color="#F97316">㈜</Text><Text as='span' color="#FF7A00">하나솔루션</Text>은 기술과 신뢰를 기반으로<br />
+              지속 가능한 전력 가치를 함께 설계합니다.
             </Text>
             
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4} align='center' justify='center'>
               <Button
-                size='xl'
+                size='2xl'
                 variant='solid'
                 color='white'
-                bg='orange.600'
+                bg='#F97316'
                 borderRadius='lg'
-                px={10}
+                px={16}
                 py={6}
-                fontSize='lg'
+                fontSize='xl'
                 fontWeight='medium'
+                letterSpacing='0.05em'
                 _hover={{ transform: 'translateY(-2px)', shadow: 'lg' }}
                 transition='all 0.2s'
+                shadow='lg'
               >
-                문의하기
-              </Button>
-              
-              <Button
-                size='xl'
-                variant='outline'
-                color='whiteAlpha.900'
-                borderColor='white'
-                borderRadius='lg'
-                px={6}
-                py={6}
-                fontSize='lg'
-                fontWeight='medium'
-                _hover={{
-                  bg: 'whiteAlpha.400',
-                  transform: 'translateY(-2px)'
-                }}
-                transition='all 0.2s'
-              >
-                더 알아보기
+                견적문의
               </Button>
             </Stack>
           </Stack>

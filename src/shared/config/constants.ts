@@ -17,7 +17,7 @@ export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string ||
 export const COMPANY_PHONE_NUMBER = import.meta.env.VITE_COMPANY_PHONE_NUMBER as string || "1577-1497";
 
 // 팩스번호
-export const COMPANY_FAX_NUMBER = import.meta.env.VITE_COMPANY_FAX_NUMBER as string || "504-427-5924";
+export const COMPANY_FAX_NUMBER = import.meta.env.VITE_COMPANY_FAX_NUMBER as string || "0504-427-5924";
 
 // 이메일
 export const COMPANY_EMAIL = import.meta.env.VITE_COMPANY_EMAIL as string || "hnsolution1116@naver.com";
@@ -40,13 +40,10 @@ export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as s
 // 헤더 메뉴 데이터
 export const HEADER_MENU = [
   {
-    name: "회사소개",
+    name: "기업정보",
     path: "/about",
     childMenu: [
-      { name: "인사말", path: "/about/introduction" },
-      { name: "연혁", path: "/about/history" },
-      { name: "비전 및 가치", path: "/about/vision" },
-      { name: "조직도", path: "/about/organization" },
+      { name: "회사소개", path: "/about/introduction" },
       { name: "오시는 길", path: "/about/location" },
     ],
   },
@@ -240,7 +237,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     inverter: '현대 125kw 5대',
     capacity: '489.6kw',
     isVisible: true,
-    isMainVisible: false,
+    isMainVisible: true,
   },
   {
     id: 7,
@@ -252,7 +249,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     inverter: '현대 125kw 1대, 현대 60kw 1대',
     capacity: '118.745kw',
     isVisible: true,
-    isMainVisible: false,
+    isMainVisible: true,
   },
   {
     id: 8,
@@ -264,12 +261,12 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     inverter: '현대 125kw 4대, 현대 60kw 1대',
     capacity: '446.875kw',
     isVisible: true,
-    isMainVisible: false,
+    isMainVisible: true,
   },
   {
     id: 9,
     image: portfolioRpsImage04,
-    title: '전북 전주시 주차장',
+    title: '전북 전주시 부설주차장',
     subtitle: '지상형(주차장)',
     type: 'RPS',
     module: '한화 635w 155장',
@@ -300,7 +297,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     inverter: '현대 60kw 2대',
     capacity: '97.5kw',
     isVisible: true,
-    isMainVisible: false,
+    isMainVisible: true,
   },
   {
     id: 12,
@@ -360,7 +357,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     inverter: '금비전자 3.7kw 5대',
     capacity: '15.24kw',
     isVisible: true,
-    isMainVisible: false,
+    isMainVisible: true,
   },
 ]
 
@@ -368,62 +365,44 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
 export const FAQ_ITEMS: FAQ[] = [
   {
     id: 1,
-    question: "두쫀쿠는 어떻게 만드나요?",
-    answer: "초코 쿠키 반죽 속에 버터에 볶은 바삭한 카다이프와 고소한 피스타치오 페이스트를 가득 채워 구워내면 겉은 쫀득하고 속은 바삭한 '두바이 쿠키'가 완성됩니다.",
+    question: "태양광이란 무엇인가요?",
+    answer: "태양광은 태양의 빛 에너지를 이용해 전기를 생산하는 친환경 발전 시스템입니다. 태양광 사업은 가정용 태양광(상계거래), 자가소비형 PPA, 발전사업(RPS) 등으로 나뉘며 각 사업 유형에 따라 설치 비용 및 소요 기간이 상이할 수 있습니다.",
     isVisible: true,
   },
   {
     id: 2,
-    question: "클라이밍에는 어떤 종류가 있나요?",
-    answer: "대표적으로 볼더링, 리드 클라이밍, 스피드 클라이밍이 있습니다. 볼더링은 낮은 벽에서 로프 없이 진행하며, 리드는 로프를 사용해 높은 벽을 오르는 방식입니다. 스피드는 정해진 루트를 얼마나 빠르게 오르는지 기록을 겨루는 종목입니다.",
+    question: "가정용 태양광이 무엇인가요?",
+    answer: "가정용 태양광은 우리 집(지붕,마당 등)에 설치된 태양광 설비로 전기를 직접 생산하여 우선 사용하고, 남은 전력은 한전으로 역전송되어 다음 달 전기요금에서 차감되는 구조입니다. 전력이 계속 남을 경우 다음 달로 이월되어 장기적으로 전기요금 부담을 줄이는 효과가 있습니다.",
     isVisible: true,
   },
   {
     id: 3,
-    question: "결제는 어떤 방식으로 진행되나요?",
-    answer: "신용카드, 계좌이체, 간편결제를 통해 결제가 가능하며, 결제 완료 후 즉시 서비스가 활성화됩니다.",
+    question: "PPA가 무엇인가요?",
+    answer: "자가소비형 PPA는 건물 지붕 등에 태양광 설비를 설치하여 생산된 전기를 해당 사업장에서 우선 사용하고, 남는 전력은 판매하여 추가 수익을 창출하는 방식입니다. 즉, 전기요금 절감과 발전 수익을 동시에 기대할 수 있는 구조입니다.",
     isVisible: true,
   },
   {
     id: 4,
-    question: "환불은 가능한가요?",
-    answer: "결제일로부터 7일 이내이며 서비스 사용 이력이 없는 경우 전액 환불이 가능합니다.",
+    question: "RPS가 무엇인가요?",
+    answer: "RPS(신재생에너지 공급의무화 제도)는 태양광 설비로 생산한 전력을 판매하여 SMP(전력 판매대금)와 REC 수익을 창출하는 발전사업 방식입니다. 사업장 내 유휴부지나 건물 지붕을 활용해 전기 사용 여부와 관계없이 장기적인 수익 창출이 가능합니다.",
     isVisible: true,
   },
   {
     id: 5,
-    question: "기업 회원도 가입할 수 있나요?",
-    answer: "네, 기업 회원 가입이 가능하며 별도의 사업자 인증 절차를 거치게 됩니다.",
+    question: "SMP란?",
+    answer: "태양광으로 생산된 전기를 한국전력 전력망을 통해 전력거래소 전력시장에 판매하고 전기 판매대금을 매월 정산받는 수익입니다.",
     isVisible: true,
   },
   {
     id: 6,
-    question: "이메일 인증이 오지 않아요.",
-    answer: "스팸 메일함을 먼저 확인해 주세요. 그래도 확인되지 않는 경우 고객센터로 문의해 주세요.",
+    question: "REC란?",
+    answer: "태양광 발전 시 발급되는 신재생에너지 인증서로, RPS 의무가 있는 발전사에 별도로 판매하여 추가 수익 창출이 가능합니다.",
     isVisible: true,
   },
   {
     id: 7,
-    question: "서비스 이용 시간은 어떻게 되나요?",
-    answer: "서비스는 24시간 이용 가능하며, 정기 점검 시에는 사전 공지를 통해 안내드립니다.",
-    isVisible: true,
-  },
-  {
-    id: 8,
-    question: "계정을 탈퇴하고 싶어요.",
-    answer: "마이페이지 > 회원정보 수정 메뉴에서 탈퇴 신청이 가능합니다. 탈퇴 시 모든 데이터는 삭제됩니다.",
-    isVisible: true,
-  },
-  {
-    id: 9,
-    question: "모바일에서도 이용할 수 있나요?",
-    answer: "네, 반응형 웹으로 제작되어 모바일과 태블릿에서도 동일하게 이용 가능합니다.",
-    isVisible: true,
-  },
-  {
-    id: 10,
-    question: "고객센터 운영 시간은 언제인가요?",
-    answer: "고객센터는 평일 오전 9시부터 오후 6시까지 운영됩니다. 주말 및 공휴일은 휴무입니다.",
+    question: "태양광을 설치하는데 조건이 필요한가요?",
+    answer: "태양광 설치를 위해서는 몇 가지 설치 조건 확인이 필요합니다. 태양광 설치 조건은 여러 가지가 있지만 가장 우선적으로 확인해야 할 부분은 한전 선로 확보 여부입니다. 모든 태양광은 생산된 전기를 전력망으로 송전해야 하기 때문에 계통 연계 가능 여부에 따라 설치 가능 용량 및 사업 진행 여부가 결정될 수 있습니다.",
     isVisible: true,
   },
 ];

@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { LucideMenu, LucideX } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link, Image } from "@chakra-ui/react";
 
 import { useResponsive } from "@/shared/hooks/useResponsive";
+
+import logo from "@/assets/logo.png";
 
 import { HEADER_MENU } from "@/shared/config/constants";
 
@@ -96,7 +98,7 @@ export default function Header() {
             <Link onClick={() => handleExternalLink('/')} _hover={{ textDecoration: "none" }} outline="none">
               <HStack>
                 <Flex>
-                  {/* <Image src={logo} alt="logo" width={8} height={8} objectFit="contain" /> */}
+                  <Image src={logo} alt="logo" width={16} height={16} objectFit="contain" />
                 </Flex>
                 <VStack
                   align="flex-start"
@@ -118,7 +120,7 @@ export default function Header() {
                     letterSpacing="0.1em"
                     lineHeight={1.3}
                   >
-                    하나솔루션
+                    ㈜하나솔루션
                   </Text>
                 </VStack>
               </HStack>

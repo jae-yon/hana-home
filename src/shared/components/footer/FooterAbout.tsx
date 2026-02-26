@@ -12,7 +12,7 @@ export default function FooterAbout() {
         gap={6}
         fontFamily='Pretendard'
       >
-        <Heading fontSize='lg' fontWeight='medium' color='gray.300'>회사소개</Heading>
+        <Heading fontSize='lg' fontWeight='medium' color='gray.300'>기업정보</Heading>
 
         <Link href='#' target='_blank'>
           <Text 
@@ -24,7 +24,7 @@ export default function FooterAbout() {
             }}
             transition='all 0.3s ease-in-out'
           >
-            인사말
+            회사소개
           </Text>
         </Link>
 
@@ -38,7 +38,7 @@ export default function FooterAbout() {
             }}
             transition='all 0.3s ease-in-out'
           >
-            비전 및 가치
+            오시는 길
           </Text>
         </Link>
         
@@ -52,7 +52,7 @@ export default function FooterAbout() {
             }}
             transition='all 0.3s ease-in-out'
           >
-            오시는길
+            
           </Text>
         </Link>
       </Box>
