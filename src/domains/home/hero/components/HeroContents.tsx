@@ -34,8 +34,8 @@ export default function HeroContents() {
               fontSize={{ base: "28px", sm: "32px", md: "48px", lg: "56px" }}
             >
               <Text as='span' color="#66CC55">지속가능한</Text>&nbsp;
-              <Text as='span' color="#66CC55">에너지</Text>&nbsp;선택이 아닌&nbsp;
-              <Text as='span' color="white">경쟁력</Text>입니다.
+              <Text as='span' color="#66CC55">에너지</Text><br />
+              선택이 아닌&nbsp;<Text as='span' color="white">경쟁력</Text>입니다.
             </Heading>
           </Impactor>
           

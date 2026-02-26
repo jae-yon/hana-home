@@ -1,5 +1,5 @@
 import { Box, Button, Flex, IconButton, Link, Text } from '@chakra-ui/react';
-import { LucideArrowRight, LucideArrowUpRight, LucideArrowUpRightFromSquare, LucideExpand } from 'lucide-react';
+import { LucideArrowRight, LucideArrowUpRight } from 'lucide-react';
 
 const FOLDED_W = { base: "100%", md: "240px" };
 const EXPANDED_W = { base: "100%", md: "calc(100% - 2 * 240px)" };
