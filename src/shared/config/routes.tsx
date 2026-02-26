@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 
 const MainPage = lazy(() => import('@/pages/MainPage'));
+const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const SupportPage = lazy(() => import('@/pages/SupportPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
@@ -25,6 +26,10 @@ export const ROUTES = [
   {
     path: '/support/:type',
     element: <SupportPage />,
+  },
+  {
+    path: '/hana/back',
+    element: <LoginPage />,
   },
   {
     path: '*',

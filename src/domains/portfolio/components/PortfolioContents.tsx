@@ -34,13 +34,10 @@ export default function PortfolioContents(props: PortfolioContensProps) {
           <Box
             my={4}
             overflow="hidden"
+            borderRadius="md"
             position="relative"
             w={{ base: '100%', md: '100%', lg: '50%', xl: '40%' }}
             h={{ base: '250px', sm: '300px', md: '400px' }}
-            borderRadius="lg"
-            style={{
-              boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.1)',
-            }}
           >
             <Box
               inset="0"

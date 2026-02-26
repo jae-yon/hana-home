@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Link, Text } from '@chakra-ui/react';
 
 export default function FooterCopyRight() {
   return (
@@ -17,10 +17,9 @@ export default function FooterCopyRight() {
         textAlign={{ base: 'center', sm: 'left' }}
         justify={{ base: 'center', sm: 'space-between' }}
       >
-        <Text fontSize='xs' color='gray.400'>
+        <Link href='/hana/back' outline='none' fontSize='xs' color='gray.400'>
           © {new Date().getFullYear()} HanaSolution. All rights reserved.
-        </Text>
-
+        </Link>
         <Text fontSize='xs' color='gray.400'>
           Photos by Unsplash.
         </Text>
