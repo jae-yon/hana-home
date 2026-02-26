@@ -10,9 +10,9 @@ import { Portfolio as PortfolioType } from '@/types/common';
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
 const navItems: { name: string, path: string }[] = [
-  { name: 'PPA', path: '/portfolio/ppa' },
-  { name: 'RPS', path: '/portfolio/rps' },
-  { name: '가정용태양광', path: '/portfolio/residential' },
+  { name: 'PPA(자가소비형)', path: '/portfolio/ppa' },
+  { name: 'RPS(발전사업)', path: '/portfolio/rps' },
+  { name: '가정용(상계거래형) 태양광', path: '/portfolio/residential' },
 ];
 
 interface PortfolioProps {

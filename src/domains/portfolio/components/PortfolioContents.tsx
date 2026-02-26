@@ -99,7 +99,7 @@ export default function PortfolioContents(props: PortfolioContensProps) {
               </Box>
               <Box display="flex" flexDirection="row" gap={4}>
                 <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">타입</Text>
-                <Text py={4} fontSize="sm" color="gray.700">{item.type === 'Residential' ? '가정용' : item.type === 'PPA' ? 'PPA' : 'RPS'}</Text>
+                <Text py={4} fontSize="sm" color="gray.700">{item.subtitle}</Text>
               </Box>
               <Box display="flex" flexDirection="row" gap={4}>
                 <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">모듈</Text>

@@ -176,12 +176,13 @@ export function SubNavbarMobile(props: SubNavbarProps) {
                       onClick={() => handleClick(item.path)}
                     >
                       <Text
+                        gap={2}
                         as="span"
-                        position="relative"
                         zIndex={1}
                         display="flex"
+                        position="relative"
                         alignItems="center"
-                        gap={2}
+                        fontSize="sm"
                       >
                         <LucideArrowLeft size={16} strokeWidth={2} />
                         {item.name}

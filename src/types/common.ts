@@ -12,6 +12,7 @@ export interface Portfolio {
   image: string;
   title: string;
   href?: string;
+  subtitle?: string;
   module: string;
   inverter: string;
   capacity: string;
