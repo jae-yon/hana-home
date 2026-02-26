@@ -54,11 +54,11 @@ export function PortfolioCard(props: PortfolioCardProps) {
         </Text>
 
         <Text
-          fontSize={{ base: '11px', sm: '12px', md: '13px' }}
+          fontSize={{ base: '12px', sm: '14px', md: '16px' }}
           color="rgba(255,255,255,0.85)"
           lineHeight="1.6"
         >
-          {item.module}
+          {item.inverter}
         </Text>
       </Flex>
     </Box>

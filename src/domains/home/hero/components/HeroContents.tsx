@@ -19,7 +19,7 @@ export default function HeroContents() {
           cursor='default'
           textAlign='center'
         >
-          <Impactor direction='top' delay={1}>
+          <Impactor direction='bottom'>
             <Heading
               mb={8}
               color="white"
@@ -30,7 +30,7 @@ export default function HeroContents() {
               fontFamily="Pretendard"
               letterSpacing="0.025em"
               overflowWrap="break-word"
-              textShadow="2px 2px 4px rgba(0,0,0,0.3)"
+              textShadow="1px 1px 2px rgba(0,0,0,0.2)"
               fontSize={{ base: "28px", sm: "32px", md: "48px", lg: "56px" }}
             >
               <Text as='span' color="#66CC55">지속가능한</Text>&nbsp;
@@ -39,7 +39,7 @@ export default function HeroContents() {
             </Heading>
           </Impactor>
           
-          <Impactor direction='top' delay={1.2}>
+          <Impactor direction='bottom' delay={1}>
             <Text
               mb={8}
               color="white"
@@ -50,7 +50,7 @@ export default function HeroContents() {
               letterSpacing="0.05em"
               fontFamily="Pretendard"
               overflowWrap="break-word"
-              textShadow="2px 2px 4px rgba(0,0,0,0.3)"
+              textShadow="1px 1px 2px rgba(0,0,0,0.2)"
               fontSize={{ base: "16px", sm: "18px", md: "20px", lg: "24px" }}
             >
               <Text as='span' color="#F97316">㈜</Text><Text as='span' color="#FF7A00">하나솔루션</Text>은 기술과 신뢰를 기반으로 
@@ -58,7 +58,7 @@ export default function HeroContents() {
             </Text>
           </Impactor>
           
-          <Impactor direction='top' delay={1.4}>
+          <Impactor direction='bottom' delay={1.3}>
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4} align='center' justify='center'>
               <Button
                 px={12}
@@ -74,7 +74,7 @@ export default function HeroContents() {
                 letterSpacing='0.15em'
                 fontFamily='NanumSquareNeo'
                 transition='all 0.3s ease-in-out'
-                boxShadow="2px 2px 4px rgba(0,0,0,0.3)"
+                textShadow="1px 1px 2px rgba(0,0,0,0.2)"
                 _hover={{ transform: 'translateY(-3px)', bg: 'orange.600' }}
               >
                 견적문의

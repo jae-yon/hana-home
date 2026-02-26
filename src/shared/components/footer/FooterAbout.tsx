@@ -14,7 +14,7 @@ export default function FooterAbout() {
       >
         <Heading fontSize='lg' fontWeight='medium' color='gray.300'>기업정보</Heading>
 
-        <Link href='#' target='_blank'>
+        <Link href='#' target='_blank' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'
@@ -28,7 +28,7 @@ export default function FooterAbout() {
           </Text>
         </Link>
 
-        <Link href='#' target='_blank'>
+        <Link href='#' target='_blank' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'
@@ -39,20 +39,6 @@ export default function FooterAbout() {
             transition='all 0.3s ease-in-out'
           >
             오시는 길
-          </Text>
-        </Link>
-        
-        <Link href='#' target='_blank'>
-          <Text 
-            fontSize='md' 
-            fontWeight='medium'
-            color='gray.400'
-            _hover={{
-              color: 'gray.200',
-            }}
-            transition='all 0.3s ease-in-out'
-          >
-            
           </Text>
         </Link>
       </Box>

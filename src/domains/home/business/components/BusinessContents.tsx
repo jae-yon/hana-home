@@ -5,34 +5,35 @@ import BusinessCard from './BusinessCard';
 interface BusinessContentsProps {
   items: {
     id: number;
+    href: string;
+    image: string;
     title: string;
+    accent: string;
     subtitle: string;
     description: string;
-    image: string;
-    accent: string;
-    href: string;
   }[];
   expandedRow: number | null;
-  onExpand: (id: number) => void;
   expandFrom: 'left' | 'right';
+  onExpand: (id: number) => void;
 }
 
 export default function BusinessContents(props: BusinessContentsProps) {
   return (
     <Flex
-      justify="center"
-      direction={{ base: "column", md: "row" }}
-      gap={{ base: "16px", md: "32px" }}
-      mb={{ base: "16px", md: "32px" }}
+      w="100%"
       align="stretch"
+      justify="center"
+      mb={{ base: "16px", md: "36px" }}
+      gap={{ base: "16px", md: "36px" }}
+      direction={{ base: "column", md: "row" }}
     >
       {props.items.map((item) => (
         <BusinessCard
           key={item.id}
           item={item}
-          isExpanded={props.expandedRow === item.id}
-          onExpand={() => props.onExpand(item.id)}
           expandFrom={props.expandFrom}
+          onExpand={() => props.onExpand(item.id)}
+          isExpanded={props.expandedRow === item.id}
         />
       ))}
     </Flex>

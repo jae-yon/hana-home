@@ -26,19 +26,19 @@ export default function Footer() {
           gap={{ base: '40px', lg: '48px' }}
           textAlign={{ base: 'center', md: 'left' }}
         >
-          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }} alignItems={{ base: 'center', md: 'flex-start' }}>
             <FooterCompany />
           </GridItem>
 
-          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }} alignItems={{ base: 'center', md: 'flex-start' }}>
             <FooterAbout />
           </GridItem>
 
-          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }} alignItems={{ base: 'center', md: 'flex-start' }}>
             <FooterSocial />
           </GridItem>
 
-          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }}>
+          <GridItem display="flex" justifyContent={{ base: 'center', md: 'flex-start' }} alignItems={{ base: 'center', md: 'flex-start' }}>
             <FooterSupport />
           </GridItem>
         </Grid>

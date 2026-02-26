@@ -11,7 +11,7 @@ export default function FooterSupport() {
         gap={2}
         flex={1}
         display='flex'
-        borderRadius='xl'
+        borderRadius='lg'
         alignItems='center'
         flexDirection='column'
         justifyContent='center'

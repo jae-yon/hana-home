@@ -1,13 +1,15 @@
-import { Box, Flex, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Stack, Text, Image } from '@chakra-ui/react';
 
 import { COMPANY_NAME, COMPANY_BUSINESS_NUMBER, COMPANY_REPRESENTATIVE, COMPANY_ADDRESS, COMPANY_ELECTRIC_BUSINESS_NUMBER, COMPANY_FAX_NUMBER, COMPANY_EMAIL, COMPANY_PHONE_NUMBER } from '@/shared/config/constants';
+
+import logo from '@/assets/logo.svg';
 
 export default function FooterCompany() {
   return (
     <Stack width='100%' gap='20px' align={{ base: 'center', md: 'stretch' }} mx='auto'>
       {/* logo */}
-      <Flex align='center' justify={{ base: 'center', md: 'flex-start' }} mt={4}>
-        {/* <Image src={logo} alt='logo' width={6} objectFit='cover' /> */}
+      <Flex align='center' justify={{ base: 'center', md: 'flex-start' }} gap={2}>
+        <Image src={logo} alt='logo' width={8} height={8} objectFit='contain' />
         <Text
           fontSize='lg'
           color='gray.300'

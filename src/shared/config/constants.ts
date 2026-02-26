@@ -168,7 +168,6 @@ import portfolioPpaImage03 from '@/assets/images/portfolio/portfolio_ppa_03.png'
 import portfolioPpaImage04 from '@/assets/images/portfolio/portfolio_ppa_04.png';
 import portfolioPpaImage05 from '@/assets/images/portfolio/portfolio_ppa_05.png';
 
-
 // 사업 실적(PPA, RPS, 가정용태양광) 아이템 리스트
 export const PORTFOLIO_ITEMS: Portfolio[] = [
   {
@@ -410,6 +409,49 @@ export const FAQ_ITEMS: FAQ[] = [
     isVisible: true,
   },
 ];
+
+export const BUSINESS_ITEMS = [
+  {
+    id: 1,
+    title: "태양광 PPA",
+    subtitle: "Power Purchase Agreement",
+    description:
+      "태양광 설비를 통해 생산된 전기를 건물에서 우선 사용하고, 남는 전력은 판매하여 수익을 창출하는 전력 활용 방식입니다.",
+    image: "https://images.unsplash.com/photo-1552197892-f2ad2f75e7c8?auto=format&fit=crop&w=1920&q=90",
+    accent: "#2980B9",
+    href: "/business/ppa",
+  },
+  {
+    id: 2,
+    title: "K-RE100",
+    subtitle: "Renewable Electricity 100%",
+    description:
+      "한국형 RE100정책을 기반으로 맞춤형 컨설팅 및 서비스 및 운영을 제공합니다.",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=90",
+    accent: "#27AE60",
+    href: "/business/re100",
+  },
+  {
+    id: 3,
+    title: "태양광 리파워링",
+    subtitle: "Re-Powering",
+    description:
+      "저효율·노후 설비를 최신 기술로 교체해 발전량 증가와 유지보수 비용 절감을 동시에 실현합니다.",
+    image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?auto=format&fit=crop&w=1920&q=90",
+    accent: "#F1C40F", 
+    href: "/business/repowering",
+  },  
+  {
+    id: 4,
+    title: "발전사업 RPS",
+    subtitle: "Renewable Portfolio Standard",
+    description:
+      "정부의 의무공급제도에 따라 형성된 REC 시장을 통해 태양광 발전의 수익성을 지원합니다.",
+    image: "https://images.unsplash.com/photo-1545208942-e1c9c916524b?auto=format&fit=crop&w=1920&q=90",
+    accent: "#E67E22",
+    href: "/business/rps",
+  },
+]
 
 import blog from '@/assets/images/social/blog.png';
 import kakao from '@/assets/images/social/kakao.png';
