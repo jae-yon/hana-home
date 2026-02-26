@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LucideMenu, LucideX } from "lucide-react";
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from "react";
 
 import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link, Image } from "@chakra-ui/react";
 
+import { HEADER_MENU } from "@/shared/config/constants";
 import { useResponsive } from "@/shared/hooks/useResponsive";
 
-import logo from "@/assets/logo.png";
-
-import { HEADER_MENU } from "@/shared/config/constants";
-
-import HeaderDesktop from "./HeaderDesktop";
 import HeaderMobile from "./HeaderMobile";
+import HeaderDesktop from "./HeaderDesktop";
+
+import logo from "@/assets/logo.svg";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -98,9 +97,10 @@ export default function Header() {
             <Link onClick={() => handleExternalLink('/')} _hover={{ textDecoration: "none" }} outline="none">
               <HStack>
                 <Flex>
-                  <Image src={logo} alt="logo" width={16} height={16} objectFit="contain" />
+                  <Image src={logo} alt="logo" width={12} height={12} objectFit="contain" />
                 </Flex>
                 <VStack
+                  ml={1}
                   align="flex-start"
                 >
                   <Text
@@ -109,16 +109,16 @@ export default function Header() {
                     color={scrolled ? "gray.700" : activeMenu || mobileOpen ? "gray.700" : "white"}
                     letterSpacing="0.15em"
                     textTransform="uppercase"
-                    lineHeight={1}
+                    lineHeight={0.6}
                   >
                     HanaSolution
                   </Text>
                   <Text
                     fontSize="18px"
-                    fontWeight="700"
+                    fontWeight="600"
                     color={scrolled ? "gray.700" : activeMenu || mobileOpen ? "gray.700" : "white"}
                     letterSpacing="0.1em"
-                    lineHeight={1.3}
+                    lineHeight={1.2}
                   >
                     ㈜하나솔루션
                   </Text>

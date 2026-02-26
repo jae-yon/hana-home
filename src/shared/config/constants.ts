@@ -37,7 +37,7 @@ export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as str
 // 유튜브 URL
 export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "https://www.youtube.com/@DingoMusic";
 
-// 헤더 메뉴 데이터
+// 헤더 메뉴
 export const HEADER_MENU = [
   {
     name: "기업정보",
@@ -56,7 +56,6 @@ export const HEADER_MENU = [
       { name: "자가용PPA", path: "/business/ppa" },
       { name: "발전사업RPS", path: "/business/rps" },
       { name: "주차장태양광", path: "/business/parking-solar" },
-      { name: "전기공사업", path: "/business/electrical-work" },
       { name: "RE100", path: "/business/re100" },
       { name: "리파워링", path: "/business/refurbishment" },
       { name: "예상 수익계산기", path: "/business/profit-calculator" },
@@ -69,6 +68,7 @@ export const HEADER_MENU = [
       { name: "PPA", path: "/portfolio/ppa" },
       { name: "RPS", path: "/portfolio/rps" },
       { name: "가정용태양광", path: "/portfolio/residential" },
+      { name: "전기공사업", path: "/portfolio/electrical-work" },
     ],
   },
   {
@@ -91,6 +91,8 @@ export const HEADER_MENU = [
   },
 ];
 
+/**---------------------------------------- 메인 페이지 히어로 섹션 ----------------------------------------**/
+
 // 메인 페이지 배경 이미지
 export const HERO_BACKGROUND_IMAGES = [
   { image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=90" },
@@ -104,6 +106,8 @@ export const FADE_DURATION_MS = 2000;
 
 // 메인 페이지 배경 이미지 슬라이드 인터벌
 export const SLIDE_INTERVAL_MS = 5000;
+
+/**---------------------------------------- 메인 페이지 히어로 섹션 ----------------------------------------**/
 
 // 서브 페이지 정보
 export const SUB_HERO_INFO = [
@@ -165,7 +169,7 @@ import portfolioPpaImage04 from '@/assets/images/portfolio/portfolio_ppa_04.png'
 import portfolioPpaImage05 from '@/assets/images/portfolio/portfolio_ppa_05.png';
 
 
-// 사업 실적 아이템 리스트
+// 사업 실적(PPA, RPS, 가정용태양광) 아이템 리스트
 export const PORTFOLIO_ITEMS: Portfolio[] = [
   {
     id: 1,

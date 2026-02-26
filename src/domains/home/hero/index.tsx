@@ -26,8 +26,8 @@ export default function Hero() {
         pointerEvents: 'none',
       }}
     >
-      <HeroBackgroundImages />
       <HeroContents />
+      <HeroBackgroundImages />
     </Box>
   );
 }
