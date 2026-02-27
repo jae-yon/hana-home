@@ -1,4 +1,5 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 
 import Header from '@/shared/components/header';
 import Footer from '@/shared/components/footer';
@@ -9,6 +10,12 @@ import Portfolio from '@/domains/portfolio';
 
 export default function PortfolioPage() {
   const { type } = useParams();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
   
   if (!type || !['ppa', 'rps', 'residential', 'electrical-work'].includes(type)) {
     return <Navigate to={`/portfolio/ppa`} replace />;

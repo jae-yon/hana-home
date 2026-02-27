@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Header from '@/shared/components/header';
 import Footer from '@/shared/components/footer';
 
@@ -8,6 +10,10 @@ import Portfolio from '@/domains/home/portfolio';
 import FloatingActionButton from '@/shared/components/fab';
 
 export default function MainPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <>
       <Header />
