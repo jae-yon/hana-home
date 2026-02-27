@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import Header from '@/shared/components/header';
@@ -8,30 +7,18 @@ import FloatingActionButton from '@/shared/components/fab';
 
 import Portfolio from '@/domains/portfolio';
 
-import { PORTFOLIO_ITEMS } from '@/shared/config/constants';
-
-import { Portfolio as PortfolioType } from '@/types/common';
-
 export default function PortfolioPage() {
   const { type } = useParams();
   
-  if (!type) {
-    const defaultType = PORTFOLIO_ITEMS[0]?.type.toLowerCase() ?? 'ppa';
-    return <Navigate to={`/portfolio/${defaultType}`} replace />;
+  if (!type || !['ppa', 'rps', 'residential', 'electrical-work'].includes(type)) {
+    return <Navigate to={`/portfolio/ppa`} replace />;
   }
-
-  const [items, setItems] = useState<PortfolioType[]>([]);
-
-  useEffect(() => {
-    const items = PORTFOLIO_ITEMS.filter((item) => item.type.toLowerCase() === type.toLowerCase());
-    setItems(items);
-  }, [type]);
   
   return (
     <>
       <Header />
       <SubHero />
-      <Portfolio type={type as 'ppa' | 'rps' | 'residential'} items={items} />
+      <Portfolio type={type as 'ppa' | 'rps' | 'residential' | 'electrical-work'} />
       <Footer />
       <FloatingActionButton />
     </>

@@ -1,16 +1,19 @@
+import { LucideExternalLink } from 'lucide-react';
+
 import { Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
 
-import { Portfolio } from '@/types/common';
-import { LucideExternalLink } from 'lucide-react';
+import { PORTFOLIO_ITEMS } from '@/shared/config/constants';
 
 interface PortfolioContensProps {
   isDesktop: boolean;
-  items: Portfolio[];
+  type: 'ppa' | 'rps' | 'residential';
 }
 
 export default function PortfolioContents(props: PortfolioContensProps) {
-  const { isDesktop, items } = props;
-  
+  const { isDesktop, type } = props;
+
+  const items = PORTFOLIO_ITEMS.filter((item) => item.type.toLowerCase() === type.toLowerCase());
+
   return (
     <Flex 
       width="100%"
@@ -110,7 +113,7 @@ export default function PortfolioContents(props: PortfolioContensProps) {
                 <Text py={4} fontSize="sm" color="gray.700">{item.inverter}</Text>
               </Box>
               <Box display="flex" flexDirection="row" gap={4}>
-                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">전력용량</Text>
+                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">설비용량</Text>
                 <Text py={4} fontSize="sm" color="gray.700">{item.capacity}</Text>
               </Box>
             </Box>
