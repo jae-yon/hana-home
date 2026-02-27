@@ -8,10 +8,11 @@ import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNa
 const navItems: { name: string, path: string }[] = [
   { name: 'FAQ', path: '/support/faq' },
   { name: '공지사항', path: '/support/notice' },
+  { name: '견적문의', path: '/support/inquiry' },
 ];
 
 interface SupportProps {
-  type: 'faq' | 'notice' ;
+  type: 'faq' | 'notice' | 'inquiry';
 }
 
 export default function Support(props: SupportProps) {
