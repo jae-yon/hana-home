@@ -10,7 +10,7 @@ import Support from '@/domains/support';
 export default function PortfolioPage() {
   const { type } = useParams();
 
-  if (!type || !['faq', 'notice'].includes(type)) {
+  if (!type || !['faq', 'notice', 'inquiry'].includes(type)) {
     return <Navigate to={`/support/faq`} replace />;
   }
     
@@ -18,7 +18,7 @@ export default function PortfolioPage() {
     <>
       <Header />
       <SubHero />
-      <Support type={type as 'faq' | 'notice'} />
+      <Support type={type as 'faq' | 'notice' | 'inquiry'} />
       <Footer />
       <FloatingActionButton />
     </>

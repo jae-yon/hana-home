@@ -1,6 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 
 import FAQContents from './components/FAQContents';
+import InquiryForm from './components/InquiryForm';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
@@ -28,6 +29,7 @@ export default function Support(props: SupportProps) {
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'faq' && <FAQContents />}
+      {type === 'inquiry' && <InquiryForm />}
     </Flex>
   );
 }

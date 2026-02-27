@@ -26,3 +26,15 @@ export interface FAQ {
   question: string;
   isVisible: boolean;
 }
+
+// 견적문의
+export interface Inquiry {
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  content: string;
+  visitRoute: string;
+  emailDomain: string;
+  agreement: boolean;
+}

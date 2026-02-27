@@ -454,6 +454,15 @@ export const BUSINESS_ITEMS = [
   },
 ]
 
+// 견적문의 - 개인정보 수집·이용 동의 테이블 행
+export const PRIVACY_TABLE_ROWS = [
+  {
+    items: '이메일, 전화번호, 주소, 문의 내용',
+    purpose: '고객 문의 사항 처리 및 응대, 회사 제품 및 서비스 정보 제공',
+    period: '3년',
+  },
+]
+
 import blog from '@/assets/images/social/blog.png';
 import kakao from '@/assets/images/social/kakao.png';
 import tiktok from '@/assets/images/social/tiktok.png';
