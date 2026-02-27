@@ -58,7 +58,7 @@ export function PortfolioCard(props: PortfolioCardProps) {
           color="rgba(255,255,255,0.85)"
           lineHeight="1.6"
         >
-          {item.inverter}
+          설비용량: {item.capacity}
         </Text>
       </Flex>
     </Box>
