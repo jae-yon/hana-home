@@ -66,7 +66,7 @@ export default function FAQContents() {
                   backgroundColor="gray.100"
                 >
                   <Text fontSize="sm" color="gray.700" fontWeight="600" lineHeight="tall" whiteSpace="pre-wrap">
-                    <Text as="span" fontWeight="700" color="gray.800" >A.</Text> {item.answer}
+                    <Text as="span" fontSize="lg" fontWeight="700" color="orange.600" >A.</Text>&nbsp;{item.answer}
                   </Text>
                 </Box>
               </Collapsible.Content>
