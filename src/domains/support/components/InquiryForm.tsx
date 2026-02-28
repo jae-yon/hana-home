@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LucideAtSign } from 'lucide-react';
 
 import { Box, Button, Checkbox, Flex, Grid, Heading, Input, Text, Textarea, Field, Select, Portal, createListCollection  } from '@chakra-ui/react';
 
@@ -39,9 +40,14 @@ const emailDomain = createListCollection({
   ]
 });
 
+const EMAIL_DOMAIN_PRESETS = ['naver.com', 'gmail.com', 'daum.net', 'hanmail.com', 'nate.com'];
+
 export default function InquiryForm() {
   const [values, setValues] = useState<Inquiry>(initialValues);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+
+  const isDirectDomain = !EMAIL_DOMAIN_PRESETS.includes(values.emailDomain);
+  const selectValue = isDirectDomain ? 'self' : values.emailDomain;
 
   const update = <K extends keyof Inquiry>(key: K, value: Inquiry[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -64,23 +70,31 @@ export default function InquiryForm() {
       alignItems="center"
     >
       <Box
-        gap={4}
         display="flex"
         alignItems="center"
         flexDirection="column"
         justifyContent="center"
       >
-        <Heading size="5xl" color="gray.800">
+        <Heading
+          mb={4}
+          size="5xl"
+          color="gray.800"
+          lineHeight="1.35"
+          fontWeight="semibold"
+        >
           견적문의
         </Heading>
-        <Text fontSize={{ base: 'sm', md: 'md' }} color="gray.600">
+        <Text 
+          fontSize={{ base: 'sm', md: 'md' }}
+          color="gray.600"
+        >
           아래 양식을 작성해 주시면 담당자가 검토 후 신속하게 연락드리겠습니다.
         </Text>
       </Box>
 
       <Box
-        p={6}
-        gap={6}
+        p={8}
+        gap={4}
         as="form"
         width="100%"
         maxW={{ base: '100%', md: '960px' }}
@@ -102,38 +116,52 @@ export default function InquiryForm() {
           templateColumns={{ base: '1fr', md: '1.4fr 1fr 1.5fr' }}
         >
           <Field.Root>
-            <Field.Label fontSize="sm" fontWeight="500" ms={1}>
+            <Field.Label fontSize="md" fontWeight="500" ms={2}>
               이름 또는 상호명 <Field.RequiredIndicator />
             </Field.Label>
             <Input
-              value={values.name}
               placeholder=""
-              onChange={(e) => update('name', e.target.value)}
+              borderRadius="lg"
+              value={values.name}
+              borderColor="gray.300"
               backgroundColor="white"
+              onChange={(e) => update('name', e.target.value)}
+              _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+              _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
           </Field.Root>
 
           <Field.Root>
-            <Field.Label fontSize="sm" fontWeight="500" ms={1}>
+            <Field.Label fontSize="md" fontWeight="500" ms={2}>
               연락처 <Field.RequiredIndicator />
             </Field.Label>
             <Input
               type="tel"
-              value={values.phone}
               placeholder=""
-              onChange={(e) => update('phone', e.target.value)}
+              borderRadius="lg"
+              value={values.phone}
+              borderColor="gray.300"
               backgroundColor="white"
+              onChange={(e) => update('phone', e.target.value)}
+              _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+              _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
           </Field.Root>
 
           <Select.Root collection={visitRoute}>
             <Select.HiddenSelect />
-            <Select.Label fontSize="sm" fontWeight="500" ms={1}>
+            <Select.Label fontSize="md" fontWeight="500" ms={2}>
               유입경로
             </Select.Label>
 
             <Select.Control>
-              <Select.Trigger backgroundColor="white">
+              <Select.Trigger 
+                borderRadius="lg"
+                borderColor="gray.300"
+                backgroundColor="white"
+                _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+                _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
+              >
                 <Select.ValueText placeholder="유입경로를 선택해 주세요." />
               </Select.Trigger>
               <Select.IndicatorGroup>
@@ -143,7 +171,14 @@ export default function InquiryForm() {
 
             <Portal>
               <Select.Positioner>
-                <Select.Content fontSize="sm" fontFamily="Pretendard">
+                <Select.Content 
+                  fontSize="sm"
+                  borderRadius="lg"
+                  borderWidth="1px"
+                  borderColor="gray.300"
+                  fontFamily="Pretendard"
+                  backgroundColor="white"
+                >
                   {visitRoute.items.map((item) => (
                     <Select.Item item={item} key={item.value}>
                       {item.label}
@@ -157,43 +192,64 @@ export default function InquiryForm() {
         </Grid>
 
         <Grid 
+          gap={4}
           width="100%"
           alignItems="flex-end"
-          gap={4}
-          templateColumns={{ base: '1fr', md: '1fr 0.05fr 1fr 1fr' }}
+          templateColumns={{ base: '1fr', md: '1fr auto 1fr minmax(0, 1fr)' }}
         >
           <Field.Root>
-            <Field.Label fontSize="sm" fontWeight="500" ms={1}>
+            <Field.Label fontSize="md" fontWeight="500" ms={2}>
               이메일 <Field.RequiredIndicator />
             </Field.Label>
             <Input
-              value={values.email}
               placeholder=""
-              onChange={(e) => update('name', e.target.value)}
+              borderRadius="lg"
+              value={values.email}
+              borderColor="gray.300"
               backgroundColor="white"
+              onChange={(e) => update('email', e.target.value)}
+              _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+              _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
           </Field.Root>
-          
-          <Box display={{ base: 'none', md: 'flex' }} alignItems="center" justifyContent="center">
-            <Text fontSize="md" fontFamily="Pretendard" color="gray.600" mb={2}>
-              @
-            </Text>
-          </Box>
+
+          <Flex justify="center" alignItems="center" pb={3}>
+            <Box asChild color="gray.500" aria-hidden>
+              <LucideAtSign size={16} />
+            </Box>
+          </Flex>
 
           <Field.Root>
             <Input
-              value={values.phone}
-              placeholder=""
-              onChange={(e) => update('phone', e.target.value)}
+              placeholder="도메인 입력 (예: company.co.kr)"
+              borderRadius="lg"
+              value={values.emailDomain}
+              borderColor="gray.300"
               backgroundColor="white"
+              onChange={(e) => update('emailDomain', e.target.value)}
+              _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+              _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
           </Field.Root>
 
-          <Select.Root collection={emailDomain}>
+          <Select.Root
+            collection={emailDomain}
+            value={[selectValue]}
+            onValueChange={(e) => {
+              const v = Array.isArray(e.value) ? e.value[0] : e.value;
+              update('emailDomain', v === 'self' ? '' : v ?? '');
+            }}
+          >
             <Select.HiddenSelect />
 
             <Select.Control>
-              <Select.Trigger backgroundColor="white">
+              <Select.Trigger
+                borderRadius="lg"
+                borderColor="gray.300"
+                backgroundColor="white"
+                _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+                _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
+              >
                 <Select.ValueText placeholder="" />
               </Select.Trigger>
               <Select.IndicatorGroup>
@@ -203,7 +259,14 @@ export default function InquiryForm() {
 
             <Portal>
               <Select.Positioner>
-                <Select.Content fontSize="sm" fontFamily="Pretendard">
+                <Select.Content
+                  fontSize="sm"
+                  borderRadius="lg"
+                  borderWidth="1px"
+                  borderColor="gray.300"
+                  fontFamily="Pretendard"
+                  backgroundColor="white"
+                >
                   {emailDomain.items.map((item) => (
                     <Select.Item item={item} key={item.value}>
                       {item.label}
@@ -211,44 +274,57 @@ export default function InquiryForm() {
                     </Select.Item>
                   ))}
                 </Select.Content>
-              </Select.Positioner>  
+              </Select.Positioner>
             </Portal>
           </Select.Root>
         </Grid>
-        
+
 
         <Field.Root width="100%">
-          <Field.Label>주소</Field.Label>
+          <Field.Label fontSize="md" fontWeight="500" ms={2}>주소</Field.Label>
           <Input
+            placeholder=""
+            borderRadius="lg"
             value={values.address}
-            onChange={(e) => update('address', e.target.value)}
+            borderColor="gray.300"
             backgroundColor="white"
+            onChange={(e) => {}}
+            _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+            _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
           />
         </Field.Root>
 
         <Field.Root width="100%">
-          <Field.Label>문의 내용</Field.Label>
+          <Field.Label fontSize="md" fontWeight="500" ms={2}>문의 내용</Field.Label>
           <Textarea
             p={4}
             rows={16}
             resize="none"
-            value={values.content}
-            onChange={(e) => update('content', e.target.value)}
-            placeholder="설치 용량, 희망 시공일 등 문의하실 내용을 자유롭게 적어 주세요."
+            borderRadius="lg"
+            value={values.address}
+            borderColor="gray.300"
             backgroundColor="white"
+            onChange={(e) => {}}
+            _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+            _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
+            placeholder="설치 용량, 희망 시공일 등 문의하실 내용을 자유롭게 적어 주세요."
           />
         </Field.Root>
 
         <Field.Root width="100%">
-          <Flex alignItems="center" gap={2} flexWrap="wrap" justifyContent="center">
+          <Flex width="100%" alignItems="center" gap={2} flexWrap="wrap" justifyContent="center">
             <Checkbox.Root
-              colorPalette="blue"
+              colorPalette="orange"
               checked={values.agreement}
               onCheckedChange={(e) => update('agreement', !!e.checked)}
             >
               <Checkbox.HiddenInput />
-              <Checkbox.Control backgroundColor="white" />
-              <Checkbox.Label fontSize="sm" fontWeight="500">
+              <Checkbox.Control
+                borderRadius="sm"
+                borderColor={values.agreement ? 'orange.500' : 'gray.300'}
+                _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
+              />
+              <Checkbox.Label fontSize="sm" fontWeight="400" color="gray.500">
                 개인정보 수집 및 이용에 동의합니다. <Field.RequiredIndicator />
               </Checkbox.Label>
             </Checkbox.Root>
@@ -257,8 +333,8 @@ export default function InquiryForm() {
               py={0}
               size="sm"
               type="button"
-              fontWeight="500"
-              color="gray.600"
+              fontWeight="00"
+              color="gray.700"
               backgroundColor="transparent"
               _hover={{ textDecoration: 'none' }}
               onClick={(e) => {
