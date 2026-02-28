@@ -10,7 +10,6 @@ import Portfolio from '@/domains/portfolio';
 
 export default function PortfolioPage() {
   const { type } = useParams();
-
   const location = useLocation();
 
   useEffect(() => {
