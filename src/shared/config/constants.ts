@@ -37,9 +37,6 @@ export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as str
 // 유튜브 URL
 export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "https://www.youtube.com/@DingoMusic";
 
-// 네이버 지도 API
-export const MAP_NAVER_API_URL = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${import.meta.env.VITE_MAP_CLIENT_ID}`;
-
 // 헤더 메뉴
 export const HEADER_MENU = [
   {
@@ -477,3 +474,6 @@ export const PROMOTION_NAV_LINKS = [
 // Supabase
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 export const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
+
+// Naver
+export const MAP_NAVER_API_URL = import.meta.env.VITE_NAVER_MAP_URL as string;

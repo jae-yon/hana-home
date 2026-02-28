@@ -1,7 +1,22 @@
 import { Box, Grid, Heading, Text } from '@chakra-ui/react';
 
+import { formatCountUpPrice } from '@/shared/hooks/useCountUp';
 
-export function ProfitAnalysis() {
+interface ProfitAnalysisProps {
+  values: any;
+}
+
+export function ProfitAnalysis(props: ProfitAnalysisProps) {
+  const { values } = props;
+
+  /** 숫자만 추출 후 천 단위 콤마 포맷 */
+  const formatCapacityDisplay = (v: string | number): string => {
+    if (v === '' || v === undefined || v === null) return '';
+    const digits = String(v).replace(/\D/g, '');
+    if (digits === '') return '';
+    return Number(digits).toLocaleString('ko-KR');
+  };
+
   return (
     <Box
       p={4}
@@ -55,7 +70,7 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">23,000</Text>&nbsp;kW
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">{formatCapacityDisplay(values.capacity)}</Text>&nbsp;kW
           </Text>
         </Box>
         {/* 공사비용 */}
@@ -86,7 +101,10 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">2,000</Text>&nbsp;만원/kW
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">
+              {values.constructionCost === 0 ? '--' : formatCountUpPrice(values.constructionCost)}
+            </Text>
+            &nbsp;만원/kW
           </Text>
         </Box>
         {/* REC 단가 */}
@@ -117,7 +135,7 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">73,201</Text>&nbsp;원/kW
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">{formatCountUpPrice(values.recPrice)}</Text>&nbsp;원/kW
           </Text>
         </Box>
         {/* SMP 단가 */}
@@ -148,7 +166,7 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">123.21</Text>&nbsp;원/kWh
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">{formatCountUpPrice(values.smpPrice.toFixed(2))}</Text>&nbsp;원/kWh
           </Text>
         </Box>
         {/* 대출비율 */}
@@ -179,7 +197,9 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">30</Text>&nbsp;%
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">
+              {values.loanRate === 0 ? '--' : values.loanRate.toFixed(0)}
+            </Text>&nbsp;%
           </Text>
         </Box>
         {/* 대출금리 */}
@@ -210,7 +230,9 @@ export function ProfitAnalysis() {
             color="gray.500"
             fontFamily="NanumSquareNeo"
           >
-            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">3.5</Text>&nbsp;%
+            <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">
+              {values.loanInterestRate === 0 ? '--' : values.loanInterestRate.toFixed(1)}
+            </Text>&nbsp;%
           </Text>
         </Box>
       </Grid>

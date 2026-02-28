@@ -1,13 +1,31 @@
-import { Box, Button, createListCollection, Field, Input, Portal, Select } from '@chakra-ui/react';
+import { Box, Button, Field, Input, ListCollection, Portal, Select } from '@chakra-ui/react';
 
-const addressType = createListCollection({
-  items: [
-    { value: 'land', label: '토지' },
-    { value: 'building', label: '건물' },
-  ]
-});
+import Map from '@/shared/components/map';
 
-export function ProfitConditon() {
+interface ProfitConditonProps {
+  values: any;
+  areaType: ListCollection<{ value: string; label: string }>;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onAreaTypeChange?: (item: { value: string; label: string }) => void;
+  onCalculateProfit?: (address: string) => void;
+}
+
+export function ProfitConditon(props: ProfitConditonProps) {
+  const { values, areaType, onChange, onAreaTypeChange, onCalculateProfit } = props;
+
+  /** 숫자만 추출 후 천 단위 콤마 포맷 */
+  const formatCapacityDisplay = (v: string | number): string => {
+    if (v === '' || v === undefined || v === null) return '';
+    const digits = String(v).replace(/\D/g, '');
+    if (digits === '') return '';
+    return Number(digits).toLocaleString('ko-KR');
+  };
+
+  const handleCapacityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '');
+    onChange({ ...e, target: { ...e.target, name: 'capacity', value: raw } });
+  };
+
   return (
     <Box
       p={4}
@@ -29,9 +47,10 @@ export function ProfitConditon() {
             설치주소 <Field.RequiredIndicator />
           </Field.Label>
           <Input
-            value={''}
+            value={values.address}
             placeholder=""
-            onChange={(e) => {}}
+            onChange={(e) => onChange(e)}
+            name="address"
             fontSize="md"
             fontWeight="500"
             borderRadius="lg"
@@ -48,12 +67,20 @@ export function ProfitConditon() {
           display="flex"
           direction="column"
         >
-          <Select.Root collection={addressType}>
+          <Select.Root
+            collection={areaType}
+            value={values.areaType ? [values.areaType.value] : []}
+            onValueChange={(e) => {
+              const v = Array.isArray(e.value) ? e.value[0] : e.value;
+              const item = areaType.items.find((i) => i.value === v);
+              if (item && onAreaTypeChange) onAreaTypeChange(item);
+            }}
+          >
             <Select.HiddenSelect />
             <Select.Label 
+              ms={1}
               fontSize="md" 
               fontWeight="500" 
-              ms={1}
               color="gray.700"
             >
               사업지유형
@@ -84,7 +111,7 @@ export function ProfitConditon() {
                   borderColor="gray.300"
                   backgroundColor="white"
                 >
-                  {addressType.items.map((item) => (
+                  {areaType.items.map((item) => (
                     <Select.Item item={item} key={item.value}>
                       {item.label}
                       <Select.ItemIndicator />
@@ -105,12 +132,15 @@ export function ProfitConditon() {
               설치용량 <Field.RequiredIndicator />
             </Field.Label>
             <Input
-              value={''}
-              placeholder=""
-              onChange={(e) => {}}
+              textAlign="right"
+              name="capacity"
+              placeholder="0"
+              inputMode="numeric"
               borderRadius="lg"
-              backgroundColor="white"
               borderColor="gray.300"
+              backgroundColor="white"
+              value={formatCapacityDisplay(values.capacity)}
+              onChange={handleCapacityChange}
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
@@ -126,10 +156,24 @@ export function ProfitConditon() {
           mt={8}
           colorPalette="orange"
           _hover={{ opacity: 0.9 }}
+          onClick={() => onCalculateProfit?.(values.address)}
         >
           적용
         </Button>
       </Box>
+      
+      {values.roadAddress && values.jibunAddress && (
+        <Box 
+          mt={8}
+          width="100%" 
+          borderRadius="lg"
+          borderWidth="1px"
+          overflow="hidden"
+          borderColor="gray.200"
+        >
+          <Map location={{ lat: values.latitude, lng: values.longitude }} />
+        </Box>
+      )}
     </Box>
   );
 }
