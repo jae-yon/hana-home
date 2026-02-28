@@ -38,3 +38,9 @@ export interface Inquiry {
   emailDomain: string;
   agreement: boolean;
 }
+
+// 지도 위치
+export interface MapLocation {
+  lat: number;
+  lng: number;
+}

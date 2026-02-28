@@ -37,6 +37,9 @@ export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as str
 // 유튜브 URL
 export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "https://www.youtube.com/@DingoMusic";
 
+// 네이버 지도 API
+export const MAP_NAVER_API_URL = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${import.meta.env.VITE_MAP_CLIENT_ID}`;
+
 // 헤더 메뉴
 export const HEADER_MENU = [
   {
@@ -120,16 +123,11 @@ export const SUB_HERO_INFO = [
   },
   { 
     pathname: "/business", 
-    title: "", 
-    subtitle: "", 
-    image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=80" 
+    title: "사업소개", 
+    subtitle: "Business Introduction", 
+    image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1920&q=90" 
   },
-  { 
-    pathname: "/performance", 
-    title: "", 
-    subtitle: "", 
-    image: "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?auto=format&fit=crop&w=1920&q=80" 
-  },
+  
   { 
     pathname: "/promotion", 
     title: "", 
