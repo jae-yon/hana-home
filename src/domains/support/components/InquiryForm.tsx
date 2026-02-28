@@ -4,6 +4,7 @@ import { LucideAtSign } from 'lucide-react';
 import { Box, Button, Checkbox, Flex, Grid, Heading, Input, Text, Textarea, Field, Select, Portal, createListCollection  } from '@chakra-ui/react';
 
 import type { Inquiry } from '@/types/common';
+import { isValidPhoneNumber, isValidEmailWithDomain, formatPhoneNumberInput } from '@/shared/utils/validation';
 
 import SimplePrivacyModal from './SimplePrivacyModal';
 
@@ -51,6 +52,48 @@ export default function InquiryForm() {
 
   const update = <K extends keyof Inquiry>(key: K, value: Inquiry[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const nextErrors: Partial<Record<keyof Inquiry, string>> = {};
+
+    if (!values.name?.trim()) {
+      nextErrors.name = '이름 또는 상호명을 입력해 주세요.';
+    }
+    if (!values.phone?.trim()) {
+      nextErrors.phone = '연락처를 입력해 주세요.';
+    } else if (!isValidPhoneNumber(values.phone)) {
+      nextErrors.phone = '연락처 형식이 올바르지 않습니다. (예: 010-1234-5678)';
+    }
+    if (!values.visitRoute?.trim()) {
+      nextErrors.visitRoute = '유입경로를 선택해 주세요.';
+    }
+    if (!values.email?.trim()) {
+      nextErrors.email = '이메일을 입력해 주세요.';
+    } else if (!values.emailDomain?.trim()) {
+      nextErrors.emailDomain = '이메일 도메인을 입력 또는 선택해 주세요.';
+    } else if (!isValidEmailWithDomain(values.email, values.emailDomain)) {
+      nextErrors.email = '이메일 형식이 올바르지 않습니다.';
+    }
+    if (!values.address?.trim()) {
+      nextErrors.address = '주소를 입력해 주세요.';
+    }
+    if (!values.content?.trim()) {
+      nextErrors.content = '문의 내용을 입력해 주세요.';
+    }
+    if (!values.agreement) {
+      nextErrors.agreement = '개인정보 수집 및 이용에 동의해 주세요.';
+    }
+
+    const isValid = Object.keys(nextErrors).length === 0;
+    if (isValid) {
+      console.log('견적문의 제출:', values);
+    } else {
+      const message = Object.values(nextErrors)[0];
+      alert(message);
+    }
   };
 
   return (
@@ -116,7 +159,12 @@ export default function InquiryForm() {
           templateColumns={{ base: '1fr', md: '1.4fr 1fr 1.5fr' }}
         >
           <Field.Root>
-            <Field.Label fontSize="md" fontWeight="500" ms={2}>
+            <Field.Label
+              ms={1}
+              fontSize="md" 
+              fontWeight="500" 
+              color="gray.700"
+            >
               이름 또는 상호명 <Field.RequiredIndicator />
             </Field.Label>
             <Input
@@ -132,25 +180,47 @@ export default function InquiryForm() {
           </Field.Root>
 
           <Field.Root>
-            <Field.Label fontSize="md" fontWeight="500" ms={2}>
+            <Field.Label
+              ms={1}
+              fontSize="md" 
+              fontWeight="500" 
+              color="gray.700"
+            >
               연락처 <Field.RequiredIndicator />
             </Field.Label>
             <Input
               type="tel"
-              placeholder=""
+              name="phone"
+              inputMode="numeric"
               borderRadius="lg"
               value={values.phone}
               borderColor="gray.300"
               backgroundColor="white"
-              onChange={(e) => update('phone', e.target.value)}
+              placeholder="010-1234-5678"
+              onChange={(e) => {
+                const formatted = formatPhoneNumberInput(e.target.value);
+                update('phone', formatted);
+              }}
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
           </Field.Root>
 
-          <Select.Root collection={visitRoute}>
+          <Select.Root
+            collection={visitRoute}
+            value={[values.visitRoute]}
+            onValueChange={(e) => {
+              const v = Array.isArray(e.value) ? e.value[0] : e.value;
+              update('visitRoute', v ?? '');
+            }}
+          >
             <Select.HiddenSelect />
-            <Select.Label fontSize="md" fontWeight="500" ms={2}>
+            <Select.Label
+              ms={1}
+              fontSize="md" 
+              fontWeight="500" 
+              color="gray.700"
+            >
               유입경로
             </Select.Label>
 
@@ -198,10 +268,16 @@ export default function InquiryForm() {
           templateColumns={{ base: '1fr', md: '1fr auto 1fr minmax(0, 1fr)' }}
         >
           <Field.Root>
-            <Field.Label fontSize="md" fontWeight="500" ms={2}>
+            <Field.Label
+              ms={1}
+              fontSize="md" 
+              fontWeight="500" 
+              color="gray.700"
+            >
               이메일 <Field.RequiredIndicator />
             </Field.Label>
             <Input
+              name="email"
               placeholder=""
               borderRadius="lg"
               value={values.email}
@@ -221,11 +297,12 @@ export default function InquiryForm() {
 
           <Field.Root>
             <Input
-              placeholder="도메인 입력 (예: company.co.kr)"
               borderRadius="lg"
-              value={values.emailDomain}
+              name="emailDomain"
               borderColor="gray.300"
               backgroundColor="white"
+              value={values.emailDomain}
+              placeholder="도메인 입력 (예: solutionhana.co.kr)"
               onChange={(e) => update('emailDomain', e.target.value)}
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
@@ -281,30 +358,46 @@ export default function InquiryForm() {
 
 
         <Field.Root width="100%">
-          <Field.Label fontSize="md" fontWeight="500" ms={2}>주소</Field.Label>
+          <Field.Label
+            ms={1}
+            fontSize="md" 
+            fontWeight="500" 
+            color="gray.700"
+          >
+            주소
+          </Field.Label>
           <Input
+            name="address"
             placeholder=""
             borderRadius="lg"
             value={values.address}
             borderColor="gray.300"
             backgroundColor="white"
-            onChange={(e) => {}}
+            onChange={(e) => update('address', e.target.value)}
             _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
             _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
           />
         </Field.Root>
 
         <Field.Root width="100%">
-          <Field.Label fontSize="md" fontWeight="500" ms={2}>문의 내용</Field.Label>
+          <Field.Label
+            ms={1}
+            fontSize="md" 
+            fontWeight="500" 
+            color="gray.700"
+          >
+            문의 내용
+          </Field.Label>
           <Textarea
             p={4}
             rows={16}
             resize="none"
+            name="content"
             borderRadius="lg"
-            value={values.address}
+            value={values.content}
             borderColor="gray.300"
             backgroundColor="white"
-            onChange={(e) => {}}
+            onChange={(e) => update('content', e.target.value)}
             _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
             _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             placeholder="설치 용량, 희망 시공일 등 문의하실 내용을 자유롭게 적어 주세요."
@@ -357,13 +450,16 @@ export default function InquiryForm() {
           py={6}
           size="xl"
           fontSize="lg"
-          type="button"
+          color="white"
+          type="submit"
           fontWeight="600"
           borderRadius="md"
           alignSelf="center"
+          form="inquiryForm"
           letterSpacing="0.1em"
-          colorPalette="orange"
-          _hover={{ opacity: 0.9 }}
+          onClick={(e) => handleSubmit(e)}
+          backgroundColor="orange.500"
+          _hover={{ backgroundColor: 'orange.600' }}
         >
           문의하기
         </Button>

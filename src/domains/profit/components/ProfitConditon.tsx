@@ -8,10 +8,11 @@ interface ProfitConditonProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onAreaTypeChange?: (item: { value: string; label: string }) => void;
   onCalculateProfit?: (address: string) => void;
+  isPending?: boolean;
 }
 
 export function ProfitConditon(props: ProfitConditonProps) {
-  const { values, areaType, onChange, onAreaTypeChange, onCalculateProfit } = props;
+  const { values, areaType, onChange, onAreaTypeChange, onCalculateProfit, isPending } = props;
 
   /** 숫자만 추출 후 천 단위 콤마 포맷 */
   const formatCapacityDisplay = (v: string | number): string => {
@@ -39,9 +40,9 @@ export function ProfitConditon(props: ProfitConditonProps) {
       <Box>
         <Field.Root>
           <Field.Label 
+            ms={1}
             fontSize="md" 
             fontWeight="500" 
-            ms={1}
             color="gray.700"
           >
             설치주소 <Field.RequiredIndicator />
@@ -52,7 +53,7 @@ export function ProfitConditon(props: ProfitConditonProps) {
             onChange={(e) => onChange(e)}
             name="address"
             fontSize="md"
-            fontWeight="500"
+            fontWeight="normal"
             borderRadius="lg"
             backgroundColor="white"
             borderColor="gray.300"
@@ -88,7 +89,9 @@ export function ProfitConditon(props: ProfitConditonProps) {
 
             <Select.Control>
               <Select.Trigger 
+                fontSize="md"
                 borderRadius="lg"
+                fontWeight="normal"
                 borderColor="gray.300"
                 backgroundColor="white"
                 _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
@@ -105,6 +108,7 @@ export function ProfitConditon(props: ProfitConditonProps) {
               <Select.Positioner>
                 <Select.Content 
                   fontSize="md"
+                  fontWeight="normal"
                   fontFamily="Pretendard"
                   borderRadius="lg"
                   borderWidth="1px"
@@ -132,11 +136,13 @@ export function ProfitConditon(props: ProfitConditonProps) {
               설치용량 <Field.RequiredIndicator />
             </Field.Label>
             <Input
-              textAlign="right"
+              fontSize="md"
               name="capacity"
               placeholder="0"
-              inputMode="numeric"
+              textAlign="right"
               borderRadius="lg"
+              inputMode="numeric"
+              fontWeight="normal"
               borderColor="gray.300"
               backgroundColor="white"
               value={formatCapacityDisplay(values.capacity)}
@@ -148,14 +154,16 @@ export function ProfitConditon(props: ProfitConditonProps) {
         </Box>
 
         <Button
-          width="100%"
+          mt={8}
           size="lg"
+          width="100%"
           fontSize="lg"
+          color="white"
           fontWeight="600"
           borderRadius="lg"
-          mt={8}
-          colorPalette="orange"
-          _hover={{ opacity: 0.9 }}
+          loading={isPending}
+          backgroundColor="orange.500"
+          _hover={{ backgroundColor: 'orange.600' }}
           onClick={() => onCalculateProfit?.(values.address)}
         >
           적용

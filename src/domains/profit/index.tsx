@@ -70,7 +70,7 @@ export default function ProfitCalculator() {
   };
 
   // 주소 좌표 조회 훅
-  const { mutateAsync: addressToLocation } = useAddressToLocation();
+  const { mutateAsync: addressToLocation, isPending: isAddressToLocationPending } = useAddressToLocation();
   
   // 주소 좌표 조회 핸들러
   const handleAddressToLocation = async (address: string) => {
@@ -136,6 +136,7 @@ export default function ProfitCalculator() {
             onChange={handleChange} 
             onAreaTypeChange={handleAreaTypeChange} 
             onCalculateProfit={handleCalculateProfit} 
+            isPending={isAddressToLocationPending}
           />
         </Impactor>
         <Impactor direction="bottom" once delay={1.3}>
