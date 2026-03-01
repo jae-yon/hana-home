@@ -1,5 +1,6 @@
 import { Box, Grid, Heading, Text } from '@chakra-ui/react';
 
+import { formatManUnit } from '@/shared/utils/number';
 import { formatCountUpPrice } from '@/shared/hooks/useCountUp';
 
 interface ProfitAnalysisProps {
@@ -102,7 +103,7 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
             fontFamily="NanumSquareNeo"
           >
             <Text as="span" fontSize="2xl" fontWeight="800" color="gray.800">
-              {values.constructionCost === 0 ? '--' : formatCountUpPrice(values.constructionCost)}
+              {values.constructionCost === 0 ? '--' : formatManUnit(values.constructionCost)}
             </Text>
             &nbsp;만원/kW
           </Text>

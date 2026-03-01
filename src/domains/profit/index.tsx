@@ -12,6 +12,7 @@ import { useWeeklySmp } from '@/shared/hooks/useSmp';
 import { RecMonthlyItem } from '@/types/rec';
 import { SmpDailyWeightedSummary } from '@/types/smp';
 import { useAddressToLocation } from '@/shared/hooks/useMap';
+import { useCalcOptions } from './hooks/useProfit';
 
 const areaType = createListCollection({
   items: [
@@ -48,10 +49,16 @@ export default function ProfitCalculator() {
   // 월간 REC 데이터
   const { data: monthlyRecData } = useMonthlyRec() as { data: RecMonthlyItem[] };
 
+  // 수익 계산 옵션 데이터
+  const { data: calcOptionsData } = useCalcOptions() as { data: { constructionCost: number; loanRate: number; loanInterestRate: number } };
+
   useEffect(() => {
     setValues(initialValues);
     if (weeklySmpData && monthlyRecData) {
       setValues((prev) => ({ ...prev, smpPrice: weeklySmpData[weeklySmpData.length - 1].totalWeightedAvg, recPrice: monthlyRecData[0].unifiedAvgPrice }));
+    }
+    if (calcOptionsData) {
+      setValues((prev) => ({ ...prev, constructionCost: calcOptionsData.constructionCost, loanRate: calcOptionsData.loanRate, loanInterestRate: calcOptionsData.loanInterestRate }));
     }
   }, []);
 
