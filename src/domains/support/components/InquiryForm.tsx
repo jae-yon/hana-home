@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LucideAtSign } from 'lucide-react';
 
 import { Box, Button, Checkbox, Flex, Grid, Heading, Input, Text, Textarea, Field, Select, Portal, createListCollection  } from '@chakra-ui/react';
 
 import type { Inquiry } from '@/types/common';
+
+import { useMinSubmitTime } from '@/shared/hooks/useMinSubmitTime';
 import { isValidPhoneNumber, isValidEmailWithDomain, formatPhoneNumberInput } from '@/shared/utils/validation';
+
+import { sendInquiry } from '@/domains/support/hooks/useInquiry';
 
 import SimplePrivacyModal from './SimplePrivacyModal';
 
@@ -16,17 +20,18 @@ const initialValues: Inquiry = {
   content: '',
   visitRoute: '',
   emailDomain: '',
+  robot: '',
   agreement: false,
 };
 
 const visitRoute = createListCollection({
   items: [
-    { value: 'ad', label: '광고' },
-    { value: 'sns', label: 'SNS' },
-    { value: 'blog', label: '블로그' },
-    { value: 'search', label: '검색엔진' },
-    { value: 'introduction', label: '지인 소개' },
-    { value: 'etc', label: '기타' },
+    { value: '광고', label: '광고' },
+    { value: 'SNS', label: 'SNS' },
+    { value: '블로그', label: '블로그' },
+    { value: '검색엔진', label: '검색엔진' },
+    { value: '지인 소개', label: '지인 소개' },
+    { value: '기타', label: '기타' },
   ]
 });
 
@@ -43,9 +48,13 @@ const emailDomain = createListCollection({
 
 const EMAIL_DOMAIN_PRESETS = ['naver.com', 'gmail.com', 'daum.net', 'hanmail.com', 'nate.com'];
 
+/** 제출 허용 최소 경과 시간(초). 이 시간보다 빨리 제출하면 봇으로 간주 */
+const MIN_SUBMIT_SECONDS = 5;
+
 export default function InquiryForm() {
   const [values, setValues] = useState<Inquiry>(initialValues);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+  const { isAllowedToSubmit } = useMinSubmitTime(MIN_SUBMIT_SECONDS);
 
   const isDirectDomain = !EMAIL_DOMAIN_PRESETS.includes(values.emailDomain);
   const selectValue = isDirectDomain ? 'self' : values.emailDomain;
@@ -53,6 +62,24 @@ export default function InquiryForm() {
   const update = <K extends keyof Inquiry>(key: K, value: Inquiry[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
   };
+
+  const { mutate: sendInquiryMutation, isPending, isError, isSuccess } = sendInquiry();
+
+  useEffect(() => {
+    if (isSuccess) {
+      alert('견적 문의가 접수되었습니다.');
+    }
+    // 폼 초기화
+    setValues(initialValues);
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      alert('견적 문의 접수에 실패했습니다.');
+    }
+    // 폼 초기화
+    setValues(initialValues);
+  }, [isError]);
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -87,9 +114,19 @@ export default function InquiryForm() {
       nextErrors.agreement = '개인정보 수집 및 이용에 동의해 주세요.';
     }
 
+    // 해당 필드가 존재하면 제출 무시 (봇 방지)
+    if (values.robot) {
+      return;
+    }
+
+    // 최소 제출 시간 미만이면 제출 무시 (봇 방지)
+    if (!isAllowedToSubmit()) {
+      return;
+    }
+
     const isValid = Object.keys(nextErrors).length === 0;
     if (isValid) {
-      console.log('견적문의 제출:', values);
+      sendInquiryMutation(values);
     } else {
       const message = Object.values(nextErrors)[0];
       alert(message);
@@ -136,6 +173,7 @@ export default function InquiryForm() {
       </Box>
 
       <Box
+        id="inquiryForm"
         p={8}
         gap={4}
         as="form"
@@ -176,6 +214,15 @@ export default function InquiryForm() {
               onChange={(e) => update('name', e.target.value)}
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
+            />
+          </Field.Root>
+
+          <Field.Root>
+            <Input 
+              name="robot" 
+              hidden={true} 
+              value={values.robot} 
+              onChange={(e) => update('robot', e.target.value)} 
             />
           </Field.Root>
 
@@ -460,6 +507,8 @@ export default function InquiryForm() {
           onClick={(e) => handleSubmit(e)}
           backgroundColor="orange.500"
           _hover={{ backgroundColor: 'orange.600' }}
+          loading={isPending}
+          disabled={isPending}
         >
           문의하기
         </Button>

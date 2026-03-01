@@ -30,6 +30,7 @@ export interface FAQ {
 // 견적문의
 export interface Inquiry {
   name: string;
+  robot: string;
   phone: string;
   email: string;
   address: string;
