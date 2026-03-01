@@ -6,13 +6,13 @@ import { ScrollTopButton } from './ScrollTopButton';
 export default function FloatingActionButton() {
   return (
     <Stack
-      padding={2}
+      padding={2.5}
       zIndex={900}
       position="fixed"
       bottom={{ base: 2, md: 4 }}
       right={{ base: 4, md: 6 }}
       rounded="full"
-      backgroundColor="whiteAlpha.700"
+      backgroundColor="whiteAlpha.900"
       boxShadow="0 1px 8px -4px rgba(0,0,0,0.8)"
     >
       <PromotionButton />

@@ -1,6 +1,6 @@
 import { LucidePlus } from 'lucide-react';
 
-import { Flex, Image, Collapsible, Link } from '@chakra-ui/react';
+import { Flex, Image, Collapsible, Link, Box, Text } from '@chakra-ui/react';
 
 import { PROMOTION_NAV_LINKS } from '@/shared/config/constants';
 
@@ -15,6 +15,31 @@ export function PromotionButton() {
           flexDirection="column"
           justifyContent="center"
         >
+          <Box 
+            py={2}
+            my={2}
+            cursor="default"
+            fontFamily="Pretendard"
+            borderBottomWidth="1px"
+            borderBottomColor="gray.500"
+          >
+            <Text
+              fontSize="sm"
+              color="gray.900"
+              fontWeight="bold"
+              textAlign="center"
+            >
+              견적문의
+            </Text>
+            <Text
+              fontSize="lg"
+              fontWeight="bold"
+              color="orange.600"
+              textAlign="center"
+            >
+              1577<br />1497
+            </Text>
+          </Box>
           {PROMOTION_NAV_LINKS.map((link) => (
             <Link
               key={link.name}

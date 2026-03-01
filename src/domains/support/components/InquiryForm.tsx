@@ -215,9 +215,7 @@ export default function InquiryForm() {
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
-          </Field.Root>
 
-          <Field.Root>
             <Input 
               name="robot" 
               hidden={true} 

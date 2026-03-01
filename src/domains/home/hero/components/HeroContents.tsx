@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, Container, Heading, Stack, Text } from '@chakra-ui/react';
 
 import { Impactor } from '@/shared/components/common/Impactor';
 
 export default function HeroContents() {
+  const navigate = useNavigate();
   return (
       <Container
         maxW='container.xl'
@@ -76,6 +79,9 @@ export default function HeroContents() {
                 transition='all 0.3s ease-in-out'
                 textShadow="1px 1px 2px rgba(0,0,0,0.2)"
                 _hover={{ transform: 'translateY(-3px)', bg: 'orange.600' }}
+                onClick={() => {
+                  navigate('/support/inquiry');
+                }}
               >
                 견적문의
               </Button>
