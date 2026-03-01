@@ -1,13 +1,20 @@
 import { useState } from 'react';
 
 import { Box, Button, HStack, Input, Link, Text, VStack } from '@chakra-ui/react';
+import { useLogin } from './hooks/useAdmin';
 
 export default function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+
+  const { mutate: loginMutation, isPending } = useLogin();
   
   const handleLogin = () => {
-    
+    if (!id || !password) {
+      alert('아이디와 비밀번호를 입력해주세요.');
+      return;
+    }
+    loginMutation({ email: id, password: password });
   };
 
   return (
@@ -77,6 +84,8 @@ export default function Login() {
             bg: "orange.600",
           }}
           onClick={handleLogin}
+          loading={isPending}
+          disabled={isPending}
         >
           로그인
         </Button>

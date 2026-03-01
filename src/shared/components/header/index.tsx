@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { LucideMenu, LucideX } from "lucide-react";
+import { LucideMenu, LucideUserCircle2, LucideX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link, Image } from "@chakra-ui/react";
@@ -171,6 +171,12 @@ export default function Header() {
                   />
                 </Box>
               ))}
+
+              {sessionStorage.getItem('access_token') && (
+                <Box color="gray.600" cursor="default" animation={'pulse 5s infinite'}>
+                  <LucideUserCircle2 size={20} strokeWidth={2} />
+                </Box>
+              )}
             </HStack>
 
             <HStack>
