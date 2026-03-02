@@ -3,9 +3,10 @@ import { Flex } from '@chakra-ui/react';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
-import PortfolioContents from './components/PortfolioContents';
-
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
+
+import PortfolioContents from './components/PortfolioContents';
+import PortfolioElectrical from './components/PortfolioElectrical';
 
 const navItems: { name: string, path: string }[] = [
   { name: 'PPA(자가소비형)', path: '/portfolio/ppa' },
@@ -33,6 +34,7 @@ export default function Portfolio(props: PortfolioProps) {
       {type === 'ppa' && <PortfolioContents isDesktop={isDesktop} type={type} />}
       {type === 'rps' && <PortfolioContents isDesktop={isDesktop} type={type} />}
       {type === 'residential' && <PortfolioContents isDesktop={isDesktop} type={type} />}
+      {type === 'electrical-work' && <PortfolioElectrical />}
     </Flex> 
   )
 }
