@@ -150,6 +150,7 @@ export default function InquiryForm() {
       alignItems="center"
     >
       <Box
+        px={4}
         display="flex"
         alignItems="center"
         flexDirection="column"
