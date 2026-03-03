@@ -116,7 +116,7 @@ export const SUB_HERO_INFO = [
     pathname: "/about",
     title: "회사소개",
     subtitle: "About Us",
-    image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1920&q=80", 
+    image: "https://images.unsplash.com/photo-1614366502473-e54666693b44?auto=format&fit=crop&w=1920&q=90", 
   },
   { 
     pathname: "/business", 
