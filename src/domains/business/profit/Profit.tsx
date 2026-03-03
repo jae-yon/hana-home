@@ -4,15 +4,16 @@ import { Box, createListCollection, Flex, Grid, Heading, Text } from '@chakra-ui
 
 import { Impactor } from '@/shared/components/common/Impactor';
 
-import { ProfitSum } from './components/ProfitSum';
-import { ProfitConditon } from './components/ProfitConditon';
-import { ProfitAnalysis } from './components/ProfitAnalysis';
 import { useMonthlyRec } from '@/shared/hooks/useRec';
 import { useWeeklySmp } from '@/shared/hooks/useSmp';
 import { RecMonthlyItem } from '@/types/rec';
 import { SmpDailyWeightedSummary } from '@/types/smp';
 import { useAddressToLocation } from '@/shared/hooks/useMap';
-import { useCalcOptions } from './hooks/useProfit';
+
+import { ProfitSum } from '@/domains/business/profit/ProfitSum';
+import { ProfitConditon } from '@/domains/business/profit/ProfitConditon';
+import { ProfitAnalysis } from '@/domains/business/profit/ProfitAnalysis';
+import { useCalcOptions } from '@/domains/business/profit/hooks/useProfit';
 
 const areaType = createListCollection({
   items: [

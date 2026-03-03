@@ -16,15 +16,15 @@ export default function BusinessPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  if (!type || !['profit-calculator'].includes(type)) {
-    return <Navigate to={`/business/profit-calculator`} replace />;
+  if (!type || !['re-powering', 'profit-calculator'].includes(type)) {
+    return <Navigate to={`/business/re-powering`} replace />;
   }
 
   return (
     <>
       <Header />
       <SubHero />
-      <Business type={type as 'profit-calculator'} />
+      <Business type={type as 're-powering' | 'profit-calculator'} />
       <Footer />
       <FloatingActionButton />
     </>

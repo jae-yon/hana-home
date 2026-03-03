@@ -51,7 +51,12 @@ const EMAIL_DOMAIN_PRESETS = ['naver.com', 'gmail.com', 'daum.net', 'hanmail.com
 /** 제출 허용 최소 경과 시간(초). 이 시간보다 빨리 제출하면 봇으로 간주 */
 const MIN_SUBMIT_SECONDS = 5;
 
-export default function InquiryForm() {
+interface InquiryFormProps {
+  isDesktop: boolean;
+}
+
+export default function InquiryForm(props: InquiryFormProps) {
+  const { isDesktop } = props;
   const [values, setValues] = useState<Inquiry>(initialValues);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const { isAllowedToSubmit } = useMinSubmitTime(MIN_SUBMIT_SECONDS);
@@ -335,11 +340,13 @@ export default function InquiryForm() {
             />
           </Field.Root>
 
-          <Flex justify="center" alignItems="center" pb={3}>
-            <Box asChild color="gray.500" aria-hidden>
-              <LucideAtSign size={16} />
-            </Box>
-          </Flex>
+          {isDesktop && (
+            <Flex justify="center" alignItems="center" pb={3}>
+              <Box asChild color="gray.500" aria-hidden>
+                <LucideAtSign size={16} />
+              </Box>
+            </Flex>
+          )}
 
           <Field.Root>
             <Input

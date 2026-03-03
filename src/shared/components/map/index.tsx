@@ -25,7 +25,7 @@ export default function Map({ location: locationProp }: MapProps) {
 
       const map = new naver.maps.Map(mapRef.current, {
         center,
-        zoom: 16,
+        zoom: 20,
       });
       mapInstanceRef.current = map;
 
