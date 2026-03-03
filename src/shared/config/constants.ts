@@ -51,13 +51,12 @@ export const HEADER_MENU = [
     name: "사업소개",
     path: "/business",
     childMenu: [
-      { name: "사업개요", path: "/business/introduction" },
       { name: "가정용태양광", path: "/business/home-solar" },
       { name: "자가용PPA", path: "/business/ppa" },
       { name: "발전사업RPS", path: "/business/rps" },
       { name: "주차장태양광", path: "/business/parking-solar" },
       { name: "RE100", path: "/business/re100" },
-      { name: "리파워링", path: "/business/refurbishment" },
+      { name: "리파워링", path: "/business/re-powering" },
       { name: "예상 수익계산기", path: "/business/profit-calculator" },
     ],
   },
@@ -435,7 +434,7 @@ export const BUSINESS_ITEMS = [
       "저효율·노후 설비를 최신 기술로 교체해 발전량 증가와 유지보수 비용 절감을 동시에 실현합니다.",
     image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?auto=format&fit=crop&w=1920&q=90",
     accent: "#F1C40F", 
-    href: "/business/repowering",
+    href: "/business/re-powering",
   },  
   {
     id: 4,

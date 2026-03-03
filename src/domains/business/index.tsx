@@ -1,19 +1,22 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, Flex } from '@chakra-ui/react';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
+import Re100 from '@/domains/business/re100/Re100';
+import Repowering from '@/domains/business/repowering/Repowering';
 import ProfitCalculator from '@/domains/business/profit/Profit';
 
-import Repowering from '@/domains/business/repowering/Repowering';
-import { useNavigate } from 'react-router-dom';
 
 interface BusinessProps {
-  type: 're-powering' | 'profit-calculator';
+  type: 're100' | 're-powering' | 'profit-calculator';
 }
 
 const navItems: { name: string, path: string }[] = [
+  { name: 'RE100', path: '/business/re100' },
   { name: '리파워링', path: '/business/re-powering' },
   { name: '예상 수익계산기', path: '/business/profit-calculator' },
 ];
@@ -33,11 +36,12 @@ export default function Business(props: BusinessProps) {
       justifyContent="center"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
-      {type === 'profit-calculator' && <ProfitCalculator />}
+      {type === 're100' && <Re100 />}
       {type === 're-powering' && <Repowering />}
+      {type === 'profit-calculator' && <ProfitCalculator />}
 
       <Flex
-        py={16}
+        py={24}
         width="100%"
         alignItems="center"
         justifyContent="center"
