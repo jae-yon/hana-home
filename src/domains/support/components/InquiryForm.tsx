@@ -158,7 +158,7 @@ export default function InquiryForm() {
       >
         <Heading
           mb={4}
-          size="5xl"
+          fontSize={{ base: '28px', sm: '32px', md: '36px', lg: '48px' }}
           color="gray.800"
           lineHeight="1.35"
           fontWeight="semibold"

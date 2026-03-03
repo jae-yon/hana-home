@@ -1,4 +1,4 @@
-import { Flex, Collapsible, Text, Box } from '@chakra-ui/react';
+import { Flex, Collapsible, Text, Box, Heading } from '@chakra-ui/react';
 import { ChevronDown } from 'lucide-react';
 
 import { FAQ_ITEMS } from '@/shared/config/constants';
@@ -21,6 +21,18 @@ export default function FAQContents() {
       direction="column"
       position="relative"
     >
+      <Heading
+        mb={8}
+        fontWeight="bold"
+        color="gray.800"
+        lineHeight="1.25"
+        letterSpacing="0.02em"
+        ms={{ base: 4, md: 0 }}
+        fontSize={{ base: '28px', sm: '32px', md: '36px', lg: '48px' }}
+      >
+        자주묻는 질문
+      </Heading>
+
       {visibleItems.map((item) => (
         <Impactor key={item.id} direction="bottom" once>
           <Collapsible.Root>
