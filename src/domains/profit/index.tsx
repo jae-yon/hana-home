@@ -111,7 +111,7 @@ export default function ProfitCalculator() {
       p={{ base: 0, md: 12 }}
     >
       <Impactor direction="bottom" once>
-        <Box p={4}>
+        <Box px={{ base: 6, md: 8 }}>
           <Heading
             mb={4}
             size="5xl"
