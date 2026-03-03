@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const SupportPage = lazy(() => import('@/pages/SupportPage'));
 const BusinessPage = lazy(() => import('@/pages/BusinessPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
@@ -26,6 +27,14 @@ export const ROUTES = [
   {
     path: '/portfolio/:type',
     element: <PortfolioPage />,
+  },
+  {
+    path: '/about',
+    element: <AboutPage />,
+  },
+  {
+    path: '/about/:type',
+    element: <AboutPage />,
   },
   {
     path: '/support',
