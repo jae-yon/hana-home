@@ -310,10 +310,6 @@
     transform: translateX(-40px);
   }
 }
-  
-.ticker-animation {
-  animation: scroll 30s linear infinite;
-}
 
 :root {
   font-family: 'A2z', 'Pretendard', sans-serif;
