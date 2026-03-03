@@ -24,13 +24,9 @@ export function IntroHeader(props: IntroHeaderProps) {
       <Text 
         p={4}
         mb={10}
-        ref={ref}
         color="gray.900"
         textAlign="start"
         fontWeight="bold"
-        opacity={isView ? 1 : 0}
-        transition="transform 1s ease, opacity 1s ease"
-        transform={isView ? 'translateX(0)' : 'translateX(-200px)'}
         fontSize={{ base: '28px', sm: '32px', md: '38px', lg: '56px' }}
       >
         풍부한 경험과 노하우의 차이
@@ -38,15 +34,11 @@ export function IntroHeader(props: IntroHeaderProps) {
 
       <Image 
         mb={10}
-        src={intro_img_header} 
-        ref={ref}
-        width={isDesktop ? '90%' : '80%'}
-        height={isDesktop ? '360px' : '240px'}
         objectFit="cover"
         borderRightRadius="xl"
-        opacity={isView ? 1 : 0}
-        transform={isView ? 'translateX(0)' : 'translateX(-200px)'}
-        transition="transform 1.5s ease, opacity 1s ease"
+        src={intro_img_header} 
+        width={isDesktop ? '90%' : '80%'}
+        height={isDesktop ? '360px' : '240px'}
       />
       
       <Text

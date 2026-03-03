@@ -16,7 +16,7 @@ export function Intro(props: IntroProps) {
     <Box
       width="100%"
       maxW="1280px"
-      backgroundColor="gray.50"
+      mt={{ base: 0, md: 28 }}
     >
       {/* 최상단 */}
       <IntroHeader isDesktop={isDesktop} />

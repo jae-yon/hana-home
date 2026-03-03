@@ -8,7 +8,7 @@ import coreValueImg_02 from '@/assets/images/3d/3d_icon_02.png';
 import coreValueImg_03 from '@/assets/images/3d/3d_icon_03.png';
 import coreValueImg_04 from '@/assets/images/3d/3d_icon_04.png';
 
-const core_value_bg = "https://images.unsplash.com/photo-1598837443404-47d99b7228dc?q=80&w=1200&auto=format&fit=crop"
+const core_value_bg = "https://images.unsplash.com/photo-1598837443404-47d99b7228dc?q=80&w=1280&auto=format&fit=crop"
 
 export function IntroValue() {
   const ref = useRef(null);
@@ -120,9 +120,9 @@ export function IntroValue() {
                 fontSize="14px" 
                 color="gray.600" 
                 lineHeight="1.7"
+                fontWeight="700"
                 textAlign="start"
                 letterSpacing="-0.01em"
-                fontWeight="700"
                 fontFamily="NanumSquareNeo"
               >
                 철저한 품질 관리와 알루미늄 구조 기술로
@@ -188,8 +188,8 @@ export function IntroValue() {
             </Flex>
           </Box>
           <Box
-            bg="red.100"
             boxShadow="lg"
+            bg="red.100"
             borderRadius="xl"
             p={{ base: 6, md: 8 }}
             opacity={isView ? 1 : 0}

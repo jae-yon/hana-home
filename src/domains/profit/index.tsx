@@ -55,7 +55,7 @@ export default function ProfitCalculator() {
   useEffect(() => {
     setValues(initialValues);
     if (weeklySmpData && monthlyRecData) {
-      setValues((prev) => ({ ...prev, smpPrice: weeklySmpData[weeklySmpData.length - 1].totalWeightedAvg, recPrice: monthlyRecData[0].unifiedAvgPrice }));
+      setValues((prev) => ({ ...prev, smpPrice: weeklySmpData[weeklySmpData.length - 1].totalWeightedAvg, recPrice: (monthlyRecData[0].unifiedAvgPrice)/1000 }));
     }
     if (calcOptionsData) {
       setValues((prev) => ({ ...prev, constructionCost: calcOptionsData.constructionCost, loanRate: calcOptionsData.loanRate, loanInterestRate: calcOptionsData.loanInterestRate }));

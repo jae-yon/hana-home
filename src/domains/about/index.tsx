@@ -4,6 +4,7 @@ import { useResponsive } from '@/shared/hooks/useResponsive';
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
 import { Intro } from './components/Intro';
+import { Directions } from './components/Directions';
 
 interface AboutProps {
   type: 'introduction' | 'location';
@@ -26,6 +27,7 @@ export default function About(props: AboutProps) {
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'introduction' && <Intro isDesktop={isDesktop} />}
+      {type === 'location' && <Directions />}
     </Flex>
   );
 }

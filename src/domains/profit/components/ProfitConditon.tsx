@@ -49,7 +49,6 @@ export function ProfitConditon(props: ProfitConditonProps) {
           </Field.Label>
           <Input
             value={values.address}
-            placeholder=""
             onChange={(e) => onChange(e)}
             name="address"
             fontSize="md"
@@ -57,6 +56,7 @@ export function ProfitConditon(props: ProfitConditonProps) {
             borderRadius="lg"
             backgroundColor="white"
             borderColor="gray.300"
+            placeholder="예) 서울특별시 금천구 가산디지털1로 1, 더루벤스밸리 1407호"
             _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
             _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
           />

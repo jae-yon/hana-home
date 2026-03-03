@@ -6,7 +6,7 @@ interface IntroVisionProps {
   isDesktop: boolean;
 }
 
-const intro_img_vision = "https://images.unsplash.com/photo-1694248407533-d74c41fb5b68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI4fHwlRUQlODMlOUMlRUMlOTYlOTElRUElQjQlOTF8ZW58MHx8MHx8fDA%3D"
+const intro_img_vision = "https://images.unsplash.com/photo-1694248407533-d74c41fb5b68?q=80&w=1024&auto=format&fit=crop"
 
 export function IntroVision(props: IntroVisionProps) {
   const { isDesktop } = props;
@@ -42,9 +42,9 @@ export function IntroVision(props: IntroVisionProps) {
       >
         <Box 
           px={10}
-          width={{ base: '100%', md: '50%' }} 
           ref={ref}
           opacity={isView ? 1 : 0}
+          width={{ base: '100%', md: '50%' }} 
           transition="transform 1.5s ease, opacity 1s ease"
           transform={isView ? 'translateX(0)' : 'translateX(-200px)'}
         >
