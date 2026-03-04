@@ -41,14 +41,12 @@ export default function RpsContents() {
         </Badge>
 
         <Text
-          fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
+          fontSize={{ base: 'lg', md: 'xl' }}
+          fontWeight="600"  
           color="gray.800"
           lineHeight="1.75"
-          fontWeight="700"
           textAlign="start"
-          wordBreak="keep-all"
           letterSpacing="0.02em"
-          overflowWrap="break-word"
           fontFamily="NanumSquareNeo"
         >
           RPS(Renewable Portfolio Standard)는 500MW 이상 대형 발전사업자에게 총 발전량의 일정 비율을
@@ -56,14 +54,12 @@ export default function RpsContents() {
         </Text>
 
         <Text
-          fontSize={{ base: 'xs', md: 'lg', lg: 'xl' }} 
+          fontSize={{ base: 'lg', md: 'xl' }}
+          fontWeight="600" 
           color="gray.800"
           lineHeight="1.75"
-          fontWeight="700"
           textAlign="start"
-          wordBreak="keep-all"
           letterSpacing="0.02em"
-          overflowWrap="break-word"
           fontFamily="NanumSquareNeo"
         >
           RPS 의무를 이행하려면 <Text as="span" color="orange.500" fontWeight="900">REC(공급인증서)</Text>를
@@ -205,10 +201,11 @@ export default function RpsContents() {
               fontSize={{ base: 'lg', md: 'xl' }}
               fontWeight="600"
               color="white"
+              maxW="600px"
               lineHeight={1.8}
               mb={4}
             >
-              태양광발전의 수익은 한전과의 <Text as="span" color="orange.500" fontWeight="600">전력판매수입(SMP:계통한계가격)</Text>과 공급의무자와의{' '}<br />
+              태양광발전의 수익은 한전과의 <Text as="span" color="orange.500" fontWeight="600">전력판매수입(SMP:계통한계가격)</Text>과 공급의무자와의{' '}
               <Text as="span" color="orange.500" fontWeight="600">
                 REC(공급인증서)판매수입
               </Text>

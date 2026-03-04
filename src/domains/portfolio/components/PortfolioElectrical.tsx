@@ -161,8 +161,6 @@ export default function PortfolioElectrical() {
           borderRadius="xl"
           borderWidth="1px"
           borderColor="gray.200"
-          _hover={{ boxShadow: 'md', borderColor: 'gray.200' }}
-          transition="box-shadow 0.2s, border-color 0.2s"
         >
           <Box px={{ base: 5, md: 6 }} pt={{ base: 5, md: 6 }} pb={2}>
             <Heading
@@ -171,11 +169,12 @@ export default function PortfolioElectrical() {
               fontSize={{ base: 'md', md: 'lg' }}
               lineHeight="1.4"
               color="gray.800"
-              fontWeight="800"
-              fontFamily="NanumSquareNeo"
+              fontWeight="medium"
+              fontFamily="pretendard"
               letterSpacing="-0.02em"
               borderLeftWidth="4px"
               borderLeftColor="orange.500"
+              textAlign="start"
               pl={4}
               py={1}
             >

@@ -58,7 +58,7 @@ export default function PortfolioContents(props: PortfolioContensProps) {
             overflow=""
             flexDirection="column"
             justifyContent="center"
-            fontFamily="Pretendard"
+            fontFamily="pretendard"
             w={isDesktop ? '360px' : '100%'}
           >
             <Box

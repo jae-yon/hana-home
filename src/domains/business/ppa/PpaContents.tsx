@@ -81,14 +81,12 @@ export default function PpaContents() {
         </Badge>
 
         <Text
-          fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
+          fontSize={{ base: 'lg', md: 'xl' }}
+          fontWeight="600"  
           color="gray.800"
           lineHeight="1.75"
-          fontWeight="700"
           textAlign="start"
-          wordBreak="keep-all"
           letterSpacing="0.02em"
-          overflowWrap="break-word"
           fontFamily="NanumSquareNeo"
         >
           PPA(전력구매계약, Power Purchase Agreement) 란,
@@ -96,14 +94,12 @@ export default function PpaContents() {
         </Text>
 
         <Text
-          fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
+          fontSize={{ base: 'lg', md: 'xl' }}
+          fontWeight="600"  
           color="gray.800"
           lineHeight="1.75"
-          fontWeight="700"
           textAlign="start"
-          wordBreak="keep-all"
           letterSpacing="0.02em"
-          overflowWrap="break-word"
           fontFamily="NanumSquareNeo"
         >
           별도의 설치 비용이나 유지보수 부담 없이, 계약 기간 전반에 걸쳐 안정적이고 예측 가능한 전력 단가를 확보할 수 있습니다.
