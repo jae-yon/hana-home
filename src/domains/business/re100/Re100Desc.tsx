@@ -9,7 +9,6 @@ export default function Re100Desc() {
 
   return (
     <Stack
-      p={{ base: 4, md: 0 }}
       gap={8}
       mb={12}
       direction="column"
@@ -24,7 +23,7 @@ export default function Re100Desc() {
         <Heading
           pb={4}
           fontWeight="bold"
-          color="gray.8800"
+          color="gray.800"
           lineHeight="1.35"
           textAlign="start"
           wordBreak="keep-all"
@@ -40,7 +39,8 @@ export default function Re100Desc() {
           <Text as="span" fontSize={{ base: '36px', md: '48px', lg: '56px' }} color="green.600">RE100</Text>이란?
         </Heading>
         <Text
-          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+          px={4}
+          fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
           color="gray.800"
           lineHeight="1.75"
           fontWeight="700"
@@ -80,7 +80,7 @@ export default function Re100Desc() {
           overflowWrap="break-word"
           fontFamily="NanumSquareNeo"
           textShadow="1px 1px 1px rgba(0,0,0,0.2)"
-          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+          fontSize={{ base: 'xs', md: 'lg', lg: 'xl' }}
         >
           RE100은 단순한 선언이 아니라 기업이 책임 있는 에너지 사용을 실천하는 글로벌 행동 표준입니다.
         </Text>
