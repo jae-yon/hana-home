@@ -26,7 +26,7 @@ export default function Rps() {
     >
       <RpsHeader />
 
-      <RpsContents />
+      <RpsContents /> 
 
       <Stack gap={12} p={{ base: 4, md: 0 }}>
         <CompareTable type="rps" isDesktop={isDesktop} />
