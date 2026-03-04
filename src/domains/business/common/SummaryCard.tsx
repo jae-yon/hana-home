@@ -51,7 +51,7 @@ export default function SummaryCard() {
           >
             <HStack justify="space-between" align="flex-start">
               <VStack align="flex-start" gap={0}>
-                <Text fontSize="sm" color="whiteAlpha.800" fontWeight="600">
+                <Text fontSize={{ base: "xs", md: "sm" }} color="whiteAlpha.800" fontWeight="600">
                   {card.subtitle}
                 </Text>
                 <Heading size="lg" color="white" fontWeight="800" fontFamily="NanumSquareNeo">
@@ -100,7 +100,7 @@ export default function SummaryCard() {
                     size={32}
                     strokeWidth={1.5}
                   />
-                  <Text fontSize="sm" fontWeight="500">{p}</Text>
+                  <Text fontSize={{ base: "xs", md: "sm" }} textAlign="center" fontWeight="500">{p}</Text>
                 </Box>
               ))}
             </SimpleGrid>

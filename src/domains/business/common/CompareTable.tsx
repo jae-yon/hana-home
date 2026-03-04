@@ -190,7 +190,7 @@ export default function CompareTable(props: CompareTableProps) {
           color="white"
         >
           <VStack align="center" gap={0}>
-            <Text fontSize="lg" fontWeight="800" color="white">
+            <Text fontSize={{ base: "sm", md: "lg" }} fontWeight="800" color="white">
               자가용 PPA
             </Text>
             {isDesktop && 
@@ -211,7 +211,7 @@ export default function CompareTable(props: CompareTableProps) {
           bg="gray.600"
           color="white"
         >
-          <Text fontSize="xl" fontWeight="800" color="white" letterSpacing="wide" textAlign="center">
+          <Text fontSize={{ base: "sm", md: "lg" }} fontWeight="800" color="white" letterSpacing="wide" textAlign="center">
             비교 항목
           </Text>
         </GridItem>
@@ -227,7 +227,7 @@ export default function CompareTable(props: CompareTableProps) {
           color="white"
         >
           <VStack align="center" gap={0}>
-            <Text fontSize="lg" fontWeight="800" color="white">
+            <Text fontSize={{ base: "sm", md: "lg" }} fontWeight="800" color="white">
               발전사업 RPS
             </Text>
             {isDesktop && 
@@ -257,10 +257,10 @@ export default function CompareTable(props: CompareTableProps) {
             <HStack gap={2} fontFamily="pretendard" color="white">
               {(() => {
                 const IconComponent = category.icon;
-                return <IconComponent size={24} strokeWidth={2} />;
+                return <IconComponent size={20} strokeWidth={2} />;
               })()}
               <Text
-                fontSize="xl"
+                fontSize={{ base: "md", md: "lg" }}
                 fontWeight="600"
                 textTransform="uppercase"
                 letterSpacing="wider"
@@ -292,7 +292,7 @@ export default function CompareTable(props: CompareTableProps) {
                 borderRadius="xl"
               >
                 <Text 
-                  fontSize="sm" 
+                  fontSize={{ base: "xs", md: "sm" }} 
                   fontWeight="700" 
                   color={type === 'ppa' ? 'blue.600' : 'gray.500'} 
                   letterSpacing="wide" 
@@ -313,7 +313,7 @@ export default function CompareTable(props: CompareTableProps) {
                 borderColor="gray.200"
                 borderRadius="xl"
               >
-                <Text fontSize="sm" fontWeight="700" color="gray.800" letterSpacing="wide" textAlign="center">
+                <Text fontSize={{ base: "xs", md: "sm" }} fontWeight="700" color="gray.800" letterSpacing="wide" textAlign="center">
                   {item.label}
                 </Text>
               </GridItem>
@@ -330,7 +330,7 @@ export default function CompareTable(props: CompareTableProps) {
                 borderRadius="xl"
               >
                 <Text 
-                  fontSize="sm" 
+                  fontSize={{ base: "xs", md: "sm" }} 
                   fontWeight="700" 
                   color={type === 'rps' ? 'orange.600' : 'gray.500'} 
                   letterSpacing="wide" 

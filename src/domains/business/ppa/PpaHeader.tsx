@@ -51,7 +51,7 @@ export default function PpaHeader() {
           as="span"
           color="white"
           display="block"
-          fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }}
+          fontSize={{ base: "3xl", md: "6xl", lg: "7xl" }}
         >
           햇빛을 수익으로
         </Text>
@@ -59,7 +59,7 @@ export default function PpaHeader() {
           as="span" 
           color="white" 
           display="block"
-          fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }} 
+          fontSize={{ base: "3xl", md: "6xl", lg: "7xl" }} 
         >
           바꾸는 방법 
         </Text>

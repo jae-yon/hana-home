@@ -51,7 +51,7 @@ export default function RpsHeader() {
           as="span"
           color="white"
           display="block"
-          fontSize={{ base: "4xl", md: "5xl", lg: "7xl" }}
+          fontSize={{ base: "3xl", md: "5xl", lg: "7xl" }}
         >
           태양광 하나로
         </Text>
@@ -59,7 +59,7 @@ export default function RpsHeader() {
           as="span" 
           color="white" 
           display="block"
-          fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }} 
+          fontSize={{ base: "4xl", md: "6xl", lg: "7xl" }} 
         >
           두 배의 수익을 
         </Text>
@@ -67,7 +67,7 @@ export default function RpsHeader() {
 
       <Text
         textAlign="end"
-        fontSize={{ base: "lg", md: "3xl" }}
+        fontSize={{ base: "md", md: "3xl" }}
         fontWeight="700"
         color="gray.200"
         mb={8}
@@ -75,9 +75,9 @@ export default function RpsHeader() {
         opacity={isView ? 1 : 0}
         transform={isView ? "translateX(0)" : "translateX(30px)"}
         transition="all 1.5s ease-in-out"
-        lineHeight={1.3}
+        lineHeight={1.6}
       >
-        RPS(신재생에너지 공급의무화) 제도를 활용하여<br />
+        RPS 제도를 활용하여<br />
         <Text as="span" color="orange.500" fontWeight="700" textShadow="0 0 10px rgba(245, 158, 11, 0.5)">
           {" "}전기 판매 수익{" "}
         </Text>

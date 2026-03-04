@@ -12,7 +12,8 @@ export default function RpsContents() {
         my={24}
       >
         <Badge 
-          p={8} 
+          px={8} 
+          py={4}
           mb={8} 
           fontSize={{ base: '20px', md: '28px', lg: '36px' }} 
           fontWeight="700" 
@@ -25,7 +26,7 @@ export default function RpsContents() {
         </Badge>
 
         <Text
-          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+          fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
           color="gray.800"
           lineHeight="1.75"
           fontWeight="700"
@@ -40,7 +41,7 @@ export default function RpsContents() {
         </Text>
 
         <Text
-          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+          fontSize={{ base: 'xs', md: 'lg', lg: 'xl' }} 
           color="gray.800"
           lineHeight="1.75"
           fontWeight="700"
