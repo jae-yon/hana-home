@@ -17,10 +17,9 @@ export default function PortfolioContents(props: PortfolioContensProps) {
   return (
     <Flex 
       width="100%"
-      direction="column" 
+      direction="column"
       alignItems="center"
       justifyContent="center"
-      px={isDesktop ? 12 : 0}
     >
       {items.map((item) => (
         <Box

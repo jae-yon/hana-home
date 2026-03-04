@@ -73,7 +73,7 @@ export default function HeaderDesktop({
             <Flex flex={1} wrap="wrap" gap={0}>
               {currentMenu.childMenu.map((child) => (
                 <Link
-                  key={child.path}
+                  key={child.name}
                   onClick={() => handleExternalLink(child.path)}
                   display="flex"
                   alignItems="center"

@@ -62,7 +62,7 @@ export default function HeaderMobile({
                   <VStack gap={0} align="stretch" pl={4} pb={2} pt={1}>
                     {menu.childMenu.map((child) => (
                       <Link
-                        key={child.path}
+                        key={child.name}
                         onClick={() => handleExternalLink(child.path)}
                         display="block"
                         py={2}

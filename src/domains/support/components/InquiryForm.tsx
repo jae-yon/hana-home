@@ -221,13 +221,6 @@ export default function InquiryForm(props: InquiryFormProps) {
               _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
               _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
             />
-
-            <Input 
-              name="robot" 
-              hidden={true} 
-              value={values.robot} 
-              onChange={(e) => update('robot', e.target.value)} 
-            />
           </Field.Root>
 
           <Field.Root>
@@ -491,6 +484,16 @@ export default function InquiryForm(props: InquiryFormProps) {
               자세히보기
             </Button>
           </Flex>
+        </Field.Root>
+
+        {/* 봇 방지 */}
+        <Field.Root display="none">
+          <Input 
+            name="robot" 
+            hidden={true} 
+            value={values.robot} 
+            onChange={(e) => update('robot', e.target.value)} 
+          />
         </Field.Root>
 
         <SimplePrivacyModal
