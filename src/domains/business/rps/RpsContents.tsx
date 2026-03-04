@@ -12,15 +12,15 @@ export default function RpsContents() {
         my={24}
       >
         <Badge 
-          px={8} 
-          py={4}
+          px={12} 
+          py={6}
           mb={8} 
-          fontSize={{ base: '20px', md: '28px', lg: '36px' }} 
-          fontWeight="700" 
-          letterSpacing="wide" 
+          fontSize={{ base: '20px', md: '28px' }} 
+          fontWeight="800" 
           color="orange.600" 
           bg="orange.100/80" 
           borderRadius="full"
+          fontFamily="NanumSquareNeo"
         >
           RPS 제도란?
         </Badge>

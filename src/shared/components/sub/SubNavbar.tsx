@@ -24,6 +24,7 @@ export function SubNavbarDesktop(props: SubNavbarProps) {
       shadow="sm"
       width="100%"
       flexDirection="row"
+      flexWrap="wrap"
       alignItems="center"
       justify="flex-start"
       backgroundColor="gray.800"
@@ -78,7 +79,6 @@ export function SubNavbarDesktop(props: SubNavbarProps) {
       ))}
     </Flex>
   );
-
 }
 
 export function SubNavbarMobile(props: SubNavbarProps) {

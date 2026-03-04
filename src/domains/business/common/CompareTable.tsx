@@ -296,7 +296,7 @@ export default function CompareTable(props: CompareTableProps) {
                   fontWeight="700" 
                   color={type === 'ppa' ? 'blue.600' : 'gray.500'} 
                   letterSpacing="wide" 
-                  textAlign="center"
+                  textAlign={{ base: "center", md: "start" }}
                 >
                   {item.ppa}
                 </Text>
@@ -334,7 +334,7 @@ export default function CompareTable(props: CompareTableProps) {
                   fontWeight="700" 
                   color={type === 'rps' ? 'orange.600' : 'gray.500'} 
                   letterSpacing="wide" 
-                  textAlign="center"
+                  textAlign={{ base: "center", md: "start" }}
                 >
                   {item.rps}
                 </Text>

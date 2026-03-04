@@ -10,14 +10,16 @@ import Ppa from '@/domains/business/ppa/Ppa';
 import Rps from '@/domains/business/rps/Rps';
 import Re100 from '@/domains/business/re100/Re100';
 import ProfitCalculator from '@/domains/business/profit/Profit';
+import SolarHome from '@/domains/business/solar-home/SolarHome';
 import Repowering from '@/domains/business/repowering/Repowering';
 
 
 interface BusinessProps {
-  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator';
+  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home';
 }
 
 const navItems: { name: string, path: string }[] = [
+  { name: '가정용태양광', path: '/business/solar-home' },
   { name: '자가용 PPA', path: '/business/ppa' },
   { name: '발전사업 RPS', path: '/business/rps' },
   { name: 'RE100', path: '/business/re100' },
@@ -33,13 +35,13 @@ export default function Business(props: BusinessProps) {
 
   return (
     <Flex 
-      gap={12}
       width="100%"
       direction="column"
       alignItems="center"
       justifyContent="center"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
+      {type === 'solar-home' && <SolarHome />}
       {type === 'ppa' && <Ppa />}
       {type === 'rps' && <Rps />}
       {type === 're100' && <Re100 />}

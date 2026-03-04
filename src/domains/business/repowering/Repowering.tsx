@@ -8,8 +8,7 @@ import RepoweringEffects from '@/domains/business/repowering/RepoweringEffect';
 export default function Repowering() {
   return (
     <Box
-      mb={24}
-      mt={12}
+      my={24}
       gap={12}
       p={{ base: 0, md: 12 }}
       width="100%"

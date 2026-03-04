@@ -93,9 +93,6 @@ export default function RepoweringHeader() {
           letterSpacing="0.02em"
           fontSize={{ base: '28px', sm: '36px', md: '48px', lg: '56px' }}
           ref={ref}
-          opacity={isView ? 1 : 0}
-          transform={isView ? "translateY(0)" : "translateY(30px)"}
-          transition="all 1s cubic-bezier(0.22,1,0.36,1)"
         >
           노후 태양광을<br />
           <Text as="span" color="orange.600">수익 자산</Text>으로 전환하세요.
