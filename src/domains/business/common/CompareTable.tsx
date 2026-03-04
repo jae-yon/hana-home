@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Text, VStack, HStack } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text, VStack, HStack, Heading } from '@chakra-ui/react';
 import {
   LucideClipboardList,
   LucideCircleDollarSign,
@@ -166,7 +166,18 @@ export default function CompareTable(props: CompareTableProps) {
   const { type, isDesktop } = props;
 
   return (
-    <Box>
+    <Box my={12}>
+      <Heading
+        fontSize={{ base: "24px", md: "32px", lg: "48px" }}
+        fontWeight="800"
+        color="gray.800"
+        fontFamily="pretendard"
+        mb={12}
+        textAlign="center"
+        letterSpacing="-0.04em"
+      >
+        재생에너지 조달 방식 비교
+      </Heading>
       <Grid templateColumns="1.2fr 1fr 1.2fr" gap={2} overflow="hidden">
         <GridItem 
           p={5} 

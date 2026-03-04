@@ -14,7 +14,7 @@ export default function Re100Header() {
       width="100%"
       height="400px"
       overflow="hidden"
-      borderRadius={{ base: '0', lg: 'xl' }}
+      borderRadius={{ base: '0', md: '2xl' }}
       position="relative"
       ref={ref}
       opacity={isView ? 1 : 0}
@@ -44,7 +44,7 @@ export default function Re100Header() {
         bottom={0}
         zIndex={1}
         background="linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.5) 100%)"
-        borderRadius={{ base: '0', lg: 'xl' }}
+        borderRadius={{ base: '0', md: '2xl' }}
       />
 
       {/* content */}
