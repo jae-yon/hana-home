@@ -3,9 +3,9 @@ import { useInView } from 'framer-motion';
 
 import { Box, Heading, Text } from '@chakra-ui/react';
 
-const rps_bg = "https://images.unsplash.com/photo-1545208942-e1c9c916524b?auto=format&fit=crop&w=1280&q=90";
+const ppa_bg = "https://images.unsplash.com/photo-1552197892-f2ad2f75e7c8?auto=format&fit=crop&w=1280&q=90"
 
-export default function RpsHeader() {
+export default function PpaHeader() {
   const ref = useRef(null);
   const isView = useInView(ref);
   
@@ -14,7 +14,7 @@ export default function RpsHeader() {
       p={8}
       width="100%"
       position="relative"
-      backgroundImage={`url(${rps_bg})`}
+      backgroundImage={`url(${ppa_bg})`}
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -39,7 +39,7 @@ export default function RpsHeader() {
       <Heading
         as="h1"
         fontWeight="900"
-        lineHeight={1.2}
+        lineHeight={1.4}
         mt={8}
         mb={12}
         ref={ref}
@@ -51,9 +51,9 @@ export default function RpsHeader() {
           as="span"
           color="white"
           display="block"
-          fontSize={{ base: "4xl", md: "5xl", lg: "7xl" }}
+          fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }}
         >
-          태양광 하나로
+          햇빛을 수익으로
         </Text>
         <Text 
           as="span" 
@@ -61,7 +61,7 @@ export default function RpsHeader() {
           display="block"
           fontSize={{ base: "5xl", md: "6xl", lg: "7xl" }} 
         >
-          두 배의 수익을 
+          바꾸는 방법 
         </Text>
       </Heading>
 
@@ -75,17 +75,11 @@ export default function RpsHeader() {
         opacity={isView ? 1 : 0}
         transform={isView ? "translateX(0)" : "translateX(30px)"}
         transition="all 1.5s ease-in-out"
-        lineHeight={1.3}
+        lineHeight={1.9}
       >
-        RPS(신재생에너지 공급의무화) 제도를 활용하여<br />
-        <Text as="span" color="orange.500" fontWeight="700" textShadow="0 0 10px rgba(245, 158, 11, 0.5)">
-          {" "}전기 판매 수익{" "}
-        </Text>
-        과
-        <Text as="span" color="blue.600" fontWeight="700" textShadow="0 0 10px rgba(33, 150, 243, 0.5)">
-          {" "}REC 판매 수익{" "}
-        </Text>
-        을 동시에
+        초기 비용 없이<br />
+        시작하는 자가용 태양광 발전<br />
+        자가용 태양광 <Text as="span" color="blue.500" fontWeight="700">PPA</Text>
       </Text>
     </Box>
   );

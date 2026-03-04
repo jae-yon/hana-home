@@ -1,14 +1,14 @@
 import { Box, Stack } from '@chakra-ui/react';
 
-import RpsCta from '@/domains/business/rps/RpsCta';
-import RpsHeader from '@/domains/business/rps/RpsHeader';
-import RpsContents from '@/domains/business/rps/RpsContents';
+import PpaCta from '@/domains/business/ppa/PpaCta';
+import PpaHeader from '@/domains/business/ppa/PpaHeader';
+import PpaContents from '@/domains/business/ppa/PpaContents';
 import SummaryCard from '@/domains/business/common/SummaryCard';
 import CompareTable from '@/domains/business/common/CompareTable';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
-export default function Rps() {
+export default function Ppa() {
   const { isDesktop } = useResponsive();
   
   return (
@@ -24,16 +24,17 @@ export default function Rps() {
       direction="column"
       position="relative" 
     >
-      <RpsHeader />
+      <PpaHeader />
 
-      <RpsContents />
+      <PpaContents />
 
+      
       <Stack gap={12} p={{ base: 4, md: 0 }}>
-        <CompareTable type="rps" isDesktop={isDesktop} />
+        <CompareTable type="ppa" isDesktop={isDesktop} />
         <SummaryCard />
       </Stack>
-
-      <RpsCta />
+      
+      <PpaCta />
     </Box>
   );
 }

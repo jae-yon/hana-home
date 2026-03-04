@@ -6,6 +6,7 @@ import { useResponsive } from '@/shared/hooks/useResponsive';
 
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
+import Ppa from '@/domains/business/ppa/Ppa';
 import Rps from '@/domains/business/rps/Rps';
 import Re100 from '@/domains/business/re100/Re100';
 import ProfitCalculator from '@/domains/business/profit/Profit';
@@ -13,10 +14,11 @@ import Repowering from '@/domains/business/repowering/Repowering';
 
 
 interface BusinessProps {
-  type: 'rps' | 're100' | 're-powering' | 'profit-calculator';
+  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator';
 }
 
 const navItems: { name: string, path: string }[] = [
+  { name: '자가용 PPA', path: '/business/ppa' },
   { name: '발전사업 RPS', path: '/business/rps' },
   { name: 'RE100', path: '/business/re100' },
   { name: '리파워링', path: '/business/re-powering' },
@@ -38,6 +40,7 @@ export default function Business(props: BusinessProps) {
       justifyContent="center"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
+      {type === 'ppa' && <Ppa />}
       {type === 'rps' && <Rps />}
       {type === 're100' && <Re100 />}
       {type === 're-powering' && <Repowering />}

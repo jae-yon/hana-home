@@ -16,7 +16,7 @@ export default function BusinessPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  if (!type || !['rps', 're-powering', 'profit-calculator', 're100'].includes(type)) {
+  if (!type || !['ppa', 'rps', 're-powering', 'profit-calculator', 're100'].includes(type)) {
     return <Navigate to={`/business/re100`} replace />;
   }
 
@@ -24,7 +24,7 @@ export default function BusinessPage() {
     <>
       <Header />
       <SubHero />
-      <Business type={type as 'rps' | 're100' | 're-powering' | 'profit-calculator'} />
+      <Business type={type as 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator'} />
       <Footer />
       <FloatingActionButton />
     </>

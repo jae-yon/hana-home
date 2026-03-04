@@ -408,7 +408,7 @@ export const FAQ_ITEMS: FAQ[] = [
 export const BUSINESS_ITEMS = [
   {
     id: 1,
-    title: "태양광 PPA",
+    title: "자가용 PPA",
     subtitle: "Power Purchase Agreement",
     description:
       "태양광 설비를 통해 생산된 전기를 건물에서 우선 사용하고, 남는 전력은 판매하여 수익을 창출하는 전력 활용 방식입니다.",
