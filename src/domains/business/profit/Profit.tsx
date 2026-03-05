@@ -13,7 +13,8 @@ import { useAddressToLocation } from '@/shared/hooks/useMap';
 import { ProfitSum } from '@/domains/business/profit/ProfitSum';
 import { ProfitConditon } from '@/domains/business/profit/ProfitConditon';
 import { ProfitAnalysis } from '@/domains/business/profit/ProfitAnalysis';
-import { useCalcOptions } from '@/domains/business/profit/hooks/useProfit';
+import { getCalcResult, useCalcOptions } from '@/domains/business/profit/hooks/useProfit';
+import { formatManUnit } from '@/shared/utils/number';
 
 const areaType = createListCollection({
   items: [
@@ -26,15 +27,23 @@ const initialValues = {
   address: '',
   areaType: areaType.items[0],
   capacity: 0,
+  // 공사비
   constructionCost: 0,
   recPrice: 0,
   smpPrice: 0,
+  // 대출 비율
   loanRate: 0,
+  // 대출 이자율
   loanInterestRate: 0,
+  // 발전 시간
   generationTime: 0,
+  // 수익률
   rateOfReturn: 0,
+  // 월간 수익
   monthlyProfit: 0,
+  // 연간 수익
   annualProfit: 0,
+  // 좌표
   latitude: 37.5665,
   longitude: 126.9780,
   roadAddress: '',
@@ -90,6 +99,25 @@ export default function ProfitCalculator() {
       roadAddress: data.roadAddress ?? '',
       jibunAddress: data.jibunAddress ?? '',
     }));
+
+    console.log(weeklySmpData, monthlyRecData);
+  
+    const result = await getCalcResult(values);
+
+    console.log(result);
+    if (result) {
+      // 소수점 제외 및 만 단위 조절
+      const formattedMonthlyProfit = formatManUnit(result.monthlyProfit ?? 0);
+      // 소수점 제외 및 만 단위 조절
+      const formattedAnnualProfit = formatManUnit(result.annualProfit ?? 0);
+      setValues((prev) => ({
+        ...prev,
+        generationTime: result.generationTime ?? 0,
+        rateOfReturn: result.calcRateOfReturn ?? 0,
+        monthlyProfit: Number(formattedMonthlyProfit),
+        annualProfit: Number(formattedAnnualProfit),
+      }));
+    }
   }
 
   // 수익 계산 핸들러

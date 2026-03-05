@@ -41,7 +41,7 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
       </Box>
       <Grid
         gap={4}
-        templateColumns={{ base: '1fr 1fr', md: '1fr 1fr 1fr' }}
+        templateColumns={{ base: '1fr 1fr', md: '1fr 1fr' }}
       >
         {/* 설치용량 */}
         <Box
@@ -90,6 +90,14 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
           backgroundColor="gray.50"
         >
           <Text
+            fontSize="xs"
+            fontWeight="700"
+            color="gray.500"
+            fontFamily="NanumSquareNeo"
+          >
+            현장에 따라 공사비용이 다를 수 있음
+          </Text>
+          <Text
             fontSize="md"
             fontWeight="500"
             color="orange.600"
@@ -124,6 +132,14 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
           backgroundColor="gray.50"
         >
           <Text
+            fontSize="xs"
+            fontWeight="700"
+            color="gray.500"
+            fontFamily="NanumSquareNeo"
+          >
+            실시간
+          </Text>
+          <Text
             fontSize="md"
             fontWeight="500"
             color="orange.600"
@@ -155,6 +171,14 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
           backgroundColor="gray.50"
         >
           <Text
+            fontSize="xs"
+            fontWeight="700"
+            color="gray.500"
+            fontFamily="NanumSquareNeo"
+          >
+            실시간
+          </Text>
+          <Text
             fontSize="md"
             fontWeight="500"
             color="orange.600"
@@ -171,7 +195,7 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
           </Text>
         </Box>
         {/* 대출비율 */}
-        <Box
+        {/* <Box
           px={4}
           py={8}
           gap={2}
@@ -202,9 +226,9 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
               {values.loanRate === 0 ? '--' : values.loanRate.toFixed(0)}
             </Text>&nbsp;%
           </Text>
-        </Box>
+        </Box> */}
         {/* 대출금리 */}
-        <Box
+        {/* <Box
           px={4}
           py={8}
           gap={2}
@@ -235,7 +259,7 @@ export function ProfitAnalysis(props: ProfitAnalysisProps) {
               {values.loanInterestRate === 0 ? '--' : values.loanInterestRate.toFixed(1)}
             </Text>&nbsp;%
           </Text>
-        </Box>
+        </Box> */}
       </Grid>
     </Box>
   );
