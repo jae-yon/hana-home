@@ -179,7 +179,7 @@ export default function InquiryForm() {
         maxW={{ base: '100%', md: '960px' }}
         display="flex"
         boxShadow={{ base: 'none', md: 'sm' }}
-        borderRadius={{ base: 'none', md: 'md' }}
+        borderRadius={{ base: 'none', md: 'xl' }}
         borderWidth="1px"
         alignItems="center"
         borderColor="gray.200"
@@ -257,7 +257,7 @@ export default function InquiryForm() {
               fontWeight="500" 
               color="gray.700"
             >
-              유입경로 (필수)
+              유입경로 (필수) 
             </Select.Label>
 
             <Select.Control>
@@ -496,11 +496,11 @@ export default function InquiryForm() {
           px={12}
           py={6}
           size="xl"
-          fontSize="lg"
+          fontSize="xl"
           color="white"
           type="submit"
           fontWeight="600"
-          borderRadius="md"
+          borderRadius="xl"
           alignSelf="center"
           form="inquiryForm"
           letterSpacing="0.1em"
