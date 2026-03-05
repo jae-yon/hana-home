@@ -76,7 +76,7 @@ export default function SolarParkingRoiTable() {
           설치 규모와 위치에 따라 실제 수치는 달라질 수 있으며, 정부 보조금
           적용 시 회수 기간이 단축될 수 있습니다.
         </Text>
-        <Box overflowX="auto" mt={8}>
+        <Box overflowX="auto" mt={8} borderRadius="xl" overflow="hidden" borderWidth="1px" borderColor="whiteAlpha.200">
           <Table.Root size="sm">
             <Table.Header>
               <Table.Row

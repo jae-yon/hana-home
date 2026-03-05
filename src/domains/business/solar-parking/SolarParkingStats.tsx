@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from '@chakra-ui/react';
+import { Box, HStack, Text, Grid } from '@chakra-ui/react';
 
 const stats = [
   { num: '25년', label: '패널 보증 기간' },
@@ -17,12 +17,7 @@ export default function SolarParkingStats() {
       px={{ base: 4, md: '6vw' }}
       borderRadius={{ base: '0', md: '2xl' }}
     >
-      <Box maxW="1280px" mx="auto">
-        <HStack
-          justify="space-around"
-          flexWrap="wrap"
-          gap={{ base: 4, md: 8 }}
-        >
+      <Grid templateColumns={{ base: 'repeat(2, 2fr)', md: 'repeat(4, 1fr)' }} gap={4} maxW="1280px" mx="auto">
           {stats.map((item) => (
             <Box key={item.label} textAlign="center">
               <Text
@@ -46,8 +41,7 @@ export default function SolarParkingStats() {
               </Text>
             </Box>
           ))}
-        </HStack>
-      </Box>
+      </Grid>
     </Box>
   );
 }
