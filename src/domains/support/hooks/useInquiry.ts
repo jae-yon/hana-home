@@ -55,18 +55,6 @@ const createInquiryFrom = (inquiry: Inquiry) => {
                     </td>
                   </tr>
 
-                  <!-- 이메일 -->
-                  <tr>
-                    <td style="padding: 14px 0; border-bottom: 1px solid #f0f0f0;">
-                      <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td width="100" style="color: #888; font-size: 13px;">이메일</td>
-                          <td style="color: #1a1a1a; font-size: 14px; font-weight: 600;">${inquiry.email}@${inquiry.emailDomain}</td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-
                   <!-- 주소 -->
                   <tr>
                     <td style="padding: 14px 0; border-bottom: 1px solid #f0f0f0;">
@@ -89,7 +77,7 @@ const createInquiryFrom = (inquiry: Inquiry) => {
                   </tr>
                   <tr>
                     <td style="background-color: #f8f9fa; border-left: 3px solid #1a1a2e; padding: 16px 20px;">
-                      <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${inquiry.content}</p>
+                      <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.7; white-space: pre-wrap;">${inquiry.content === '' ? '별도의 문의 내용 ✖️' : inquiry.content}</p>
                     </td>
                   </tr>
                 </table>
@@ -117,11 +105,11 @@ export const sendInquiry = () => {
   return useMutation({
     mutationFn: async (inquiry: Inquiry): Promise<any> => {
       const html = createInquiryFrom(inquiry);
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-mail/test`, {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-mail/resend`, {
         method: 'POST',
         body: JSON.stringify({
           // 수신자 이메일
-          email: 'dongasoft650@gmail.com',
+          email: 'hnsolution1116@naver.com',
           // 이메일 제목
           subject: '새로운 견적 문의가 접수되었습니다.',
           // 이메일 내용

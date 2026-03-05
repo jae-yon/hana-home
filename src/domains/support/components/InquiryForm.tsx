@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { LucideAtSign } from 'lucide-react';
 
 import { Box, Button, Checkbox, Flex, Grid, Heading, Input, Text, Textarea, Field, Select, Portal, createListCollection  } from '@chakra-ui/react';
 
 import type { Inquiry } from '@/types/common';
 
 import { useMinSubmitTime } from '@/shared/hooks/useMinSubmitTime';
-import { isValidPhoneNumber, isValidEmailWithDomain, formatPhoneNumberInput } from '@/shared/utils/validation';
+import { isValidPhoneNumber, formatPhoneNumberInput } from '@/shared/utils/validation';
 
 import { sendInquiry } from '@/domains/support/hooks/useInquiry';
 
@@ -15,11 +14,9 @@ import SimplePrivacyModal from './SimplePrivacyModal';
 const initialValues: Inquiry = {
   name: '',
   phone: '',
-  email: '',
   address: '',
   content: '',
   visitRoute: '',
-  emailDomain: '',
   robot: '',
   agreement: false,
 };
@@ -35,34 +32,29 @@ const visitRoute = createListCollection({
   ]
 });
 
-const emailDomain = createListCollection({
-  items: [
-    { value: 'naver.com', label: 'naver.com' },
-    { value: 'gmail.com', label: 'gmail.com' },
-    { value: 'daum.net', label: 'daum.net' },
-    { value: 'hanmail.com', label: 'hanmail.com' },
-    { value: 'nate.com', label: 'nate.com' },
-    { value: 'self', label: '직접 입력' },
-  ]
-});
+// const emailDomain = createListCollection({
+//   items: [
+//     { value: 'naver.com', label: 'naver.com' },
+//     { value: 'gmail.com', label: 'gmail.com' },
+//     { value: 'daum.net', label: 'daum.net' },
+//     { value: 'hanmail.com', label: 'hanmail.com' },
+//     { value: 'nate.com', label: 'nate.com' },
+//     { value: 'self', label: '직접 입력' },
+//   ]
+// });
 
-const EMAIL_DOMAIN_PRESETS = ['naver.com', 'gmail.com', 'daum.net', 'hanmail.com', 'nate.com'];
+// const EMAIL_DOMAIN_PRESETS = ['naver.com', 'gmail.com', 'daum.net', 'hanmail.com', 'nate.com'];
 
 /** 제출 허용 최소 경과 시간(초). 이 시간보다 빨리 제출하면 봇으로 간주 */
 const MIN_SUBMIT_SECONDS = 5;
 
-interface InquiryFormProps {
-  isDesktop: boolean;
-}
-
-export default function InquiryForm(props: InquiryFormProps) {
-  const { isDesktop } = props;
+export default function InquiryForm() {
   const [values, setValues] = useState<Inquiry>(initialValues);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const { isAllowedToSubmit } = useMinSubmitTime(MIN_SUBMIT_SECONDS);
 
-  const isDirectDomain = !EMAIL_DOMAIN_PRESETS.includes(values.emailDomain);
-  const selectValue = isDirectDomain ? 'self' : values.emailDomain;
+  // const isDirectDomain = !EMAIL_DOMAIN_PRESETS.includes(values.emailDomain);
+  // const selectValue = isDirectDomain ? 'self' : values.emailDomain;
 
   const update = <K extends keyof Inquiry>(key: K, value: Inquiry[K]) => {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -102,19 +94,19 @@ export default function InquiryForm(props: InquiryFormProps) {
     if (!values.visitRoute?.trim()) {
       nextErrors.visitRoute = '유입경로를 선택해 주세요.';
     }
-    if (!values.email?.trim()) {
-      nextErrors.email = '이메일을 입력해 주세요.';
-    } else if (!values.emailDomain?.trim()) {
-      nextErrors.emailDomain = '이메일 도메인을 입력 또는 선택해 주세요.';
-    } else if (!isValidEmailWithDomain(values.email, values.emailDomain)) {
-      nextErrors.email = '이메일 형식이 올바르지 않습니다.';
-    }
+    // if (!values.email?.trim()) {
+    //   nextErrors.email = '이메일을 입력해 주세요.';
+    // } else if (!values.emailDomain?.trim()) {
+    //   nextErrors.emailDomain = '이메일 도메인을 입력 또는 선택해 주세요.';
+    // } else if (!isValidEmailWithDomain(values.email, values.emailDomain)) {
+    //   nextErrors.email = '이메일 형식이 올바르지 않습니다.';
+    // }
     if (!values.address?.trim()) {
-      nextErrors.address = '주소를 입력해 주세요.';
+      nextErrors.address = '설치 희망 주소를 입력해 주세요.';
     }
-    if (!values.content?.trim()) {
-      nextErrors.content = '문의 내용을 입력해 주세요.';
-    }
+    // if (!values.content?.trim()) {
+    //   nextErrors.content = '문의 내용을 입력해 주세요.';
+    // }
     if (!values.agreement) {
       nextErrors.agreement = '개인정보 수집 및 이용에 동의해 주세요.';
     }
@@ -209,7 +201,7 @@ export default function InquiryForm(props: InquiryFormProps) {
               fontWeight="500" 
               color="gray.700"
             >
-              이름 또는 상호명 <Field.RequiredIndicator />
+              이름 또는 상호명 (필수) <Field.RequiredIndicator />
             </Field.Label>
             <Input
               placeholder=""
@@ -230,7 +222,7 @@ export default function InquiryForm(props: InquiryFormProps) {
               fontWeight="500" 
               color="gray.700"
             >
-              연락처 <Field.RequiredIndicator />
+              연락처 (필수) <Field.RequiredIndicator />
             </Field.Label>
             <Input
               type="tel"
@@ -240,7 +232,7 @@ export default function InquiryForm(props: InquiryFormProps) {
               value={values.phone}
               borderColor="gray.300"
               backgroundColor="white"
-              placeholder="010-1234-5678"
+              placeholder="예) 010-1234-5678"
               onChange={(e) => {
                 const formatted = formatPhoneNumberInput(e.target.value);
                 update('phone', formatted);
@@ -265,7 +257,7 @@ export default function InquiryForm(props: InquiryFormProps) {
               fontWeight="500" 
               color="gray.700"
             >
-              유입경로
+              유입경로 (필수)
             </Select.Label>
 
             <Select.Control>
@@ -305,7 +297,7 @@ export default function InquiryForm(props: InquiryFormProps) {
           </Select.Root>
         </Grid>
 
-        <Grid 
+        {/* <Grid 
           gap={4}
           width="100%"
           alignItems="flex-end"
@@ -400,8 +392,7 @@ export default function InquiryForm(props: InquiryFormProps) {
               </Select.Positioner>
             </Portal>
           </Select.Root>
-        </Grid>
-
+        </Grid> */}
 
         <Field.Root width="100%">
           <Field.Label
@@ -410,7 +401,7 @@ export default function InquiryForm(props: InquiryFormProps) {
             fontWeight="500" 
             color="gray.700"
           >
-            주소
+            설치 희망 주소 (필수)
           </Field.Label>
           <Input
             name="address"
@@ -432,11 +423,11 @@ export default function InquiryForm(props: InquiryFormProps) {
             fontWeight="500" 
             color="gray.700"
           >
-            문의 내용
+            문의 내용 (선택)
           </Field.Label>
           <Textarea
             p={4}
-            rows={16}
+            rows={4}
             resize="none"
             name="content"
             borderRadius="lg"
@@ -446,7 +437,7 @@ export default function InquiryForm(props: InquiryFormProps) {
             onChange={(e) => update('content', e.target.value)}
             _hover={{ borderColor: 'orange.500', outlineColor: 'none' }}
             _focus={{ borderColor: 'orange.500', outlineColor: 'orange.400' }}
-            placeholder="설치 용량, 희망 시공일 등 문의하실 내용을 자유롭게 적어 주세요."
+            placeholder="예) 희망상담일, 설치 용량 등 문의하실 내용을 자유롭게 적어 주세요."
           />
         </Field.Root>
 

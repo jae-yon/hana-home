@@ -29,7 +29,7 @@ export default function Support(props: SupportProps) {
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'faq' && <FAQContents />}
-      {type === 'inquiry' && <InquiryForm isDesktop={isDesktop} />}
+      {type === 'inquiry' && <InquiryForm />}
     </Flex>
   );
 }

@@ -32,10 +32,8 @@ export interface Inquiry {
   name: string;
   robot: string;
   phone: string;
-  email: string;
   address: string;
-  content: string;
+  content?: string;
   visitRoute: string;
-  emailDomain: string;
   agreement: boolean;
 }
