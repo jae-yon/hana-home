@@ -2,19 +2,18 @@ import { useEffect, useState } from 'react';
 
 import { Box, createListCollection, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 
-import { Impactor } from '@/shared/components/common/Impactor';
-
-import { useMonthlyRec } from '@/shared/hooks/useRec';
-import { useWeeklySmp } from '@/shared/hooks/useSmp';
 import { RecMonthlyItem } from '@/types/rec';
 import { SmpDailyWeightedSummary } from '@/types/smp';
-import { useAddressToLocation } from '@/shared/hooks/useMap';
 
-import { ProfitSum } from '@/domains/business/profit/ProfitSum';
+import { calcProfit } from '@/domains/business/profit/hooks/useProfit';
 import { ProfitConditon } from '@/domains/business/profit/ProfitConditon';
 import { ProfitAnalysis } from '@/domains/business/profit/ProfitAnalysis';
-import { getCalcResult, useCalcOptions } from '@/domains/business/profit/hooks/useProfit';
+
+import { useWeeklySmp } from '@/shared/hooks/useSmp';
+import { useMonthlyRec } from '@/shared/hooks/useRec';
 import { formatManUnit } from '@/shared/utils/number';
+import { useAddressToLocation } from '@/shared/hooks/useMap';
+import { Impactor } from '@/shared/components/common/Impactor';
 
 const areaType = createListCollection({
   items: [
@@ -23,20 +22,41 @@ const areaType = createListCollection({
   ]
 });
 
-const initialValues = {
+export interface ProfitValues {
+  address: string;
+  areaType: { value: string; label: string };
+  capacity: number;
+  constructionCost: number;
+  recPrice: number;
+  smpPrice: number;
+  loanRate: number;
+  loanInterestRate: number;
+  generationTime: number;
+  rateOfReturn: number;
+  monthlyProfit: number;
+  annualProfit: number;
+  latitude: number;
+  longitude: number;
+  roadAddress: string;
+  jibunAddress: string;
+}
+
+const initialValues: ProfitValues = {
   address: '',
   areaType: areaType.items[0],
   capacity: 0,
-  // 공사비
-  constructionCost: 0,
+  // 공사비 (고정값)
+  constructionCost: 1100000,
+  // REC 가격 (실시간)
   recPrice: 0,
+  // SMP 가격 (실시간)
   smpPrice: 0,
-  // 대출 비율
+  // 대출 비율 (미사용)
   loanRate: 0,
-  // 대출 이자율
+  // 대출 이자율 (미사용)
   loanInterestRate: 0,
-  // 발전 시간
-  generationTime: 0,
+  // 발전 시간 (고정값)
+  generationTime: 3.6,
   // 수익률
   rateOfReturn: 0,
   // 월간 수익
@@ -59,18 +79,21 @@ export default function ProfitCalculator() {
   // 월간 REC 데이터
   const { data: monthlyRecData } = useMonthlyRec() as { data: RecMonthlyItem[] };
 
-  // 수익 계산 옵션 데이터
-  const { data: calcOptionsData } = useCalcOptions() as { data: { constructionCost: number; loanRate: number; loanInterestRate: number } };
-
+  // 마운트 시 초기값 설정
   useEffect(() => {
     setValues(initialValues);
-    if (weeklySmpData && monthlyRecData) {
-      setValues((prev) => ({ ...prev, smpPrice: weeklySmpData[weeklySmpData.length - 1].totalWeightedAvg, recPrice: (monthlyRecData[0].unifiedAvgPrice)/1000 }));
-    }
-    if (calcOptionsData) {
-      setValues((prev) => ({ ...prev, constructionCost: calcOptionsData.constructionCost, loanRate: calcOptionsData.loanRate, loanInterestRate: calcOptionsData.loanInterestRate }));
-    }
   }, []);
+
+  // SMP·REC 데이터 로드 시 가격 반영
+  useEffect(() => {
+    if (weeklySmpData?.length && monthlyRecData?.length) {
+      setValues((prev) => ({
+        ...prev,
+        smpPrice: weeklySmpData[weeklySmpData.length - 1].totalWeightedAvg,
+        recPrice: monthlyRecData[0].unifiedAvgPrice / 1000,
+      }));
+    }
+  }, [weeklySmpData, monthlyRecData]);
 
   // 값 변경 핸들러
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,30 +122,27 @@ export default function ProfitCalculator() {
       roadAddress: data.roadAddress ?? '',
       jibunAddress: data.jibunAddress ?? '',
     }));
-
-    console.log(weeklySmpData, monthlyRecData);
-  
-    const result = await getCalcResult(values);
-
-    console.log(result);
-    if (result) {
-      // 소수점 제외 및 만 단위 조절
-      const formattedMonthlyProfit = formatManUnit(result.monthlyProfit ?? 0);
-      // 소수점 제외 및 만 단위 조절
-      const formattedAnnualProfit = formatManUnit(result.annualProfit ?? 0);
-      setValues((prev) => ({
-        ...prev,
-        generationTime: result.generationTime ?? 0,
-        rateOfReturn: result.calcRateOfReturn ?? 0,
-        monthlyProfit: Number(formattedMonthlyProfit),
-        annualProfit: Number(formattedAnnualProfit),
-      }));
-    }
   }
 
   // 수익 계산 핸들러
   const handleCalculateProfit = async (address: string) => {
+    // 주소 좌표 조회
     await handleAddressToLocation(address);
+
+    // 예상 수익 계산
+    const result = await calcProfit(values);
+
+    console.log(result);
+
+    if (result) {
+      setValues((prev) => ({
+        ...prev,
+        generationTime: result.generationTime ?? 0,
+        rateOfReturn: result.rateOfReturn ?? 0,
+        monthlyProfit: Number(formatManUnit(result.monthlyProfit ?? 0)),
+        annualProfit: Number(formatManUnit(result.annualProfit ?? 0)),
+      }));
+    }
   }
 
   return (
@@ -148,7 +168,7 @@ export default function ProfitCalculator() {
             lineHeight="1.35"
             fontWeight="semibold"
           >
-            수익계산기
+            예상 수익계산기
           </Heading>
           <Text
             fontSize={{ base: 'sm', md: 'md' }}
@@ -175,11 +195,8 @@ export default function ProfitCalculator() {
             isPending={isAddressToLocationPending}
           />
         </Impactor>
-        <Impactor direction="bottom" once delay={1.3}>
+        <Impactor direction="bottom" once delay={1.5}>
           <ProfitAnalysis values={values} />
-        </Impactor>
-        <Impactor direction="bottom" once delay={1.6}>
-          <ProfitSum values={values} />
         </Impactor>
       </Grid>
     </Flex>
