@@ -52,9 +52,9 @@ export const HEADER_MENU = [
     path: "/business",
     childMenu: [
       { name: "가정용태양광", path: "/business/solar-home" },
+      { name: "주차장태양광", path: "/business/solar-parking" },
       { name: "자가용PPA", path: "/business/ppa" },
       { name: "발전사업RPS", path: "/business/rps" },
-      { name: "주차장태양광", path: "/business/parking-solar" },
       { name: "RE100", path: "/business/re100" },
       { name: "리파워링", path: "/business/re-powering" },
       { name: "예상 수익계산기", path: "/business/profit-calculator" },

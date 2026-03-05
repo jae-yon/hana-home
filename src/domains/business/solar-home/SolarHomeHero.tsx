@@ -119,20 +119,16 @@ export default function SolarHomeHero() {
           href="#savings"
           display="inline-flex"
           alignItems="center"
-          gap={3}
-          bg="orange.500"
-          color="gray.900"
+          color="gray.800"
+          backgroundColor="orange.500"
           fontWeight={600}
           fontSize="lg"
+          letterSpacing="0.06em"
           py={4}
           px={8}
           borderRadius="xl"
-          letterSpacing="0.05em"
-          transition="all 0.25s"
-          _hover={{
-            bg: 'orange.600',
-            transform: 'translateY(-2px)',
-          }}
+          _hover={{ bg: 'orange.600' }}
+          transition="background 0.2s"
           fontFamily="pretendard"
         >
           절감 효과 확인하기

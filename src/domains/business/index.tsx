@@ -12,14 +12,15 @@ import Re100 from '@/domains/business/re100/Re100';
 import ProfitCalculator from '@/domains/business/profit/Profit';
 import SolarHome from '@/domains/business/solar-home/SolarHome';
 import Repowering from '@/domains/business/repowering/Repowering';
-
+import SolarParking from '@/domains/business/solar-parking/SolarParking';
 
 interface BusinessProps {
-  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home';
+  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking';
 }
 
 const navItems: { name: string, path: string }[] = [
   { name: '가정용태양광', path: '/business/solar-home' },
+  { name: '주차장태양광', path: '/business/solar-parking' },
   { name: '자가용 PPA', path: '/business/ppa' },
   { name: '발전사업 RPS', path: '/business/rps' },
   { name: 'RE100', path: '/business/re100' },
@@ -41,11 +42,12 @@ export default function Business(props: BusinessProps) {
       justifyContent="center"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
-      {type === 'solar-home' && <SolarHome />}
       {type === 'ppa' && <Ppa />}
       {type === 'rps' && <Rps />}
       {type === 're100' && <Re100 />}
+      {type === 'solar-home' && <SolarHome />}
       {type === 're-powering' && <Repowering />}
+      {type === 'solar-parking' && <SolarParking />}
       {type === 'profit-calculator' && <ProfitCalculator />}
 
       <Flex

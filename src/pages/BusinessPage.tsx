@@ -16,15 +16,15 @@ export default function BusinessPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  if (!type || !['ppa', 'rps', 're-powering', 'profit-calculator', 're100', 'solar-home'].includes(type)) {
-    return <Navigate to={`/business/re100`} replace />;
+  if (!type || !['ppa', 'rps', 're-powering', 'profit-calculator', 're100', 'solar-home', 'solar-parking'].includes(type)) {
+    return <Navigate to={`/business/solar-home`} replace />;
   }
 
   return (
     <>
       <Header />
       <SubHero />
-      <Business type={type as 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home'} />
+      <Business type={type as 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking'} />
       <Footer />
       <FloatingActionButton />
     </>
