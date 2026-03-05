@@ -1,4 +1,4 @@
-import { Box, HStack, Text, Grid } from '@chakra-ui/react';
+import { Box, Text, Grid } from '@chakra-ui/react';
 
 const stats = [
   { num: '25년', label: '패널 보증 기간' },
