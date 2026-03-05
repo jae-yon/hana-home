@@ -49,7 +49,7 @@ export function Directions() {
           mt={{ base: 4, md: 4 }}
           textAlign={{ base: 'center', md: 'right' }}
         >
-          서울특별시 금천구 가산디지털1로 1, 더루벤스밸리 1407호
+          (서울 지사) 서울특별시 금천구 가산디지털1로 1, 더루벤스밸리 1407호
         </Text>
       </Box>
     </Flex>

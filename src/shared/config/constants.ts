@@ -11,7 +11,7 @@ export const COMPANY_BUSINESS_NUMBER = import.meta.env.VITE_COMPANY_BUSINESS_NUM
 export const COMPANY_ELECTRIC_BUSINESS_NUMBER = import.meta.env.VITE_COMPANY_ELECTRIC_BUSINESS_NUMBER as string || "서울-06429";
 
 // 주소
-export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string || "전북특별자치도 부안군 부안읍 동중길 20";
+export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string || "(본사) 전북특별자치도 부안군 부안읍 동중길 20";
 
 // 대표번호
 export const COMPANY_PHONE_NUMBER = import.meta.env.VITE_COMPANY_PHONE_NUMBER as string || "1577-1497";
@@ -57,6 +57,7 @@ export const HEADER_MENU = [
       { name: "발전사업RPS", path: "/business/rps" },
       { name: "RE100", path: "/business/re100" },
       { name: "리파워링", path: "/business/re-powering" },
+      { name: "태양광모듈청소", path: "/business/solar-cleaning" },
       { name: "예상 수익계산기", path: "/business/profit-calculator" },
     ],
   },
