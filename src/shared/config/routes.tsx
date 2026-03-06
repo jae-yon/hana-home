@@ -6,6 +6,7 @@ const SupportPage = lazy(() => import('@/pages/SupportPage'));
 const BusinessPage = lazy(() => import('@/pages/BusinessPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
+const PromotionPage = lazy(() => import('@/pages/PromotionPage'));
 
 export const ROUTES = [
   {
@@ -43,6 +44,14 @@ export const ROUTES = [
   {
     path: '/support/:type',
     element: <SupportPage />,
+  },
+  {
+    path: '/promotion',
+    element: <PromotionPage />,
+  },
+  {
+    path: '/promotion/:type',
+    element: <PromotionPage />,
   },
   {
     path: '/hana/back',

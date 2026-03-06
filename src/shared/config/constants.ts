@@ -124,12 +124,11 @@ export const SUB_HERO_INFO = [
     subtitle: "Business Introduction", 
     image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1920&q=90" 
   },
-  
   { 
     pathname: "/promotion", 
-    title: "", 
-    subtitle: "", 
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80" 
+    title: "홍보센터", 
+    subtitle: "Promotion", 
+    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=1920&q=90" 
   },
   { pathname: "/support", 
     title: "고객센터", 

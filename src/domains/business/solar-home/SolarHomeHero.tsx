@@ -114,12 +114,10 @@ export default function SolarHomeHero() {
               </Text>
             </Box>
           ))}
-
-          
         </HStack>
 
         <Box>
-        <Text
+          <Text
             fontFamily="NanumSquareNeo"
             fontSize="xs"
             color="gray.200"
