@@ -11,7 +11,7 @@ const intro_img_vision = "https://images.unsplash.com/photo-1694248407533-d74c41
 export function IntroVision(props: IntroVisionProps) {
   const { isDesktop } = props;
   const ref = useRef(null);
-  const isView = useInView(ref);
+  const isView = useInView(ref, { once: true });
 
   return (
     <Stack

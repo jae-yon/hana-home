@@ -7,7 +7,7 @@ import logo from '@/assets/logo.svg';
 
 export function IntroGreetings() {
   const ref = useRef(null);
-  const isView = useInView(ref);
+  const isView = useInView(ref, { once: true });
 
   return (
     <Stack
