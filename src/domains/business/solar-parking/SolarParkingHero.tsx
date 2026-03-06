@@ -104,9 +104,9 @@ export default function SolarParkingHero() {
             lineHeight={1.7}
             color="whiteAlpha.800"
           >
-            버려지는 주차 공간 위에 태양광을 더해
+            주차공간을 활용한 태양광 발전으로 
             <br />
-            에너지 비용을 절감하고 탄소중립을 실현합니다.
+            친환경 에너지를 생산합니다.
           </Text>
           <HStack mt={8} gap={4} flexWrap="wrap" justify="center">
             <Link

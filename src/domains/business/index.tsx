@@ -15,7 +15,7 @@ import Repowering from '@/domains/business/repowering/Repowering';
 import SolarParking from '@/domains/business/solar-parking/SolarParking';
 
 interface BusinessProps {
-  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking';
+  type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking' | 'solar-cleaning';
 }
 
 const navItems: { name: string, path: string }[] = [
@@ -25,6 +25,7 @@ const navItems: { name: string, path: string }[] = [
   { name: '발전사업 RPS', path: '/business/rps' },
   { name: 'RE100', path: '/business/re100' },
   { name: '리파워링', path: '/business/re-powering' },
+  { name: '태양광모듈청소', path: '/business/solar-cleaning' },
   { name: '예상 수익계산기', path: '/business/profit-calculator' },
 ];
 

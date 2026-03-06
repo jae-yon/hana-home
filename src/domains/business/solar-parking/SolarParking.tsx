@@ -1,13 +1,11 @@
 import { Box, Stack } from '@chakra-ui/react';
 
 import SolarParkingHero from './SolarParkingHero';
-import SolarParkingTypes from './SolarParkingTypes';
+import SolarParkingStats from './SolarParkingStats';
 import SolarParkingWhatIs from './SolarParkingWhatIs';
+import SolarParkingExample from './SolarParkingExample';
 import SolarParkingBenefits from './SolarParkingBenefits';
 import SolarParkingHowItWorks from './SolarParkingHowItWorks';
-import SolarParkingEv from './SolarParkingEv';
-import SolarParkingStats from './SolarParkingStats';
-import SolarParkingRoiTable from './SolarParkingRoiTable';
 
 export default function SolarParking() {
   return (
@@ -25,9 +23,14 @@ export default function SolarParking() {
         <SolarParkingWhatIs />
         <SolarParkingBenefits />
         <SolarParkingHowItWorks />
-        <SolarParkingTypes />
-        <SolarParkingEv />
-        <SolarParkingRoiTable />
+        <SolarParkingExample />
+        
+        {/* 미사용 컴포넌트 */}
+        {/* 
+          <SolarParkingTypes />
+          <SolarParkingEv />
+          <SolarParkingRoiTable /> 
+        */}
       </Stack>
     </Box>
   );

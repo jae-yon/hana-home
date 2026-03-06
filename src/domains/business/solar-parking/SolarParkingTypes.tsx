@@ -13,12 +13,6 @@ const types = [
     title: '옥상 설치형',
     desc: '기존 주차 건물 옥상을 그대로 활용. 구조 보강만으로 설치 가능해 초기 비용을 낮춥니다.',
   },
-  {
-    img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=75',
-    num: '03',
-    title: 'ESS 복합형',
-    desc: '태양광 + ESS + EV 충전을 통합한 올인원 시스템. 에너지 자립률을 극대화합니다.',
-  },
 ];
 
 export default function SolarParkingTypes() {
@@ -48,7 +42,7 @@ export default function SolarParkingTypes() {
         >
           설치 유형
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mt={10}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={6} mt={10}>
           {types.map((item) => (
             <Box
               key={item.num}

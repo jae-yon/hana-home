@@ -4,8 +4,7 @@ import { ArrowRight } from 'lucide-react';
 const steps = [
   { num: '1', title: '태양광 발전', desc: '모듈이 태양 에너지를\n 직류(DC) 전력으로 변환' },
   { num: '2', title: '인버터 변환', desc: 'DC를 교류(AC)로 변환하여\n 배전반으로 공급' },
-  { num: '3', title: 'ESS 저장', desc: '잉여 전력을 배터리에 저장,\n 야간·흐린 날 활용' },
-  { num: '4', title: '자가·판매', desc: '건물 내 자가소비 또는\n 한전 계통 판매(REC)' },
+  { num: '3', title: '자가·판매', desc: '건물 내 자가소비 또는\n 전력 판매(REC)' },
 ];
 
 export default function SolarParkingHowItWorks() {
@@ -21,7 +20,7 @@ export default function SolarParkingHowItWorks() {
           mb={2}
           color="gray.800"
           lineHeight={1.2}
-          fontSize={{ base: 'xl', md: '2xl', lg: '3rem' }}
+          fontSize={{ base: '4xl', md: '2xl', lg: '3rem' }}
         >
           작동 원리
         </Heading>
@@ -73,7 +72,7 @@ export default function SolarParkingHowItWorks() {
               <Text fontWeight="bold" fontSize="md" color="gray.800" mb={1} fontFamily="NanumSquareNeo">
                 {step.title}
               </Text>
-              <Text fontSize="xs" color="gray.600" lineHeight={1.5} whiteSpace="pre-line">
+              <Text fontSize="xs" color="gray.600" lineHeight={1.5} whiteSpace="pre-line" fontFamily="pretendard" fontWeight="500">
                 {step.desc}
               </Text>
             </Box>
@@ -113,7 +112,7 @@ export default function SolarParkingHowItWorks() {
                 <Text fontWeight="bold" fontSize="md" color="gray.800" mb={1} fontFamily="NanumSquareNeo">
                   {step.title}
                 </Text>
-                <Text fontSize="xs" color="gray.600" lineHeight={1.5} whiteSpace="pre-line">
+                <Text fontSize="xs" color="gray.600" lineHeight={1.5} whiteSpace="pre-line" fontFamily="pretendard" fontWeight="500">
                   {step.desc}
                 </Text>
               </Box>

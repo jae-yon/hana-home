@@ -16,7 +16,7 @@ export default function BusinessPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  if (!type || !['ppa', 'rps', 're-powering', 'profit-calculator', 're100', 'solar-home', 'solar-parking'].includes(type)) {
+  if (!type || !['ppa', 'rps', 're-powering', 'profit-calculator', 're100', 'solar-home', 'solar-parking', 'solar-cleaning'].includes(type)) {
     return <Navigate to={`/business/solar-home`} replace />;
   }
 
@@ -24,7 +24,7 @@ export default function BusinessPage() {
     <>
       <Header />
       <SubHero />
-      <Business type={type as 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking'} />
+      <Business type={type as 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking' | 'solar-cleaning'} />
       <Footer />
       <FloatingActionButton />
     </>

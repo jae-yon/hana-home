@@ -16,13 +16,13 @@ const benefits: {
 }[] = [
   {
     icon: Building2,
-    title: '토지 이중 활용',
-    desc: '기존 주차 기능을 그대로 유지하면서 상부 공간에 발전 설비를 구축, 추가 부지 매입 비용이 전혀 없습니다.',
+    title: '공간 활용 극대화',
+    desc: '기존 주차 기능을 유지하면서 상부 공간을 활용해 추가 부지 확보 없이 태양광 발전 설비를 구축할 수 있습니다.',
   },
   {
     icon: Lightbulb,
-    title: '전기료 대폭 절감',
-    desc: '발전된 전력을 자가소비하거나 한전에 판매(REC)하여 연간 수천만 원 규모의 에너지 비용을 절약할 수 있습니다.',
+    title: '전기요금 절감',
+    desc: '생산된 전력을 건물에서 사용하거나 전력 판매를 통해 에너지 비용 절감 효과를 기대할 수 있습니다.',
   },
   {
     icon: Car,
@@ -31,18 +31,18 @@ const benefits: {
   },
   {
     icon: Leaf,
-    title: '탄소중립 실현',
-    desc: 'RE100 목표 달성 및 ESG 경영 지표 개선에 직접 기여하며, 온실가스 배출권 확보에도 활용됩니다.',
+    title: '친환경 에너지 생산',
+    desc: '태양광 발전은 운영 과정에서 직접적인 탄소 배출이 거의 없는 친환경 전력 생산 방식입니다.',
   },
   {
     icon: Zap,
-    title: 'EV 충전 연계',
-    desc: '태양광과 ESS(에너지저장장치)를 EV 충전 인프라와 연결해 저렴하고 친환경적인 전기차 충전 환경을 구현합니다.',
+    title: 'EV 충전 인프라 연계',
+    desc: '주차장 태양광 발전 설비와 전기차 충전 시설을 연계하여 친환경 에너지 기반의 충전 환경을 구축할 수 있습니다.',
   },
   {
     icon: TrendingUp,
-    title: '자산 가치 상승',
-    desc: '에너지 자립 시설로 인정받아 건물의 부동산 가치와 임대 매력도를 높이고, 정부 보조금 혜택도 받을 수 있습니다.',
+    title: '자산 가치 향상',
+    desc: '에너지 생산 설비 도입을 통해 건물의 활용 가치와 장기적인 에너지 경쟁력을 높일 수 있습니다.',
   },
 ];
 
@@ -56,7 +56,7 @@ export default function SolarParkingBenefits() {
       <Box maxW="1280px" mx="auto">
         <Heading
           as="h2"
-          fontSize={{ base: 'xl', md: '2xl', lg: '3rem' }}
+          fontSize={{ base: '3xl', md: '4xl', lg: '3rem' }}
           lineHeight={1.2}
           color="gray.800"
           mb={5}
@@ -90,13 +90,13 @@ export default function SolarParkingBenefits() {
                 }}
               >
                 <Box mb={4} color="blue.500" fontSize="2xl">
-                  <Icon size={36} strokeWidth={1.5} />
+                  <Icon size={36} strokeWidth={2} />
                 </Box>
                 <Text
                   mb={2}
                   fontSize="md"
                   color="gray.800"
-                  fontWeight="bold"
+                  fontWeight="800"
                   fontFamily="NanumSquareNeo"
                 >
                   {item.title}
@@ -105,6 +105,7 @@ export default function SolarParkingBenefits() {
                   fontSize="sm" 
                   color="gray.700" 
                   lineHeight={1.75}
+                  fontWeight="500"
                   fontFamily="pretendard"
                 >
                   {item.desc}
