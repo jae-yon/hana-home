@@ -3,9 +3,9 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 
 const savingsRows = [
-  { usage: '500 kWh', before: '10.2만원', after: '1.5만원', saving: '104만원' },
-  { usage: '600 kWh', before: '13.4만원', after: '4.0만원', saving: '112만원' },
-  { usage: '700 kWh', before: '16.5만원', after: '6.1만원', saving: '125만원' },
+  { usage: '500 kWh', before: '10.2만원', after: '2.5만원', saving: '90만원' },
+  { usage: '600 kWh', before: '13.4만원', after: '3.8만원', saving: '115만원' },
+  { usage: '700 kWh', before: '16.5만원', after: '5.5만원', saving: '130만원' },
 ];
 
 export default function SolarHomeSavings() {
@@ -19,7 +19,7 @@ export default function SolarHomeSavings() {
       bg="white"
       position="relative"
       overflow="hidden"
-      py={{ base: 16, md: 28 }}
+      py={{ base: 12, md: 16 }}
       px={{ base: 4, md: '6vw' }}
     >
       <Box
@@ -66,21 +66,23 @@ export default function SolarHomeSavings() {
             >
               연간 최대
               <br />
-              <Box as="span" fontSize={{ base: '3.5rem', md: '5rem', lg: '5.5rem' }} color="gray.800" lineHeight={1} my={2} display="block">
-                <Text as="span" color="orange.600">125</Text>
-                <Text as="span" color="orange.600">만원</Text>
+              <Box as="span" fontFamily="NanumSquareNeo" fontWeight={800} lineHeight={1} my={2} display="block">
+                <Text as="span" color="orange.600" fontSize={{ base: '3rem', md: '3rem', lg: '3.5rem' }} letterSpacing="0.09em">약</Text>
+                <Text as="span" color="orange.600" fontSize={{ base: '4rem', md: '4rem', lg: '4.5rem' }}>120</Text>
+                <Text as="span" color="orange.600" fontSize={{ base: '3rem', md: '3rem', lg: '3.5rem' }}>만원</Text>
               </Box>
               절감
             </Heading>
             <Text
-              fontFamily="pretendard"
-              fontSize="md"
-              color="gray.600"
-              lineHeight={1.8}
-              maxW="520px"
               mb={6}
+              fontSize="md"
+              color="gray.700"
+              lineHeight={1.8}
+              fontFamily="pretendard"
             >
-              전력 소비량이 클수록 절감 효과도 커집니다. 남은 전기는 한국전력공사로 역 송전되어 차후 전기료에서 차감되므로, 사용하는 전기료를 최대 100%까지 절약할 수 있습니다.
+              전력 사용량이 많은 가정일수록 절감 효과가 크게 나타날 수 있습니다. 태양광으로 생산된 전력은 우선 가정에서 사용되며,
+              남는 전력은 전력망으로 보내져 이후 사용 전력에서 상계(차감) 됩니다.
+              이를 통해 가정의 전기요금 부담을 크게 줄일 수 있습니다.
             </Text>
             <Text
               fontFamily="pretendard"
@@ -92,7 +94,10 @@ export default function SolarHomeSavings() {
               borderColor="gray.200"
               pt={4}
             >
-              ※ 위 수치는 계절에 따른 발전량 차이로 다를 수 있으며, 대가족 요금 할인 미적용 기준입니다.
+              ※ 절감액은 설치 용량(약 3kW) 기준 예상 값이며
+              일조량, 전기 사용 패턴, 계절 등에 따라 달라질 수 있습니다.
+              <br />
+              ※ 태양광 발전으로 생산된 전력은 전기요금에서 상계되며 기본요금 및 일부 요금 항목은 절감 대상에서 제외될 수 있습니다.
             </Text>
           </GridItem>
 

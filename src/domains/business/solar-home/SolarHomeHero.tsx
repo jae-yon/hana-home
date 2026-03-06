@@ -2,7 +2,7 @@ import { LucideArrowRight } from 'lucide-react';
 
 import { Box, Heading, Text, HStack, Link } from '@chakra-ui/react';
 
-const solar_home_bg = "https://images.unsplash.com/photo-1661997481002-d2f67de466b1?q=90&w=1280&auto=format&fit=crop"
+const SOLAR_HOME_BG = "https://images.unsplash.com/photo-1661997481002-d2f67de466b1?q=90&w=1280&auto=format&fit=crop"
 
 export default function SolarHomeHero() {
   return (
@@ -20,10 +20,11 @@ export default function SolarHomeHero() {
       <Box
         position="absolute"
         inset={0}
-        backgroundImage={`url(${solar_home_bg})`}
+        backgroundImage={`url(${SOLAR_HOME_BG})`}
         backgroundSize="cover"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
+        borderRadius={{ base: '0', md: '2xl' }}
       />
 
       {/* backdrop */}
@@ -79,11 +80,11 @@ export default function SolarHomeHero() {
 
         <HStack
           gap={{ base: 6, md: 12 }}
-          mb={12}
+          mb={6}
           flexWrap="wrap"
         >
           {[
-            { num: '125만', label: '연간 최대 절감 금액' },
+            { num: '120만', label: '연간 최대 절감 금액' },
             { num: '25년', label: '출력 보증 기간' },
             { num: '12년', label: '무상 A/S 서비스' },
           ].map((item) => (
@@ -113,16 +114,30 @@ export default function SolarHomeHero() {
               </Text>
             </Box>
           ))}
+
+          
         </HStack>
+
+        <Box>
+        <Text
+            fontFamily="NanumSquareNeo"
+            fontSize="xs"
+            color="gray.200"
+            mb={8}
+            letterSpacing="0.05em"
+          >
+            ※ 설치 제품의 제조사 및 사양에 따라 보증 기간과 A/S 조건이 일부 달라질 수 있습니다.
+          </Text>
+        </Box>
 
         <Link
           href="#savings"
           display="inline-flex"
           alignItems="center"
-          color="gray.800"
-          backgroundColor="orange.500"
-          fontWeight={600}
-          fontSize="lg"
+          fontSize={{ base: 'lg', md: 'xl' }} 
+          fontWeight="700" 
+          color="gray.100" 
+          bg="orange.500"
           letterSpacing="0.06em"
           py={4}
           px={8}
@@ -132,7 +147,7 @@ export default function SolarHomeHero() {
           fontFamily="pretendard"
         >
           절감 효과 확인하기
-          <LucideArrowRight size={20} />
+          <LucideArrowRight size={20} strokeWidth={2.5} />
         </Link>
       </Box>
     </Box>
