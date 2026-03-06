@@ -122,7 +122,7 @@ export const SUB_HERO_INFO = [
     pathname: "/business", 
     title: "사업소개", 
     subtitle: "Business Introduction", 
-    image: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=1920&q=90" 
+    image: "https://images.unsplash.com/photo-1707247111552-aaf74241058b?auto=format&fit=crop&w=1920&q=90" 
   },
   { 
     pathname: "/promotion", 

@@ -14,7 +14,7 @@ export default function FooterAbout() {
       >
         <Heading fontSize='lg' fontWeight='medium' color='gray.300'>기업정보</Heading>
 
-        <Link href='/about/introduction' target='_blank' outline='none'>
+        <Link href='/about/introduction' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'
@@ -28,7 +28,7 @@ export default function FooterAbout() {
           </Text>
         </Link>
 
-        <Link href='/about/location' target='_blank' outline='none'>
+        <Link href='/about/location' outline='none'>
           <Text 
             fontSize='md' 
             fontWeight='medium'

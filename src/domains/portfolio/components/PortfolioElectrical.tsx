@@ -20,6 +20,42 @@ import elecImg_5_1 from '@/assets/images/elec/elec-5-1.png';
 import elecImg_5_2 from '@/assets/images/elec/elec-5-2.png';
 import elecImg_5_3 from '@/assets/images/elec/elec-5-3.png';
 import elecImg_5_4 from '@/assets/images/elec/elec-5-4.png';
+import elecImg_6_1 from '@/assets/images/elec/elec-6-1.jpg';
+import elecImg_6_2 from '@/assets/images/elec/elec-6-2.jpg';
+import elecImg_6_3 from '@/assets/images/elec/elec-6-3.jpg';
+import elecImg_6_4 from '@/assets/images/elec/elec-6-4.jpg';
+import elecImg_7_1 from '@/assets/images/elec/elec-7-1.jpg';
+import elecImg_7_2 from '@/assets/images/elec/elec-7-2.jpg';
+import elecImg_7_3 from '@/assets/images/elec/elec-7-3.jpg';
+import elecImg_7_4 from '@/assets/images/elec/elec-7-4.jpg';
+import elecImg_8_1 from '@/assets/images/elec/elec-8-1.jpg';
+import elecImg_8_2 from '@/assets/images/elec/elec-8-2.jpg';
+import elecImg_8_3 from '@/assets/images/elec/elec-8-3.jpg';
+import elecImg_8_4 from '@/assets/images/elec/elec-8-4.jpg';
+import elecImg_9_1 from '@/assets/images/elec/elec-9-1.jpg';
+import elecImg_9_2 from '@/assets/images/elec/elec-9-2.jpg';
+import elecImg_9_3 from '@/assets/images/elec/elec-9-3.jpg';
+import elecImg_9_4 from '@/assets/images/elec/elec-9-4.jpg';
+import elecImg_10_1 from '@/assets/images/elec/elec-10-1.jpg';
+import elecImg_10_2 from '@/assets/images/elec/elec-10-2.jpg';
+import elecImg_10_3 from '@/assets/images/elec/elec-10-3.jpg';
+import elecImg_10_4 from '@/assets/images/elec/elec-10-4.jpg';
+import elecImg_11_1 from '@/assets/images/elec/elec-11-1.jpg';
+import elecImg_11_2 from '@/assets/images/elec/elec-11-2.jpg';
+import elecImg_11_3 from '@/assets/images/elec/elec-11-3.jpg';
+import elecImg_11_4 from '@/assets/images/elec/elec-11-4.jpg';
+import elecImg_12_1 from '@/assets/images/elec/elec-12-1.jpg';
+import elecImg_12_2 from '@/assets/images/elec/elec-12-2.jpg';
+import elecImg_12_3 from '@/assets/images/elec/elec-12-3.jpg';
+import elecImg_12_4 from '@/assets/images/elec/elec-12-4.jpg';
+import elecImg_13_1 from '@/assets/images/elec/elec-13-1.jpg';
+import elecImg_13_2 from '@/assets/images/elec/elec-13-2.jpg';
+import elecImg_13_3 from '@/assets/images/elec/elec-13-3.jpg';
+import elecImg_13_4 from '@/assets/images/elec/elec-13-4.jpg';
+import elecImg_14_1 from '@/assets/images/elec/elec-14-1.jpg';
+import elecImg_14_2 from '@/assets/images/elec/elec-14-2.jpg';
+import elecImg_14_3 from '@/assets/images/elec/elec-14-3.jpg';
+import elecImg_14_4 from '@/assets/images/elec/elec-14-4.jpg';
 
 const ELECTRICAL_WORK_ITEMS = [
   {
@@ -117,7 +153,7 @@ const ELECTRICAL_WORK_ITEMS = [
   {
     id: 5,
     isVisible: true,
-    title: '고창군청 성송 게이트볼장',
+    title: '고창군청 삼원 게이트볼장',
     images: [
       {
         image: elecImg_5_1,
@@ -133,6 +169,213 @@ const ELECTRICAL_WORK_ITEMS = [
       },
       {
         image: elecImg_5_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 6,
+    isVisible: true,
+    title: '고창북중 특별교실 리모델링 전기공사',
+    images: [
+      {
+        image: elecImg_6_1,
+        description: '',
+      },
+      {
+        image: elecImg_6_2,
+        description: '',
+      },
+      {
+        image: elecImg_6_3,
+        description: '',
+      },
+      {
+        image: elecImg_6_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 7,
+    isVisible: true,
+    title: '고창북중 천장 교체 전기공사',
+    images: [
+      {
+        image: elecImg_7_1,
+        description: '',
+      },
+      {
+        image: elecImg_7_2,
+        description: '',
+      },
+      {
+        image: elecImg_7_3,
+        description: '',
+      },
+      {
+        image: elecImg_7_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 8,
+    isVisible: true,
+    title: '고창군청 부안 게이트볼장',
+    images: [
+      {
+        image: elecImg_8_1,
+        description: '',
+      },
+      {
+        image: elecImg_8_2,
+        description: '',
+      },
+      {
+        image: elecImg_8_3,
+        description: '',
+      },
+      {
+        image: elecImg_8_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 9,
+    isVisible: true,
+    title: '저소득층 전등교체작업',
+    images: [
+      {
+        image: elecImg_9_1,
+        description: '',
+      },
+      {
+        image: elecImg_9_2,
+        description: '',
+      },
+      {
+        image: elecImg_9_3,
+        description: '',
+      },
+      {
+        image: elecImg_9_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 10,
+    isVisible: true,
+    title: '고창군청 해리 게이트볼장',
+    images: [
+      {
+        image: elecImg_10_1,
+        description: '',
+      },
+      {
+        image: elecImg_10_2,
+        description: '',
+      },
+      {
+        image: elecImg_10_3,
+        description: '',
+      },
+      {
+        image: elecImg_10_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 11,
+    isVisible: true,
+    title: '고창군청 아산 게이트볼장',
+    images: [
+      {
+        image: elecImg_11_1,
+        description: '',
+      },
+      {
+        image: elecImg_11_2,
+        description: '',
+      },
+      {
+        image: elecImg_11_3,
+        description: '',
+      },
+      {
+        image: elecImg_11_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 12,
+    isVisible: true,
+    title: '고창군청 성송 게이트볼장',
+    images: [
+      {
+        image: elecImg_12_1,
+        description: '',
+      },
+      {
+        image: elecImg_12_2,
+        description: '',
+      },
+      {
+        image: elecImg_12_3,
+        description: '',
+      },
+      {
+        image: elecImg_12_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 13,
+    isVisible: true,
+    title: '고창군청 무장 게이트볼장',
+    images: [
+      {
+        image: elecImg_13_1,
+        description: '',
+      },
+      {
+        image: elecImg_13_2,
+        description: '',
+      },
+      {
+        image: elecImg_13_3,
+        description: '',
+      },
+      {
+        image: elecImg_13_4,
+        description: '',
+      },
+    ]
+  },
+  {
+    id: 14,
+    isVisible: true,
+    title: '고창군청 대산 게이트볼장',
+    images: [
+      {
+        image: elecImg_14_1,
+        description: '',
+      },
+      {
+        image: elecImg_14_2,
+        description: '',
+      },
+      {
+        image: elecImg_14_3,
+        description: '',
+      },
+      {
+        image: elecImg_14_4,
         description: '',
       },
     ]
