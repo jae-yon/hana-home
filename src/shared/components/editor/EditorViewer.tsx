@@ -5,6 +5,9 @@ import { Box } from '@chakra-ui/react';
 import StarterKit from '@tiptap/starter-kit';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
+import CustomImage from '@/shared/components/editor/hooks/useImage';
+
+// CSS import
 import '@/shared/components/editor/index.css';
 
 interface EditorViewerProps {
@@ -15,7 +18,7 @@ interface EditorViewerProps {
 
 export default function EditorViewer({ content, className }: EditorViewerProps) {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, CustomImage],
     content: content ?? { type: 'doc', content: [] },
     editable: false,
     editorProps: {
