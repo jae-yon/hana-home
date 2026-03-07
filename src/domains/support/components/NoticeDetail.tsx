@@ -15,14 +15,7 @@ import {
 import EditorViewer from '@/shared/components/editor/EditorViewer';
 import { useNoticeDetail } from '@/domains/support/hooks/useNotice';
 
-function formatDate(date: string | Date): string {
-  const d = new Date(date);
-  if (Number.isNaN(d.getTime())) return '-';
-  const y = d.getUTCFullYear();
-  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(d.getUTCDate()).padStart(2, '0');
-  return `${y}.${m}.${day}`;
-}
+import { formatDateToKorean } from '@/shared/utils/date';
 
 export default function NoticeDetail() {
   const navigate = useNavigate();
@@ -94,7 +87,7 @@ export default function NoticeDetail() {
           {notice.title}
         </Heading>
         <Text fontSize="sm" color="gray.500">
-          {formatDate(notice.created_at)}
+          {formatDateToKorean(notice.created_at)}
         </Text>
       </Box>
 

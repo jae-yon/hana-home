@@ -4,20 +4,12 @@ import { FileExclamationPoint } from 'lucide-react';
 
 import {Flex, Box, Text, Heading, Button} from '@chakra-ui/react';
 
+import { formatDateToKorean } from '@/shared/utils/date';
 import { Impactor } from '@/shared/components/common/Impactor';
 
 import { useNotice } from '@/domains/support/hooks/useNotice';
 
 import type { Post } from '@/types/common';
-
-function formatDate(date: string | Date): string {
-  const d = new Date(date);
-  if (Number.isNaN(d.getTime())) return '-';
-  const y = d.getUTCFullYear();
-  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(d.getUTCDate()).padStart(2, '0');
-  return `${y}.${m}.${day}`;
-}
 
 export default function NoticeContents() {
   const { data: notices } = useNotice();
@@ -120,7 +112,7 @@ export default function NoticeContents() {
                     onClick={() => navigate(`/support/notice/${notice.id}`)}
                   >
                     <Text fontSize="lg" fontWeight="bold">{notice.title}</Text>
-                    <Text fontSize="sm" color="gray.500">{formatDate(notice.created_at)}</Text>
+                    <Text fontSize="sm" color="gray.500">{formatDateToKorean(notice.created_at)}</Text>
                   </Box>
                 ))}
               </Box>
