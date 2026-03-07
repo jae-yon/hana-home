@@ -1,3 +1,5 @@
+import { JSONContent } from '@tiptap/react';
+
 // 가중치
 export type Weight = 0.5 | 1.0 | 1.2 | 1.5;
 
@@ -36,4 +38,20 @@ export interface Inquiry {
   content?: string;
   visitRoute: string;
   agreement: boolean;
+}
+
+// 공지사항
+export interface Post {
+  id: string;
+  title: string;
+  view_count: number;
+  content: JSONContent;
+  content_text: string;
+  is_visible: boolean;
+  created_at: Date;
+  updated_at: Date;
+  images: {
+    id: number;
+    path: string;
+  }[];
 }

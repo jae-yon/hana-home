@@ -2,12 +2,16 @@ import { Flex } from '@chakra-ui/react';
 
 import FAQContents from './components/FAQContents';
 import InquiryForm from './components/InquiryForm';
+import NoticeDetail from './components/NoticeDetail';
+import NoticeEditor from './components/NoticeEditor';
+import NoticeContents from './components/NoticeContents';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 import { SubNavbarDesktop, SubNavbarMobile } from '@/shared/components/sub/SubNavbar';
 
 interface SupportProps {
   type: 'faq' | 'notice' | 'inquiry';
+  id?: string;
 }
 
 const navItems: { name: string, path: string }[] = [
@@ -17,7 +21,7 @@ const navItems: { name: string, path: string }[] = [
 ];
 
 export default function Support(props: SupportProps) {
-  const { type } = props;
+  const { type, id } = props;
   const { isDesktop } = useResponsive();
   return (
     <Flex 
@@ -30,6 +34,13 @@ export default function Support(props: SupportProps) {
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'faq' && <FAQContents />}
       {type === 'inquiry' && <InquiryForm />}
+
+      {type === 'notice' && (
+        !id ? <NoticeContents /> :
+        id === 'new' ? <NoticeEditor /> :
+        id === 'edit' ? <NoticeEditor /> :
+        <NoticeDetail />
+      )}
     </Flex>
   );
 }

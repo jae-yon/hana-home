@@ -6,22 +6,21 @@ import {Flex, Box, Text, Heading, Button} from '@chakra-ui/react';
 
 import { Impactor } from '@/shared/components/common/Impactor';
 
-import type { Notice } from '@/types/post';
-import { NOTICE_MOCKUP } from './noticeMockup';
+import { useNotice } from '@/domains/support/hooks/useNotice';
 
-function formatDate(date: Date): string {
+import type { Post } from '@/types/common';
+
+function formatDate(date: string | Date): string {
   const d = new Date(date);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
+  if (Number.isNaN(d.getTime())) return '-';
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(d.getUTCDate()).padStart(2, '0');
   return `${y}.${m}.${day}`;
 }
 
 export default function NoticeContents() {
-  // 세션 스토리지에서 로그인 여부 확인
-  const isLoggedIn = sessionStorage.getItem('access_token') !== null;
-  
-  const visibleNotices: Notice[] = NOTICE_MOCKUP.filter((n) => n.isVisible);
+  const { data: notices } = useNotice();
   
   const navigate = useNavigate();
 
@@ -46,9 +45,9 @@ export default function NoticeContents() {
         alignItems="center"
         justifyContent="space-between"
         gap={4}
+        mb={4}
       >
         <Heading
-          mb={8}
           fontWeight="bold"
           color="gray.800"
           letterSpacing="0.02em"
@@ -57,14 +56,14 @@ export default function NoticeContents() {
         >
           공지사항
         </Heading>
-        {!isLoggedIn && (
+        {sessionStorage.getItem('access_token') && (
           <Button
             px={6}
             py={2}
             size="sm"
             fontSize="sm"
             fontWeight="600"
-            borderRadius="lg"
+            borderRadius="none"
             letterSpacing="0.05em"
             fontFamily="pretendard"
             backgroundColor="orange.500"
@@ -85,7 +84,7 @@ export default function NoticeContents() {
           fontFamily="NanumSquareNeo"
         >
           <Box>
-            {visibleNotices.length === 0 ? (
+            {notices?.length === 0 ? (
               <Box
                 gap={12}
                 minH="100vh"
@@ -106,8 +105,8 @@ export default function NoticeContents() {
                 borderTopWidth="2px"
                 borderColor="gray.500"
               >
-                {visibleNotices.map((notice) => (
-                  <Box 
+                {notices?.map((notice: Post) => (
+                  <Box
                     key={notice.id}
                     px={6}
                     py={6}
@@ -116,10 +115,12 @@ export default function NoticeContents() {
                     justifyContent="space-between"
                     borderBottomWidth="1px"
                     borderColor="gray.200"
+                    cursor="pointer"
                     _hover={{ backgroundColor: 'gray.100' }}
+                    onClick={() => navigate(`/support/notice/${notice.id}`)}
                   >
                     <Text fontSize="lg" fontWeight="bold">{notice.title}</Text>
-                    <Text fontSize="sm" color="gray.500">{formatDate(notice.createdAt)}</Text>
+                    <Text fontSize="sm" color="gray.500">{formatDate(notice.created_at)}</Text>
                   </Box>
                 ))}
               </Box>
