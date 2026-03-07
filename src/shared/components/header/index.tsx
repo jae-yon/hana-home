@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { LucideMenu, LucideUserCircle2, LucideX } from "lucide-react";
+import { LucideMenu, LucideX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link, Image } from "@chakra-ui/react";
@@ -173,8 +173,19 @@ export default function Header() {
               ))}
 
               {sessionStorage.getItem('access_token') && (
-                <Box color="gray.600" cursor="default" animation={'pulse 5s infinite'}>
-                  <LucideUserCircle2 size={20} strokeWidth={2} />
+                <Box cursor="default" onClick={() => {
+                  sessionStorage.removeItem('access_token');
+                  sessionStorage.removeItem('refresh_token');
+                  window.location.href = '/';
+                }}>
+                  <Text
+                    fontSize="10px"
+                    fontWeight="400"
+                    letterSpacing="0.05em"
+                    color="orange.500"
+                  >
+                    LOGOUT
+                  </Text>
                 </Box>
               )}
             </HStack>

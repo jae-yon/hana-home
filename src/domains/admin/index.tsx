@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Box, Button, HStack, Input, Link, Text, VStack } from '@chakra-ui/react';
 import { useLogin } from './hooks/useAdmin';
@@ -8,6 +8,15 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const { mutate: loginMutation, isPending } = useLogin();
+
+  const accessToken = sessionStorage.getItem('access_token');
+  const refreshToken = sessionStorage.getItem('refresh_token');
+
+  useEffect(() => {
+    if (accessToken && refreshToken) {
+      window.location.href = '/';
+    }
+  }, [accessToken, refreshToken]);
   
   const handleLogin = () => {
     if (!id || !password) {
