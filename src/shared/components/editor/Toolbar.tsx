@@ -3,9 +3,14 @@ import { Bold, Code, Italic, Quote, Strikethrough, Underline, SquareCode, Minus 
 
 import { Editor } from '@tiptap/react';
 
-import { Flex, IconButton } from '@chakra-ui/react';
+import { Flex, IconButton, Separator } from '@chakra-ui/react';
 
 import useToolBar from '@/shared/components/editor/hooks/useToolbar';
+
+import List from './List';
+import Link from './Link';
+import Image from './Image';
+import Heading from './Heading';
 
 interface ToolBarProps {
   editor: Editor | null;
@@ -61,22 +66,31 @@ export default function Toolbar({ editor }: ToolBarProps) {
   return (
     <Flex
       p={2}
-      gap={2}
+      gap={1}
       justify="start"
       align="center"
       bg="white"
       borderBottom="1px solid gray.200"
     >
+      {/* Heading */}
+      <Heading editor={editor} />
+      
+      {/* List */}
+      <List editor={editor} />
+
+
       {/* Bold */}
       <IconButton 
         onClick={toggleBold}
         title="굵은 글씨"
         aria-label="굵은 글씨"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('bold') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('bold') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('bold') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Bold />
@@ -88,10 +102,12 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="기울임 글씨"
         aria-label="굵은 글씨"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('italic') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('italic') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('italic') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Italic />
@@ -103,10 +119,12 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="밑줄"
         aria-label="밑줄"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('underline') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('underline') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('underline') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Underline />
@@ -118,10 +136,12 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="취소선"
         aria-label="취소선"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('strike') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('strike') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('strike') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Strikethrough />
@@ -133,10 +153,12 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="인용구"
         aria-label="인용구"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('blockquote') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('blockquote') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('blockquote') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Quote />
@@ -148,8 +170,13 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="수평선"
         aria-label="수평선"
         size="xs"
-        borderRadius="md"
-        backgroundColor="gray.500"
+        borderRadius="sm"
+        color={editor.isActive('horizontalRule') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('horizontalRule') ? 'gray.800' : 'white'}
+        _hover={{
+          backgroundColor: 'gray.800',
+          color: 'white',
+        }}
       >
         <Minus />
       </IconButton>
@@ -160,10 +187,12 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="코드"
         aria-label="코드"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('code') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('code') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('code') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <Code />
@@ -175,14 +204,24 @@ export default function Toolbar({ editor }: ToolBarProps) {
         title="코드 블럭"
         aria-label="코드 블럭"
         size="xs"
-        borderRadius="md"
-        backgroundColor={editor.isActive('codeBlock') ? 'gray.800' : 'gray.500'}
+        borderRadius="sm"
+        color={editor.isActive('codeBlock') ? 'white' : 'gray.900'}
+        backgroundColor={editor.isActive('codeBlock') ? 'gray.800' : 'white'}
         _hover={{
           backgroundColor: 'gray.800',
+          color: 'white',
         }}
       >
         <SquareCode />
       </IconButton>
+
+      <Separator orientation="vertical" borderColor="gray.200" bg="gray.200" h="20px" />
+
+      {/* Link */}
+      <Link editor={editor} />
+
+      {/* Image (파일 선택만, 업로드 없음) */}
+      <Image editor={editor} isDisabled={false} />
     </Flex>
   );
 }

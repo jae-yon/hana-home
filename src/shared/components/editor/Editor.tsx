@@ -6,6 +6,7 @@ import StarterKit from '@tiptap/starter-kit';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
 import Toolbar from '@/shared/components/editor/Toolbar';
+import CustomImage from '@/shared/components/editor/hooks/useImage';
 
 // CSS import
 import '@/shared/components/editor/index.css';
@@ -19,6 +20,7 @@ export default function Editor({content, onUpdate}: EditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      CustomImage,
     ],
     content: content || {
       type: 'doc',
@@ -123,7 +125,7 @@ export default function Editor({content, onUpdate}: EditorProps) {
   return (
     <Flex
       direction="column"
-      borderRadius="none"
+      borderRadius="sm"
       overflow="hidden"
       bg="white"
       border="1px solid"
