@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { ChevronUpIcon } from 'lucide-react';
-import { IconButton } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 export function ScrollTopButton() {
   const handleClick = useCallback(() => {
@@ -8,9 +8,10 @@ export function ScrollTopButton() {
   }, []);
 
   return (
-    <IconButton
-      size="xl"
+    <Box
+      p={4}
       color="white"
+      cursor="pointer"
       borderRadius="full"
       onClick={handleClick}
       backgroundColor="blue.700"
@@ -18,6 +19,6 @@ export function ScrollTopButton() {
       _hover={{ transform: "scale(1.05)" }}
     >
       <ChevronUpIcon width={20} height={20} strokeWidth={2.5} />
-    </IconButton>
+    </Box>
   );
 }

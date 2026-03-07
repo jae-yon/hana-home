@@ -13,7 +13,7 @@ const createInquiryFrom = (inquiry: Inquiry) => {
             
             <!-- 헤더 -->
             <tr>
-              <td style="background-color: #1a1a2e; padding: 32px 40px;">
+              <td style="background-color:rgb(207, 111, 0); padding: 32px 40px;">
                 <h1 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: -0.5px;">📋 견적 문의</h1>
                 <p style="margin: 6px 0 0; color: #a0a0b8; font-size: 13px;">새로운 견적 문의가 접수되었습니다.</p>
               </td>
