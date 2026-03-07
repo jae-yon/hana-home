@@ -6,7 +6,7 @@ import StarterKit from '@tiptap/starter-kit';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
 import Toolbar from '@/shared/components/editor/Toolbar';
-import CustomImage from '@/shared/components/editor/hooks/useImage';
+import { CustomImage, UploadImage } from '@/shared/components/editor/hooks/useImage';
 
 // CSS import
 import '@/shared/components/editor/index.css';
@@ -17,6 +17,8 @@ interface EditorProps {
 }
 
 export default function Editor({content, onUpdate}: EditorProps) {
+  const { uploadImage } = UploadImage()
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -136,7 +138,7 @@ export default function Editor({content, onUpdate}: EditorProps) {
       }}
       transition="border-color 0.2s, box-shadow 0.2s"
     >
-      <Toolbar editor={editor} />
+      <Toolbar editor={editor} onImageUpload={uploadImage} />
       <Flex
         bg="white"
         minHeight="50vh"

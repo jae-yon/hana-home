@@ -24,9 +24,12 @@ interface ImageBlockProps {
   node: Node & { attrs: { src?: string; alt?: string; width?: number | string; align?: AlignValue; 'data-loading'?: string | boolean } }
   updateAttributes: (attrs: Record<string, unknown>) => void
   selected: boolean
+  /** 에디터 인스턴스 (뷰어일 때 editable: false → 리사이즈·정렬 비표시) */
+  editor?: { isEditable: boolean }
 }
 
-export default function ImageBlock({ node, updateAttributes, selected }: ImageBlockProps) {
+export default function ImageBlock({ node, updateAttributes, selected, editor }: ImageBlockProps) {
+  const isViewer = editor ? !editor.isEditable : false
   const { src, alt, width, align } = node.attrs
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -107,7 +110,7 @@ export default function ImageBlock({ node, updateAttributes, selected }: ImageBl
         width={typeof currentWidth === 'number' ? `${currentWidth}px` : currentWidth}
         maxWidth="100%"
         borderRadius="4px"
-        outline={selected ? '2px solid #2383e2' : '2px solid transparent'}
+        outline={selected && !isViewer ? '2px solid #2383e2' : '2px solid transparent'}
         outlineOffset="1px"
         transition="outline-color 0.15s"
         overflow="visible"
@@ -153,8 +156,8 @@ export default function ImageBlock({ node, updateAttributes, selected }: ImageBl
           </Box>
         )}
 
-        {/* 선택 시 리사이즈 핸들 + 정렬 툴팁 */}
-        {selected && !isLoading && (
+        {/* 선택 시 리사이즈 핸들 + 정렬 툴팁 (뷰어 모드에서는 미표시) */}
+        {selected && !isLoading && !isViewer && (
           <>
             <ResizeHandle side="left" onMouseDown={(e) => onHandleMouseDown(e, 'left')} />
             <ResizeHandle side="right" onMouseDown={(e) => onHandleMouseDown(e, 'right')} />

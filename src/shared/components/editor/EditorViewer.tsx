@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 import StarterKit from '@tiptap/starter-kit';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
-import CustomImage from '@/shared/components/editor/hooks/useImage';
+import { CustomImage } from '@/shared/components/editor/hooks/useImage';
 
 // CSS import
 import '@/shared/components/editor/index.css';

@@ -14,9 +14,10 @@ import Heading from './Heading';
 
 interface ToolBarProps {
   editor: Editor | null;
+  onImageUpload?: (file: File) => Promise<string | null | undefined>;
 }
 
-export default function Toolbar({ editor }: ToolBarProps) {
+export default function Toolbar({ editor, onImageUpload }: ToolBarProps) {
   if (!editor) {
     return null;
   }
@@ -220,8 +221,8 @@ export default function Toolbar({ editor }: ToolBarProps) {
       {/* Link */}
       <Link editor={editor} />
 
-      {/* Image (파일 선택만, 업로드 없음) */}
-      <Image editor={editor} isDisabled={false} />
+      {/* Image (로컬 파일 선택 → Supabase 업로드 후 삽입) */}
+      <Image editor={editor} onUpload={onImageUpload} isDisabled={false} />
     </Flex>
   );
 }
