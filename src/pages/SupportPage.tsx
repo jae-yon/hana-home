@@ -9,7 +9,7 @@ import FloatingActionButton from '@/shared/components/fab';
 import Support from '@/domains/support';
 
 export default function PortfolioPage() {
-  const { type } = useParams();
+  const { type, id } = useParams();
   const location = useLocation();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function PortfolioPage() {
     <>
       <Header />
       <SubHero />
-      <Support type={type as 'faq' | 'notice' | 'inquiry'} />
+      <Support type={type as 'faq' | 'notice' | 'inquiry'} id={id}/>
       <Footer />
       <FloatingActionButton />
     </>

@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
@@ -43,6 +44,10 @@ export const ROUTES = [
   },
   {
     path: '/support/:type',
+    element: <SupportPage />,
+  },
+  {
+    path: '/support/:type/:id',
     element: <SupportPage />,
   },
   {
