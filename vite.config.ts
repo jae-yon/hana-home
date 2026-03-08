@@ -1,11 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import sitemap from 'vite-plugin-sitemap'
 
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    sitemap({
+      hostname: 'https://solutionhana.co.kr',
+    }),
     react(),
     ViteImageOptimizer({
       png: {
