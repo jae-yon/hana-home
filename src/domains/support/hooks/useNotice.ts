@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import type { Post } from '@/types/common';
-import { supabase } from '@/shared/config/supabase';
 
+import { supabase } from '@/shared/config/supabase';
+import { extractImageUrlsFromJson, UploadImage } from '@/shared/components/editor/hooks/useImage';
+
+// 공지사항 목록 조회
 export const useNotice = () => {
   return useQuery({
     queryKey: ['notice'],
@@ -24,6 +27,7 @@ export const useNotice = () => {
   })
 }
 
+// 공지사항 상세 조회
 export const useNoticeDetail = (id: string | undefined) => {
   return useQuery({
     queryKey: ['notice', id],
@@ -45,9 +49,12 @@ export const useNoticeDetail = (id: string | undefined) => {
   });
 }
 
+// 공지사항 등록 및 수정
 export const usePostNotice = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  // 이미지 연결
+  const { linkImagesToPost } = UploadImage();
 
   return useMutation({
     mutationFn: async (post: Post) => {
@@ -85,6 +92,11 @@ export const usePostNotice = () => {
           console.log(post.id);
           throw error;
         }
+
+        const imageUrls = extractImageUrlsFromJson(post.content);
+        if (imageUrls.length > 0) {
+          await linkImagesToPost(data.id, imageUrls);
+        }
         return data;
       }
 
@@ -102,6 +114,11 @@ export const usePostNotice = () => {
       if (error) {
         console.error(error.message, error.details);
         throw error;
+      }
+
+      const imageUrls = extractImageUrlsFromJson(post.content);
+      if (imageUrls.length > 0) {
+        await linkImagesToPost(data.id, imageUrls);
       }
       return data;
     },
@@ -122,3 +139,41 @@ export const usePostNotice = () => {
     },
   });
 };
+
+// 공지사항 삭제
+export const useDeleteNotice = () => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { data, error } = await supabase
+        .from('posts')
+        .delete()
+        .eq('id', id)
+        .eq('category', 'NOTICE')
+        .select('id');
+
+      if (error) {
+        console.error(error.message, error.details);
+        throw error;
+      }
+
+      // 조건에 맞는 행이 없으면 삭제된 것이 없음
+      if (!data?.length) {
+        throw new Error('삭제할 공지사항을 찾을 수 없습니다.');
+      }
+
+      return data;
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['notice'] });
+      queryClient.invalidateQueries({ queryKey: ['notice', variables] });
+      alert('공지사항이 삭제되었습니다.');
+      navigate('/support/notice');
+    },
+    onError: () => {
+      alert('공지사항 삭제에 실패했습니다. 다시 시도해주세요.');
+    },
+  });
+}

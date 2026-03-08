@@ -25,32 +25,6 @@ const initialPost: Post = {
   images: [],
 }
 
-// 
-function parseContent(value: unknown): JSONContent {
-  if (!value) return { type: 'doc', content: [] };
-  if (typeof value === 'object' && value !== null && 'type' in value) {
-    return value as JSONContent;
-  }
-  if (typeof value === 'string') {
-    try {
-      const parsed = JSON.parse(value) as JSONContent;
-      return parsed?.type === 'doc' ? parsed : { type: 'doc', content: [] };
-    } catch {
-      return { type: 'doc', content: [] };
-    }
-  }
-  return { type: 'doc', content: [] };
-}
-
-function parseDate(value: unknown): Date {
-  if (value instanceof Date) return value;
-  if (typeof value === 'string') {
-    const d = new Date(value);
-    return Number.isNaN(d.getTime()) ? new Date() : d;
-  }
-  return new Date();
-}
-
 export default function NoticeEditor() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();

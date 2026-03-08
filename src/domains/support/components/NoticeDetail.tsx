@@ -12,16 +12,19 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import EditorViewer from '@/shared/components/editor/EditorViewer';
-import { useNoticeDetail } from '@/domains/support/hooks/useNotice';
-
 import { formatDateToKorean } from '@/shared/utils/date';
+import EditorViewer from '@/shared/components/editor/EditorViewer';
+
+import { useDeleteNotice, useNoticeDetail } from '@/domains/support/hooks/useNotice';
 
 export default function NoticeDetail() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
+  // 공지사항 상세 조회
   const { data: notice, isLoading, isError, isFetched } = useNoticeDetail(id);
+  // 공지사항 삭제
+  const { mutate: deleteNoticeMutation } = useDeleteNotice();
 
   // id가 없거나 조회 실패 시 목록으로 이동
   useEffect(() => {
@@ -54,6 +57,17 @@ export default function NoticeDetail() {
 
   if (!notice) {
     return null;
+  }
+
+  const handleDeleteNotice = () => {
+    if (!sessionStorage.getItem('access_token') && !sessionStorage.getItem('refresh_token')) {
+      alert('로그인 후 이용해주세요.');
+      return;
+    }
+    
+    if (confirm('선택한 게시글을 영구적으로 삭제합니다.')) {
+      deleteNoticeMutation(notice.id);
+    }
   }
 
   return (
@@ -128,13 +142,13 @@ export default function NoticeDetail() {
               backgroundColor="red.500"
               color="white"
               size="sm"
-              onClick={() => navigate(-1)}
               _hover={{ bg: 'red.600' }}
               gap={1}
               fontWeight="500"
               letterSpacing="0.05em"
               fontFamily="pretendard"
               borderRadius="none"
+              onClick={handleDeleteNotice}
             >
               <Trash size={16} strokeWidth={1.5} />
               삭제

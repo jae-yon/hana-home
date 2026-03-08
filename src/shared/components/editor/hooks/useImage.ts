@@ -12,6 +12,7 @@ import { useCallback, useRef } from 'react'
 
 import Image from '@tiptap/extension-image'
 
+import type { JSONContent } from '@tiptap/react'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 import supabase from '@/shared/config/supabase'
@@ -74,6 +75,20 @@ export const CustomImage = Image.extend({
  *   // 글 저장 시 post_id 연결
  *   await linkImagesToPost(postId, imageUrls)
  */
+
+/** JSONContent에서 이미지 URL 목록을 추출합니다. (linkImagesToPost에 넘길 때 사용) */
+export function extractImageUrlsFromJson(content: JSONContent | null | undefined): string[] {
+  const urls: string[] = []
+  function walk(node: JSONContent) {
+    if (node.type === 'image' && node.attrs?.src) {
+      const src = node.attrs.src
+      if (typeof src === 'string') urls.push(src)
+    }
+    node.content?.forEach(walk)
+  }
+  if (content) walk(content)
+  return urls
+}
 
 export const UploadImage = () => {
   // 현재 글 작성 세션에서 업로드한 이미지 URL 목록 추적
