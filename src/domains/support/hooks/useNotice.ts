@@ -168,7 +168,8 @@ export const useDeleteNotice = () => {
     },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['notice'] });
-      queryClient.invalidateQueries({ queryKey: ['notice', variables] });
+      // 삭제된 상세는 refetch하지 않음 (이미 없어서 406 발생 방지)
+      queryClient.removeQueries({ queryKey: ['notice', variables] });
       alert('공지사항이 삭제되었습니다.');
       navigate('/support/notice');
     },

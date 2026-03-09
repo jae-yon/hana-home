@@ -23,6 +23,7 @@ export default function NoticeDetail() {
 
   // 공지사항 상세 조회
   const { data: notice, isLoading, isError, isFetched } = useNoticeDetail(id);
+  
   // 공지사항 삭제
   const { mutate: deleteNoticeMutation } = useDeleteNotice();
 
