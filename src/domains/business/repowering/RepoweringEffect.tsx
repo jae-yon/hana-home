@@ -13,42 +13,42 @@ import { LucideBanknoteArrowUp, LucideBatteryCharging, LucideBuilding, LucideRec
 
 const effectsData = [
   {
-    title: "구조물부터 설비까지 재설계",
+    title: "구조 및 설비 재설계",
     icon: <LucideBuilding size={24} strokeWidth={2} />,
     items: [
-      "최신 고효율 설비에 맞춰 구조물과 설비를 최적화 재설계",
-      "모듈 배치와 각도 조정으로 발전 효율 극대화",
-      "유지관리 편의성 개선, 고장 발생 최소화로 수익 안정성 강화",
+      "최신 고효율 모듈에 맞춰 구조와 설비를 재설계",
+      "모듈 배치와 각도 최적화를 통해 발전 효율 개선",
+      "유지관리 편의성 향상 및 고장 위험 감소",
     ],
-    stat: { value: 40, suffix: "%", label: "설계 효율 향상" },
+    stat: { value: "설계 최적화", suffix: "", label: "" },
   },
   {
     title: "같은 공간, 더 높은 출력",
     icon: <LucideBatteryCharging size={24} strokeWidth={2} />,
     items: [
-      "동일 출력 대비 높은 효율·낮은 감소율의 최신 모듈 적용",
-      "실시간 모니터링 기능으로 효율적 관리가 가능한 인버터 업그레이드",
-      "기존 대비 출력 증가, 발전량 극대화로 수익 직결",
+      "고효율 모듈과 최신 인버터 적용",
+      "실시간 모니터링 기능을 통한 운영 효율 향상",
+      "동일 부지에서 발전 성능 개선 가능",
     ],
-    stat: { value: 30, suffix: "%", label: "발전량 증가" },
+    stat: { value: "최대 30", suffix: "%", label: "발전 효율 개선" },
   },
   {
-    title: "수익성에 대한 기대효과",
+    title: "수익 구조 개선",
     icon: <LucideBanknoteArrowUp size={24} strokeWidth={2} />,
     items: [
-      "리파워링으로 REC 가중치 적용, REC 수익성 확보",
-      "효율 개선으로 추가 발전 수익 기대 — 제2의 수익 기회 창출",
+      "설비 효율 개선으로 발전량 증가 기대",
+      "장기적인 발전 수익 구조 안정화",
     ],
-    stat: { value: 25, suffix: "년", label: "모듈 성능보증" },
+    stat: { value: "25", suffix: "년", label: "모듈 출력 보증" },
   },
   {
-    title: "단순 교체가 아닌 '수명 리셋'",
+    title: "발전소 운영 수명 연장",
     icon: <LucideRecycle size={24} strokeWidth={2} />,
     items: [
-      "기존 발전소 수명을 연장하여 추가 수익 창출 — 사업 연속성 확보",
-      "최신 설비 적용으로 발전소 자산 가치 유지 및 향상",
+      "노후 설비 교체를 통한 발전소 운영 기간 연장",
+      "최신 설비 적용으로 안정적인 발전 운영 가능",
     ],
-    stat: { value: 2, suffix: "배", label: "자산 가치 회복" },
+    stat: { value: "발전 자산 가치", suffix: "", label: "유지 및 개선" },
   },
 ];
 
@@ -56,7 +56,7 @@ interface EffectData {
   title: string;
   icon: React.ReactNode;
   items: string[];
-  stat: { value: number; suffix: string; label: string };
+  stat: { value: string; suffix: string; label: string };
 }
 
 function EffectCard({ data, index }: { data: EffectData; index: number }) {
@@ -106,15 +106,15 @@ function EffectCard({ data, index }: { data: EffectData; index: number }) {
         </Box>
         <Box textAlign="right">
           <Text
-            fontFamily="NanumSquareNeo"
-            fontSize="2xl"
+            lineHeight="1"
+            fontSize="xl"
             fontWeight="800"
             color="gray.800"
-            lineHeight="1"
+            fontFamily="NanumSquareNeo"
           >
             <>
-              {data.stat.value}&nbsp;
-              <Text as="span" fontSize="sm">{data.stat.suffix}</Text>
+              {data.stat.value}
+              <Text as="span" fontSize="sm">&nbsp;{data.stat.suffix}</Text>
             </>
           </Text>
           <Text fontSize="xs" color="red.500" fontWeight="600" mt="1" fontFamily="pretendard">
@@ -153,7 +153,7 @@ function EffectCard({ data, index }: { data: EffectData; index: number }) {
 
 export default function RepoweringEffects() {
   const ref = useRef(null);
-  const isView = useInView(ref);
+  const isView = useInView(ref, { once: true });
 
   return (
     <Box

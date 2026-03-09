@@ -74,8 +74,8 @@ export default function Re100Header() {
           overflowWrap="break-word"
           textShadow="1px 1px 2px rgba(0,0,0,0.2)"
         >
-          <Text as="span" fontSize={{ base: '36px', md: '48px', lg: '60px' }} fontWeight="bold" color="green.500">RE100</Text>으로
-          <br />ESG 경영을 실천해보세요.
+          <Text as="span" fontSize={{ base: '36px', md: '48px', lg: '60px' }} fontWeight="bold" color="green.500">RE100&nbsp;</Text>대응으로
+          <br />ESG 경영을 실현하세요.
         </Heading>
         <Text
           fontSize={{ base: '16px', md: '20px', lg: '24px' }}
@@ -87,8 +87,8 @@ export default function Re100Header() {
           overflowWrap="break-word"
           textShadow="1px 1px 2px rgba(0,0,0,0.2)"
         >
-          한국형 RE100 정책을 기반으로 
-          <br />맞춤형 컨설팅 및 서비스 및 운영을 제공합니다.
+          K-RE100 제도 기반으로 기업 전력 사용 환경에 맞는
+          <br />맞춤형 재생에너지 솔루션을 제공합니다.
         </Text>
       </Stack>
     </Box>

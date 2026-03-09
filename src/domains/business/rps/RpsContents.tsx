@@ -1,4 +1,4 @@
-import { BarChart2, Leaf, Shield } from 'lucide-react';
+import { HandCoins, Percent, Shield } from 'lucide-react';
 
 import { Badge, Text, Box, VStack, HStack, Flex, Image, GridItem, Grid } from '@chakra-ui/react'
 
@@ -7,15 +7,15 @@ import rps_diagram from '@/assets/images/3d/수익구조_다이어그램.png'
 const revenueCards = [
   {
     title: 'SMP',
-    body: 'System Marginal Price : \n전력시장에서 전기가 거래될 때 적용되는 계통한계가격 (계약대상 : 한국전력공사 또는 전력거래소)',
+    body: 'System Marginal Price : \n전력시장에서 결정되는 전력 도매가격으로 발전사업자는 생산한 전력을 판매하여 SMP 수익을 얻습니다.',
   },
   {
     title: 'REC',
-    body: 'Renewable Energy Certificate : \n 신재생에너지를 이용하여 에너지를 공급한 사실을 증명하는 공급인증서 (발급기관 : 에너지관리공단 신재생에너지 센터)',
+    body: 'Renewable Energy Certificate : \n 신재생에너지로 생산된 전력을 증명하는 인증서로 발전량에 따라 발급되며 의무공급자와 거래됩니다.',
   },
   {
     title: 'REC 가중치',
-    body: '설치용량에 따른 REC(공급인증서) 가중치 (0.7 ~ 1.5)',
+    body: '설치 유형 및 발전방식에 따른 REC(공급인증서)가중치 (0.7~1.5)',
   },
 ] as const;
 
@@ -49,8 +49,7 @@ export default function RpsContents() {
           letterSpacing="0.02em"
           fontFamily="NanumSquareNeo"
         >
-          RPS(Renewable Portfolio Standard)는 500MW 이상 대형 발전사업자에게 총 발전량의 일정 비율을
-          신재생에너지로 공급하도록 법으로 의무화한 제도입니다.
+          RPS(Renewable Portfolio Standard)는 일정 규모 이상의 발전사업자가 총 발전량의 일정 비율을 신재생에너지로 공급하도록 의무화한 제도입니다.
         </Text>
 
         <Text
@@ -62,8 +61,8 @@ export default function RpsContents() {
           letterSpacing="0.02em"
           fontFamily="NanumSquareNeo"
         >
-          RPS 의무를 이행하려면 <Text as="span" color="orange.500" fontWeight="900">REC(공급인증서)</Text>를
-          구매해야 하며, 태양광 발전사업자인 여러분이 바로 이 REC를 판매할 수 있습니다.
+          의무공급자는 해당 의무를 이행하기 위해 <Text as="span" color="orange.500" fontWeight="900">REC(신재생에너지 공급인증서)</Text>를
+          구매해야 하며, 태양광 발전사업자는 발전을 통해 발급된 REC를 판매하여 추가 수익을 얻을 수 있습니다.
         </Text>
       </Box>
 
@@ -82,7 +81,7 @@ export default function RpsContents() {
           fontFamily="pretendard"
           fontSize={{ base: "24px", md: "32px", lg: "48px" }}
         >
-          3단계로 완성되는{" "} 이중 수익 구조
+          SMP와 REC로 형성되는 발전 수익 구조
         </Text>
 
         <HStack
@@ -108,10 +107,10 @@ export default function RpsContents() {
           </Flex>
           <Box fontFamily="NanumSquareNeo">
             <Text fontWeight="700" mb={1} fontSize="md" color="white">
-              법적으로 보장된 수요
+              법적으로 형성되는 REC 수요
             </Text>
             <Text fontSize="sm" color="whiteAlpha.900" fontWeight="600" lineHeight={1.7}>
-              대형 발전사는 반드시 REC를 구매해야 하므로 안정적인 판매처가 법으로 보장됩니다.
+              대형 발전사는 신재생에너지 공급 의무를 이행하기 위해 REC를 구매해야 하며 REC 거래 수요가 형성됩니다.
             </Text>
           </Box>
         </HStack>
@@ -134,14 +133,14 @@ export default function RpsContents() {
             justify="center"
             flexShrink={0}
           >
-            <BarChart2 size={24} strokeWidth={2.5} color="white" />
+            <HandCoins size={24} strokeWidth={2.5} color="white" />
           </Flex>
           <Box fontFamily="NanumSquareNeo">
             <Text fontWeight="700" mb={1} fontSize="md" color="white">
               전력 판매 외 추가 수익
             </Text>
             <Text fontSize="sm" color="whiteAlpha.900" fontWeight="600" lineHeight={1.7}>
-              전기 판매 수익에 더해 REC 판매 수익이 추가로 발생하여 투자 수익률이 크게 향상됩니다.
+              전력 판매(SMP) 수익과 함께 REC 거래를 통한 추가 수익이 발생합니다.
             </Text>
           </Box>
         </HStack>
@@ -164,14 +163,14 @@ export default function RpsContents() {
             justify="center"
             flexShrink={0}
           >
-            <Leaf size={24} strokeWidth={2.5} color="white" />
+            <Percent size={24} strokeWidth={2.5} color="white" />
           </Flex>
           <Box fontFamily="NanumSquareNeo">
             <Text fontWeight="700" mb={1} fontSize="md" color="white">
-              친환경 가중치 혜택
+              REC 가중치 제도
             </Text>
             <Text fontSize="sm" color="whiteAlpha.900" fontWeight="600" lineHeight={1.7}>
-              태양광 등 에너지원별로 가중치가 부여되어 동일 발전량으로 더 많은 REC를 확보할 수 있습니다.
+              설치 유형 및 발전 방식에 따라 REC 가중치가 적용될 수 있습니다.
             </Text>
           </Box>
         </HStack>
@@ -199,15 +198,15 @@ export default function RpsContents() {
             <Text
               fontFamily="pretendard"
               fontSize={{ base: 'lg', md: 'xl' }}
-              fontWeight="600"
+              fontWeight="560"
               color="white"
-              maxW="600px"
+              maxW="400px"
               lineHeight={1.8}
               mb={4}
             >
-              태양광발전의 수익은 한전과의 <Text as="span" color="orange.500" fontWeight="600">전력판매수입(SMP:계통한계가격)</Text>과 공급의무자와의{' '}
+              태양광 발전 수익은 <Text as="span" color="orange.500" fontWeight="600">전력 판매(SMP)</Text> 수익과{' '}
               <Text as="span" color="orange.500" fontWeight="600">
-                REC(공급인증서)판매수입
+                REC(공급인증서) 거래 수익
               </Text>
               {' '}두 가지로 구성됩니다.
             </Text>
@@ -268,7 +267,7 @@ export default function RpsContents() {
             fontWeight="500"
             fontFamily="pretendard"
           >
-            수익공식 : SMP + (REC × 가중치) = 매전단가
+            수익구조 : 발전 수익 = SMP 수익 + REC 거래 수익
           </Text>
         </Box>
       </VStack>

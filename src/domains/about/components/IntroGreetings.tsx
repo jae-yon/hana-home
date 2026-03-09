@@ -30,7 +30,7 @@ export function IntroGreetings() {
       </Box>
       <Box 
         mx="auto"
-        width={{ base: '100%', md: '75%', lg: '50%' }}
+        width={{ base: '100%', md: '75%', lg: '60%' }}
         ref={ref}
         opacity={isView ? 1 : 0}
         transition="transform 1.5s ease, opacity 1s ease"
@@ -65,7 +65,7 @@ export function IntroGreetings() {
             letterSpacing="-0.01em"
             lineHeight={{ base: '1.7', md: '1.8' }}
           >
-            믿을 수 있는 태양광 발전 시스템과 포스맥 구조물 적용, 신속한 업무 처리를 통해
+            믿을 수 있는 태양광 발전 시스템과 용융아연도금 및 포스맥 구조물 적용, 신속한 업무 처리를 통해
             태양광 발전사업의 든든한 사업 파트너로 함께하고 있습니다.
           </Text>
           <Text

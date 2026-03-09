@@ -1,15 +1,9 @@
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 
-import { Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
-import {
-  LucideBuilding2,
-  LucideHandshake,
-  LucideSun,
-  LucideFileCheck,
-  LucideCircleDollarSign,
-} from 'lucide-react';
+import { LucideHandshake, LucideSun, LucideFileCheck, LucideLeaf, LucideSolarPanel } from 'lucide-react';
 
 import type { LucideIcon } from 'lucide-react';
 
@@ -25,15 +19,15 @@ const methods: {
 }[] = [
   {
     id: 1,
-    name: "녹색요금제",
-    Icon: LucideBuilding2,
+    name: "녹색프리미엄",
+    Icon: LucideLeaf,
     color: "#22c55e",
     glow: "#16a34a",
     angle: 270,
   },
   {
     id: 2,
-    name: "전력구매계약",
+    name: "REC구매",
     Icon: LucideHandshake,
     color: "#22c55e",
     glow: "#16a34a",
@@ -41,7 +35,7 @@ const methods: {
   },
   {
     id: 3,
-    name: "자가발전",
+    name: "직접PPA",
     Icon: LucideSun,
     color: "#22c55e",
     glow: "#16a34a",
@@ -49,7 +43,7 @@ const methods: {
   },
   {
     id: 4,
-    name: "REC 구매",
+    name: "제3자PPA",
     Icon: LucideFileCheck,
     color: "#22c55e",
     glow: "#16a34a",
@@ -57,8 +51,8 @@ const methods: {
   },
   {
     id: 5,
-    name: "지분투자",
-    Icon: LucideCircleDollarSign,
+    name: "자가발전",
+    Icon: LucideSolarPanel,
     color: "#22c55e",
     glow: "#16a34a",
     angle: 198,
@@ -104,7 +98,48 @@ export default function Re100How() {
           transform={isView ? "translateY(0)" : "translateY(20px)"}
           transition="all 1s ease"
         >
-          <Text as="span" fontSize={{ base: '40px', md: '56px', lg: '64px' }} fontWeight="900" color="blue.700">K-RE100</Text> · 이행방법
+          <Text as="span" fontSize={{ base: '40px', md: '56px', lg: '64px' }} fontWeight="900" color="blue.700">K-RE100</Text>&nbsp;제도
+        </Heading>
+        <Flex
+          mb={10}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text
+            px={4}
+            fontSize={{ base: 'sm', md: 'lg', lg: 'xl' }}
+            color="gray.800"
+            lineHeight="1.75"
+            fontWeight="700"
+            textAlign="start"
+            wordBreak="keep-all"
+            letterSpacing="0.02em"
+            overflowWrap="break-word"
+            fontFamily="NanumSquareNeo"
+            opacity={isView ? 1 : 0}
+            transform={isView ? "translateY(0)" : "translateY(20px)"}
+            transition="all 1.2s ease"
+          >
+            한국에서는 산업통상자원부와 한국에너지공단이 운영하는 K-RE100 제도를 통해 기업의 재생에너지 사용을 인정합니다.<br />
+            기업은 다양한 방식으로 재생에너지 사용 실적을 인정받을 수 있습니다.
+          </Text>
+        </Flex>
+      </div>
+
+      <div>
+        <Heading
+          fontSize={{ base: '28px' }}
+          fontWeight="800"
+          lineHeight="1.35"
+          textAlign="center"
+          wordBreak="keep-all"
+          letterSpacing="-0.02em"
+          overflowWrap="break-word"
+          mb={4}
+          fontFamily="Pretendard, sans-serif"
+        >
+          K-RE100 이행방법
         </Heading>
       </div>
 

@@ -1,12 +1,13 @@
 import { Badge, Text, Box, GridItem, Grid, Heading } from '@chakra-ui/react'
 import {
-  LucideCircleDollarSign,
-  LucideTrendingDown,
-  LucideShield,
+  Zap,
+  SolarPanel,
   LucideLeaf,
-  LucideCircleCheck,
-  LucideFileText,
+  BatteryCharging,
+  ChartNoAxesCombined,
+  LucideCircleDollarSign,
 } from 'lucide-react'
+
 import type { LucideIcon } from 'lucide-react'
 
 const advantageCards: {
@@ -17,45 +18,45 @@ const advantageCards: {
 }[] = [
   {
     num: '01',
-    title: '초기 비용 제로',
+    title: '전기요금 절감',
     description:
-      '태양광 설비 설치를 위한 투자비, 설계비, 인허가 비용까지 모두 사업자가 부담하여 기업은 자본 지출(CAPEX) 없이 바로 재생에너지 도입 가능',
+      '태양광으로 생산한 전기를 건물에서 직접 사용하여 전기요금 부담을 줄일 수 있습니다.',
     Icon: LucideCircleDollarSign,
   },
   {
     num: '02',
-    title: '전기요금 절감',
+    title: '잉여전력 판매',
     description:
-      '한전 전기요금 대비 경쟁력 있는 고정 단가로 장기간 전력 구매가 가능하며, 전력 단가 상승 시에도 비용 절감 효과 기대',
-    Icon: LucideTrendingDown,
+      '사용하고 남은 전기는 판매가 가능해 전기요금 절감과 함께 추가 수익도 기대할 수 있습니다.',
+    Icon: Zap,
   },
   {
     num: '03',
-    title: '요금 안정성 보장',
+    title: '유휴공간 활용',
     description:
-      '계약 기간(10~20년) 동안 고정 또는 합의된 단가로 전력을 공급받아 SMP·연료비 연동제 등 외부 요인에 따른 전기요금 변동 리스크 최소화',
-    Icon: LucideShield,
+      '공장·창고·건물 옥상 등 사용하지 않는 공간을 활용하여 전력을 생산할 수 있습니다.',
+    Icon: SolarPanel,
   },
   {
     num: '04',
-    title: 'ESG·탄소중립',
+    title: '장기 수익 구조',
     description:
-      'RE100 이행 수단으로 활용 가능하며, 온실가스 배출량(Scope 2) 감축 실적으로 인정되어 ESG 평가 및 친환경 경영 지표 개선에 기여',
-    Icon: LucideLeaf,
+      '태양광 발전 설비는 평균 20년 이상 운영이 가능하여 장기적인 비용 절감과 수익 창출이 가능합니다.',
+    Icon: ChartNoAxesCombined,
   },
   {
     num: '05',
-    title: '유지보수 불필요',
+    title: '전기요금 상승 대응',
     description:
-      '설비 모니터링, 정기 점검, 고장 수리 및 보험까지 사업자가 전담하여 기업은 운영 부담 없이 안정적인 전력 사용 가능',
-    Icon: LucideCircleCheck,
+      '전기요금이 상승할수록 태양광 발전 전력 사용 비중만큼 전기요금 절감 효과가 커집니다.',
+    Icon: BatteryCharging,
   },
   {
     num: '06',
-    title: '계약의 유연성',
+    title: '친환경 에너지 활용',
     description:
-      '기업 전력 사용 패턴에 맞춘 맞춤형 설계 및 장기 계약 구조로 에너지 비용을 예측 가능하게 관리하며, 계약 조건 협의를 통한 유연한 운영 가능',
-    Icon: LucideFileText,
+      '재생에너지 사용을 통해 탄소 배출을 줄이고 친환경 에너지 활용이 가능합니다.',
+    Icon: LucideLeaf,
   },
 ]
 
@@ -77,7 +78,7 @@ export default function PpaContents() {
           borderRadius="full"
           fontFamily="NanumSquareNeo"
         >
-          PPA 란?
+          자가소비형 PPA란?
         </Badge>
 
         <Text
@@ -89,8 +90,8 @@ export default function PpaContents() {
           letterSpacing="0.02em"
           fontFamily="NanumSquareNeo"
         >
-          PPA(전력구매계약, Power Purchase Agreement) 란,
-          태양광 설비를 내 건물 옥상이나 부지에 설치하되, 설비 소유는 발전 사업자가 하고 소비자는 생산된 전기를 저렴한 고정 단가로 구매하는 계약 방식입니다.
+          태양광 설비를 통해 생산된 전기를 건물에서 우선 사용하고,
+          남은 전력은 판매하여 추가 수익을 창출하는 전력 활용 방식입니다. 
         </Text>
 
         <Text
@@ -102,7 +103,7 @@ export default function PpaContents() {
           letterSpacing="0.02em"
           fontFamily="NanumSquareNeo"
         >
-          별도의 설치 비용이나 유지보수 부담 없이, 계약 기간 전반에 걸쳐 안정적이고 예측 가능한 전력 단가를 확보할 수 있습니다.
+          전기요금 절감 및 수익창출까지 한번에 두마리 토끼를 노릴 수 있습니다.
         </Text>
       </Box>
 

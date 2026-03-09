@@ -41,7 +41,7 @@ export default function PpaHeader() {
         fontWeight="900"
         lineHeight={1.4}
         mt={8}
-        mb={12}
+        mb={24}
         ref={ref}
         opacity={isView ? 1 : 0}
         transform={isView ? "translateX(0)" : "translateX(-30px)"}
@@ -51,17 +51,19 @@ export default function PpaHeader() {
           as="span"
           color="white"
           display="block"
+          lineHeight={1.35}
           fontSize={{ base: "3xl", md: "6xl", lg: "7xl" }}
         >
-          햇빛을 수익으로
+          전기를 쓰는 건물에서
         </Text>
         <Text 
           as="span" 
           color="white" 
           display="block"
+          lineHeight={1.35}
           fontSize={{ base: "3xl", md: "6xl", lg: "7xl" }} 
         >
-          바꾸는 방법 
+          전기를 만드는 건물로 
         </Text>
       </Heading>
 
@@ -77,8 +79,8 @@ export default function PpaHeader() {
         transition="all 1.5s ease-in-out"
         lineHeight={1.9}
       >
-        초기 비용 없이<br />
-        시작하는 자가용 태양광 발전<br />
+        태양광으로 생산된 전기를<br />
+        더 합리적인 가격으로 사용하는 전력 구조<br />
         자가용 태양광 <Text as="span" color="blue.500" fontWeight="700">PPA</Text>
       </Text>
     </Box>

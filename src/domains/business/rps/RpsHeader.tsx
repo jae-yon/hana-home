@@ -41,7 +41,7 @@ export default function RpsHeader() {
         fontWeight="900"
         lineHeight={1.2}
         mt={8}
-        mb={12}
+        mb={24}
         ref={ref}
         opacity={isView ? 1 : 0}
         transform={isView ? "translateX(0)" : "translateX(-30px)"}
@@ -53,7 +53,7 @@ export default function RpsHeader() {
           display="block"
           fontSize={{ base: "3xl", md: "5xl", lg: "7xl" }}
         >
-          태양광 하나로
+          태양광 발전으로
         </Text>
         <Text 
           as="span" 
@@ -61,7 +61,7 @@ export default function RpsHeader() {
           display="block"
           fontSize={{ base: "4xl", md: "6xl", lg: "7xl" }} 
         >
-          두 배의 수익을 
+          안정적인 발전 수익
         </Text>
       </Heading>
 
@@ -77,15 +77,14 @@ export default function RpsHeader() {
         transition="all 1.5s ease-in-out"
         lineHeight={1.6}
       >
-        RPS 제도를 활용하여<br />
         <Text as="span" color="orange.500" fontWeight="700" textShadow="0 0 10px rgba(245, 158, 11, 0.5)">
-          {" "}전기 판매 수익{" "}
+          {" "}전력 판매(SMP){" "}
         </Text>
         과
         <Text as="span" color="blue.600" fontWeight="700" textShadow="0 0 10px rgba(33, 150, 243, 0.5)">
-          {" "}REC 판매 수익{" "}
+          {" "}REC 거래{" "}
         </Text>
-        을 동시에
+        <br />를 통해 장기적인 발전 수익 창출
       </Text>
     </Box>
   );

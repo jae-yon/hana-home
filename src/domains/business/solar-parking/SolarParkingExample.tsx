@@ -8,11 +8,11 @@ import portfolioRpsImage06 from '@/assets/images/portfolio/portfolio_rps_06.png'
 const EXAMPLE_IMAGES = [
   {
     src: portfolioRpsImage04,
-    alt: '가정용 태양광 시공 사례 1',
+    alt: '주차장 태양광 시공 사례 1',
   },
   {
     src: portfolioRpsImage06,
-    alt: '가정용 태양광 시공 사례 2',
+    alt: '주차장 태양광 시공 사례 2',
   },
 ];
 
@@ -48,7 +48,7 @@ export default function SolarParkingExample() {
           mb={6}
           textAlign={{base: 'center', md: 'start'}}
         >
-          검증된 가정용 태양광 <Text as="span" color="orange.500">시공 사례</Text>
+          검증된 주차장 태양광 <Text as="span" color="orange.500">시공 사례</Text>
         </Heading>
         <Text
           fontFamily="pretendard"
@@ -58,7 +58,7 @@ export default function SolarParkingExample() {
           maxW="580px"
           mb={16}
         >
-          하나솔루션의 가정용 태양광 설치 현장을 통해 검증된 시공 품질을 확인하세요.
+          하나솔루션의 주차장 태양광 설치 현장을 통해 검증된 시공 품질을 확인하세요.
         </Text>
 
         <Grid

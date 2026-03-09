@@ -3,14 +3,9 @@ import { Box, Stack } from '@chakra-ui/react';
 import RpsCta from '@/domains/business/rps/RpsCta';
 import RpsHeader from '@/domains/business/rps/RpsHeader';
 import RpsContents from '@/domains/business/rps/RpsContents';
-import SummaryCard from '@/domains/business/common/SummaryCard';
 import CompareTable from '@/domains/business/common/CompareTable';
 
-import { useResponsive } from '@/shared/hooks/useResponsive';
-
-export default function Rps() {
-  const { isDesktop } = useResponsive();
-  
+export default function Rps() {  
   return (
     <Box
       mb={24}
@@ -29,8 +24,7 @@ export default function Rps() {
       <RpsContents /> 
 
       <Stack gap={12} p={{ base: 4, md: 0 }}>
-        <CompareTable type="rps" isDesktop={isDesktop} />
-        <SummaryCard />
+        <CompareTable type="rps" />
       </Stack>
 
       <RpsCta />

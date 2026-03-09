@@ -4,24 +4,24 @@ import { useRef } from 'react';
 
 const stats = [
   {
-    value: "20~40",
+    value: "최대 30",
     suffix: "%",
-    label: "발전량 증가",
+    label: "발전 효율 개선",
   },
   {
-    value: "ROI",
+    value: "투자 회수 기간 단축 가능",
     suffix: "",
-    label: "투자 회수 기간 단축",
+    label: "",
   },
   {
-    value: "REC",
+    value: "발전 효율 개선을 통한 수익 구조 개선 기대",
     suffix: "",
-    label: "가중치 재적용 가능",
+    label: "",
   },
   {
     value: "25",
     suffix: "년",
-    label: "신규 모듈 성능보증",
+    label: "모듈 출력 보증",
   },
 ];
 
@@ -45,8 +45,8 @@ function StatCard({ data }: { data: StatData }) {
       backgroundColor="gray.800"
     >
       <Text
-        mb={4}
-        fontSize="4xl"
+        my="auto"
+        fontSize={data.suffix ? "4xl" : "xl"}
         fontWeight="800"
         color="orange.400"
         lineHeight="1.25"
@@ -56,24 +56,27 @@ function StatCard({ data }: { data: StatData }) {
       >
         {data.value}<Text as="span" fontSize="lg" color="orange.400">{data.suffix && ` ${data.suffix}`}</Text>
       </Text>
-      <Text
-        fontSize="16px"
-        fontWeight="500"
-        color="gray.200"
-        lineHeight="1.25"
-        textAlign="center"
-        letterSpacing="0.02em"
-        fontFamily="pretendard"
-      >
-        {data.label}
-      </Text>
+      {data.label && (
+        <Text
+          mt={4}
+          fontSize="16px"
+          fontWeight="500"
+          color="gray.200"
+          lineHeight="1.25"
+          textAlign="center"
+          letterSpacing="0.02em"
+          fontFamily="pretendard"
+        >
+          {data.label}
+        </Text>
+      )}
     </Box>
   );
 }
 
 export default function RepoweringHeader() {
   const ref = useRef(null);
-  const isView = useInView(ref);
+  const isView = useInView(ref, { once: true });
   
   return (
     <>
@@ -94,8 +97,8 @@ export default function RepoweringHeader() {
           fontSize={{ base: '28px', sm: '36px', md: '48px', lg: '56px' }}
           ref={ref}
         >
-          노후 태양광을<br />
-          <Text as="span" color="orange.600">수익 자산</Text>으로 전환하세요.
+          노후 태양광<br />
+          설비를 다시 <Text as="span" color="orange.600">수익 자산</Text>으로
         </Heading>
         <Text
           mb={10}
@@ -112,8 +115,8 @@ export default function RepoweringHeader() {
           transform={isView ? "translateY(0)" : "translateY(30px)"}
           transition="all 1.4s cubic-bezier(0.22,1,0.36,1)"
         >
-          설치부터 수익까지, 완벽한 과정.<br />
-          리파워링은 단순 교체가 아닌, 수익성을 높이는 체계적인 전략입니다.
+          리파워링은 노후 태양광 설비를 최신 기술로 개선하여<br />
+          발전 효율과 자산 가치를 높이는 솔루션입니다.
         </Text>
       </Flex>
 
@@ -132,7 +135,7 @@ export default function RepoweringHeader() {
         transition="all 2s cubic-bezier(0.22,1,0.36,1)"
       >
         {stats.map((stat) => (
-          <StatCard key={stat.label} data={stat} />
+          <StatCard key={stat.value} data={stat} />
         ))}
       </Grid>
     </>

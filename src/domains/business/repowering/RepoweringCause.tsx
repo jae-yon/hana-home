@@ -8,22 +8,22 @@ const causes = [
   {
     icon: <LucideZap size={24} strokeWidth={2} />,
     title: "성능 저하 문제",
-    description: "태양광 모듈은 매년 약 0.5~1%씩 효율이 감소합니다. 20년이 지난 설비는 초기 대비 최대 30%의 발전량을 잃게 됩니다.",
+    description: "태양광 모듈은 년마다 약 0.4% ~ 0.7% 정도 효율이 감소합니다. 노후 설비는 발전 성능이 저하될 수 있습니다.",
   },
   {
     icon: <LucideWrench size={24} strokeWidth={2} />,
     title: "인버터 수명 한계",
-    description: "인버터의 평균 수명은 10~15년으로 모듈보다 짧습니다. 노후 인버터는 고장 빈도가 높아져 유지보수 비용이 급증합니다.",
+    description: "인버터는 평균 수명은 약 10~15년이며 노후 인버터는 고장률과 유지관리 비용이 증가할 수 있습니다.",
   },
   {
     icon: <LucideCircleDollarSign size={24} strokeWidth={2} />,
-    title: "수익성 회복 기회",
-    description: "신형 고효율 모듈과 스마트 인버터로 교체하면 동일 면적에서 더 많은 전력을 생산, REC 수익성도 회복할 수 있습니다.",
+    title: "발전 효율 개선",
+    description: "최신 고효율 모듈과 인버터 적용을 통해 동일 부지에서 더 높은 발전 효율을 기대할 수 있습니다.",
   },
   {
     icon: <LucideRecycle size={24} strokeWidth={2} />,
     title: "자산 가치 보존",
-    description: "리파워링은 기존 부지·계통 연계를 활용하며 발전소 수명을 연장합니다. 신규 건설 대비 훨씬 낮은 비용으로 가치를 되살립니다.",
+    description: "기존 부지와 계통을 활용하여 신규 발전소 대비 비용 부담을 줄이고 자산 가치를 유지할 수 있습니다.",
   },
 ];
 

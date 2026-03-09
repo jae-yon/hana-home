@@ -3,14 +3,9 @@ import { Box, Stack } from '@chakra-ui/react';
 import PpaCta from '@/domains/business/ppa/PpaCta';
 import PpaHeader from '@/domains/business/ppa/PpaHeader';
 import PpaContents from '@/domains/business/ppa/PpaContents';
-import SummaryCard from '@/domains/business/common/SummaryCard';
 import CompareTable from '@/domains/business/common/CompareTable';
 
-import { useResponsive } from '@/shared/hooks/useResponsive';
-
 export default function Ppa() {
-  const { isDesktop } = useResponsive();
-  
   return (
     <Box
       mb={24}
@@ -28,10 +23,8 @@ export default function Ppa() {
 
       <PpaContents />
 
-      
       <Stack gap={12} p={{ base: 4, md: 0 }}>
-        <CompareTable type="ppa" isDesktop={isDesktop} />
-        <SummaryCard />
+        <CompareTable type="ppa" />
       </Stack>
       
       <PpaCta />
