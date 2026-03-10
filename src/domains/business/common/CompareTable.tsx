@@ -28,7 +28,7 @@ const ROWS: {
   },
   {
     criterion: '수익 구조',
-    ppa: { text: '전기요금 점감 + 잉여전력 판매', Icon: BarChart2 },
+    ppa: { text: '전기요금 절감 + 잉여전력 판매', Icon: BarChart2 },
     rps: { text: 'SMP + REC 판매', Icon: CircleDollarSign },
   },
   {
@@ -38,7 +38,7 @@ const ROWS: {
   },
   {
     criterion: 'RE100 적용',
-    ppa: { text: '가능', Icon: Leaf },
+    ppa: { text: '활용 가능', Icon: Leaf },
     rps: { text: '불가능', Icon: XCircle },
   },
 ];

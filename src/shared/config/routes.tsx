@@ -3,6 +3,7 @@ import { lazy } from 'react';
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const PreparePage = lazy(() => import('@/pages/PreparePage'));
 const SupportPage = lazy(() => import('@/pages/SupportPage'));
 const BusinessPage = lazy(() => import('@/pages/BusinessPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
@@ -61,6 +62,10 @@ export const ROUTES = [
   {
     path: '/hana/back',
     element: <LoginPage />,
+  },
+  {
+    path: '/preparation',
+    element: <PreparePage />,
   },
   {
     path: '*',

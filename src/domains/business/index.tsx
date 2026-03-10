@@ -75,7 +75,7 @@ export default function Business(props: BusinessProps) {
             navigate('/support/inquiry');
           }}
         >
-          {type === 're100' ? 'RE100 상담신청' : type === 're-powering' ? '리파워링 상담문의' : '견적문의 바로가기'}
+          {type === 're100' ? 'K-RE100 상담문의' : type === 're-powering' ? '리파워링 상담문의' : '견적문의 바로가기'}
         </Button>
       </Flex>
     </Flex>

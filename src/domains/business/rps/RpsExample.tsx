@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { LucideArrowRight } from 'lucide-react';
 
 import portfolioRpsImage01 from '@/assets/images/portfolio/portfolio_rps_01.png';
-import portfolioRpsImage02 from '@/assets/images/portfolio/portfolio_rps_02.png';
+import portfolioRpsImage02 from '@/assets/images/portfolio/portfolio_rps_03.jpg';
 
 const EXAMPLE_IMAGES = [
   {
@@ -93,7 +93,7 @@ export default function RpsExample() {
         </Grid>
 
         <Box textAlign={{ base: 'center', md: 'left' }}>
-          <RouterLink to="/portfolio/ppa" style={{ textDecoration: 'none', display: 'inline-block' }}>
+          <RouterLink to="/portfolio/rps" style={{ textDecoration: 'none', display: 'inline-block' }}>
             <Box
               as="span"
               display="inline-flex"

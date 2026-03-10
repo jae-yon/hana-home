@@ -5,11 +5,26 @@ import { ArrowRight, ArrowDown } from 'lucide-react';
 import { Box, Flex, Text } from "@chakra-ui/react";
 
 const steps = [
-  "상담신청",
-  "기업데이터\n검토",
-  "맞춤시스템\n안내",
-  "계약체결",
-  "서비스\n수행",
+  {
+    title: "상담신청",
+    description: "업의 전력 사용 환경과 RE100 적용 가능 여부를 상담합니다.",
+  },
+  {
+    title: "기업전력 사용분석",
+    description: "기업의 전력 사용량, 사업 구조, 재생에너지 적용 가능성을 분석합니다.",
+  },
+  {
+    title: "K-RE100 전략설계",
+    description: "기업 환경에 맞는 K-RE100 도입 및 이행 전략을 설계합니다.",
+  },
+  {
+    title: "재생에너지 조달 구조 설계",
+    description: "자가발전, REC 구매, PPA 계약 등 적절한 재생에너지 조달 방안을 설계합니다.",
+  },
+  {
+    title: "K-RE100 실행 지원",
+    description: "K-계약 체결, 인증, 실적 관리 등 RE100 이행 전 과정을 지원합니다.",
+  },
 ];
 
 export default function Re100Footer() {
@@ -34,11 +49,22 @@ export default function Re100Footer() {
           fontWeight="800"
           color="gray.800"
           textAlign="center"
+          letterSpacing="-0.02em"
+          fontFamily="pretendard"
+          mb={2}
+        >
+          <Text as="span" color="orange.500">하나솔루션</Text>은 기업 맞춤형 <br /><Text as="span" fontSize={{ base: "28px", md: "38px" }} color="gray.800">RE100</Text> 이행 전략을 설계합니다.
+        </Text>
+        <Text
+          fontSize={{ base: "16px", md: "24px" }}
+          fontWeight="600"
+          color="gray.600"
+          textAlign="center"
           lineHeight="1.6"
           letterSpacing="-0.02em"
           fontFamily="pretendard"
         >
-          <Text as="span" color="orange.500">㈜하나솔루션</Text>은 상황에 맞는 <br /><Text as="span" fontSize={{ base: "28px", md: "38px" }} color="gray.800">RE100</Text> 컨설팅을 도와드립니다.
+          기업의 전력 사용 환경을 분석하여 최적의 컨설팅을 도와드립니다.
         </Text>
       </Box>
 
@@ -65,26 +91,39 @@ export default function Re100Footer() {
             <Box
               p={4}
               bg="gray.100"
-              borderRadius="full"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              w={{ base: "100%", md: "200px" }}
-              h={{ base: "100%", md: "200px" }}
               flexShrink={0}
+              borderRadius="xl"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="start"
+              w={{ base: "100%", md: "200px" }}
+              minH={{ base: "auto", md: "160px" }}
               boxShadow="0 0 5px rgba(0, 0, 0, 0.2)"
             >
               <Text
-                fontSize={{ base: "16px", md: "20px" }}
-                fontWeight="900"
+                fontSize={{ base: "14px" }}
+                fontWeight="800"
                 color="green.600"
                 fontFamily="NanumSquareNeo"
                 textAlign="center"
                 whiteSpace="pre-line"
                 lineHeight="1.5"
+                my={2}
               >
-                {step}
+                {step.title}
               </Text>
+              <Box flex={1}>
+                <Text
+                  fontSize={{ base: "sm" }}
+                  color="gray.600"
+                  fontFamily="pretendard"
+                  textAlign="start"
+                  lineHeight="1.5"
+                >
+                  {step.description}
+                </Text>
+              </Box>
             </Box>
 
             {/* Arrow */}

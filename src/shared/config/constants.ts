@@ -32,10 +32,10 @@ export const COMPANY_KAKAO_CHAT_URL = import.meta.env.VITE_COMPANY_KAKAO_CHAT_UR
 export const COMPANY_NAVER_BLOG_URL = import.meta.env.VITE_COMPANY_NAVER_BLOG_URL as string || "https://blog.naver.com/hanasolution__";
 
 // 틱톡 URL
-export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as string || "";
+export const COMPANY_TIKTOK_URL = import.meta.env.VITE_COMPANY_TIKTOK_URL as string || "/preparation";
 
 // 유튜브 URL
-export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "";
+export const COMPANY_YOUTUBE_URL = import.meta.env.VITE_COMPANY_YOUTUBE_URL as string || "/preparation";
 
 // 헤더 메뉴
 export const HEADER_MENU = [
@@ -231,9 +231,9 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     title: '충남 서산시 공장',
     subtitle: '건물 위',
     type: 'rps',
-    module: '현대 640w 765장',
+    module: '현대 640w 780장',
     inverter: '현대 125kw 5대',
-    capacity: '489.6kw',
+    capacity: '499.2kw',
     isVisible: true,
     isMainVisible: true,
   },

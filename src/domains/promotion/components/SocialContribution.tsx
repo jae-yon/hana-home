@@ -45,7 +45,7 @@ export default function SocialContribution() {
         display="flex"
         alignItems="center"
         overflow="hidden"
-        bg="gray.900"
+        bg="transparent"
       >
         {/* background image */}
         <Box
@@ -55,7 +55,7 @@ export default function SocialContribution() {
           backgroundSize="cover"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
-          borderRadius={{ base: '0', md: '2xl' }}
+          // borderRadius={{ base: '0', md: '2xl' }}
         />
 
         {/* backdrop */}
@@ -67,7 +67,7 @@ export default function SocialContribution() {
           bottom={0}
           zIndex={1}
           background="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.5) 100%)"
-          borderRadius={{ base: '0', md: '2xl' }}
+          // borderRadius={{ base: '0', md: '2xl' }}
         />
 
         <HStack 
@@ -85,7 +85,7 @@ export default function SocialContribution() {
           </Text>
         </HStack>
 
-        <HStack 
+        {/* <HStack 
           px={4}
           py={2}
           right={5}
@@ -101,7 +101,7 @@ export default function SocialContribution() {
           <Text fontSize="xs" fontWeight="800" color="white" letterSpacing="widest" textTransform="uppercase">
             부천아트센터
           </Text>
-        </HStack>
+        </HStack> */}
 
         <Box
           position="relative"
@@ -134,7 +134,7 @@ export default function SocialContribution() {
       </Box>
 
       {/* Awards Section */}
-      <Box bg="white" py={20}>
+      <Box bg="white" py={8}>
         <Container maxW="6xl">
           <VStack gap={3} textAlign="center" mb={12}>
             <Badge
