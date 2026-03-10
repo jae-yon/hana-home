@@ -2,10 +2,8 @@ import { Box, Grid, GridItem, Text, Heading } from '@chakra-ui/react';
 import {
   Zap,
   Leaf,
-  Laugh,
   XCircle,
   BarChart2,
-  ArrowUpRight,
   CircleCheckBig,
   CircleDollarSign,
   HandCoins,
@@ -19,13 +17,8 @@ const ROWS: {
   rps: { text: string; Icon: LucideIcon; color?: string };
 }[] = [
   {
-    criterion: '목적',
-    ppa: { text: '전기요금 점감', Icon: Zap },
-    rps: { text: '전력 판매 수익', Icon: ArrowUpRight },
-  },
-  {
     criterion: '전기 사용 방식',
-    ppa: { text: '생산 전기를 먼저 직접사용', Icon: Laugh },
+    ppa: { text: '생산 전기를 먼저 직접 사용', Icon: Zap },
     rps: { text: '생산 전력 전량 판매', Icon: Zap },
   },
   {
@@ -118,7 +111,7 @@ export default function CompareTable(props: CompareTableProps) {
             letterSpacing="wide"
             textAlign="center"
           >
-            비교 항목
+            목적
           </Text>
         </GridItem>
 

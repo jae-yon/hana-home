@@ -30,7 +30,7 @@ export function IntroGreetings() {
       </Box>
       <Box 
         mx="auto"
-        width={{ base: '100%', md: '75%', lg: '60%' }}
+        width={{ base: '100%', md: '60%' }}
         ref={ref}
         opacity={isView ? 1 : 0}
         transition="transform 1.5s ease, opacity 1s ease"
@@ -44,8 +44,10 @@ export function IntroGreetings() {
             fontSize={{ base: '17px', sm: '18px', md: '19px', lg: '20px' }}
             letterSpacing="-0.01em"
             lineHeight={{ base: '1.6', md: '1.8' }}
+            
           >
-            ㈜하나솔루션은 태양광 구조물 개발 및 제작부터 태양광 발전사업 시행, 시공까지 태양광 사업의 전반을 제공하는 기업입니다.
+            ㈜하나솔루션은 태양광 구조물 개발 및 제작부터 태양광 발전사업 시행, 
+            시공까지 태양광 사업의 전반을 제공하는 기업입니다.
           </Text>
           <Text
             color="gray.700"
@@ -65,8 +67,8 @@ export function IntroGreetings() {
             letterSpacing="-0.01em"
             lineHeight={{ base: '1.7', md: '1.8' }}
           >
-            믿을 수 있는 태양광 발전 시스템과 용융아연도금 및 포스맥 구조물 적용, 신속한 업무 처리를 통해
-            태양광 발전사업의 든든한 사업 파트너로 함께하고 있습니다.
+            믿을 수 있는 태양광 발전 시스템과 용융아연도금 및 포스맥 구조물 적용, 
+            <br />신속한 업무 처리를 통해 태양광 발전사업의 든든한 사업 파트너로 함께하고 있습니다.
           </Text>
           <Text
             color="gray.700"

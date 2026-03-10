@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useInView } from "framer-motion";
-import { LucideCheckCircle, LucideFileText, LucideLandmark, LucideLightbulb, LucideSearch, LucideSettings } from 'lucide-react';
+import { LucideCheckCircle, LucideFileText, LucideLandmark, LucideLightbulb, LucideSearch, LucideSettings } from "lucide-react";
 
 function useScrollReveal(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement>(null);
@@ -200,12 +200,12 @@ export default function RepoweringProcess() {
     <Box
       py={12}
       width="100%"
-      position="relative"
       display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
       overflow="hidden"
+      position="relative"
+      alignItems="center"
+      flexDirection="column"
+      justifyContent="center"
     >
       <Container>
         {/* header */}

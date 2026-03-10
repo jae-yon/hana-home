@@ -85,6 +85,24 @@ export default function SocialContribution() {
           </Text>
         </HStack>
 
+        <HStack 
+          px={4}
+          py={2}
+          right={5}
+          bottom={5}
+          zIndex={10}
+          bg="orange.500"
+          borderRadius="full"
+          position="absolute"
+          alignItems="center"
+          justifyContent="center"
+          fontFamily="NanumSquareNeo"
+        >
+          <Text fontSize="xs" fontWeight="800" color="white" letterSpacing="widest" textTransform="uppercase">
+            부천아트센터
+          </Text>
+        </HStack>
+
         <Box
           position="relative"
           zIndex={10}
@@ -99,13 +117,13 @@ export default function SocialContribution() {
             fontWeight="800"
             lineHeight="1.5"
             fontFamily="NanumSquareNeo"
-            fontSize={{ base: '2xl', lg: '5xl'}}
+            fontSize={{ base: '2xl', lg: '4xl'}}
           >
             나눔과 봉사로
             <br />
             함께 성장하는
             <br />
-            <Text as="span" color="orange.500" fontSize={{ base: '5xl', lg: '7xl'}}>하나솔루션</Text>
+            <Text as="span" color="orange.500" fontSize={{ base: '5xl', lg: '6xl'}}>하나솔루션</Text>
           </Heading>
 
           <Text color="whiteAlpha.800" lineHeight="1.9" maxW="420px" fontSize="md" fontFamily="pretendard">

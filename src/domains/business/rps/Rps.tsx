@@ -1,7 +1,7 @@
 import { Box, Stack } from '@chakra-ui/react';
 
-import RpsCta from '@/domains/business/rps/RpsCta';
 import RpsHeader from '@/domains/business/rps/RpsHeader';
+import RpsExample from '@/domains/business/rps/RpsExample';
 import RpsContents from '@/domains/business/rps/RpsContents';
 import CompareTable from '@/domains/business/common/CompareTable';
 
@@ -27,7 +27,7 @@ export default function Rps() {
         <CompareTable type="rps" />
       </Stack>
 
-      <RpsCta />
+      <RpsExample />
     </Box>
   );
 }

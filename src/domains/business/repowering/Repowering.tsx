@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import RepoweringCause from '@/domains/business/repowering/RepoweringCause';
 import RepoweringProcess from '@/domains/business/repowering/RepoweringStep';
 import RepoweringHeader from '@/domains/business/repowering/RepoweringHeader';
+import RepoweringSelect from '@/domains/business/repowering/RepoweringSelect';
 import RepoweringEffects from '@/domains/business/repowering/RepoweringEffect';
 
 export default function Repowering() {
@@ -23,6 +24,8 @@ export default function Repowering() {
       <RepoweringCause />
 
       <RepoweringEffects />
+
+      <RepoweringSelect />
 
       <RepoweringProcess />
     </Box>

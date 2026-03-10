@@ -15,14 +15,14 @@ export default function Footer() {
       borderColor={'gray.800'}
     >
       <Box
-        maxW='1200px'
+        maxW='1280px'
         mx='auto'
         px={{ base: '24px', md: '40px' }}
         pt={{ base: '48px', md: '64px' }}
         pb={{ base: '40px', md: '56px' }}
       >
         <Grid
-          templateColumns={{ base: '1fr', md: '1.2fr repeat(3, 1fr)' }}
+          templateColumns={{ base: '1fr', md: '1.3fr 0.9fr 0.9fr 1.2fr' }}
           gap={{ base: '40px', lg: '48px' }}
           textAlign={{ base: 'center', md: 'left' }}
         >
@@ -46,7 +46,7 @@ export default function Footer() {
 
       {/* separator */}
       <Box
-        maxW='1200px'
+        maxW='1280px'
         mx='auto'
         px={{ base: '24px', md: '40px' }}
       >

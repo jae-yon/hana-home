@@ -131,10 +131,10 @@ export default function PpaContents() {
             fontSize="md"
             color="whiteAlpha.700"
             lineHeight={1.8}
-            maxW="580px"
+            maxW="500px"
             mb={16}
           >
-            초기 비용 없이 안정적인 전기요금과 ESG 실적까지, PPA가 주는 이점을 확인하세요.
+            직접 생산한 전기를 사용하고 남는 전력은 판매까지 가능한 효율적인 에너지 활용 구조, PPA가 주는 이점을 확인하세요.
           </Text>
 
           <Grid

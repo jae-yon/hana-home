@@ -1,7 +1,7 @@
 import { Box, Stack } from '@chakra-ui/react';
 
-import PpaCta from '@/domains/business/ppa/PpaCta';
 import PpaHeader from '@/domains/business/ppa/PpaHeader';
+import PpaExample from '@/domains/business/ppa/PpaExample';
 import PpaContents from '@/domains/business/ppa/PpaContents';
 import CompareTable from '@/domains/business/common/CompareTable';
 
@@ -27,7 +27,7 @@ export default function Ppa() {
         <CompareTable type="ppa" />
       </Stack>
       
-      <PpaCta />
+      <PpaExample />
     </Box>
   );
 }

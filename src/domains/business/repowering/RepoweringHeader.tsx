@@ -97,8 +97,8 @@ export default function RepoweringHeader() {
           fontSize={{ base: '28px', sm: '36px', md: '48px', lg: '56px' }}
           ref={ref}
         >
-          노후 태양광<br />
-          설비를 다시 <Text as="span" color="orange.600">수익 자산</Text>으로
+          노후 태양광 설비를<br />
+          다시 <Text as="span" color="orange.600">수익 자산</Text>으로
         </Heading>
         <Text
           mb={10}
