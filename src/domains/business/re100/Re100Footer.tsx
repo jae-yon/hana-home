@@ -7,7 +7,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 const steps = [
   {
     title: "상담신청",
-    description: "업의 전력 사용 환경과 RE100 적용 가능 여부를 상담합니다.",
+    description: "기업의 전력 사용 환경과 RE100 적용 가능 여부를 상담합니다.",
   },
   {
     title: "기업전력 사용분석",

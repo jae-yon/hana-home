@@ -8,7 +8,14 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 export default defineConfig({
   plugins: [
     sitemap({
-      hostname: 'https://solutionhana.co.kr',
+      hostname: 'https://www.solutionhana.co.kr',
+      dynamicRoutes: [
+        '/about/introduction',
+        '/business/solar-home',
+        '/portfolio/ppa',
+        '/promotion/social-contribution',
+        '/support/faq',
+      ]
     }),
     react(),
     ViteImageOptimizer({
