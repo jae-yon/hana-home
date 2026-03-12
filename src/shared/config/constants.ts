@@ -421,7 +421,7 @@ export const BUSINESS_ITEMS = [
     title: "K-RE100",
     subtitle: "Renewable Electricity 100%",
     description:
-      "한국형 RE100정책을 기반으로 맞춤형 컨설팅 및 서비스 및 운영을 제공합니다.",
+      "한국형 RE100 정책을 기반으로 맞춤형 컨설팅부터 구축, 운영까지 통합 에너지 솔루션을 제공합니다.",
     image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=90",
     accent: "#27AE60",
     href: "/business/re100",
