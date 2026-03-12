@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import StarterKit from '@tiptap/starter-kit';
+import Highlight from '@tiptap/extension-highlight';
+import { TextStyle, Color } from '@tiptap/extension-text-style';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
 import { CustomImage } from '@/shared/components/editor/hooks/useImage';
@@ -18,7 +20,15 @@ interface EditorViewerProps {
 
 export default function EditorViewer({ content, className }: EditorViewerProps) {
   const editor = useEditor({
-    extensions: [StarterKit, CustomImage],
+    extensions: [
+      StarterKit, 
+      CustomImage, 
+      TextStyle, 
+      Color, 
+      Highlight.configure({
+        multicolor: true,
+      })
+    ],
     content: content ?? { type: 'doc', content: [] },
     editable: false,
     editorProps: {

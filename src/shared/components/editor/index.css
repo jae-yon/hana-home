@@ -163,26 +163,29 @@
 
 /* ===== Links ===== */
 .ProseMirror a {
-  color: inherit;
+  color: #337ea9;
   text-decoration: underline;
-  text-decoration-color: rgba(55, 53, 47, 0.4);
+  text-decoration-color: rgba(51, 126, 169, 0.45);
   text-underline-offset: 2px;
-  transition: text-decoration-color 0.1s;
+  transition: color 0.1s, text-decoration-color 0.1s, background-color 0.1s;
 }
 
 .ProseMirror a:hover {
-  text-decoration-color: rgba(55, 53, 47, 0.9);
+  color: #1f6f9e;
+  text-decoration-color: rgba(31, 111, 158, 0.9);
+  background: rgba(51, 126, 169, 0.08);
+  border-radius: 3px;
 }
 
 /* ===== Bold / Italic ===== */
 .ProseMirror strong {
   font-weight: 600;
-  color: #37352f;
+  color: inherit;
 }
 
 .ProseMirror em {
   font-style: italic;
-  color: #37352f;
+  color: inherit;
 }
 
 /* ===== Selection ===== */

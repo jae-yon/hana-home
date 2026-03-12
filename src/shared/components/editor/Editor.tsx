@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { Flex } from '@chakra-ui/react';
 
 import StarterKit from '@tiptap/starter-kit';
+import Highlight from '@tiptap/extension-highlight';
+import { TextStyle, Color } from '@tiptap/extension-text-style';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
 import Toolbar from '@/shared/components/editor/Toolbar';
@@ -22,6 +24,11 @@ export default function Editor({content, onUpdate}: EditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      TextStyle,
+      Color,
+      Highlight.configure({
+        multicolor: true,
+      }),
       CustomImage,
     ],
     content: content || {

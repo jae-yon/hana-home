@@ -11,6 +11,8 @@ import List from './List';
 import Link from './Link';
 import Image from './Image';
 import Heading from './Heading';
+import HighLight from './HighLight';
+import TextColor from './TextColor';
 
 interface ToolBarProps {
   editor: Editor | null;
@@ -78,7 +80,6 @@ export default function Toolbar({ editor, onImageUpload }: ToolBarProps) {
       
       {/* List */}
       <List editor={editor} />
-
 
       {/* Bold */}
       <IconButton 
@@ -215,6 +216,14 @@ export default function Toolbar({ editor, onImageUpload }: ToolBarProps) {
       >
         <SquareCode />
       </IconButton>
+
+      <Separator orientation="vertical" borderColor="gray.200" bg="gray.200" h="20px" />
+
+      {/* TextColor */}
+      <TextColor editor={editor} />
+      
+      {/* HighLight */}
+      <HighLight editor={editor} />
 
       <Separator orientation="vertical" borderColor="gray.200" bg="gray.200" h="20px" />
 
