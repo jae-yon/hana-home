@@ -74,7 +74,7 @@ export default function HeroContents() {
                 variant='solid'
                 borderRadius='xl'
                 fontWeight='800'
-                letterSpacing='0.15em'
+                letterSpacing='0.05em'
                 fontFamily='NanumSquareNeo'
                 transition='all 0.3s ease-in-out'
                 textShadow="1px 1px 2px rgba(0,0,0,0.2)"

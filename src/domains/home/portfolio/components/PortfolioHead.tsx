@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { LucideArrowRight } from 'lucide-react';
 
-import { Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import { Impactor } from '@/shared/components/common/Impactor';
 
 interface PortfolioHeadProps {
@@ -9,13 +9,7 @@ interface PortfolioHeadProps {
 }
 
 export function PortfolioHead(props: PortfolioHeadProps) {
-
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate('/portfolio');
-  };
-
   return (
     <Flex
       flexDirection="column"
@@ -56,27 +50,51 @@ export function PortfolioHead(props: PortfolioHeadProps) {
       </Impactor>
 
       <Impactor direction="right" once delay={1.3}>
-        <Button
-          size="lg"
-          display="flex"
-          alignItems="center"
-          gap={2}
-          color="red.500"
-          width="fit-content"
-          border="1px solid"
-          borderColor="red.500"
-          backgroundColor="transparent"
-          borderRadius="lg"
-          _hover={{
-            color: "white",
-            backgroundColor: "red.500",
-          }}
-          transition="all 0.3s ease-in-out"
-          onClick={handleClick}
-        >
-          <Text as="span">시공사례 더보기</Text>
-          <LucideArrowRight size={16} />
-        </Button>
+        <Box display="flex" gap={4}>
+          <Button
+            size="lg"
+            display="flex"
+            alignItems="center"
+            gap={2}
+            color="orange.500"
+            width="fit-content"
+            border="1px solid"
+            borderColor="orange.500"
+            backgroundColor="transparent"
+            borderRadius="lg"
+            _hover={{
+              color: "white",
+              backgroundColor: "orange.500",
+            }}
+            transition="all 0.3s ease-in-out"
+            onClick={() => navigate('/portfolio')}
+          >
+            <Text as="span">시공사례 더보기</Text>
+            <LucideArrowRight size={16} />
+          </Button>
+
+          <Button
+            size="lg"
+            display="flex"
+            alignItems="center"
+            gap={2}
+            color="red.500"
+            width="fit-content"
+            border="1px solid"
+            borderColor="red.500"
+            backgroundColor="transparent"
+            borderRadius="lg"
+            _hover={{
+              color: "white",
+              backgroundColor: "red.500",
+            }}
+            transition="all 0.3s ease-in-out"
+            onClick={() => navigate('/business/profit-calculator')}
+          >
+            <Text as="span">예상 수익계산기</Text>
+            <LucideArrowRight size={16} />
+          </Button>
+        </Box>
       </Impactor>
     </Flex>
   );
