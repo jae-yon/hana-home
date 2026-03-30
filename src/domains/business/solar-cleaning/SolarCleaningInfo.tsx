@@ -15,8 +15,6 @@ const SOLAR_CLEANING_INFO_DATA = {
   phone: "010-7531-9653",
 }
 
-const INQUIRY_PATH = '/support/inquiry';
-
 export default function SolarCleaningInfo() {
   const navigate = useNavigate();
 
@@ -99,7 +97,7 @@ export default function SolarCleaningInfo() {
             _hover={{ transform: 'translateY(-2px)', bg: 'green.600', borderColor: 'green.500', boxShadow: '0 12px 32px rgba(42, 236, 132, 0.4)' }}
             transition="all 0.2s ease"
             onClick={() => {
-              navigate(INQUIRY_PATH);
+              navigate('/support/inquiry');
             }}
           >
             문의하기

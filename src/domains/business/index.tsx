@@ -53,6 +53,8 @@ export default function Business(props: BusinessProps) {
       {type === 'solar-cleaning' && <SolarCleaning />}
       {type === 'profit-calculator' && <ProfitCalculator />}
 
+      
+      {type !== 'solar-cleaning' && (
       <Flex
         py={24}
         width="100%"
@@ -60,6 +62,7 @@ export default function Business(props: BusinessProps) {
         justifyContent="center"
         backgroundColor="gray.800"
       >
+      
         <Button
           px={12}
           py={8}
@@ -80,6 +83,7 @@ export default function Business(props: BusinessProps) {
           {type === 're100' ? 'K-RE100 상담문의' : type === 're-powering' ? '리파워링 상담문의' : '견적문의 바로가기'}
         </Button>
       </Flex>
+      )}
     </Flex>
   );
 }
