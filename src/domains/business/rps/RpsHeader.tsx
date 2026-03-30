@@ -80,7 +80,7 @@ export default function RpsHeader() {
         <Text as="span" color="orange.500" fontWeight="700" textShadow="0 0 10px rgba(245, 158, 11, 0.5)">
           {" "}전력 판매(SMP){" "}
         </Text>
-        과
+        와
         <Text as="span" color="blue.600" fontWeight="700" textShadow="0 0 10px rgba(33, 150, 243, 0.5)">
           {" "}REC 거래{" "}
         </Text>

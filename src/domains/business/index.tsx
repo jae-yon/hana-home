@@ -13,6 +13,7 @@ import ProfitCalculator from '@/domains/business/profit/Profit';
 import SolarHome from '@/domains/business/solar-home/SolarHome';
 import Repowering from '@/domains/business/repowering/Repowering';
 import SolarParking from '@/domains/business/solar-parking/SolarParking';
+import SolarCleaning from '@/domains/business/solar-cleaning/SolarCleaning';
 
 interface BusinessProps {
   type: 'ppa' | 'rps' | 're100' | 're-powering' | 'profit-calculator' | 'solar-home' | 'solar-parking' | 'solar-cleaning';
@@ -49,6 +50,7 @@ export default function Business(props: BusinessProps) {
       {type === 'solar-home' && <SolarHome />}
       {type === 're-powering' && <Repowering />}
       {type === 'solar-parking' && <SolarParking />}
+      {type === 'solar-cleaning' && <SolarCleaning />}
       {type === 'profit-calculator' && <ProfitCalculator />}
 
       <Flex
