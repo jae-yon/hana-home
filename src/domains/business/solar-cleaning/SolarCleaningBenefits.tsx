@@ -66,7 +66,7 @@ export default function SolarCleaningBenefits() {
       >
         태양광 패널 청소를 
         <br /> 
-        <Text as="span" color="green.500">윤성클린산업</Text>에 맡겨보세요
+        <Text as="span" color="green.500">전문가</Text>에게 맡겨보세요
       </Text>
 
       <Grid
