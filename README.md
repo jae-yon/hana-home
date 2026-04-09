@@ -1,4 +1,4 @@
-# 하나홈 (Hana Home)
+# HanaSolution
 
 > Vite + React + TypeScript 기반 SPA · 백엔드 Supabase 서버리스
 
