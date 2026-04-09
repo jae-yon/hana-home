@@ -85,7 +85,7 @@ export default function PortfolioContents(props: PortfolioContensProps) {
                 {item.href && (
                     <IconButton
                       size="sm"
-                      color="gray.800"
+                      color="blue.600"
                       bg="transparent"
                       border="none"
                       borderRadius="full"

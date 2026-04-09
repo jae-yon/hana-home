@@ -248,6 +248,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     capacity: '118.745kw',
     isVisible: true,
     isMainVisible: true,
+    href: 'https://blog.naver.com/hanasolution__/224235822930',
   },
   {
     id: 8,
@@ -260,6 +261,7 @@ export const PORTFOLIO_ITEMS: Portfolio[] = [
     capacity: '446.875kw',
     isVisible: true,
     isMainVisible: true,
+    href: 'https://blog.naver.com/hanasolution__/224234163099',
   },
   {
     id: 9,
