@@ -55,34 +55,34 @@ export default function Business(props: BusinessProps) {
 
       
       {type !== 'solar-cleaning' && (
-      <Flex
-        py={24}
-        width="100%"
-        alignItems="center"
-        justifyContent="center"
-        backgroundColor="gray.800"
-      >
-      
-        <Button
-          px={12}
-          py={8}
-          size='xl'
-          shadow='xl'
-          bg='#F97316'
-          color='white'
-          fontSize='xl'
-          fontWeight='bold'
-          borderRadius='full'
-          fontFamily='NanumSquareNeo'
-          transition='all 0.3s ease-in-out'
-          _hover={{ transform: 'translateY(-3px)', bg: 'orange.600' }}
-          onClick={() => {
-            navigate('/support/inquiry');
-          }}
+        <Flex
+          py={24}
+          width="100%"
+          alignItems="center"
+          justifyContent="center"
+          backgroundColor="gray.800"
         >
-          {type === 're100' ? 'K-RE100 상담문의' : type === 're-powering' ? '리파워링 상담문의' : '견적문의 바로가기'}
-        </Button>
-      </Flex>
+        
+          <Button
+            px={12}
+            py={8}
+            size='xl'
+            shadow='xl'
+            bg='#F97316'
+            color='white'
+            fontSize='xl'
+            fontWeight='bold'
+            borderRadius='full'
+            fontFamily='NanumSquareNeo'
+            transition='all 0.3s ease-in-out'
+            _hover={{ transform: 'translateY(-3px)', bg: 'orange.600' }}
+            onClick={() => {
+              navigate('/support/inquiry');
+            }}
+          >
+            {type === 're100' ? 'K-RE100 상담문의' : type === 're-powering' ? '리파워링 상담문의' : '견적문의 바로가기'}
+          </Button>
+        </Flex>
       )}
     </Flex>
   );
