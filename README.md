@@ -1,6 +1,6 @@
-# HanaSolution
+# HanaSolution 1.0.0
 
-> Vite + React + TypeScript 기반 SPA · 백엔드 Supabase 서버리스
+> Vite + React + TypeScript (SPA) · Supabase Serverless
 
 ![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
