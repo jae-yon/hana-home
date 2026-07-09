@@ -1,4 +1,4 @@
-# HanaSolution 1.0.0
+# 하나솔루션 홈페이지
 
 > Vite + React + TypeScript (SPA) · Supabase Serverless
 
