@@ -90,7 +90,7 @@ export function extractImageUrlsFromJson(content: JSONContent | null | undefined
   return urls
 }
 
-export const UploadImage = () => {
+export const UploadImage = ({ path = 'uploads' }: { path?: string }) => {
   // 현재 글 작성 세션에서 업로드한 이미지 URL 목록 추적
   const uploadedUrls = useRef<string[]>([])
 
@@ -103,7 +103,7 @@ export const UploadImage = () => {
     // 1. 고유 경로 생성: images/{timestamp}_{randomId}_{filename}
     const ext = file.name.split('.').pop()
     const uniqueName = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${ext}`
-    const storagePath = `uploads/${uniqueName}`
+    const storagePath = `${path}/${uniqueName}`
 
     // 2. Storage에 업로드
     const { error: uploadError } = await supabase.storage

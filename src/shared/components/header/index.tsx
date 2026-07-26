@@ -171,7 +171,8 @@ export default function Header() {
                   />
                 </Box>
               ))}
-
+              
+              {/* 로그아웃 버튼 */}
               {sessionStorage.getItem('access_token') && (
                 <Box cursor="default" onClick={() => {
                   sessionStorage.removeItem('access_token');

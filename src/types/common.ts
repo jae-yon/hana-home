@@ -55,3 +55,30 @@ export interface Post {
     path: string;
   }[];
 }
+
+/** 팝업 만료 기간 프리셋 (일) — 'custom'은 직접 날짜 선택 */
+export type PopupExpirePreset = 30 | 60 | 90 | 180 | 365 | 'custom';
+
+// 홈페이지 팝업
+export interface Popup {
+  id: string;
+  priority: number;
+  title: string;
+  content: string | null;
+  link_url: string | null;
+  image_url: string | null;
+  is_active: boolean;
+  expires_at: string | null;
+  created_at: string;
+  user_id: string | null;
+}
+
+export type PopupInput = {
+  title: string;
+  content?: string | null;
+  link_url?: string | null;
+  image_url?: string | null;
+  priority?: number;
+  is_active?: boolean;
+  expires_at?: string | null;
+};
