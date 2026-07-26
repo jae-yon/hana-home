@@ -11,7 +11,8 @@ export const COMPANY_BUSINESS_NUMBER = import.meta.env.VITE_COMPANY_BUSINESS_NUM
 export const COMPANY_ELECTRIC_BUSINESS_NUMBER = import.meta.env.VITE_COMPANY_ELECTRIC_BUSINESS_NUMBER as string || "서울-06429";
 
 // 주소
-export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string || "(본사) 전북특별자치도 부안군 부안읍 동중길 20";
+// export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string || "(본사) 전북특별자치도 부안군 부안읍 동중길 20";
+export const COMPANY_ADDRESS = import.meta.env.VITE_COMPANY_ADDRESS as string || "(본사) 전북특별자치도 부안군 행안면 매창로 15-1";
 
 // 대표번호
 export const COMPANY_PHONE_NUMBER = import.meta.env.VITE_COMPANY_PHONE_NUMBER as string || "1577-1497";
