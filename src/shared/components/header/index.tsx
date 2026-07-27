@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { LucideMenu, LucideX } from "lucide-react";
+import { LogOutIcon, LucideMenu, LucideX, SettingsIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Box, Container, Flex, HStack, IconButton, Text, VStack, Link, Image } from "@chakra-ui/react";
@@ -174,19 +174,44 @@ export default function Header() {
               
               {/* 로그아웃 버튼 */}
               {sessionStorage.getItem('access_token') && (
-                <Box cursor="default" onClick={() => {
-                  sessionStorage.removeItem('access_token');
-                  sessionStorage.removeItem('refresh_token');
-                  window.location.href = '/';
-                }}>
-                  <Text
-                    fontSize="10px"
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  gap={2}
+                >
+                  <Link 
+                    href="/hana/back/admin"
                     fontWeight="400"
                     letterSpacing="0.05em"
-                    color="orange.500"
+                    p={2}
+                    borderRadius="full"
+                    bg="orange.600"
+                    shadow="md"
+                    color="white"
+                    cursor="default"
+                    _hover={{ textDecoration: "none", bg: "orange.500" }}
                   >
-                    LOGOUT
-                  </Text>
+                    <SettingsIcon size={16} />
+                  </Link>
+
+                  <Box cursor="default" onClick={() => {
+                    sessionStorage.removeItem('access_token');
+                    sessionStorage.removeItem('refresh_token');
+                    window.location.href = '/';
+                  }}>
+                    <Box
+                      p={2}
+                      borderRadius="full"
+                      bg="gray.800"
+                      shadow="md"
+                      color="white"
+                      cursor="default"
+                      _hover={{ textDecoration: "none", bg: "gray.600" }}
+                    >
+                      <LogOutIcon size={16} />
+                    </Box>
+                  </Box>
                 </Box>
               )}
             </HStack>
