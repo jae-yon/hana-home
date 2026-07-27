@@ -292,7 +292,7 @@ export default function PopupEditDialog({ open, onOpenChange, editing }: PopupEd
                   </Button>
                 )}
 
-                <Text style={{ color: 'gray.500', fontSize: '10px', fontWeight: '500', fontFamily: 'NanumSquareNeo', paddingLeft: '5px' }}>※ 4:3 비율 또는 400x300 크기의 이미지를 권장합니다.</Text>
+                <Text style={{ color: 'gray.500', fontSize: '10px', fontWeight: '500', fontFamily: 'NanumSquareNeo', paddingLeft: '5px' }}>※ 4:5 비율 또는 3:4 비율의 이미지를 권장합니다.</Text>
               </Field.Root>
 
               <Field.Root>

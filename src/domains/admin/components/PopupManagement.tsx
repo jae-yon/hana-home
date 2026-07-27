@@ -12,15 +12,18 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import {
+  EyeIcon,
+  PlusIcon,
+  PencilIcon,
+  Trash2Icon,
   AppWindowIcon,
   CircleCheckIcon,
-  PencilIcon,
-  PlusIcon,
-  Trash2Icon,
+  XIcon,
 } from 'lucide-react';
 
 import type { Popup } from '@/types/common';
 import PopupEditDialog from '@/domains/admin/components/PopupEditDialog';
+import PopupPreview from '@/shared/components/common/Popup';
 import {
   useDeletePopup,
   usePopups,
@@ -44,6 +47,7 @@ export default function PopupManagement() {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Popup | null>(null);
+  const [previewing, setPreviewing] = useState<Popup | null>(null);
 
   const totalCount = popups.length;
   const activeCount = popups.filter((p) => p.is_active && !isExpired(p.expires_at)).length;
@@ -61,6 +65,14 @@ export default function PopupManagement() {
   const handleDelete = (popup: Popup) => {
     if (!confirm(`"${popup.title}" 팝업을 삭제하시겠습니까?`)) return;
     deletePopup(popup.id);
+  };
+
+  const openPreview = (popup: Popup) => {
+    setPreviewing(popup);
+  };
+
+  const closePreview = () => {
+    setPreviewing(null);
   };
 
   return (
@@ -232,9 +244,15 @@ export default function PopupManagement() {
                   </HStack>
 
                   <HStack gap={2} flexShrink={0}>
+                    {/* 미리보기 버튼 */}
+                    <Button size="sm" variant="subtle" colorPalette="gray" onClick={() => openPreview(popup)}>
+                      <EyeIcon size={14} />
+                      미리보기
+                    </Button>
                     <Button
                       size="sm"
-                      variant="outline"
+                      variant="subtle"
+                      colorPalette={popup.is_active ? 'gray' : 'cyan'}
                       onClick={() =>
                         toggleActive({ id: popup.id, is_active: !popup.is_active })
                       }
@@ -242,13 +260,13 @@ export default function PopupManagement() {
                     >
                       {popup.is_active ? '비활성화' : '활성화'}
                     </Button>
-                    <Button size="sm" variant="outline" onClick={() => openEdit(popup)}>
+                    <Button size="sm" variant="subtle" onClick={() => openEdit(popup)}>
                       <PencilIcon size={14} />
                       수정
                     </Button>
                     <Button
                       size="sm"
-                      variant="outline"
+                      variant="subtle"
                       colorPalette="red"
                       onClick={() => handleDelete(popup)}
                       loading={isDeleting}
@@ -265,6 +283,67 @@ export default function PopupManagement() {
       </VStack>
 
       <PopupEditDialog open={dialogOpen} onOpenChange={setDialogOpen} editing={editing} />
+
+      {/* 메인 페이지와 동일한 팝업 미리보기 */}
+      {previewing && (
+        <Box
+          position="fixed"
+          inset={0}
+          zIndex={1400}
+          bg="blackAlpha.600"
+          onClick={closePreview}
+        >
+          <Flex
+            position="absolute"
+            top={4}
+            right={4}
+            left={4}
+            justify="flex-end"
+            align="center"
+            gap={3}
+            pointerEvents="none"
+          >
+            <Button
+              size="sm"
+              variant="solid"
+              bg="white"
+              color="gray.800"
+              pointerEvents="auto"
+              onClick={(e) => {
+                e.stopPropagation();
+                closePreview();
+              }}
+            >
+              <XIcon size={14} />
+              닫기
+            </Button>
+          </Flex>
+
+          <Flex
+            position="absolute"
+            top={{ base: '88px', md: '120px' }}
+            left={{ base: 4, md: 8 }}
+            right={{ base: 4, md: 'auto' }}
+            gap={4}
+            direction="row"
+            flexWrap="wrap"
+            align="flex-start"
+            maxH={{ base: 'calc(100vh - 100px)', md: 'calc(100vh - 140px)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PopupPreview
+              title={previewing.title}
+              open
+              onOpenChange={(open) => {
+                if (!open) closePreview();
+              }}
+              text={previewing.content ?? undefined}
+              imageUrl={previewing.image_url ?? undefined}
+              link={previewing.link_url ?? undefined}
+            />
+          </Flex>
+        </Box>
+      )}
     </VStack>
   );
 }

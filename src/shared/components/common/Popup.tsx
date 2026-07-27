@@ -34,12 +34,14 @@ interface PopupProps {
 }
 
 function PopupPanel({
+  title,
   text,
   imageUrl,
   link,
   onClose,
   onHideToday,
 }: {
+  title: string;
   text?: string;
   imageUrl?: string;
   link?: string;
@@ -54,11 +56,21 @@ function PopupPanel({
         borderBottomWidth="1px"
         borderColor="gray.500"
         color="gray.200"
+        maxH="100px"
       >
-        <Flex align="center" justify="space-between" gap={2} />
+        <Flex align="center" justify="space-between" gap={2} px={2} py={0} >
+          <Text fontSize="sm" fontWeight="700" color="gray.200">
+            {title}
+          </Text>
+        </Flex>
       </Box>
 
-      <Box p={2} position="relative">
+      <Box
+        p={2}
+        position="relative"
+        aspectRatio={imageUrl ? '4/5' : undefined}
+        minH={imageUrl ? undefined : '80px'}
+      >
         {imageUrl && (
           <Box
             position="absolute"
@@ -71,13 +83,13 @@ function PopupPanel({
         )}
 
         <Flex
-          position="relative"
+          position={imageUrl ? 'absolute' : 'relative'}
+          inset={imageUrl ? 0 : undefined}
           zIndex={1}
           direction="column"
           h="full"
-          minH={imageUrl ? '360px' : '80px'}
-          px={4}
-          py={3}
+          minH={imageUrl ? undefined : '80px'}
+          p={2}
         >
           <Flex flex="1" align="center" justify="center" w="full">
             {text && (
@@ -99,8 +111,14 @@ function PopupPanel({
               <Button
                 asChild
                 size="xs"
-                colorPalette="orange"
+                color="white"
+                bg="gray.900"
+                rounded="none"
                 fontWeight="700"
+                shadow="xl"
+                _hover={{
+                  bg: 'gray.800',
+                }}
               >
                 <a
                   href={link}
@@ -159,7 +177,7 @@ export default function Popup({
   text,
   imageUrl,
   link,
-  width = '480px',
+  width = '360px',
   size = 'md',
   open,
   onOpenChange,
@@ -202,6 +220,7 @@ export default function Popup({
   }
 
   const panelProps = {
+    title,
     text,
     imageUrl,
     link,
