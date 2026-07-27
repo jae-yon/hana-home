@@ -19,7 +19,7 @@ interface EditorProps {
 }
 
 export default function Editor({content, onUpdate}: EditorProps) {
-  const { uploadImage } = UploadImage()
+  const { uploadImage } = UploadImage({ path: 'uploads' });
 
   const editor = useEditor({
     extensions: [

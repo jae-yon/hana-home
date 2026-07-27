@@ -54,7 +54,7 @@ export const usePostNotice = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   // 이미지 연결
-  const { linkImagesToPost } = UploadImage();
+  const { linkImagesToPost } = UploadImage({ path: 'uploads' });
 
   return useMutation({
     mutationFn: async (post: Post) => {

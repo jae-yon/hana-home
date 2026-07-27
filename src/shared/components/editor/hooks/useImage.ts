@@ -90,7 +90,7 @@ export function extractImageUrlsFromJson(content: JSONContent | null | undefined
   return urls
 }
 
-export const UploadImage = ({ path = 'uploads' }: { path?: string }) => {
+export const UploadImage = ({ path }: { path: string }) => {
   // 현재 글 작성 세션에서 업로드한 이미지 URL 목록 추적
   const uploadedUrls = useRef<string[]>([])
 
