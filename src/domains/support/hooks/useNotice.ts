@@ -5,7 +5,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type { Post } from '@/types/common';
 
 import { supabase } from '@/shared/config/supabase';
-import { extractImageUrlsFromJson, UploadImage } from '@/shared/components/editor/hooks/useImage';
+import {
+  extractImageUrlsFromJson,
+  linkImagesToPost,
+} from '@/shared/components/editor/hooks/useImage';
 
 // 공지사항 목록 조회
 export const useNotice = () => {
@@ -53,8 +56,6 @@ export const useNoticeDetail = (id: string | undefined) => {
 export const usePostNotice = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  // 이미지 연결
-  const { linkImagesToPost } = UploadImage({ path: 'uploads' });
 
   return useMutation({
     mutationFn: async (post: Post) => {

@@ -7,8 +7,10 @@ import Highlight from '@tiptap/extension-highlight';
 import { TextStyle, Color } from '@tiptap/extension-text-style';
 import { EditorContent, useEditor, type JSONContent } from '@tiptap/react';
 
+import { useBucket } from '@/shared/hooks/useBucket';
+
 import Toolbar from '@/shared/components/editor/Toolbar';
-import { CustomImage, UploadImage } from '@/shared/components/editor/hooks/useImage';
+import { CustomImage } from '@/shared/components/editor/hooks/useImage';
 
 // CSS import
 import '@/shared/components/editor/index.css';
@@ -19,7 +21,7 @@ interface EditorProps {
 }
 
 export default function Editor({content, onUpdate}: EditorProps) {
-  const { uploadImage } = UploadImage({ path: 'uploads' });
+  const { uploadImage } = useBucket({ path: 'uploads' });
 
   const editor = useEditor({
     extensions: [

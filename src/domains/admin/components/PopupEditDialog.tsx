@@ -18,7 +18,7 @@ import {
 import { ImagePlusIcon, XIcon } from 'lucide-react';
 
 import type { Popup, PopupExpirePreset } from '@/types/common';
-import { UploadImage } from '@/shared/components/editor/hooks/useImage';
+import { useBucket } from '@/shared/hooks/useBucket';
 import {
   getExpiresAtFromDate,
   getExpiresAtFromDays,
@@ -102,7 +102,7 @@ function resolveExpiresAt(form: FormState): string | null {
 
 export default function PopupEditDialog({ open, onOpenChange, editing }: PopupEditDialogProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { uploadImage } = UploadImage({ path: 'popups' });
+  const { uploadImage } = useBucket({ path: 'popups' });
 
   const { mutate: createPopup, isPending: isCreating } = useCreatePopup();
   const { mutate: updatePopup, isPending: isUpdating } = useUpdatePopup();
