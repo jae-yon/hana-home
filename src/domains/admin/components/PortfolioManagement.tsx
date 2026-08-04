@@ -76,7 +76,7 @@ export default function PortfolioManagement({ isAuthenticated }: { isAuthenticat
   };
 
   const handleDelete = (portfolio: Portfolio) => {
-    if (!confirm(`"${portfolio.title}" 시공사례를 삭제하시겠습니까?`)) return;
+    if (!confirm(`[${portfolio.title}] 시공사례를 영구적으로 삭제합니다.`)) return;
     deletePortfolio(portfolio.id);
   };
 
@@ -136,8 +136,8 @@ export default function PortfolioManagement({ isAuthenticated }: { isAuthenticat
 
       <VStack align="stretch" gap={3}>
         {isLoading ? (
-          <Flex justify="center" py={10}>
-            <Spinner color="orange.500" />
+          <Flex justify="center" h="50vh" display="flex" alignItems="center" justifyContent="center">
+            <Spinner size="lg" color="orange.500" />
           </Flex>
         ) : portfolios.length === 0 ? (
           <Box p={8} textAlign="center" minH="300px" display="flex" alignItems="center" justifyContent="center">

@@ -345,17 +345,15 @@ export default function PortfolioEditDialog({
                   </Button>
                 )}
 
-                {/* <Text
-                  style={{
-                    color: 'gray.500',
-                    fontSize: '10px',
-                    fontWeight: '500',
-                    fontFamily: 'NanumSquareNeo',
-                    paddingLeft: '5px',
-                  }}
+                <Text
+                  color="red.500"
+                  fontSize="11px"
+                  fontWeight="500"
+                  fontFamily="NanumSquareNeo"
+                  paddingLeft="5px"
                 >
-                  ※ 가로형(16:9 ~ 4:3) 이미지를 권장합니다.
-                </Text> */}
+                  ※ 5MB 이상의 이미지는 업로드할 수 없습니다. jpg 또는 jpeg 확장자의 이미지를 권장합니다.
+                </Text>
               </Field.Root>
 
               <Field.Root>
@@ -376,8 +374,9 @@ export default function PortfolioEditDialog({
                 >
                   <Checkbox.HiddenInput />
                   <Checkbox.Control />
-                  <Checkbox.Label fontSize="sm" color="gray.600" fontWeight="500">
-                    시공사례 페이지에 공개 <Text as="span" color="gray.400">(선택 시 시공사례 페이지에 노출됩니다.)</Text>
+                  <Checkbox.Label fontSize="sm" color="gray.600" fontWeight="500" display="flex" alignItems="center" gap={1}>
+                    시공사례 페이지에 공개{' '} 
+                    <Text as="span" fontFamily="NanumSquareNeo" fontSize="11px" color="gray.400">※ 선택 시 시공사례 페이지에 노출됩니다.</Text>
                   </Checkbox.Label>
                 </Checkbox.Root>
 
@@ -389,8 +388,9 @@ export default function PortfolioEditDialog({
                 >
                   <Checkbox.HiddenInput />
                   <Checkbox.Control />
-                  <Checkbox.Label fontSize="sm" color="gray.600" fontWeight="500">
-                    시공사례 대표 이미지로 선택 <Text as="span" color="gray.400">(선택 시 메인페이지 시공사례 사진으로 노출됩니다.)</Text>
+                  <Checkbox.Label fontSize="sm" color="gray.600" fontWeight="500" display="flex" alignItems="center" gap={1}>
+                    시공사례 대표 이미지로 선택{' '} 
+                    <Text as="span" fontFamily="NanumSquareNeo" fontSize="11px" color="gray.400">※ 선택 시 메인페이지 시공사례 사진으로 노출됩니다.</Text>
                   </Checkbox.Label>
                 </Checkbox.Root>
               </VStack>

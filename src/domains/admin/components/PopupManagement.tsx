@@ -181,8 +181,8 @@ export default function PopupManagement() {
         </Text>
 
         {isLoading ? (
-          <Flex justify="center" py={10} minH="300px" display="flex" alignItems="center" justifyContent="center">
-            <Spinner color="orange.500" />
+          <Flex justify="center" h="50vh" display="flex" alignItems="center" justifyContent="center">
+            <Spinner size="lg" color="orange.500" />
           </Flex>
         ) : popups.length === 0 ? (
           <Box p={8} textAlign="center" minH="300px" display="flex" alignItems="center" justifyContent="center">
