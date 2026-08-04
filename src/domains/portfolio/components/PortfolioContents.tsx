@@ -1,123 +1,51 @@
-import { LucideExternalLink } from 'lucide-react';
+import { Box, Flex, Spinner, Text } from '@chakra-ui/react';
 
-import { Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
+import PortfolioCard from '@/shared/components/common/PortfolioCard';
+import { usePublicPortfolios, type PublicPortfolioType } from '../hooks/usePortfolio';
 
-import { PORTFOLIO_ITEMS } from '@/shared/config/constants';
-
-interface PortfolioContensProps {
+interface PortfolioContentsProps {
   isDesktop: boolean;
-  type: 'ppa' | 'rps' | 'residential';
+  type: PublicPortfolioType;
 }
 
-export default function PortfolioContents(props: PortfolioContensProps) {
+export default function PortfolioContents(props: PortfolioContentsProps) {
   const { isDesktop, type } = props;
+  const { data: portfolios = [], isLoading } = usePublicPortfolios(type);
 
-  const items = PORTFOLIO_ITEMS.filter((item) => item.type.toLowerCase() === type.toLowerCase());
+  if (isLoading) {
+    return (
+      <Flex width="100%" minH="300px" alignItems="center" justifyContent="center">
+        <Spinner color="green.500" />
+      </Flex>
+    );
+  }
+
+  if (portfolios.length === 0) {
+    return (
+      <Box p={8} textAlign="center" minH="300px" display="flex" alignItems="center" justifyContent="center">
+        <Text color="gray.500" fontSize="md">
+          등록된 시공사례가 없습니다.
+        </Text>
+      </Box>
+    );
+  }
 
   return (
-    <Flex 
+    <Flex
       width="100%"
+      mx="auto"
+      maxW="1280px"
       direction="column"
       alignItems="center"
       justifyContent="center"
     >
-      {items.map((item) => (
-        <Box
-          padding={8}
-          gapY={4}
-          gapX={12}
-          key={item.id}
-          w="100%"
-          display="flex"
-          flexDirection={isDesktop ? 'row' : 'column'}
-          justifyContent={isDesktop ? 'center' : 'flex-start'}
-        >
-          {/* 이미지 영역 */}
-          <Box
-            my={4}
-            overflow="hidden"
-            borderRadius="md"
-            position="relative"
-            w={{ base: '100%', md: '100%', lg: '50%', xl: '40%' }}
-            h={{ base: '250px', sm: '300px', md: '400px' }}
-          >
-            <Box
-              inset="0"
-              bgSize="cover"
-              bgPos="center"
-              position="absolute"
-              bgImage={`url(${item.image})`}
-            />
-          </Box>
-          
-          {/* 설명 영역 */}
-          <Box
-            mb={4}
-            bg="white"
-            display="flex"
-            overflow=""
-            flexDirection="column"
-            justifyContent="center"
-            fontFamily="pretendard"
-            w={isDesktop ? '360px' : '100%'}
-          >
-            <Box
-              divideY="1px"
-              divideColor="gray.200"
-              borderWidth="1px"
-              borderTopColor="transparent"
-              borderLeftColor="transparent"
-              borderRightColor="transparent"
-              borderBottomColor="gray.200"
-            >
-              <Box display="flex" flexDirection="row" justifyContent="space-between">
-                <Heading
-                  ml={1}
-                  mb={4}
-                  w="100%"
-                  fontSize="lg"
-                  color="gray.800"
-                  textAlign="start"
-                  fontWeight="medium"
-                >
-                  {item.title}
-                </Heading>
-                {item.href && (
-                    <IconButton
-                      size="sm"
-                      color="blue.600"
-                      bg="transparent"
-                      border="none"
-                      borderRadius="full"
-                      _hover={{
-                        bg: "gray.100",
-                      }}
-                      onClick={() => window.open(item.href, '_blank')}
-                    >
-                      <LucideExternalLink size={16} strokeWidth={2} />
-                    </IconButton>
-                  )
-                }
-              </Box>
-              <Box display="flex" flexDirection="row" gap={4}>
-                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">타입</Text>
-                <Text py={4} fontSize="sm" color="gray.700">{item.subtitle}</Text>
-              </Box>
-              <Box display="flex" flexDirection="row" gap={4}>
-                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">모듈</Text>
-                <Text py={4} fontSize="sm" color="gray.700">{item.module}</Text>
-              </Box>
-              <Box display="flex" flexDirection="row" gap={4}>
-                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">인버터</Text>
-                <Text py={4} fontSize="sm" color="gray.700">{item.inverter}</Text>
-              </Box>
-              <Box display="flex" flexDirection="row" gap={4}>
-                <Text fontWeight="medium" fontSize="sm" color="gray.900" w="30%" py={4} bg="gray.100" textAlign="center">설비용량</Text>
-                <Text py={4} fontSize="sm" color="gray.700">{item.capacity}</Text>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+      {portfolios.map((portfolio) => (
+        <PortfolioCard
+          key={portfolio.id}
+          portfolio={portfolio}
+          isDesktop={isDesktop}
+          isEditable={false}
+        />
       ))}
     </Flex>
   );
