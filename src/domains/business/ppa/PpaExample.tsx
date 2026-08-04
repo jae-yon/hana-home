@@ -2,17 +2,17 @@ import { Box, Heading, Text, Grid, GridItem, Image } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import { LucideArrowRight } from 'lucide-react';
 
-import portfolioPpaImage01 from '@/assets/images/portfolio/portfolio_ppa_01.png';
+import portfolioPpaImage01 from '@/assets/images/portfolio/portfolio_ppa_01.jpeg';
 import portfolioPpaImage02 from '@/assets/images/portfolio/portfolio_ppa_02.png';
 
 const EXAMPLE_IMAGES = [
   {
     src: portfolioPpaImage01,
-    alt: '가정용 태양광 시공 사례 1',
+    alt: 'PPA 시공 사례 1',
   },
   {
     src: portfolioPpaImage02,
-    alt: '가정용 태양광 시공 사례 2',
+    alt: 'PPA 시공 사례 2',
   },
 ];
 

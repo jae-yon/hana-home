@@ -41,6 +41,20 @@ export default function FooterAbout() {
             오시는 길
           </Text>
         </Link>
+
+        {/* <Link href='/hana/back' outline='none'>
+          <Text 
+            fontSize='md' 
+            fontWeight='medium'
+            color='gray.400'
+            _hover={{
+              color: 'gray.200',
+            }}
+            transition='all 0.3s ease-in-out'
+          >
+            로그인
+          </Text>
+        </Link> */}
       </Box>
     </Stack>
   );

@@ -8,11 +8,11 @@ import portfolioRpsImage02 from '@/assets/images/portfolio/portfolio_rps_03.jpg'
 const EXAMPLE_IMAGES = [
   {
     src: portfolioRpsImage01,
-    alt: '가정용 태양광 시공 사례 1',
+    alt: 'RPS 시공 사례 1',
   },
   {
     src: portfolioRpsImage02,
-    alt: '가정용 태양광 시공 사례 2',
+    alt: 'RPS 시공 사례 2',
   },
 ];
 

@@ -2,8 +2,8 @@ import { Box, Heading, Text, Grid, GridItem, Image } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import { LucideArrowRight } from 'lucide-react';
 
-import portfolioRpsImage04 from '@/assets/images/portfolio/portfolio_rps_04.png';
-import portfolioRpsImage06 from '@/assets/images/portfolio/portfolio_rps_06.png';
+import portfolioRpsImage04 from '@/assets/images/portfolio/portfolio_rps_04.jpg';
+import portfolioRpsImage06 from '@/assets/images/portfolio/portfolio_rps_06.jpg';
 
 const EXAMPLE_IMAGES = [
   {
