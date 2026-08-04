@@ -2,15 +2,13 @@ import { Box, Flex, Stack } from '@chakra-ui/react';
 
 import { useResponsive } from '@/shared/hooks/useResponsive';
 
-import { PORTFOLIO_ITEMS } from '@/shared/config/constants';
-
 import { PortfolioHead } from './components/PortfolioHead';
 import { PortfolioContents } from './components/PortfolioContents';
+import { useMainPortfolios } from './hooks/usePortfolio';
 
 export default function Portfolio() {
   const { isDesktop } = useResponsive();
-
-  const mainItems = PORTFOLIO_ITEMS.filter((item) => item.isMainVisible);
+  const { data: mainItems = [] } = useMainPortfolios();
 
   return (
     <Box 

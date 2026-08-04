@@ -21,7 +21,7 @@ export function PortfolioCard(props: PortfolioCardProps) {
       <Box
         position="absolute"
         inset="0"
-        bgImage={`url(${item.image})`}
+        bgImage={`url(${item.image_url})`}
         bgSize="cover"
         bgPos="center"
       />
