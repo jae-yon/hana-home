@@ -42,8 +42,7 @@ export default function Sidebar() {
       as="aside"
       w={isFolded ? '72px' : '240px'}
       minW={isFolded ? '72px' : '240px'}
-      h="100vh"
-      bg="gray.900"
+      bg="gray.800"
       color="white"
       direction="column"
       transition="width 0.2s ease, min-width 0.2s ease"
@@ -104,7 +103,6 @@ export default function Sidebar() {
       <VStack as="nav" gap={1} p={2} align="stretch" flex="1">
         {items.map((item) => {
           const isActive = location.pathname === item.path;
-
           return (
             <Box
               as="button"
