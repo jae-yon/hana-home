@@ -91,7 +91,7 @@ export default function PopupManagement() {
       </Box>
 
       <SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
-        <Box bg="white" borderRadius="lg" borderWidth="1px" borderColor="gray.200" p={6} boxShadow="sm">
+        <Box bg="white" borderRadius="lg" borderWidth="1px" borderColor="gray.200" p={6} boxShadow="xs">
           <Flex align="center" gap={3} mb={4}>
             <Flex
               w={10}
@@ -116,7 +116,7 @@ export default function PopupManagement() {
           </Text>
         </Box>
 
-        <Box bg="white" borderRadius="lg" borderWidth="1px" borderColor="gray.200" p={6} boxShadow="sm">
+        <Box bg="white" borderRadius="lg" borderWidth="1px" borderColor="gray.200" p={6} boxShadow="xs">
           <Flex align="center" gap={3} mb={4}>
             <Flex
               w={10}
@@ -149,7 +149,7 @@ export default function PopupManagement() {
           borderColor="orange.300"
           borderStyle="dashed"
           p={6}
-          boxShadow="sm"
+          boxShadow="xs"
           cursor="pointer"
           textAlign="left"
           transition="border-color 0.3s ease, background 0.3s ease"
@@ -181,16 +181,13 @@ export default function PopupManagement() {
         </Text>
 
         {isLoading ? (
-          <Flex justify="center" py={10}>
+          <Flex justify="center" py={10} minH="300px" display="flex" alignItems="center" justifyContent="center">
             <Spinner color="orange.500" />
           </Flex>
         ) : popups.length === 0 ? (
-          <Box
-            p={8}
-            textAlign="center"
-          >
+          <Box p={8} textAlign="center" minH="300px" display="flex" alignItems="center" justifyContent="center">
             <Text color="gray.500" fontSize="md">
-              등록된 팝업창이 없습니다
+              등록된 팝업창이 없습니다.
             </Text>
           </Box>
         ) : (
@@ -205,7 +202,7 @@ export default function PopupManagement() {
                 borderWidth="1px"
                 borderColor="gray.200"
                 p={4}
-                boxShadow="sm"
+                boxShadow="xs"
               >
                 <Flex
                   gap={4}
@@ -231,13 +228,13 @@ export default function PopupManagement() {
                           {popup.title}
                         </Text>
                         <Badge colorPalette={popup.is_active && !expired ? 'orange' : 'gray'} size="sm">
-                          {expired ? '만료' : popup.is_active ? '활성' : '비활성'}
+                          {expired ? '만료' : popup.is_active ? '사용중' : '미사용'}
                         </Badge>
                       </HStack>
                       <Text fontSize="sm" color="gray.500" lineClamp={1}>
-                        {popup.content || '본문 없음'}
+                        {popup.content || '-'}
                       </Text>
-                      <Text fontSize="xs" color="gray.400">
+                      <Text fontSize="sm" color="gray.500">
                         만료일: {formatDate(popup.expires_at)}
                       </Text>
                     </VStack>
