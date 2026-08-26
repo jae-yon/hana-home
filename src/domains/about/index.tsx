@@ -20,10 +20,11 @@ export default function About(props: AboutProps) {
   const { isDesktop } = useResponsive();
   return (
     <Flex 
+      flex="1"
       width="100%"
       direction="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'introduction' && <Intro isDesktop={isDesktop} />}

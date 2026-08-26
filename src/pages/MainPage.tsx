@@ -1,27 +1,19 @@
-import { useEffect } from 'react';
 import { Flex } from '@chakra-ui/react';
 
-import Header from '@/shared/components/header';
-import Footer from '@/shared/components/footer';
 import Popup from '@/shared/components/common/Popup';
+import PageLayout from '@/shared/components/layout/PageLayout';
 
 import Hero from '@/domains/home/hero';
 import Insight from '@/domains/home/insight';
 import Business from '@/domains/home/business';
 import Portfolio from '@/domains/home/portfolio';
-import FloatingActionButton from '@/shared/components/fab';
 import { useActivePopups } from '@/shared/hooks/usePopup';
 
 export default function MainPage() {
   const { data: popups = [] } = useActivePopups();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
   return (
-    <>
-      <Header />
+    <PageLayout showSubHero={false}>
       {/* hero section */}
       <Hero />
       {/* insight section */}
@@ -30,10 +22,6 @@ export default function MainPage() {
       <Business />
       {/* portfolio section */}
       <Portfolio />
-      {/* footer section */}
-      <Footer />
-      {/* navbar anchor */}
-      <FloatingActionButton />
 
       {/* 팝업 — 좁은 화면에서는 wrap으로 세로 배치 */}
       {popups.length > 0 && (
@@ -62,6 +50,6 @@ export default function MainPage() {
           ))}
         </Flex>
       )}
-    </>
+    </PageLayout>
   );
 }

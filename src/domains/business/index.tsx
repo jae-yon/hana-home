@@ -38,10 +38,11 @@ export default function Business(props: BusinessProps) {
 
   return (
     <Flex 
+      flex="1"
       width="100%"
       direction="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'ppa' && <Ppa />}

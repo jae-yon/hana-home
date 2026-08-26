@@ -16,7 +16,6 @@ export function Directions() {
       borderRadius="lg"
       overflow="hidden"
       direction="column"
-      position="relative"
     >
       <Heading
         mb={0}

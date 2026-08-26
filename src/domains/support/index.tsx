@@ -26,10 +26,11 @@ export default function Support(props: SupportProps) {
   return (
     <Flex 
       gap={12}
+      flex="1"
       width="100%"
       direction="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="flex-start"
     >
       {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
       {type === 'faq' && <FAQContents />}

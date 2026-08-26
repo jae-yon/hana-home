@@ -1,32 +1,19 @@
-import { useEffect } from 'react';
-import { Navigate, useLocation, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
-import Header from '@/shared/components/header';
-import Footer from '@/shared/components/footer';
-import SubHero from '@/shared/components/sub/SubHero';
-import FloatingActionButton from '@/shared/components/fab';
+import PageLayout from '@/shared/components/layout/PageLayout';
 
 import Support from '@/domains/support';
 
-export default function PortfolioPage() {
+export default function SupportPage() {
   const { type, id } = useParams();
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [location.pathname]);
 
   if (!type || !['faq', 'notice', 'inquiry'].includes(type)) {
     return <Navigate to={`/support/faq`} replace />;  
   }
     
   return (
-    <>
-      <Header />
-      <SubHero />
+    <PageLayout>
       <Support type={type as 'faq' | 'notice' | 'inquiry'} id={id}/>
-      <Footer />
-      <FloatingActionButton />
-    </>
+    </PageLayout>
   );
 }

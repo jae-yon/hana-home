@@ -40,14 +40,14 @@ export default function Portfolio(props: PortfolioProps) {
   }
 
   return (
-    <>
+    <Flex flex="1" width="100%" direction="column">
       <Flex 
         mb={12}
         gap={12}
         width="100%"
         direction="column"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="flex-start"
       >
         {isDesktop ? <SubNavbarDesktop type={type} items={navItems} /> : <SubNavbarMobile type={type} items={navItems} />}
         {type === 'ppa' && <PortfolioContents isDesktop={isDesktop} type={type} />}
@@ -83,6 +83,6 @@ export default function Portfolio(props: PortfolioProps) {
           </Button>
         </Flex>
       )}
-    </>
+    </Flex>
   )
 }

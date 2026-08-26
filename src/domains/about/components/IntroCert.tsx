@@ -87,6 +87,9 @@ export function IntroCert(_props: IntroCertProps) {
         fontSize="14px"
         textAlign="center"
         letterSpacing="0.05em"
+        opacity={isView ? 1 : 0}
+        transition="transform 1.5s ease, opacity 1s ease"
+        transform={isView ? 'translateY(0)' : 'translateY(100px)'}
       >
         CERTIFICATIONS
       </Text>

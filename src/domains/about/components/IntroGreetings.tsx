@@ -27,7 +27,7 @@ export function IntroGreetings() {
         transition="transform 1s ease, opacity 1s ease"
         transform={isView ? 'translateY(0)' : 'translateY(100px)'}
       >
-        <Image src={logo} alt="logo" objectFit="cotain" objectPosition="center" width="80px" height="80px" />
+        <Image src={logo} alt="logo" objectFit="contain" objectPosition="center" width="80px" height="80px" />
       </Box>
       <Box 
         mx="auto"

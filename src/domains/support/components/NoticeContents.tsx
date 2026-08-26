@@ -79,7 +79,7 @@ export default function NoticeContents() {
             {notices?.length === 0 ? (
               <Box
                 gap={12}
-                minH="100vh"
+                minH="40vh"
                 display="flex"
                 color="gray.500"
                 alignItems="center"

@@ -178,7 +178,7 @@ export default function InquiryForm() {
         width="100%"
         maxW={{ base: '100%', md: '960px' }}
         display="flex"
-        boxShadow={{ base: 'none', md: 'sm' }}
+        boxShadow={{ base: 'none' }}
         borderRadius={{ base: 'none', md: 'xl' }}
         borderWidth="1px"
         alignItems="center"
@@ -427,7 +427,7 @@ export default function InquiryForm() {
           </Field.Label>
           <Textarea
             p={4}
-            rows={4}
+            rows={10}
             resize="none"
             name="content"
             borderRadius="lg"
