@@ -1,13 +1,30 @@
 # Changelog
 
-이 프로젝트의 주목할 만한 변경 사항은 모두 이 파일에 기록합니다.
+이 프로젝트의 모든 주목할 만한 변경 사항은 이 파일에 문서화됩니다.
 
-형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.0.0/)를 따르며,
+형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따르며,
 이 프로젝트는 [Semantic Versioning](https://semver.org/lang/ko/)을 준수합니다.
 
 ## [Unreleased]
 
-## [1.1.1] - 2026-08-04
+## [1.3.0] - 2026-08-27
+
+### Added
+
+- 공통 페이지 레이아웃 컴포넌트 (`PageLayout`) — 헤더, 푸터, 서브히어로, 플로팅 버튼을 한곳에서 구성
+- 회사소개 페이지 인증·증명 섹션 (`IntroCert`) — 중소벤처기업 확인서, 품질경영시스템 인증서, 생산물배상책임보험 가입증명서를 그리드로 표시. 이미지는 프로젝트 내부 에셋(`src/assets/images/cert/`)을 사용
+
+### Changed
+
+- `PageLayout`을 메인, 회사소개, 사업소개, 시공사례, 홍보, 고객센터 페이지에 적용. 페이지마다 헤더·푸터·서브히어로를 반복하던 구조를 제거하고, 본문이 짧아도 푸터가 화면 하단에 유지되도록 개선. 라우트 변경 시 스크롤 초기화도 레이아웃에서 일괄 처리
+- 팝업창 컴포넌트 스타일 수정 — 모서리 라운드, 그림자·테두리, 하단 버튼 정렬 및 순서
+- 회사소개 페이지 전반 UI 수정 — 인증 섹션 추가에 맞춰 인사말, 비전, 핵심가치 등 섹션 스타일 정리
+
+### Fixed
+
+- 서브히어로 섹션 높이 기본값 수정
+
+## [1.2.0] - 2026-08-04
 
 ### Added
 
@@ -59,7 +76,8 @@
 
 - 링크·버튼 스타일, 견적문의 노출 조건, SEO 및 요청사항 반영
 
-[unreleased]: https://github.com/jae-yon/hana-home/compare/v1.1.1...HEAD
-[1.1.1]: https://github.com/jae-yon/hana-home/compare/v1.1.0...v1.1.1
+[unreleased]: https://github.com/jae-yon/hana-home/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/jae-yon/hana-home/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/jae-yon/hana-home/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/jae-yon/hana-home/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/jae-yon/hana-home/releases/tag/v1.0.0
