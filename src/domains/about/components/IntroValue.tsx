@@ -24,7 +24,7 @@ function CoreValueBox(props: {
       p={{ base: 6, md: 8 }}
       bg="gray.100/90"
       borderRadius="xl"
-      boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
+      boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
       opacity={isView ? 1 : 0}
       transition="transform 1.5s ease, opacity 1s ease"
       transform={isView ? 'translateY(0)' : 'translateY(100px)'}
@@ -76,6 +76,7 @@ function CoreValueBox(props: {
   )
 }
 
+// 회사소개 - 핵심가치
 export function IntroValue() {
   const ref = useRef(null);
   const isView = useInView(ref, { once: true });
@@ -89,7 +90,7 @@ export function IntroValue() {
       position="relative"
       minH={{ base: '720px', md: '960px' }}
     >
-      {/* background image */}
+      {/* background image, faded at the edges */}
       <Box
         position="absolute"
         top={0}
@@ -100,16 +101,34 @@ export function IntroValue() {
         backgroundSize="cover"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
+        css={{
+          maskImage:
+            'linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%)',
+        }}
       />
 
-      {/* backdrop */}
+      {/* top fade — connect to the dark section above */}
       <Box
         position="absolute"
         top={0}
         left={0}
         right={0}
+        h={{ base: '280px', md: '420px' }}
+        pointerEvents="none"
+        background="linear-gradient(to bottom, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 40%, rgba(0,0,0,0.35) 70%, transparent 100%)"
+      />
+
+      {/* bottom fade — connect to the white section below */}
+      <Box
+        position="absolute"
         bottom={0}
-        bgGradient="linear(to-b, blackAlpha.800 40%, blackAlpha.900 100%)"
+        left={0}
+        right={0}
+        h={{ base: '280px', md: '420px' }}
+        pointerEvents="none"
+        background="linear-gradient(to top, #fff 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.4) 70%, transparent 100%)"
       />
 
       {/* content */}

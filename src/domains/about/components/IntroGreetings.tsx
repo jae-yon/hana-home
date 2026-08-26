@@ -5,6 +5,7 @@ import { Stack, Text, Image, Box } from '@chakra-ui/react';
 
 import logo from '@/assets/logo.svg';
 
+// 회사소개 - 인사말
 export function IntroGreetings() {
   const ref = useRef(null);
   const isView = useInView(ref, { once: true });
@@ -12,7 +13,7 @@ export function IntroGreetings() {
   return (
     <Stack
       mb={10}
-      py={28}
+      py={24}
       px={10}
       width="100%"
     >

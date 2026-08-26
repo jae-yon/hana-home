@@ -262,3 +262,37 @@ export const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABL
 
 // Naver
 export const MAP_NAVER_API_URL = import.meta.env.VITE_NAVER_MAP_URL as string;
+
+// 중소기업 인증 이미지
+import ventureCompany from '@/assets/images/cert/중소벤처기업_확인서.jpg';
+// 품질경영 인증 이미지
+import qualityManagement from '@/assets/images/cert/품질경영시스템_인증서.jpg';
+// 생산물배상책임보험 증명 이미지 1
+import productionLiabilityInsurance1 from '@/assets/images/cert/생산물배상책임보험_가입증명서_라이나_1.jpg';
+// 생산물배상책임보험 증명 이미지 2
+import productionLiabilityInsurance2 from '@/assets/images/cert/생산물배상책임보험_가입증명서_라이나_2.jpg';
+// 생산물배상책임보험 증명 이미지 3
+import productionLiabilityInsurance3 from '@/assets/images/cert/생산물배상책임보험_가입증명서_현대해상.jpg';
+
+export const CERT_IMAGES = [
+  { 
+    name: '중소벤처기업 확인서',
+    image: ventureCompany 
+  },
+  { 
+    name: '품질경영시스템 인증서',
+    image: qualityManagement 
+  },
+  { 
+    name: '생산물배상책임보험 가입증명서 라이나손해보험',
+    image: productionLiabilityInsurance1 
+  },
+  { 
+    name: '생산물배상책임보험 가입증명서 라이나손해보험',
+    image: productionLiabilityInsurance2 
+  },
+  { 
+    name: '생산물배상책임보험 가입증명서 현대해상',
+    image: productionLiabilityInsurance3 
+  },
+];

@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 
+import { IntroCert } from './IntroCert';
 import { IntroValue } from './IntroValue';
 import { IntroHeader } from './IntroHeader';
 import { IntroVision } from './IntroVision';
@@ -29,6 +30,9 @@ export function Intro(props: IntroProps) {
 
       {/* 가치 */}
       <IntroValue />
+
+      {/* 인증 */}
+      <IntroCert isDesktop={isDesktop} />
     </Box>
   );
 }

@@ -9,6 +9,7 @@ interface IntroHeaderProps {
 
 const intro_img_header = "https://images.unsplash.com/photo-1648135327756-b606e2eb8caa?auto=format&fit=crop&q=90&w=1280"
 
+// 회사소개 - 헤더
 export function IntroHeader(props: IntroHeaderProps) {
   const { isDesktop } = props;
   
@@ -17,7 +18,6 @@ export function IntroHeader(props: IntroHeaderProps) {
 
   return (
     <Stack 
-      mb={10}
       py={10}
       width="100%"
     >

@@ -71,9 +71,10 @@ export default function PortfolioCard(props: PortfolioCardProps) {
               mb={4}
               w="100%"
               fontSize="lg"
-              color="gray.800"
+              color="gray.900"
+              fontWeight="700"
               textAlign="start"
-              fontWeight="medium"
+              fontFamily="NanumSquareNeo"
             >
               {portfolio.title}
             </Heading>

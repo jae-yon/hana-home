@@ -8,6 +8,7 @@ interface IntroVisionProps {
 
 const intro_img_vision = "https://images.unsplash.com/photo-1694248407533-d74c41fb5b68?q=80&w=1024&auto=format&fit=crop"
 
+// 회사소개 - 회사 비전
 export function IntroVision(props: IntroVisionProps) {
   const { isDesktop } = props;
   const ref = useRef(null);
