@@ -139,32 +139,34 @@ function PopupPanel({
         borderColor="gray.500"
         bg="gray.900"
       >
-        <Flex w="full" align="center" justify="space-between" gap={2}>
+        <Flex w="full" align="center" justify="end" gap={2}>
           <Button
             size="xs"
+            bg="gray.800"
             variant="ghost"
             color="gray.200"
             fontWeight="600"
-            rounded="none"
-            onClick={onClose}
-            _hover={{
-              color: 'gray.800',
-            }}
-          >
-            닫기
-          </Button>
-          <Button
-            size="xs"
-            variant="ghost"
-            color="gray.200"
-            fontWeight="600"
-            rounded="none"
+            rounded="lg"
             onClick={onHideToday}
             _hover={{
-              color: 'gray.800',
+              bg: 'gray.600',
             }}
           >
             오늘 하루 보지 않기
+          </Button>
+          <Button
+            size="xs"
+            bg="gray.800"
+            variant="ghost"
+            color="gray.200"
+            fontWeight="600"
+            rounded="lg"
+            onClick={onClose}
+            _hover={{
+              bg: 'gray.700',
+            }}
+          >
+            닫기
           </Button>
         </Flex>
       </Box>
@@ -231,13 +233,12 @@ export default function Popup({
   const contentStyles = {
     width,
     maxW: '90vw' as const,
-    boxShadow: '2xl',
+    boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;',
     borderWidth: '1px',
-    borderColor: 'gray.500',
+    borderColor: 'gray.600',
     fontFamily: 'NanumSquareNeo',
-    rounded: 'none' as const,
+    rounded: 'xl' as const,
     overflow: 'hidden' as const,
-    bg: 'white',
   };
 
   // 트리거 없는 공지 팝업: 문서 흐름에 배치해 flex-wrap 시 세로로 쌓이도록 함
