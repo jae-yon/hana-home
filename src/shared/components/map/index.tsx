@@ -69,6 +69,6 @@ export default function Map({ location: locationProp }: MapProps) {
   }, [location.lat, location.lng]);
 
   return (
-    <div ref={mapRef} style={{ width: '100%', height: 500 }} />
+    <div ref={mapRef} style={{ width: '100%', height: 500, border: '1px solid #E2E8F0', borderRadius: '20px' }} />
   );
 }

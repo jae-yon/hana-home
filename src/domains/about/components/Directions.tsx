@@ -8,7 +8,8 @@ export function Directions() {
       mb={24}
       mt={12}
       gap={12}
-      p={{ base: 0, md: 12 }}
+      px={{ base: 4, md: 24 }}
+      py={{ base: 0, md: 0 }}
       width="100%"
       height="auto"
       maxW="1280px"
@@ -18,11 +19,11 @@ export function Directions() {
       position="relative"
     >
       <Heading
-        mb={8}
+        mb={0}
         fontWeight="bold"
         color="gray.800"
         lineHeight="1.25"
-        letterSpacing="0.02em"
+        letterSpacing="-0.05em"
         ms={{ base: 4, md: 0 }}
         fontSize={{ base: '28px', sm: '32px', md: '36px', lg: '48px' }}
       >
@@ -32,7 +33,6 @@ export function Directions() {
       <Box
         width="100%"
         height="100%"
-        borderRadius="lg"
         overflow="hidden"
       >
         <Map 
@@ -41,9 +41,9 @@ export function Directions() {
 
         <Text
           fontSize="16px"
-          color="gray.900"
+          color="gray.800"
           lineHeight="1.25"
-          fontWeight="medium"
+          fontWeight="normal"
           letterSpacing="0.02em"
           fontFamily="Pretendard"
           mt={{ base: 4, md: 4 }}
