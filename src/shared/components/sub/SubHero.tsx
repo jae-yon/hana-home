@@ -23,7 +23,7 @@ export default function SubHero() {
     <Box
       position='relative'
       w='100%'
-      h='50vh'
+      h='500px'
       overflow='hidden'
       _before={{
         content: '""',
