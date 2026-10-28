@@ -1,5 +1,43 @@
 {
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/about/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/business",
+      "destination": "/business/solar-home",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio/ppa",
+      "permanent": true
+    },
+    {
+      "source": "/promotion",
+      "destination": "/promotion/social-contribution",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "/support/faq",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/hana/back",
+      "destination": "/"
+    },
+    {
+      "source": "/hana/back/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/support/notice/:id",
+      "destination": "/"
+    }
   ]
 }
