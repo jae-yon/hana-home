@@ -13,6 +13,8 @@ import {
 } from '@chakra-ui/react';
 
 import { formatDateToKorean } from '@/shared/utils/date';
+import { buildNoticeSeo } from '@/shared/config/seo';
+import { useSeoOverride } from '@/shared/hooks/useSeo';
 import EditorViewer from '@/shared/components/editor/EditorViewer';
 
 import { useDeleteNotice, useNoticeDetail } from '@/domains/support/hooks/useNotice';
@@ -37,6 +39,9 @@ export default function NoticeDetail() {
       navigate('/support/notice');
     }
   }, [id, isError, notice, isFetched, navigate]);
+
+  // 목록 페이지와 구분되도록 공지 제목·본문으로 메타데이터를 덮어쓴다
+  useSeoOverride(notice ? buildNoticeSeo(notice.title, notice.content_text ?? '') : undefined);
 
   if (!id) {
     return null;

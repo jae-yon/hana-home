@@ -17,11 +17,11 @@ export function PromotionButton() {
         >
           <Box 
             py={2}
-            my={2}
+            mt={2}
             cursor="default"
             fontFamily="Pretendard"
             borderBottomWidth="1px"
-            borderBottomColor="gray.500"
+            borderBottomColor="gray.300"
           >
             <Text
               fontSize="sm"

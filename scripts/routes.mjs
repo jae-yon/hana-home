@@ -1,0 +1,53 @@
+import { createClient } from '@supabase/supabase-js';
+
+/**
+ * 프리렌더와 sitemap이 공유하는 경로 목록.
+ * 각 페이지 컴포넌트가 허용하는 :type 값과 일치해야 한다.
+ */
+export const CONTENT_ROUTES = [
+  '/',
+
+  '/about/introduction',
+  '/about/location',
+
+  '/business/solar-home',
+  '/business/solar-parking',
+  '/business/ppa',
+  '/business/rps',
+  '/business/re100',
+  '/business/re-powering',
+  '/business/solar-cleaning',
+  '/business/profit-calculator',
+
+  '/portfolio/ppa',
+  '/portfolio/rps',
+  '/portfolio/residential',
+  '/portfolio/electrical-work',
+
+  '/promotion/social-contribution',
+
+  '/support/faq',
+  '/support/notice',
+  '/support/inquiry',
+];
+
+// 색인 대상은 아니지만 직접 접근 시 404가 되면 안 되는 경로
+export const UNLISTED_ROUTES = ['/preparation'];
+
+// 공개된 공지사항 상세 경로를 DB에서 조회한다
+export async function fetchNoticeRoutes(supabaseUrl, supabaseKey) {
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id')
+    .eq('category', 'NOTICE')
+    .eq('is_visible', true)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    throw new Error(`공지사항 경로 조회 실패: ${error.message}`);
+  }
+
+  return data.map((post) => `/support/notice/${post.id}`);
+}

@@ -7,6 +7,8 @@ import Footer from '@/shared/components/footer';
 import SubHero from '@/shared/components/sub/SubHero';
 import FloatingActionButton from '@/shared/components/fab';
 
+import { useSeo } from '@/shared/hooks/useSeo';
+
 interface PageLayoutProps {
   children: React.ReactNode;
   showSubHero?: boolean;
@@ -14,6 +16,8 @@ interface PageLayoutProps {
 
 export default function PageLayout({ children, showSubHero = true }: PageLayoutProps) {
   const location = useLocation();
+
+  useSeo();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
