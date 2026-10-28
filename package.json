@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/prerender.mjs",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "node scripts/prerender.mjs",
+    "postinstall": "puppeteer browsers install chrome"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.36.1",
@@ -41,6 +43,7 @@
     "eslint": "^9.10.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "puppeteer": "^25.16.0",
     "sharp": "^0.34.5",
     "svgo": "^4.0.0",
     "typescript": "^5.0.2",
