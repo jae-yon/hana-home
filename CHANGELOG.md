@@ -7,6 +7,28 @@
 
 ## [Unreleased]
 
+### Added
+
+- 빌드 후 프리렌더 파이프라인 (`scripts/prerender.mjs`) — Puppeteer로 전 경로를 실제 렌더링해 정적 HTML로 저장. 시공사례·공지사항처럼 Supabase에서 데이터를 받아오는 페이지도 내용이 채워진 상태로 생성되므로, JS를 실행하지 않는 검색·AI 크롤러가 본문을 읽을 수 있음
+- 프리렌더와 사이트맵이 공유하는 경로 모듈 (`scripts/routes.mjs`) — 공지사항 상세 경로는 빌드 시점에 DB에서 조회해 둘이 어긋나지 않도록 구성
+- 경로별 SEO 설정 (`src/shared/config/seo.ts`)과 적용 훅 (`src/shared/hooks/useSeo.ts`) — 페이지마다 title·description·canonical·OG 태그를 분리
+- 구조화 데이터(JSON-LD) — 전 페이지 `Organization`, 오시는 길 `LocalBusiness`, 자주묻는질문 `FAQPage`. 회사 정보는 `constants.ts`의 기존 상수를 그대로 사용
+- OG 공유 이미지 (`public/og-image.jpg`)와 생성 스크립트 (`scripts/generate-og-image.mjs`)
+- 404 페이지 정적 생성 (`404.html`)
+
+### Changed
+
+- 사이트맵 수록 URL 6개 → 24개 (전 콘텐츠 경로 + 공지사항 상세)
+- robots.txt 정책을 `vite.config.ts`에서 관리 — 관리자·공지 편집기·준비중 경로 `Disallow` 추가, 네이버(Yeti) 크롤러 정책 명시
+- `vercel.json` — 부모 경로(`/about`, `/business` 등)를 301 리다이렉트로 전환하고, 전체 경로 rewrite를 관리자·공지 상세로만 한정
+- 공지사항 상세 메타데이터를 DB의 제목·본문으로 구성해 글마다 구분되도록 변경
+
+### Fixed
+
+- 모든 하위 페이지의 canonical이 홈(`/`)을 가리켜 색인에서 중복 페이지로 취급되던 문제
+- `og:image`에 해당하는 실제 파일이 없어 공유·미리보기 이미지가 HTML로 응답되던 문제
+- 존재하지 않는 URL이 404 대신 200을 반환하던 soft 404 문제
+
 ## [1.3.0] - 2026-08-27
 
 ### Added
