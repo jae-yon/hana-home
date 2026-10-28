@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 
 import { loadEnv } from 'vite';
 import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
 
 import { CONTENT_ROUTES, UNLISTED_ROUTES, fetchNoticeRoutes } from './routes.mjs';
 
@@ -42,7 +43,7 @@ async function main() {
   console.log(`[prerender] 대상 ${routes.length}개 (정적 ${CONTENT_ROUTES.length + UNLISTED_ROUTES.length} / 공지 ${noticeRoutes.length} / 404 1)`);
 
   const server = await startShellServer();
-  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+  const browser = await launchBrowser();
 
   try {
     for (const route of routes) {
@@ -58,6 +59,22 @@ async function main() {
     await browser.close();
     server.close();
   }
+}
+
+// Vercel 빌드 컨테이너에는 Chrome 구동에 필요한 공유 라이브러리(libnspr4 등)가 없어,
+// 필요한 라이브러리까지 함께 담긴 서버리스용 Chromium을 사용한다.
+async function launchBrowser() {
+  if (!process.env.VERCEL) {
+    return puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+  }
+
+  chromium.setGraphicsMode = false;
+
+  return puppeteer.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: true,
+  });
 }
 
 async function renderRoute(browser, route) {
