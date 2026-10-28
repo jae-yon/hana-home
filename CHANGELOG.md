@@ -22,6 +22,11 @@
 - robots.txt 정책을 `vite.config.ts`에서 관리 — 관리자·공지 편집기·준비중 경로 `Disallow` 추가, 네이버(Yeti) 크롤러 정책 명시
 - `vercel.json` — 부모 경로(`/about`, `/business` 등)를 301 리다이렉트로 전환하고, 전체 경로 rewrite를 관리자·공지 상세로만 한정
 - 공지사항 상세 메타데이터를 DB의 제목·본문으로 구성해 글마다 구분되도록 변경
+- 빌드·배포 Node 버전을 22 LTS로 고정 (`engines.node`, `.nvmrc`)
+
+### Security
+
+- 의존성 보안 취약점 16건(high 15, moderate 1) 해소 — axios, vite, svgo, `@tiptap/core`, brace-expansion 등. `sharp`는 libvips·libheif·librsvg 취약점 해소를 위해 0.35.5로 상향
 
 ### Fixed
 
